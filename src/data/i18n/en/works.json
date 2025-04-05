@@ -1,0 +1,236 @@
+{
+  "geniee-cdp": {
+    "type": "company",
+    "date": {
+      "start": "2025-05",
+      "end": null
+    },
+    "image": "/work-images/company--geniee-cdp.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/cdp/"
+    },
+    "featured": true,
+    "title": "GENIEE CDP",
+    "subtitle": "Customer Data Integration Platform",
+    "description": "CDP admin panel for unified management of customer data across multiple internal products.",
+    "role": "Frontend Architecture Lead",
+    "company": "Geniee, Inc.",
+    "department": "Sales Platform Division - CDP/DC Development",
+    "overview": [
+      "Joined the CDP admin panel development for integrated management of customer data across multiple internal products.",
+      "Served as Frontend Architecture Lead & BFF Implementer. Primary responsibilities included architecture design and tech selection decisions end-to-end — from implementation policy and task breakdown through code review. Also conducted internal training sessions.",
+      "Transferred to this project based on recognition of frontend architecture design achievements at Geniee Chat, to apply and expand that expertise."
+    ],
+    "achievements": [
+      {
+        "title": "Frontend Architecture Design",
+        "description": "Designed SSR architecture using Next.js, consolidating authorization (Casbin), and multi-source data integration（SDK）on the server side. Adopted tRPC for type-safe data communication and improved API change resilience. Achieved balance between display stability in large-scale data environments and frontend development efficiency."
+      },
+      {
+        "title": "Data Analysis Support Feature Proposal & Design Lead",
+        "description": "Proposed BigQuery-integrated SQL editor and automated metadata generation features, leading functional design and core implementation. Contributed to efficiency improvements in data analysis and admin configuration workflows."
+      },
+      {
+        "title": "Frontend Development Process Establishment",
+        "description": "Defined frontend architecture guidelines and built a design-driven development process. Contributed to team development efficiency and quality stabilization."
+      },
+      {
+        "title": "OKR Rating",
+        "description": "Achieved top rating (A+) for 2 consecutive quarters."
+      }
+    ]
+  },
+  "geniee-chat": {
+    "type": "company",
+    "date": {
+      "start": "2023-08",
+      "end": "2025-05"
+    },
+    "image": "/work-images/company--geniee-chat.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/chat/"
+    },
+    "featured": true,
+    "title": "GENIEE CHAT ( Chamo )",
+    "subtitle": "Web Customer Engagement Chatbot SaaS",
+    "description": "SaaS product enabling CVR improvement and automated customer support through web-based chat.",
+    "role": "Frontend Tech Lead & Fullstack Development",
+    "company": "Geniee, Inc.",
+    "department": "CVG Division - CHAT Development",
+    "overview": [
+      "Joined the admin platform renewal project to resolve technical debt and extensibility challenges that emerged with product growth. Led the transition from legacy Django-based admin to an SPA management platform, achieving safe infrastructure rebuild through phased migration.",
+      "Served as Frontend Tech Lead with fullstack responsibilities. Primary responsibilities included architecture design, tech selection, implementation policy, and code review, along with collaborating with Business/CS departments on requirements and scenario core feature improvements, and facilitating internal training sessions."
+    ],
+    "achievements": [
+      {
+        "title": "Full Admin Panel SPA Rebuild",
+        "description": "Designed and built an SPA admin platform using Vite + React + SWC to address extensibility and developer experience issues in the legacy admin panel. Improved team development experience and sprint response speed."
+      },
+      {
+        "title": "Sustainable Refactoring Leveraging Existing Assets",
+        "description": "Leveraged DRF permission management and business logic, adopting phased migration instead of full rebuild. Promoted gradual transition while running old and new systems in parallel to suppress business risk, achieving infrastructure renewal while maintaining product stability."
+      },
+      {
+        "title": "Node-based Scenario Core Feature Design & Implementation Lead",
+        "description": "Designed and built no-code visual Workflow editor and version control mechanism enabling Business/CS departments to autonomously build chat response logic. Contributed to operational efficiency and flexibility improvements."
+      },
+      {
+        "title": "UI Unification & Brand Management Infrastructure",
+        "description": "Built Design System unifying admin panel and chatbot UI. Established component management and design asset sharing via Storybook, achieving UI quality and maintainability improvements."
+      },
+      {
+        "title": "OKR Rating",
+        "description": "Achieved top rating (A+) for 4 consecutive quarters."
+      }
+    ]
+  },
+  "skyfall-skyflag": {
+    "type": "company",
+    "date": {
+      "start": "2023-03",
+      "end": "2023-08"
+    },
+    "image": "/work-images/company--skyfall-skyflag.jpg",
+    "links": {
+      "homepage": "https://skyflag.info/"
+    },
+    "featured": false,
+    "title": "SKYFLAG",
+    "subtitle": "Reward Ad Platform",
+    "description": "Performance-based reward ad delivery and management platform.",
+    "role": "Frontend Tech Lead",
+    "company": "Skyfall, Inc.",
+    "department": "Product Division",
+    "overview": [
+      "Led admin panel architecture design and development process establishment for a reward ad platform, starting from an unprepared management infrastructure with future feature expansion in mind.",
+      "Served as Frontend Tech Lead. Primary responsibilities included new admin panel architecture design and tech selection with full discretion, along with implementation policy, task distribution, and requirements coordination with the Business department."
+    ],
+    "achievements": [
+      {
+        "title": "Efficiency-focused New Admin Panel Launch",
+        "description": "Under tight deadlines with no existing management infrastructure, adopted Refine to unify routing, form management, and data fetching. Built a foundation enabling stable implementation even for team members with varying experience levels in a short timeframe."
+      },
+      {
+        "title": "Frontend Development Process Establishment",
+        "description": "Conducted requirements analysis and task breakdown in collaboration with Business department. Established design guidelines and component design rules considering future feature expansion. Contributed to overall team development quality improvement."
+      },
+      {
+        "title": "Company-wide Award",
+        "description": "Recognized for driving product launch and technical infrastructure establishment within a short period after joining, receiving the fastest 'Newcomer Motto Award' in company history."
+      }
+    ]
+  },
+  "fni-sunrisepark": {
+    "type": "company",
+    "date": {
+      "start": "2019-11",
+      "end": "2023-02"
+    },
+    "image": "/work-images/company--fni-sunrisepark.jpg",
+    "links": {
+      "homepage": "https://saga-sunrisepark.com/"
+    },
+    "featured": false,
+    "title": "SAGA Sunrise Park",
+    "subtitle": "Municipal Facility DX Project (Contract Development)",
+    "description": "Digital infrastructure for a municipal facility: visitor reservation (ToC) and operations management (ToB).",
+    "role": "Frontend Development (Member → Tech Lead) & Fullstack Development",
+    "company": "FAIR NEXT INNOVATION, Inc.",
+    "department": "IT Solutions Division",
+    "overview": [
+      "Joined development of visitor reservation system (ToC) and operations management system (ToB) for a municipal facility. In a contract development environment involving multiple departments and stakeholders, expanded scope from frontend development to ToC/ToB development and API integration.",
+      "Progressed from Frontend Developer (Member) to Tech Lead. Primary responsibilities started with frontend development, progressively expanding to Django API support and development infrastructure, covering the full stack."
+    ],
+    "achievements": [
+      {
+        "title": "ToC / ToB Cross-cutting Development",
+        "description": "Started from ToC reservation client (Gatsby + GraphQL) UI/UX development, proactively expanded scope to ToB admin panel and Django API upon team restructuring. Built a structure enabling single-person cross-cutting coverage from frontend to API layer. Additionally consolidated scattered API communication into GraphQL layer, achieving unified data fetching logic and improved maintainability."
+      },
+      {
+        "title": "Development Documentation Infrastructure",
+        "description": "In an environment with multiple team composition changes, systematized design documents, API specifications, and development guidelines using Docusaurus. Prevented knowledge silos and contributed to reducing onboarding costs during member transitions."
+      },
+      {
+        "title": "External Team Technical Management",
+        "description": "Shared design direction and established review standards for external development team. Suppressed quality variance and achieved stable release operations."
+      }
+    ]
+  },
+  "youzan-saas": {
+    "type": "company",
+    "date": {
+      "start": "2017-07",
+      "end": "2019-06"
+    },
+    "image": "/work-images/company--youzan-sass.png",
+    "links": {},
+    "featured": false,
+    "title": "Youzan Weimall",
+    "subtitle": "E-commerce SaaS Platform",
+    "description": "A leading Chinese e-commerce SaaS providing store building, product management, and marketing for merchants.",
+    "role": "Frontend Developer (Member)",
+    "company": "China Hangzhou Youzan Technology Co., Ltd.",
+    "department": "Retail Frontend Team",
+    "overview": [
+      "Engaged in frontend development of merchant-facing store pages and admin features at a e-commerce SaaS platform.",
+      "Served as Frontend Developer (Member). Primary responsibilities included frontend development and maintenance of store pages and admin features."
+    ],
+    "achievements": [
+      {
+        "title": "Feature Development",
+        "description": "Handled UI/UX implementation of toC mobile web features including product display and campaign display on store pages."
+      },
+      {
+        "title": "Foundation Building",
+        "description": "Learned fundamental team development processes including code review, sprint development, and design documentation. Gained practical experience in component design and mobile optimization in a large-scale SaaS environment, forming the foundation for subsequent career growth."
+      }
+    ]
+  },
+  "venomous-ui": {
+    "type": "personal",
+    "date": {
+      "start": "2025-04",
+      "end": null
+    },
+    "image": "/logos/U.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-ui/tree/release",
+      "demo": "https://blaxberry333.github.io/venomous-ui/"
+    },
+    "featured": false,
+    "title": "Venomous UI Library",
+    "subtitle": "Cross-framework UI Component Library ( React / Vue )",
+    "description": "An unstyled-by-default, zero-runtime-CSS component library providing a unified API across React and Vue, with a Design Token system powered by CSS Custom Properties.",
+    "role": "Personal Project",
+    "overview": [
+      "Not built to compete with Headless UI — built to validate whether a single component API can genuinely be shared across React and Vue without sacrificing each framework's idioms. Motivated by recurring cross-framework styling inconsistencies and maintenance overhead encountered at work.",
+      "Architecture separates a framework-agnostic core (types, constants, Design Tokens, CSS) from idiomatic React and Vue adapters. Every component is covered by Vitest tests and documented interactively in Storybook."
+    ],
+    "achievements": [
+      {
+        "title": "Cross-framework Unified Architecture",
+        "description": "Shared core layer with framework-specific adapters — adding a component means only writing the React/Vue differential.",
+        "highlights": [
+          "22 components + 9 hooks/composables per framework",
+          "Separated Vite build pipeline per entry point (core / react / vue)"
+        ]
+      },
+      {
+        "title": "Unstyled by Default + Design Token System",
+        "description": "Components emit semantic class names only; styles are opt-in per component. Theming is handled entirely through CSS Custom Properties.",
+        "highlights": [
+          "5 semantic color schemes with full spacing/typography/effect scales",
+          "Tree-shakeable — unused component styles never enter the bundle"
+        ]
+      },
+      {
+        "title": "Quality & Documentation",
+        "description": "Every component covered by Vitest + Testing Library / Vue Test Utils, with interactive Storybook docs for each variant and state.",
+        "highlights": [
+          "ESLint 9 + Stylelint + Prettier + Husky pre-commit pipeline",
+          "Storybook deployed as a living style guide"
+        ]
+      }
+    ]
+  }
+}

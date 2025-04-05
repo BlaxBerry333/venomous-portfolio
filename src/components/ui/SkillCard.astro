@@ -1,0 +1,130 @@
+---
+import clsx from "clsx";
+import { getSkillItem } from "@/utils/data";
+
+export interface Props {
+  id: string;
+  size?: "sm" | "md";
+  class?: string;
+}
+
+const { id, size = "md", class: className = "" } = Astro.props;
+
+const skill = getSkillItem(id);
+const label = skill?.label ?? id;
+const icon = skill?.icon;
+
+const sizeStyles = {
+  sm: "h-14 w-14",
+  md: "h-16 w-16",
+};
+
+const iconSizeStyles = {
+  sm: "h-7 w-7",
+  md: "h-9 w-9",
+};
+
+const imgSizeStyles = {
+  sm: "h-5 w-5",
+  md: "h-7 w-7",
+};
+---
+
+<div
+  class={clsx(
+    "skill-card cyber-block cyber-block-sm group relative flex cursor-default items-center justify-center transition-all duration-300",
+    sizeStyles[size],
+    className,
+  )}
+>
+  {/* Corner decorations */}
+  <span class="cyber-corner cyber-corner-tl"></span>
+  <span class="cyber-corner cyber-corner-br"></span>
+
+  {/* Icon */}
+  <div
+    class={clsx(
+      "skill-card-icon flex items-center justify-center rounded-md p-1 transition-all duration-300",
+      iconSizeStyles[size],
+    )}
+  >
+    {
+      icon ? (
+        <img
+          src={`${import.meta.env.BASE_URL}${icon}`}
+          alt={label}
+          class={clsx(
+            "object-contain transition-transform duration-300 group-hover:scale-110",
+            imgSizeStyles[size],
+          )}
+          loading="lazy"
+        />
+      ) : (
+        <span class="neon-cyan text-xl">{label.slice(0, 2)}</span>
+      )
+    }
+  </div>
+
+  {/* Tooltip */}
+  <div class="skill-card-tooltip">
+    {label}
+  </div>
+</div>
+
+<style>
+  /* Skill card hover */
+  .skill-card:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+
+  /* Icon background */
+  .skill-card-icon {
+    background: rgba(255, 255, 255, 0.9);
+  }
+
+  :global(.light) .skill-card-icon {
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  .skill-card:hover .skill-card-icon {
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+  }
+
+  :global(.light) .skill-card:hover .skill-card-icon {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 6px rgba(0, 151, 167, 0.25);
+  }
+
+  /* Tooltip */
+  .skill-card-tooltip {
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    z-index: 10;
+    transform: translateX(-50%) translateY(100%);
+    padding: 2px 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    white-space: nowrap;
+    background: rgba(10, 10, 11, 0.95);
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    text-shadow: 0 0 8px var(--pink);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+
+  :global(.light) .skill-card-tooltip {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: var(--pink);
+    color: var(--pink);
+    text-shadow: 0 1px 2px rgba(216, 27, 96, 0.3);
+  }
+
+  .skill-card:hover .skill-card-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+</style>

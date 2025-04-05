@@ -1,0 +1,63 @@
+---
+import { type Locale, t, getLocalizedUrl } from "@/utils/i18n";
+import Button from "@/components/ui/Button.astro";
+import TerminalWindow from "@/components/ui/TerminalWindow.astro";
+import TerminalBootSequence from "@/components/ui/TerminalBootSequence.astro";
+
+declare const __APP_VERSION__: string;
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const version = __APP_VERSION__;
+---
+
+<section
+  class="relative flex min-h-[calc(100dvh-60px)] items-center justify-center overflow-hidden"
+>
+  <TerminalWindow title="chen@portfolio ~ " class="mx-4 w-full max-w-[1000px] p-8 md:p-8">
+    <!-- 主标题区域 -->
+    <div class="mt-30 mb-10 text-center">
+      <h1 class="hero-title font-display">
+        <span class="text-white">Chen's</span>
+        <span class="text-gradient-cyber">Portfolio</span>
+      </h1>
+      <p class="text-gray mt-4 font-mono text-sm tracking-[4px] uppercase">
+        {t("hero.role", locale)}
+      </p>
+    </div>
+
+    <!-- 终端启动序列 -->
+    <TerminalBootSequence
+      command="./init_portfolio.sh"
+      steps={[
+        { message: `Loading Chen.Portfolio v${version}...` },
+        { message: "Status: ", statusText: "Initializing" },
+      ]}
+    />
+
+    <!-- CTA 按钮 -->
+    <div class="mt-20 flex justify-center gap-4 max-md:flex-col max-md:items-center">
+      <Button href={getLocalizedUrl("/about", locale)} variant="primary" size="lg">
+        {t("hero.cta.about", locale)}
+        <span aria-hidden="true">→</span>
+      </Button>
+      <Button href={getLocalizedUrl("/works", locale)} variant="secondary" size="lg">
+        {t("hero.cta.works", locale)}
+        <span aria-hidden="true">→</span>
+      </Button>
+    </div>
+  </TerminalWindow>
+</section>
+
+<style>
+  .hero-title {
+    font-size: clamp(48px, 10vw, 96px);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+  }
+</style>

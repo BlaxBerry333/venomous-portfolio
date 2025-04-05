@@ -1,0 +1,188 @@
+---
+import clsx from "clsx";
+import Icon from "./Icon.astro";
+
+export interface TabItem {
+  key: string;
+  label: string;
+  icon?: string;
+}
+
+export interface Props {
+  tabs: TabItem[];
+  defaultActive?: string;
+  class?: string;
+}
+
+const { tabs, defaultActive = tabs[0]?.key, class: className = "" } = Astro.props;
+---
+
+<div class={clsx("about-tabs", className)} data-about-tabs>
+  <!-- Tab Navigation -->
+  <nav class="tab-nav" role="tablist">
+    {
+      tabs.map((tab) => (
+        <button
+          type="button"
+          role="tab"
+          class:list={["tab-button", tab.key === defaultActive && "tab-active"]}
+          data-tab={tab.key}
+          aria-selected={tab.key === defaultActive ? "true" : "false"}
+        >
+          {tab.icon && <Icon name={tab.icon} size={16} class="tab-icon" />}
+          <span class="tab-label">{tab.label}</span>
+          <span class="tab-indicator" aria-hidden="true" />
+        </button>
+      ))
+    }
+  </nav>
+
+  <!-- Tab Content (slots) -->
+  <div class="tab-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .about-tabs {
+    width: 100%;
+  }
+
+  /* === Tab Navigation === */
+  .tab-nav {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(107, 114, 128, 0.2);
+    margin-bottom: 2rem;
+  }
+
+  /* === Tab Button === */
+  .tab-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .tab-button:hover {
+    color: var(--cyan);
+  }
+
+  .tab-button.tab-active {
+    color: var(--cyan);
+  }
+
+  /* === Tab Indicator (underline) === */
+  .tab-indicator {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--cyan), var(--pink));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .tab-button.tab-active .tab-indicator {
+    transform: scaleX(1);
+  }
+
+  /* === Tab Icon === */
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  /* === Tab Content === */
+  .tab-content {
+    position: relative;
+  }
+
+  /* === Tab Panel === */
+  :global(.tab-panel) {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  :global(.tab-panel.tab-panel-active) {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* === Light Mode === */
+  .light .tab-nav {
+    border-color: rgba(107, 114, 128, 0.15);
+  }
+
+  .light .tab-button {
+    color: var(--muted);
+  }
+
+  .light .tab-button:hover,
+  .light .tab-button.tab-active {
+    color: var(--cyan);
+  }
+
+  .light .tab-indicator {
+    background: linear-gradient(to right, var(--cyan), var(--pink));
+  }
+</style>
+
+<script is:inline>
+  function setupAboutTabs() {
+    const containers = document.querySelectorAll("[data-about-tabs]");
+
+    containers.forEach((container) => {
+      const buttons = container.querySelectorAll(".tab-button");
+      const panels = container.querySelectorAll(".tab-panel");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const tabKey = button.getAttribute("data-tab");
+
+          // Update buttons
+          buttons.forEach((btn) => {
+            btn.classList.remove("tab-active");
+            btn.setAttribute("aria-selected", "false");
+          });
+          button.classList.add("tab-active");
+          button.setAttribute("aria-selected", "true");
+
+          // Update panels
+          panels.forEach((panel) => {
+            if (panel.getAttribute("data-tab-panel") === tabKey) {
+              panel.classList.add("tab-panel-active");
+            } else {
+              panel.classList.remove("tab-panel-active");
+            }
+          });
+        });
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", setupAboutTabs);
+  document.addEventListener("astro:page-load", setupAboutTabs);
+</script>

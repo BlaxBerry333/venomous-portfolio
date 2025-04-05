@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Chen's Portfolio",
+    "description": "フルスタックエンジニアのポートフォリオ"
+  },
+  "nav": {
+    "works": "作品集",
+    "about": "自己紹介"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "title": ["FULLSTACK", "DEVELOPER"],
+    "role": "フロントもバックも、なんでも屋",
+    "subtitle": "現代的な技術で優れたデジタル体験を構築",
+    "description": "モダンなWeb技術でユーザー体験を追求するフルスタックエンジニア。",
+    "cta": {
+      "works": "作品集を見る",
+      "about": "自己紹介"
+    }
+  },
+  "skills": {
+    "title": "TECH STACK",
+    "subtitle": "使用している技術スタック"
+  },
+  "featuredWorks": {
+    "title": "FEATURED WORKS",
+    "subtitle": "これまでに携わった主なプロジェクト"
+  },
+  "worksPage": {
+    "pageTitle": "MY WORKS",
+    "pageSubtitle": "これまでに携わったプロジェクト",
+    "filter": {
+      "all": "すべて",
+      "company": "会社",
+      "personal": "個人"
+    },
+    "type": {
+      "company": "会社",
+      "personal": "個人"
+    },
+    "detail": {
+      "role": "役割",
+      "duration": "期間",
+      "techStack": "主な技術スタック",
+      "links": "リンク",
+      "overview": "概要",
+      "achievements": "担当役割と成果",
+      "learnings": "得られた知見",
+      "moreWorks": "他の作品"
+    }
+  },
+  "aboutPage": {
+    "pageTitle": "ABOUT ME",
+    "pageSubtitle": "東京を拠点に活動するエンジニア",
+    "sections": {
+      "bio": "自己紹介",
+      "experience": "職歴",
+      "skills": "スキル"
+    }
+  },
+  "common": {
+    "present": "現在",
+    "viewMore": "もっと見る",
+    "backToList": "一覧に戻る",
+    "loading": "読み込み中..."
+  },
+  "footer": {
+    "tagline": "Building with passion",
+    "copyright": "All rights reserved."
+  },
+  "skillCategories": {
+    "frontend": "フロントエンド",
+    "backend": "バックエンド",
+    "database": "データベース",
+    "cloud": "クラウド",
+    "tools": "開発ツール"
+  }
+}

@@ -1,0 +1,45 @@
+---
+import clsx from "clsx";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+export interface Props {
+  name: string;
+  size?: number | string;
+  class?: string;
+}
+
+const { name, size = 16, class: className = "" } = Astro.props;
+
+const sizeValue = typeof size === "number" ? `${size}px` : size;
+
+const iconPath = join(process.cwd(), "public", "icons", `${name}.svg`);
+let svgContent = "";
+try {
+  svgContent = readFileSync(iconPath, "utf-8");
+
+  // 确保 SVG 有 width 和 height 属性（iOS Safari 需要）
+  // 如果没有，从 viewBox 提取或使用默认值 24
+  if (!svgContent.includes('width="')) {
+    const viewBoxMatch = svgContent.match(/viewBox="[\d.\s]+\s+([\d.]+)\s+([\d.]+)"/);
+    const w = viewBoxMatch ? viewBoxMatch[1] : "24";
+    const h = viewBoxMatch ? viewBoxMatch[2] : "24";
+    svgContent = svgContent.replace(/<svg/, `<svg width="${w}" height="${h}"`);
+  }
+
+  // 添加 fill="currentColor" 如果 SVG 没有任何 fill 或 stroke
+  // (可选，取决于你的 SVG 是否都已有颜色定义)
+} catch {
+  console.warn(`Icon not found: ${name}`);
+}
+---
+
+<span
+  class={clsx(
+    "inline-flex items-center justify-center flex-shrink-0 [&>svg]:w-full [&>svg]:h-full",
+    className,
+  )}
+  style={`width:${sizeValue};height:${sizeValue};`}
+  aria-hidden="true"
+  set:html={svgContent}
+/>

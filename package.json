@@ -1,0 +1,45 @@
+{
+  "name": "venomous-portfolio",
+  "type": "module",
+  "version": "2.2.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --force --mode development --open",
+    "build": "astro build --mode production",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check:astro": "astro check",
+    "check:eslint": "eslint \"src/**/*.{js,ts,astro}\" --cache --cache-location=./.cache/.eslintcache",
+    "check:prettier": "prettier --check \"src/**/*.{js,ts,astro}\"",
+    "format:eslint": "eslint --fix \"src/**/*.{js,ts,astro}\"",
+    "format:prettier": "prettier --write \"src/**/*.{js,ts,astro}\" --cache --cache-location=./.cache/.prettiercache",
+    "check:all": "concurrently --names \"astro,eslint,prettier\" \"yarn check:astro\" \"yarn check:eslint\" \"yarn check:prettier\"",
+    "format:all": "concurrently --names \"eslint,prettier\" \"yarn format:eslint\" \"yarn format:prettier\"",
+    "clean-cache": "rm -rf .cache",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@tailwindcss/vite": "^4.1.3",
+    "astro": "^5.6.1",
+    "clsx": "^2.1.1",
+    "tailwindcss": "^4.1.3",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/node": "^22.14.0",
+    "@typescript-eslint/eslint-plugin": "^8.29.0",
+    "@typescript-eslint/parser": "^8.29.0",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.23.0",
+    "eslint-plugin-astro": "^1.3.1",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "husky": "^9.1.7",
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-tailwindcss": "^0.6.11"
+  }
+}

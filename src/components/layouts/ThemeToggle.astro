@@ -1,0 +1,107 @@
+---
+import Button from "@/components/ui/Button.astro";
+import clsx from "clsx";
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+
+const iconStyles = "w-5 h-5 transition-transform duration-300";
+---
+
+<Button
+  id="theme-toggle"
+  variant="outline"
+  size="icon"
+  aria-label="Toggle theme"
+  class={clsx("neon-cyan", className)}
+>
+  <!-- Sun icon (shown in dark mode) -->
+  <svg
+    data-theme-icon="sun"
+    class:list={[iconStyles, "absolute"]}
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    viewBox="0 0 24 24"
+  >
+    <circle cx="12" cy="12" r="5"></circle>
+    <line x1="12" y1="1" x2="12" y2="3"></line>
+    <line x1="12" y1="21" x2="12" y2="23"></line>
+    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+    <line x1="1" y1="12" x2="3" y2="12"></line>
+    <line x1="21" y1="12" x2="23" y2="12"></line>
+    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+  </svg>
+
+  <!-- Moon icon (shown in light mode) -->
+  <svg
+    data-theme-icon="moon"
+    class:list={[iconStyles, "absolute hidden"]}
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    viewBox="0 0 24 24"
+  >
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</Button>
+
+<script is:inline>
+  // Theme toggle functionality
+  window.toggleTheme = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+
+    if (isDark) {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.add("light");
+      sessionStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+      sessionStorage.theme = "dark";
+    }
+
+    updateAllThemeIcons();
+  };
+
+  // Update all theme icons
+  window.updateAllThemeIcons = function () {
+    const isDark = document.documentElement.classList.contains("dark");
+    const sunIcons = document.querySelectorAll('[data-theme-icon="sun"]');
+    const moonIcons = document.querySelectorAll('[data-theme-icon="moon"]');
+
+    sunIcons.forEach((icon) => {
+      icon.classList.toggle("hidden", !isDark);
+    });
+
+    moonIcons.forEach((icon) => {
+      icon.classList.toggle("hidden", isDark);
+    });
+  };
+
+  // Initialize on DOM load
+  document.addEventListener("DOMContentLoaded", function () {
+    updateAllThemeIcons();
+
+    // Add click handler
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", window.toggleTheme);
+    }
+  });
+
+  // Support Astro page navigation
+  document.addEventListener("astro:page-load", function () {
+    updateAllThemeIcons();
+
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (toggleBtn) {
+      toggleBtn.addEventListener("click", window.toggleTheme);
+    }
+  });
+</script>

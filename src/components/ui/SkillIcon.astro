@@ -1,0 +1,55 @@
+---
+import clsx from "clsx";
+import { getSkillItem } from "@/utils/data";
+
+export interface Props {
+  id: string;
+  size?: "sm" | "md" | "lg";
+  showLabel?: boolean;
+  class?: string;
+}
+
+const { id, size = "md", showLabel = false, class: className = "" } = Astro.props;
+
+const skill = getSkillItem(id);
+const label = skill?.label ?? id;
+const icon = skill?.icon;
+
+const sizeStyles = {
+  sm: "w-6 h-6",
+  md: "w-8 h-8",
+  lg: "w-10 h-10",
+};
+
+const containerStyles = clsx("inline-flex items-center gap-2", className);
+
+const iconStyles = clsx(
+  "rounded-lg bg-gray-100 dark:bg-gray-800 p-1.5",
+  "transition-transform duration-200",
+  "hover:scale-110",
+  sizeStyles[size],
+);
+---
+
+<span class={containerStyles} title={label}>
+  {
+    icon ? (
+      <img
+        src={`${import.meta.env.BASE_URL}${icon}`}
+        alt={label}
+        class={iconStyles}
+        loading="lazy"
+      />
+    ) : (
+      <span
+        class={clsx(
+          iconStyles,
+          "flex items-center justify-center text-xs font-medium text-gray-500",
+        )}
+      >
+        {label.slice(0, 2)}
+      </span>
+    )
+  }
+  {showLabel && <span class="text-sm text-gray-600 dark:text-gray-400">{label}</span>}
+</span>

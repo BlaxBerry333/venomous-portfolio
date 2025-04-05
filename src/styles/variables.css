@@ -1,0 +1,78 @@
+/* ============================================
+   CSS Variables - 唯一的颜色定义源
+   ============================================ */
+
+:root {
+  /* === 霓虹色 - 品牌主色 === */
+  --cyan: #00ffff;
+  --pink: #ff00ff;
+
+  /* === 霓虹色 - 语义色 === */
+  --green: #39ff14;
+  --yellow: #ffff00;
+
+  /* === 背景层次 === */
+  --void: #0a0a0b;
+  --dark: #0d0d0f;
+  --surface: #121218;
+  --elevated: #1a1a22;
+
+  /* === 文字 === */
+  --white: #f0f0f0;
+  --gray: #888899;
+  --muted: #6b7280;
+
+  /* === 品牌渐变 === */
+  --gradient-cyber: linear-gradient(135deg, var(--cyan) 0%, var(--pink) 100%);
+
+  /* === 字体 === */
+  --font-display: "Orbitron", "Rajdhani", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Rajdhani", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* === 发光效果 === */
+  --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
+  --glow-pink: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+
+/* ============================================
+   Light Mode 覆盖 - Light Cyberpunk 风格
+   ============================================ */
+.light {
+  /* === 品牌色 - 保持冲击力的饱和色 === */
+  --cyan: #0097a7;
+  --pink: #d81b60;
+  --green: #00c853;
+  --yellow: #ffc400;
+
+  /* === 辅助强调色（用于渐变）=== */
+  --cyan-vivid: #00bcd4;
+  --pink-vivid: #ec407a;
+
+  /* === 背景层次 - 微暖灰底色 === */
+  --void: #f5f5f7;
+  --dark: #fafafa;
+  --surface: #ffffff;
+  --elevated: #f0f4f8;
+
+  /* === 文字 === */
+  --white: #1a1a2e;
+  --gray: #4a5568;
+  --muted: #718096;
+
+  /* === 品牌渐变 - 使用 vivid 色 === */
+  --gradient-cyber: linear-gradient(135deg, var(--cyan-vivid) 0%, var(--pink-vivid) 100%);
+
+  /* === 发光 → 彩色阴影（Light Mode 核心特征）=== */
+  --glow-cyan:
+    0 4px 14px rgba(0, 151, 167, 0.25),
+    0 1px 3px rgba(0, 151, 167, 0.15);
+  --glow-pink:
+    0 4px 14px rgba(216, 27, 96, 0.25),
+    0 1px 3px rgba(216, 27, 96, 0.15);
+
+  /* === 渐变阴影（组合双色）=== */
+  --glow-cyber:
+    0 8px 25px rgba(0, 151, 167, 0.15),
+    0 8px 25px rgba(216, 27, 96, 0.15);
+}

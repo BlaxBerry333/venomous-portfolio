@@ -1,0 +1,72 @@
+---
+import clsx from "clsx";
+import Badge from "./Badge.astro";
+import type { Locale } from "@/utils/i18n";
+import { getLocalizedUrl, t } from "@/utils/i18n";
+
+export interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  image: string;
+  type: "company" | "personal";
+  locale: Locale;
+  class?: string;
+}
+
+const { id, title, subtitle, image, type, locale, class: className = "" } = Astro.props;
+
+const href = getLocalizedUrl(`/works/${id}`, locale);
+
+const cardStyles = clsx(
+  "cyber-block cyber-block-lg group block overflow-visible",
+  "transition-all duration-300",
+  "hover:scale-[1.02] hover:-translate-y-1",
+  className,
+);
+---
+
+<a href={href} class={cardStyles} data-astro-prefetch="hover">
+  {/* 角落装饰 */}
+  <span class="cyber-corner cyber-corner-tl" aria-hidden="true"></span>
+  <span class="cyber-corner cyber-corner-br" aria-hidden="true"></span>
+
+  {/* 图片区域 */}
+  <div class="relative aspect-video overflow-hidden rounded-t-sm">
+    <img
+      src={image}
+      alt={title}
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+      loading="lazy"
+    />
+
+    {/* Hover 遮罩 */}
+    <div
+      class="from-void/80 via-void/30 absolute inset-0 bg-gradient-to-t to-transparent opacity-30 transition-opacity duration-300 group-hover:opacity-60"
+      aria-hidden="true"
+    >
+    </div>
+  </div>
+
+  {/* 内容区域 */}
+  <div class="relative p-4">
+    {/* 标签 */}
+    <div class="mb-2 flex items-center gap-2">
+      <Badge variant={type} size="sm">
+        {t(`worksPage.type.${type}`, locale)}
+      </Badge>
+    </div>
+
+    {/* 标题 - 固定2行高度 */}
+    <h3
+      class="font-display group-hover-cyan mb-1 line-clamp-2 min-h-[2.5rem] text-base leading-5 font-bold text-white transition-colors"
+    >
+      {title}
+    </h3>
+
+    {/* 描述 */}
+    <p class="text-muted line-clamp-1 font-mono text-xs">
+      {subtitle}
+    </p>
+  </div>
+</a>

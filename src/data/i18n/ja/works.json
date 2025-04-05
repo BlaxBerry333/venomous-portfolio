@@ -1,0 +1,236 @@
+{
+  "geniee-cdp": {
+    "type": "company",
+    "date": {
+      "start": "2025-05",
+      "end": null
+    },
+    "image": "/work-images/company--geniee-cdp.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/cdp/"
+    },
+    "featured": true,
+    "title": "GENIEE CDP",
+    "subtitle": "顧客データ統合管理プラットフォーム",
+    "description": "社内複数プロダクトの顧客データを統合管理する CDP 基盤の管理画面。",
+    "role": "フロントエンドアーキテクチャリード",
+    "company": "株式会社ジーニー",
+    "department": "セールスプラットフォーム本部 - CDP/DC開発部",
+    "overview": [
+      "社内複数プロダクトが保有する顧客データを統合管理し、各サービスへ提供する CDP 基盤の管理画面開発に参画。",
+      "ポジションはフロントエンドアーキテクチャリード兼 BFF 実装担当。主な担当領域はアーキテクチャ設計・技術選定の意思決定から、実装方針の策定・タスク分割・コードレビューまでを一貫して担い、社内向けの運用勉強会も実施。",
+      "同社内の既存プロダクト Geniee Chat におけるフロントエンド基盤構築設計の実績を評価され、その知見を展開する目的で本プロジェクトへ異動。"
+    ],
+    "achievements": [
+      {
+        "title": "フロントエンド基盤アーキテクチャ設計",
+        "description": "Next.js を用いた SSR 構成を設計し、認可処理（Casbin）・複数データソース統合（SDK）をサーバー側へ集約。また tRPC を採用し、フロントエンド向けの型安全なデータ連携および API 変更耐性向上に寄与。大規模データ環境における表示安定性とフロントエンド開発効率の両立を実現。"
+      },
+      {
+        "title": "データ分析支援機能の提案・設計主導",
+        "description": "BigQuery 連携 SQL エディタおよびメタデータ自動生成機能を提案し、機能設計およびコア実装を担当。データ分析業務および管理設定作業の効率化に貢献。"
+      },
+      {
+        "title": "フロントエンド開発体制整備",
+        "description": "フロントエンドアーキテクチャ方針を策定し、設計主導型の開発体制を構築。チーム開発効率および品質安定化に寄与。"
+      },
+      {
+        "title": "OKR 評価",
+        "description": "連続2期で最高評価（A+）を獲得。"
+      }
+    ]
+  },
+  "geniee-chat": {
+    "type": "company",
+    "date": {
+      "start": "2023-08",
+      "end": "2025-05"
+    },
+    "image": "/work-images/company--geniee-chat.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/chat/"
+    },
+    "featured": true,
+    "title": "GENIEE CHAT ( Chamo )",
+    "subtitle": "Web 接客チャットボット SaaS",
+    "description": "チャット接客による CVR 向上・顧客対応自動化を実現する SaaS プロダクト。",
+    "role": "フロントエンドテックリード・フルスタック開発",
+    "company": "株式会社ジーニー",
+    "department": "CVG事業部 - CHAT開発部",
+    "overview": [
+      "プロダクト成長に伴い顕在化した技術負債および管理画面の拡張性課題を解消するため、管理基盤刷新プロジェクトに参画。既存 Django 管理画面中心の構成から、SPA 管理プラットフォームへの刷新を主導し、段階的移行による安全な基盤再構築を実現。",
+      "ポジションはフロントエンドテックリード兼フルスタック開発。主な担当領域はアーキテクチャ設計・技術選定からコードレビューまでの技術主導に加え、ビジネス・カスタマーサポート部門との要件整理やシナリオコア機能の改善提案も担い、社内勉強会を通じてチーム全体の技術力向上にも取り組んだ。"
+    ],
+    "achievements": [
+      {
+        "title": "管理画面 SPA 基盤の全面刷新",
+        "description": "長期運用により拡張性および開発体験に課題があった既存管理画面に対し、Vite + React + SWC を用いた SPA 管理基盤を設計・構築。チーム開発体験とスプリント対応速度を改善。"
+      },
+      {
+        "title": "既存資産を活用した持続的リファクタリング",
+        "description": "DRF 権限管理および業務ロジックを活用し、全面刷新ではなく段階移行を採用。事業リスクを抑えるために旧システムと新システムを並行運用しながら段階的移行を推進し、プロダクト安定性を維持したまま技術基盤刷新を実現。"
+      },
+      {
+        "title": "ノードベースシナリオコア機能の設計・実装主導",
+        "description": "ビジネス・カスタマーサポート部門がチャット応答ロジックを自律的に構築できるよう、ノーコード型可視化 Workflow 編集機能およびバージョン管理機構を設計・構築し、業務設定作業の効率化および運用柔軟性向上に貢献。"
+      },
+      {
+        "title": "UI 統一およびブランド管理基盤整備",
+        "description": "管理画面およびチャットボットの UI を統一する Design System を構築。Storybook を用いたコンポーネント管理および設計資産共有を整備し、UI 品質および保守性向上を実現。"
+      },
+      {
+        "title": "OKR 評価",
+        "description": "連続4期で最高評価（A+）を獲得。"
+      }
+    ]
+  },
+  "skyfall-skyflag": {
+    "type": "company",
+    "date": {
+      "start": "2023-03",
+      "end": "2023-08"
+    },
+    "image": "/work-images/company--skyfall-skyflag.jpg",
+    "links": {
+      "homepage": "https://skyflag.info/"
+    },
+    "featured": false,
+    "title": "SKYFLAG",
+    "subtitle": "リワード広告プラットフォーム",
+    "description": "成果報酬型リワード広告の配信・管理プラットフォーム。",
+    "role": "フロントエンドテックリード",
+    "company": "株式会社 Skyfall",
+    "department": "プロダクト本部",
+    "overview": [
+      "成果報酬型広告を提供するリワード広告プラットフォームにおいて、既存管理基盤が未整備な状態から、将来的な機能拡張を前提とした管理画面アーキテクチャ設計および開発体制整備を主導。",
+      "ポジションはフロントエンドテックリード。主な担当領域は新規管理画面のアーキテクチャ設計・技術選定を裁量を持って推進し、実装方針の策定・タスク分配に加え、ビジネス部門との要件整理や仕様調整も担当。"
+    ],
+    "achievements": [
+      {
+        "title": "開発効率を重視した新規管理画面の立ち上げ",
+        "description": "短納期かつ管理基盤が未整備という制約の中、Refine を導入することでルーティング・フォーム管理・データ取得を統合的に扱える構成とした。経験差のあるメンバーでも安定した実装が可能な基盤を短期間で立ち上げた。"
+      },
+      {
+        "title": "フロントエンド開発体制整備",
+        "description": "ビジネス部門と連携した要件整理およびタスク分解を実施し、設計指針および将来的な機能拡張を考慮したコンポーネント設計ルールなど整備。チーム全体の開発品質向上に貢献。"
+      },
+      {
+        "title": "全社表彰受賞",
+        "description": "入社後短期間でプロダクト立ち上げおよび技術基盤整備を推進した成果が評価され、全社過去最速となる「新人 Motto 賞」を受賞。"
+      }
+    ]
+  },
+  "fni-sunrisepark": {
+    "type": "company",
+    "date": {
+      "start": "2019-11",
+      "end": "2023-02"
+    },
+    "image": "/work-images/company--fni-sunrisepark.jpg",
+    "links": {
+      "homepage": "https://saga-sunrisepark.com/"
+    },
+    "featured": false,
+    "title": "SAGAサンライズパーク",
+    "subtitle": "自治体施設DXプロジェクト（受託開発）",
+    "description": "自治体施設の来園者予約（ToC）と運営管理（ToB）を担う施設 DX 基盤。",
+    "role": "フロントエンド開発（メンバー → テックリード）・フルスタック開発",
+    "company": "株式会社 FAIR NEXT INNOVATION",
+    "department": "ITソリューション事業部",
+    "overview": [
+      "自治体関連施設における来園者向け予約システム（ToC）および運営管理システム（ToB）の開発案件に参画。多部門および複数ステークホルダーが関与する受託開発環境において、フロントエンド開発を主軸としながら、ToC・ToB 双方の開発および API 連携領域へ担当範囲を拡張。",
+      "ポジションはフロントエンド開発メンバーとして参画後、テックリードへ昇格。主な担当領域はフロントエンド開発を主軸に、Django API の開発支援や開発基盤の整備まで担当範囲を広げ、フルスタックで横断的に対応。"
+    ],
+    "achievements": [
+      {
+        "title": "ToC / ToB 横断開発の推進",
+        "description": "ToC 予約クライアント（Gatsby + GraphQL）の UI/UX 開発からスタートし、チーム体制変更を機に ToB 管理画面・Django API へ担当範囲を自主的に拡張。結果としてフロントエンドから API 層までを一人で横断対応できる体制を構築。併せて、分散していた API 通信処理を GraphQL 層へ集約し、データ取得ロジックの統一と保守性向上を実現。"
+      },
+      {
+        "title": "開発ドキュメント基盤構築",
+        "description": "チーム構成が複数回変更される環境において、Docusaurus を利用した設計資料・API 仕様・開発ガイドラインを体系化。属人化を防ぎ、メンバー交代時の立ち上がりコスト削減に寄与。"
+      },
+      {
+        "title": "外部チームの技術管理",
+        "description": "外部開発チームに対し、設計方針の共有およびレビュー基準を整備。品質ばらつきを抑制し、安定したリリース運用を実現。"
+      }
+    ]
+  },
+  "youzan-saas": {
+    "type": "company",
+    "date": {
+      "start": "2017-07",
+      "end": "2019-06"
+    },
+    "image": "/work-images/company--youzan-sass.png",
+    "links": {},
+    "featured": false,
+    "title": "有賛微商城",
+    "subtitle": "EC SaaS プラットフォーム",
+    "description": "マーチャント向けに店舗構築・商品管理・マーケティング機能を提供する EC SaaS プラットフォーム。",
+    "role": "フロントエンドエンジニア（メンバー）",
+    "company": "中国杭州有賛科技有限公司",
+    "department": "リテールフロントエンドチーム",
+    "overview": [
+      "EC SaaS プラットフォームにおいて、マーチャント向け店舗ページおよび管理機能のフロントエンド開発に従事。",
+      "ポジションはフロントエンドエンジニア（メンバー）。主な担当領域は店舗ページおよび管理機能のフロントエンド開発・改修。"
+    ],
+    "achievements": [
+      {
+        "title": "機能の開発",
+        "description": "店舗ページにおける商品表示・キャンペーン表示など toC 向けモバイル Web の UI/UX 実装を担当。"
+      },
+      {
+        "title": "基礎の習得",
+        "description": "コードレビュー・スプリント開発・設計ドキュメント運用などチーム開発の基本プロセスを習得。大規模 SaaS におけるコンポーネント設計やモバイル対応の実務経験を積み、後のキャリアの基盤となった。"
+      }
+    ]
+  },
+  "venomous-ui": {
+    "type": "personal",
+    "date": {
+      "start": "2025-04",
+      "end": null
+    },
+    "image": "/logos/U.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-ui/tree/release",
+      "demo": "https://blaxberry333.github.io/venomous-ui/"
+    },
+    "featured": false,
+    "title": "Venomous UI Library",
+    "subtitle": "クロスフレームワーク対応 UI コンポーネントライブラリ ( React / Vue )",
+    "description": "React と Vue で統一 API を提供する Unstyled by Default・ゼロランタイム CSS のコンポーネントライブラリ。CSS Custom Properties ベースの Design Token 体系を搭載。",
+    "role": "個人開発",
+    "overview": [
+      "Headless UI などと競合するためではなく、React と Vue が各フレームワークのイディオムを犠牲にせず単一のコンポーネント API を共有できるかを検証する目的で開発。業務で繰り返し直面したクロスフレームワーク間のスタイル不整合と保守コストの増大が動機。",
+      "フレームワーク非依存のコア層（型定義・定数・Design Token・CSS）と React/Vue 固有アダプタを分離した設計。全コンポーネントを Vitest でテストし、Storybook でインタラクティブに文書化。"
+    ],
+    "achievements": [
+      {
+        "title": "クロスフレームワーク統一アーキテクチャ",
+        "description": "共有コア層とフレームワーク固有アダプタの分離設計。新規コンポーネント追加は React/Vue の差分実装のみで完結。",
+        "highlights": [
+          "22 コンポーネント + 各フレームワーク 9 hooks/composables",
+          "Vite マルチエントリービルド (core / react / vue) による分離パイプライン"
+        ]
+      },
+      {
+        "title": "Unstyled by Default + Design Token 体系",
+        "description": "コンポーネントはセマンティック class 名のみ出力し、スタイルはコンポーネント単位でオプトイン。テーマは CSS Custom Properties のみで完結。",
+        "highlights": [
+          "5 セマンティックカラースキーム + スペーシング/タイポグラフィ/エフェクト体系",
+          "ツリーシェイキング対応 — 未使用スタイルはバンドルに含まれない"
+        ]
+      },
+      {
+        "title": "品質保証・ドキュメント",
+        "description": "全コンポーネントを Vitest + Testing Library / Vue Test Utils でカバーし、Storybook で各バリアント・状態をインタラクティブに文書化。",
+        "highlights": [
+          "ESLint 9 + Stylelint + Prettier + Husky pre-commit パイプライン",
+          "Storybook をリビングスタイルガイドとしてデプロイ"
+        ]
+      }
+    ]
+  }
+}

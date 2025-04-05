@@ -1,0 +1,82 @@
+---
+import clsx from "clsx";
+import { type Locale, getLocalizedUrl } from "@/utils/i18n";
+import LanguageSwitcher from "../LanguageSwitcher.astro";
+import ThemeToggle from "../ThemeToggle.astro";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className } = Astro.props;
+
+const headerStyles = clsx(
+  "fixed top-0 right-0 left-0 z-50",
+  "h-16 w-full",
+  "border-b border-transparent",
+  "transition-all duration-300",
+  className,
+);
+
+const containerStyles = clsx(
+  "mx-auto h-full max-w-screen-xl px-4 md:px-8",
+  "flex items-center justify-between",
+);
+---
+
+<header id="site-header" class={headerStyles}>
+  <div class={containerStyles}>
+    <!-- Logo -->
+    <a
+      href={getLocalizedUrl("/", locale)}
+      class="font-display neon-cyan hover:text-glow-cyan flex items-center gap-3 text-lg font-bold transition-all"
+    >
+      Chen's Portfolio
+    </a>
+
+    <!-- Right Section: Language + Theme -->
+    <div class="flex items-center gap-2">
+      <LanguageSwitcher />
+      <ThemeToggle />
+    </div>
+  </div>
+
+  <!-- 底部霓虹线 -->
+  <div
+    class="header-line via-cyan/50 absolute right-0 bottom-0 left-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-0 transition-opacity duration-300"
+    aria-hidden="true"
+  >
+  </div>
+</header>
+
+<script is:inline>
+  // Header 滚动效果
+  function initHeaderScroll() {
+    const header = document.getElementById("site-header");
+    const headerLine = header?.querySelector(".header-line");
+
+    function updateHeader() {
+      if (!header) return;
+
+      if (window.scrollY > 50) {
+        header.classList.add("header-scrolled");
+        headerLine?.classList.remove("opacity-0");
+        headerLine?.classList.add("opacity-100");
+      } else {
+        header.classList.remove("header-scrolled");
+        headerLine?.classList.add("opacity-0");
+        headerLine?.classList.remove("opacity-100");
+      }
+    }
+
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    updateHeader(); // 初始检查
+  }
+
+  // 初始化
+  initHeaderScroll();
+
+  // 页面切换后重新初始化
+  document.addEventListener("astro:page-load", initHeaderScroll);
+</script>

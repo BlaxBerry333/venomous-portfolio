@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Chen's Portfolio",
+    "description": "全栈工程师作品集"
+  },
+  "nav": {
+    "works": "作品集",
+    "about": "关于我"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "title": ["FULLSTACK", "DEVELOPER"],
+    "role": "前端后端都能打，什么都会亿点点",
+    "subtitle": "用现代技术构建卓越的数字体验",
+    "description": "驻东京的全栈工程师，专注于用现代 Web 技术打造极致用户体验。",
+    "cta": {
+      "works": "查看作品",
+      "about": "关于我"
+    }
+  },
+  "skills": {
+    "title": "技术栈",
+    "subtitle": "日常使用的技术工具"
+  },
+  "featuredWorks": {
+    "title": "精选作品",
+    "subtitle": "参与过的主要项目"
+  },
+  "worksPage": {
+    "pageTitle": "我的作品",
+    "pageSubtitle": "参与过的项目",
+    "filter": {
+      "all": "全部",
+      "company": "公司",
+      "personal": "个人"
+    },
+    "type": {
+      "company": "企业项目",
+      "personal": "个人项目"
+    },
+    "detail": {
+      "role": "角色",
+      "duration": "时间",
+      "techStack": "主要技术栈",
+      "links": "链接",
+      "overview": "概述",
+      "achievements": "职责与成果",
+      "learnings": "收获与心得",
+      "moreWorks": "更多作品"
+    }
+  },
+  "aboutPage": {
+    "pageTitle": "关于我",
+    "pageSubtitle": "东京的全栈工程师",
+    "sections": {
+      "bio": "简介",
+      "experience": "工作经历",
+      "skills": "技能"
+    }
+  },
+  "common": {
+    "present": "至今",
+    "viewMore": "查看更多",
+    "backToList": "返回列表",
+    "loading": "加载中..."
+  },
+  "footer": {
+    "tagline": "用热情构建",
+    "copyright": "保留所有权利。"
+  },
+  "skillCategories": {
+    "frontend": "前端",
+    "backend": "后端",
+    "database": "数据库",
+    "cloud": "云服务",
+    "tools": "开发工具"
+  }
+}

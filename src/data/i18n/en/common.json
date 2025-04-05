@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "Chen's Portfolio",
+    "description": "Full-stack Engineer Portfolio"
+  },
+  "nav": {
+    "works": "Works",
+    "about": "About"
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "title": ["FULLSTACK", "DEVELOPER"],
+    "role": "I break things, then fix them",
+    "subtitle": "Building excellent digital experiences with modern technology",
+    "description": "Full-stack engineer based in Tokyo, crafting modern web experiences with a focus on user experience.",
+    "cta": {
+      "works": "View Works",
+      "about": "About Me"
+    }
+  },
+  "skills": {
+    "title": "TECH STACK",
+    "subtitle": "Technologies I work with"
+  },
+  "featuredWorks": {
+    "title": "FEATURED WORKS",
+    "subtitle": "Selected projects I've worked on"
+  },
+  "worksPage": {
+    "pageTitle": "MY WORKS",
+    "pageSubtitle": "Projects I've worked on",
+    "filter": {
+      "all": "All",
+      "company": "Company",
+      "personal": "Personal"
+    },
+    "type": {
+      "company": "Company",
+      "personal": "Personal"
+    },
+    "detail": {
+      "role": "Role",
+      "duration": "Duration",
+      "techStack": "Main Tech Stack",
+      "links": "Links",
+      "overview": "Overview",
+      "achievements": "Role & Achievements",
+      "learnings": "Key Learnings",
+      "moreWorks": "More Works"
+    }
+  },
+  "aboutPage": {
+    "pageTitle": "ABOUT ME",
+    "pageSubtitle": "Engineer based in Tokyo",
+    "sections": {
+      "bio": "Bio",
+      "experience": "Experience",
+      "skills": "Skills"
+    }
+  },
+  "common": {
+    "present": "Present",
+    "viewMore": "View More",
+    "backToList": "Back to List",
+    "loading": "Loading..."
+  },
+  "footer": {
+    "tagline": "Building with passion",
+    "copyright": "All rights reserved."
+  },
+  "skillCategories": {
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "cloud": "Cloud Services",
+    "tools": "Dev Tools"
+  }
+}

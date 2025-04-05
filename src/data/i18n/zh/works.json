@@ -1,0 +1,236 @@
+{
+  "geniee-cdp": {
+    "type": "company",
+    "date": {
+      "start": "2025-05",
+      "end": null
+    },
+    "image": "/work-images/company--geniee-cdp.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/cdp/"
+    },
+    "featured": true,
+    "title": "GENIEE CDP",
+    "subtitle": "客户数据统合管理平台",
+    "description": "统合管理公司内多产品客户数据的 CDP 管理后台。",
+    "role": "前端架构负责人",
+    "company": "Geniee 株式会社",
+    "department": "销售平台本部 - CDP/DC 开发部",
+    "overview": [
+      "参与公司内多产品客户数据统合管理的 CDP 基础管理后台开发。",
+      "担任前端架构负责人兼 BFF 实现担当。主要负责领域涵盖架构设计与技术选型决策、实现方针制定到任务拆分与代码审查，同时主导社内运用学习会的实施。",
+      "凭借在同公司的 Geniee Chat 项目中前端基础架构设计的实绩获得认可，为推广相关经验而调动至本项目。"
+    ],
+    "achievements": [
+      {
+        "title": "前端基础架构设计",
+        "description": "设计基于 Next.js 的 SSR 架构，将认证授权（Casbin）及多数据源统合处理（SDK）集中至服务端。同时采用 tRPC，实现面向前端的类型安全数据通信，提升 API 变更耐受性。在大规模数据环境下实现显示稳定性与前端开发效率的平衡。"
+      },
+      {
+        "title": "数据分析支援功能的提案与设计主导",
+        "description": "提案 BigQuery 联动 SQL 编辑器及元数据自动生成功能，负责功能设计及核心实现。为数据分析业务及管理配置作业的效率化做出贡献。"
+      },
+      {
+        "title": "前端开发体制整备",
+        "description": "制定前端架构方针，构建以设计为主导的开发体制。为团队开发效率和品质稳定化做出贡献。"
+      },
+      {
+        "title": "OKR 评价",
+        "description": "连续 2 期获得最高评价（A+）。"
+      }
+    ]
+  },
+  "geniee-chat": {
+    "type": "company",
+    "date": {
+      "start": "2023-08",
+      "end": "2025-05"
+    },
+    "image": "/work-images/company--geniee-chat.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/chat/"
+    },
+    "featured": true,
+    "title": "GENIEE CHAT ( Chamo )",
+    "subtitle": "Web 在线客服聊天机器人 SaaS",
+    "description": "通过在线聊天客服实现转化率提升与客户对应自动化的 SaaS 产品。",
+    "role": "前端技术负责人・全栈开发",
+    "company": "Geniee 株式会社",
+    "department": "CVG 事业部 - CHAT 开发部",
+    "overview": [
+      "为解决产品成长过程中显现的技术负债及管理后台扩展性课题，参与管理基础设施刷新项目。主导从既有 Django 管理后台为中心的架构向 SPA 管理平台的刷新，通过分阶段迁移实现安全的基础设施重建。",
+      "担任前端技术负责人兼全栈开发。主要负责领域涵盖架构设计与技术选型、实现方针制定与代码审查等技术主导工作，同时与 Business/CS 部门协作进行需求整理和场景核心功能的改善提案，并主持社内学习会。"
+    ],
+    "achievements": [
+      {
+        "title": "管理后台 SPA 基础设施全面刷新",
+        "description": "针对因长期运营导致扩展性和开发体验存在问题的既有管理后台，设计并构建基于 Vite + React + SWC 的 SPA 管理基础设施。改善了团队开发体验和 Sprint 响应速度。"
+      },
+      {
+        "title": "活用既有资产的持续性重构",
+        "description": "活用 DRF 权限管理及业务逻辑，采用分阶段迁移而非全面刷新。为抑制业务风险，在新旧系统并行运营的同时推进分阶段迁移，在维持产品稳定性的前提下实现技术基础设施刷新。"
+      },
+      {
+        "title": "节点式场景核心功能的设计与实现主导",
+        "description": "为使 Business/CS 部门能够自主构建聊天应答逻辑，设计并构建无代码可视化 Workflow 编辑功能及版本管理机制，为业务配置作业效率化及运营灵活性提升做出贡献。"
+      },
+      {
+        "title": "UI 统一及品牌管理基础设施整备",
+        "description": "构建统一管理后台及聊天机器人 UI 的设计系统。通过 Storybook 整备组件管理及设计资产共享，实现 UI 品质及可维护性提升。"
+      },
+      {
+        "title": "OKR 评价",
+        "description": "连续 4 期获得最高评价（A+）。"
+      }
+    ]
+  },
+  "skyfall-skyflag": {
+    "type": "company",
+    "date": {
+      "start": "2023-03",
+      "end": "2023-08"
+    },
+    "image": "/work-images/company--skyfall-skyflag.jpg",
+    "links": {
+      "homepage": "https://skyflag.info/"
+    },
+    "featured": false,
+    "title": "SKYFLAG",
+    "subtitle": "激励广告平台",
+    "description": "按效果付费的激励广告投放与管理平台。",
+    "role": "前端技术负责人",
+    "company": "株式会社 Skyfall",
+    "department": "产品本部",
+    "overview": [
+      "在提供效果广告的激励广告平台中，从既有管理基础设施未整备的状态出发，主导以未来功能扩展为前提的管理后台架构设计及开发体制整备。",
+      "担任前端技术负责人。主要负责领域是以充分裁量权推进新管理后台的架构设计和技术选型，同时负责实现方针制定与任务分配，以及与 Business 部门的需求整理和规格调整。"
+    ],
+    "achievements": [
+      {
+        "title": "以开发效率为重的新管理后台启动",
+        "description": "在短工期且管理基础设施未整备的约束下，通过引入 Refine 实现路由、表单管理、数据获取的统合化架构。在短时间内搭建起即使经验差异较大的成员也能稳定实现的基础设施。"
+      },
+      {
+        "title": "前端开发体制整备",
+        "description": "与 Business 部门协作进行需求整理及任务拆解，整备设计指针及考虑未来功能扩展的组件设计规则等。为团队整体开发品质提升做出贡献。"
+      },
+      {
+        "title": "全公司表彰",
+        "description": "入职后短时间内推进产品启动及技术基础设施整备的成果获得评价，获得公司史上最快「新人 Motto 奖」。"
+      }
+    ]
+  },
+  "fni-sunrisepark": {
+    "type": "company",
+    "date": {
+      "start": "2019-11",
+      "end": "2023-02"
+    },
+    "image": "/work-images/company--fni-sunrisepark.jpg",
+    "links": {
+      "homepage": "https://saga-sunrisepark.com/"
+    },
+    "featured": false,
+    "title": "SAGA Sunrise Park",
+    "subtitle": "地方政府设施 DX 项目（外包开发）",
+    "description": "面向地方政府设施的来访者预约（ToC）与运营管理（ToB）DX 基础设施。",
+    "role": "前端开发（成员 → 技术负责人）・全栈开发",
+    "company": "株式会社 FAIR NEXT INNOVATION",
+    "department": "IT 解决方案事业部",
+    "overview": [
+      "参与地方政府相关设施面向来访者的预约系统（ToC）及运营管理系统（ToB）的开发项目。在多部门及多利益相关者参与的外包开发环境中，以前端开发为主轴，将负责范围扩展至 ToC/ToB 双方的开发及 API 联动领域。",
+      "从前端开发成员晋升为技术负责人。主要负责领域以前端开发为主轴，逐步扩展至 Django API 开发支援和开发基础设施整备，全栈横跨应对。"
+    ],
+    "achievements": [
+      {
+        "title": "ToC / ToB 横跨开发推进",
+        "description": "从 ToC 预约客户端（Gatsby + GraphQL）的 UI/UX 开发起步，借团队体制变更之机主动将负责范围扩展至 ToB 管理后台及 Django API。最终构建起从前端到 API 层一人横跨应对的体制。同时将分散的 API 通信处理集约至 GraphQL 层，实现数据获取逻辑统一及可维护性提升。"
+      },
+      {
+        "title": "开发文档基础设施构建",
+        "description": "在团队构成多次变更的环境中，利用 Docusaurus 体系化整理设计资料、API 规格及开发指南。防止属人化，为成员替换时的上手成本削减做出贡献。"
+      },
+      {
+        "title": "外部团队技术管理",
+        "description": "对外部开发团队共享设计方针并整备审查标准。抑制品质偏差，实现稳定的发布运营。"
+      }
+    ]
+  },
+  "youzan-saas": {
+    "type": "company",
+    "date": {
+      "start": "2017-07",
+      "end": "2019-06"
+    },
+    "image": "/work-images/company--youzan-sass.png",
+    "links": {},
+    "featured": false,
+    "title": "有赞微商城",
+    "subtitle": "电商 SaaS 平台",
+    "description": "中国头部电商 SaaS，面向商家提供店铺搭建、商品管理与营销功能。",
+    "role": "前端开发工程师（成员）",
+    "company": "中国杭州有赞科技有限公司",
+    "department": "零售业务前端组",
+    "overview": [
+      "在电商 SaaS 平台中，从事面向商家的店铺页面及管理功能的前端开发。",
+      "担任前端开发工程师（成员）。主要负责领域是店铺页面及管理功能的前端开发与改修。"
+    ],
+    "achievements": [
+      {
+        "title": "功能开发",
+        "description": "负责店铺页面中的商品展示、活动展示等 toC 向移动端 Web 的 UI/UX 实现。"
+      },
+      {
+        "title": "基础习得",
+        "description": "习得代码审查、Sprint 开发、设计文档运用等团队开发基本流程。积累大规模 SaaS 中的组件设计及移动端适配实务经验，成为后续职业生涯的基础。"
+      }
+    ]
+  },
+  "venomous-ui": {
+    "type": "personal",
+    "date": {
+      "start": "2025-04",
+      "end": null
+    },
+    "image": "/logos/U.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-ui/tree/release",
+      "demo": "https://blaxberry333.github.io/venomous-ui/"
+    },
+    "featured": false,
+    "title": "Venomous UI Library",
+    "subtitle": "跨框架 UI 组件库 ( React / Vue )",
+    "description": "Unstyled by Default、零运行时 CSS 的组件库，为 React 与 Vue 提供统一 API，搭载基于 CSS Custom Properties 的 Design Token 体系。",
+    "role": "个人项目",
+    "overview": [
+      "并非为了与 Headless UI 等进行竞争，而是为了验证 React 与 Vue 能否在不牺牲各自框架惯用模式的前提下共享同一套组件 API。动机源于业务中反复遇到的跨框架样式不一致和持续攀升的维护成本。",
+      "架构上将框架无关的核心层（类型、常量、Design Token、CSS）与 React/Vue 惯用适配器分离。全组件通过 Vitest 测试覆盖，并在 Storybook 中交互式文档化。"
+    ],
+    "achievements": [
+      {
+        "title": "跨框架统一架构",
+        "description": "共享核心层与框架适配器分离设计，新增组件仅需编写 React/Vue 差分实现。",
+        "highlights": [
+          "22 个组件 + 每框架 9 个 hooks/composables",
+          "Vite 多入口分离构建 (core / react / vue)"
+        ]
+      },
+      {
+        "title": "Unstyled by Default + Design Token 体系",
+        "description": "组件仅输出语义化 class 名，样式按组件粒度可选引入，主题通过 CSS Custom Properties 完成。",
+        "highlights": [
+          "5 套语义色彩方案 + 完整间距/排版/效果体系",
+          "支持 Tree-shaking — 未使用样式不进入产物"
+        ]
+      },
+      {
+        "title": "质量保障与文档",
+        "description": "全组件通过 Vitest + Testing Library / Vue Test Utils 覆盖，Storybook 交互式文档展示各变体与状态。",
+        "highlights": [
+          "ESLint 9 + Stylelint + Prettier + Husky pre-commit 流水线",
+          "Storybook 作为 Living Style Guide 部署"
+        ]
+      }
+    ]
+  }
+}

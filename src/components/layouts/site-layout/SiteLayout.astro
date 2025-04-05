@@ -1,0 +1,150 @@
+---
+import { ClientRouter } from "astro:transitions";
+
+import "@/styles/global.css";
+
+import { type Locale, t, getLocaleFromPath } from "@/utils/i18n";
+import SiteLayoutHeader from "./SiteLayoutHeader.astro";
+import SiteLayoutMain from "./SiteLayoutMain.astro";
+import SiteLayoutFooter from "./SiteLayoutFooter.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+  headerClass?: string;
+  mainClass?: string;
+  footerClass?: string;
+}
+
+const { title, description, locale: propLocale, headerClass, mainClass, footerClass } = Astro.props;
+
+// Get locale from props or URL
+const locale = propLocale ?? getLocaleFromPath(Astro.url.pathname);
+
+// Get translations
+const metaTitle = title ? `${title} | ${t("meta.title", locale)}` : t("meta.title", locale);
+const metaDescription = description ?? t("meta.description", locale);
+
+// Language attribute
+const langAttr = locale === "zh" ? "zh-CN" : locale;
+---
+
+<!doctype html>
+<html lang={langAttr}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={metaDescription} />
+    <title>{metaTitle}</title>
+    <ClientRouter />
+
+    <!-- Theme initialization - must be in head to prevent flash -->
+    <script is:inline>
+      (function () {
+        const isDark =
+          sessionStorage.theme === "dark" ||
+          (!("theme" in sessionStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.classList.toggle("dark", isDark);
+        document.documentElement.classList.toggle("light", !isDark);
+      })();
+    </script>
+
+    <!-- Preconnect to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- 关键字体 - 阻塞加载 (Display font for headings) -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap"
+    />
+
+    <!-- 次要字体 - 异步加载 -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      media="print"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;700&display=swap"
+      />
+    </noscript>
+  </head>
+
+  <body class="font-body bg-void text-white antialiased">
+    <!-- 全局背景层 - 赛博朋克风格 -->
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <!-- 透视网格 - 底部 -->
+      <div class="bg-grid bg-grid-bottom"></div>
+
+      <!-- 透视网格 - 顶部 -->
+      <div class="bg-grid bg-grid-top"></div>
+
+      <!-- 左上角青色光晕 -->
+      <div
+        class="light:bg-[radial-gradient(ellipse_100%_80%_at_0%_0%,rgba(8,145,178,0.25)_0%,rgba(8,145,178,0.1)_40%,transparent_75%)] absolute -top-[20%] -left-[10%] h-[80vh] w-[80vw] bg-[radial-gradient(ellipse_100%_80%_at_0%_0%,rgba(0,255,255,0.35)_0%,rgba(0,255,255,0.15)_40%,transparent_75%)]"
+      >
+      </div>
+
+      <!-- 右上角品红光晕 -->
+      <div
+        class="light:bg-[radial-gradient(ellipse_100%_100%_at_100%_0%,rgba(190,24,93,0.12)_0%,rgba(190,24,93,0.04)_35%,transparent_65%)] absolute top-0 right-0 h-[45vh] w-[45vw] bg-[radial-gradient(ellipse_100%_100%_at_100%_0%,rgba(255,0,255,0.2)_0%,rgba(255,0,255,0.08)_35%,transparent_65%)]"
+      >
+      </div>
+
+      <!-- 左下角青色光晕 -->
+      <div
+        class="light:bg-[radial-gradient(ellipse_80%_80%_at_0%_100%,rgba(8,145,178,0.1)_0%,rgba(8,145,178,0.03)_30%,transparent_60%)] absolute bottom-0 left-0 h-[45vh] w-[45vw] bg-[radial-gradient(ellipse_80%_80%_at_0%_100%,rgba(0,255,255,0.15)_0%,rgba(0,255,255,0.05)_30%,transparent_60%)]"
+      >
+      </div>
+
+      <!-- 右下角品红光晕 -->
+      <div
+        class="light:bg-[radial-gradient(ellipse_80%_80%_at_100%_100%,rgba(190,24,93,0.1)_0%,rgba(190,24,93,0.03)_30%,transparent_60%)] absolute right-0 bottom-0 h-[45vh] w-[45vw] bg-[radial-gradient(ellipse_80%_80%_at_100%_100%,rgba(255,0,255,0.15)_0%,rgba(255,0,255,0.05)_30%,transparent_60%)]"
+      >
+      </div>
+    </div>
+
+    <SiteLayoutHeader locale={locale} class={headerClass} />
+    <SiteLayoutMain class={mainClass}>
+      <slot />
+    </SiteLayoutMain>
+    <SiteLayoutFooter locale={locale} class={footerClass} />
+  </body>
+</html>
+
+<script is:inline>
+  // Re-apply theme after page navigation (View Transitions)
+  document.addEventListener("astro:page-load", function () {
+    const isDark =
+      sessionStorage.theme === "dark" ||
+      (!("theme" in sessionStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.classList.toggle("dark", isDark);
+    document.documentElement.classList.toggle("light", !isDark);
+
+    // Update theme icons
+    if (window.updateAllThemeIcons) {
+      window.updateAllThemeIcons();
+    }
+  });
+
+  // ============================================
+  // View Transitions 说明
+  // ============================================
+  // Astro 的 <ClientRouter /> 已经内置了完整的 fallback 机制：
+  // - 支持 View Transitions 的浏览器：使用原生 API + CSS 动画
+  // - 不支持的浏览器：自动进行 SPA 导航 + 模拟动画效果
+  //
+  // 动画定义在 animations.css 中：
+  // - ::view-transition-old(root) → page-glitch-out
+  // - ::view-transition-new(root) → page-glitch-in
+  //
+  // 无需手动实现 fallback，Astro 会自动处理所有浏览器的兼容性。
+  // ============================================
+</script>

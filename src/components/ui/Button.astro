@@ -1,0 +1,129 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  variant?: "primary" | "secondary" | "outline";
+  size?: "sm" | "md" | "lg" | "icon";
+  href?: string;
+  class?: string;
+  disabled?: boolean;
+  type?: "button" | "submit" | "reset";
+  id?: string;
+  "aria-label"?: string;
+  "aria-expanded"?: boolean | "true" | "false";
+  "aria-haspopup"?: boolean | "true" | "false" | "menu" | "listbox" | "tree" | "grid" | "dialog";
+}
+
+const {
+  variant = "primary",
+  size = "md",
+  href,
+  class: className = "",
+  disabled = false,
+  type = "button",
+  id,
+  "aria-label": ariaLabel,
+  "aria-expanded": ariaExpanded,
+  "aria-haspopup": ariaHaspopup,
+} = Astro.props;
+
+const baseStyles = clsx(
+  "inline-flex items-center justify-center gap-2",
+  "font-display font-bold uppercase tracking-widest",
+  "transition-all duration-300",
+  "cursor-pointer",
+  "focus:outline-none focus-visible-ring",
+  "disabled:opacity-50 disabled:cursor-not-allowed",
+);
+
+const variantStyles = {
+  // Primary - 霓虹渐变背景 + 双切角 + 角落装饰
+  primary: clsx(
+    "btn-primary cyber-block cyber-block-sm group relative overflow-hidden",
+    "bg-transparent text-void",
+    "hover:scale-105",
+    "active:scale-[0.98]",
+  ),
+  // Secondary - cyber-block 样式 + 双切角 + 角落装饰（无发光文字，透明背景）
+  secondary: clsx(
+    "btn-secondary cyber-block cyber-block-sm group",
+    "bg-transparent",
+    "text-cyan",
+    "hover:scale-105",
+    "active:scale-[0.98]",
+  ),
+  // Outline - 细边框图标按钮风格（用于 ThemeToggle、LanguageSwitcher 等）
+  outline: clsx(
+    "bg-transparent",
+    "text-gray",
+    "border border-muted/20",
+    "hover-border-cyan hover-cyan hover-glow-cyan",
+    "active:scale-[0.98]",
+  ),
+};
+
+const sizeStyles = {
+  sm: "px-4 py-2 text-xs",
+  md: "px-6 py-3 text-sm",
+  lg: "px-8 py-4 text-sm",
+  icon: "w-10 h-10",
+};
+
+const combinedStyles = clsx(baseStyles, variantStyles[variant], sizeStyles[size], className);
+---
+
+{
+  href ? (
+    <a href={href} class={combinedStyles} aria-label={ariaLabel}>
+      {variant === "primary" ? (
+        <>
+          <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
+          <span class="cyber-corner cyber-corner-br" aria-hidden="true" />
+          <span class="btn-primary-bg" aria-hidden="true" />
+          <span class="btn-primary-glow" aria-hidden="true" />
+          <span class="btn-primary-content">
+            <slot />
+          </span>
+        </>
+      ) : variant === "secondary" ? (
+        <>
+          <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
+          <span class="cyber-corner cyber-corner-br" aria-hidden="true" />
+          <slot />
+        </>
+      ) : (
+        <slot />
+      )}
+    </a>
+  ) : (
+    <button
+      type={type}
+      id={id}
+      class={combinedStyles}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-haspopup={ariaHaspopup}
+    >
+      {variant === "primary" ? (
+        <>
+          <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
+          <span class="cyber-corner cyber-corner-br" aria-hidden="true" />
+          <span class="btn-primary-bg" aria-hidden="true" />
+          <span class="btn-primary-glow" aria-hidden="true" />
+          <span class="btn-primary-content">
+            <slot />
+          </span>
+        </>
+      ) : variant === "secondary" ? (
+        <>
+          <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
+          <span class="cyber-corner cyber-corner-br" aria-hidden="true" />
+          <slot />
+        </>
+      ) : (
+        <slot />
+      )}
+    </button>
+  )
+}

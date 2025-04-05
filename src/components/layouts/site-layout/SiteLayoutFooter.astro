@@ -1,0 +1,27 @@
+---
+import clsx from "clsx";
+import { type Locale, t } from "@/utils/i18n";
+
+interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className } = Astro.props;
+
+const currentYear = new Date().getFullYear();
+
+const footerStyles = clsx("relative w-full py-12 mt-16", "bg-transparent", className);
+---
+
+<footer class={footerStyles}>
+  <!-- 版权 & 版本 -->
+  <div class="neon-cyan flex flex-col items-center gap-2 font-mono text-xs">
+    <p>
+      © {currentYear} CHEN - {t("footer.copyright", locale)}
+    </p>
+    <p>
+      {t("footer.tagline", locale)}.
+    </p>
+  </div>
+</footer>

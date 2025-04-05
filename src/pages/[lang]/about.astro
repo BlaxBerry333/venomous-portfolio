@@ -1,0 +1,148 @@
+---
+import SiteLayout from "@/components/layouts/site-layout/SiteLayout.astro";
+import Button from "@/components/ui/Button.astro";
+import AboutTabs from "@/components/ui/AboutTabs.astro";
+import Icon from "@/components/ui/Icon.astro";
+import ProfileAvatar from "@/components/ui/ProfileAvatar.astro";
+import { getLocaleStaticPaths, getLocalizedUrl, t, type Locale } from "@/utils/i18n";
+import { getProfile, getSkillCategories } from "@/utils/data";
+import Timeline from "@/components/ui/Timeline.astro";
+import SkillCard from "@/components/ui/SkillCard.astro";
+
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const profile = getProfile(lang);
+const skillCategories = getSkillCategories(lang);
+const avatarUrl = import.meta.env.ASTRO_APP_AVATAR_URL;
+
+const tabs = [
+  { key: "experience", label: t("aboutPage.sections.experience", lang), icon: "calendar" },
+  { key: "skills", label: t("aboutPage.sections.skills", lang), icon: "pin" },
+];
+---
+
+<SiteLayout locale={lang} title={t("aboutPage.pageTitle", lang)}>
+  <article class="min-h-screen">
+    <!-- ============================================
+         主视觉区域 - 个人信息卡片
+         ============================================ -->
+    <section class="relative pt-12 pb-16">
+      <!-- 背景效果 -->
+      <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div
+          class="absolute top-0 left-1/4 h-[500px] w-[500px] -translate-x-1/2 bg-[radial-gradient(circle,rgba(0,255,255,0.1)_0%,transparent_60%)]"
+        >
+        </div>
+        <div
+          class="absolute top-20 right-0 h-[400px] w-[400px] bg-[radial-gradient(circle,rgba(255,0,255,0.06)_0%,transparent_60%)]"
+        >
+        </div>
+      </div>
+
+      <div class="relative z-10 mx-auto max-w-5xl px-4">
+        <!-- 个人信息内容 -->
+        <div class="flex flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-10">
+          <!-- 头像区域 -->
+          <div class="flex-shrink-0">
+            <ProfileAvatar
+              src={avatarUrl}
+              alt={profile.name}
+              fallback={profile.name.charAt(0)}
+              size="md"
+            />
+          </div>
+
+          <!-- 信息区域 -->
+          <div class="flex-1 text-center lg:text-left">
+            <!-- 姓名 -->
+            <h1 class="font-display mb-6 text-4xl font-black tracking-wider uppercase md:text-5xl">
+              <span class="text-gradient-cyber">{profile.name}</span>
+            </h1>
+
+            <!-- 操作按钮 -->
+            <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
+              {
+                profile.social.github && (
+                  <Button href={profile.social.github} variant="primary" size="md">
+                    <Icon name="github" size={16} />
+                    GitHub
+                  </Button>
+                )
+              }
+              <Button href={getLocalizedUrl("/works", lang)} variant="secondary" size="md">
+                {t("hero.cta.works", lang)}
+                <span aria-hidden="true">→</span>
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 个人简介 -->
+        <div class="profile-summary mt-10">
+          {
+            profile.description.map((text) => (
+              <p class="text-gray mb-4 leading-relaxed last:mb-0">{text}</p>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         标签页内容区域
+         ============================================ -->
+    <div class="mx-auto max-w-5xl px-4 pb-16">
+      <AboutTabs tabs={tabs} defaultActive="experience">
+        <!-- ============================================
+             经历标签页
+             ============================================ -->
+        <div class="tab-panel tab-panel-active" data-tab-panel="experience">
+          <Timeline locale={lang} />
+        </div>
+
+        <!-- ============================================
+             技能标签页
+             ============================================ -->
+        <div class="tab-panel" data-tab-panel="skills">
+          <!-- 技术栈 -->
+          <section>
+            <div class="space-y-6">
+              {
+                skillCategories.map((category) => (
+                  <div class="skill-category">
+                    <p class="text-muted mb-3 font-mono text-[10px] tracking-widest uppercase">
+                      {category.label}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                      {category.skills.map((skillId) => (
+                        <SkillCard id={skillId} size="md" />
+                      ))}
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
+          </section>
+        </div>
+      </AboutTabs>
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  /* === Summary === */
+  .profile-summary {
+    padding: 1.25rem 1.5rem;
+    border-left: 2px solid var(--cyan);
+    background: rgba(0, 255, 255, 0.03);
+  }
+
+  /* === Light Mode === */
+  .light .profile-summary {
+    border-color: #0891b2;
+    background: rgba(8, 145, 178, 0.03);
+  }
+</style>

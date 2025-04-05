@@ -1,0 +1,34 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  /**
+   * Text type for terminal styling
+   * - prompt: Cyan ">" symbol
+   * - command: Green command text
+   * - output: Muted output text
+   * - status: Status indicator like [OK] or [..]
+   */
+  type?: "prompt" | "command" | "output" | "status";
+  /**
+   * For status type, whether it's OK or loading
+   */
+  ok?: boolean;
+  class?: string;
+}
+
+const { type = "command", ok = false, class: className = "" } = Astro.props;
+
+const typeStyles = {
+  prompt: "neon-cyan",
+  command: "text-green",
+  output: "text-muted",
+  status: ok ? "text-green" : "text-muted",
+};
+
+const combinedStyles = clsx("font-mono", typeStyles[type], className);
+---
+
+<span class={combinedStyles}>
+  {type === "prompt" && ">"}<slot />
+</span>

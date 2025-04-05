@@ -1,0 +1,19 @@
+---
+import SiteLayout from "@/components/layouts/site-layout/SiteLayout.astro";
+import HeroSection from "@/components/sections/HeroSection.astro";
+import SkillsSection from "@/components/sections/SkillsSection.astro";
+import WorksSection from "@/components/sections/WorksSection.astro";
+import { getLocaleStaticPaths, type Locale } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<SiteLayout locale={lang}>
+  <HeroSection locale={lang} />
+  <WorksSection locale={lang} />
+  <SkillsSection locale={lang} />
+</SiteLayout>

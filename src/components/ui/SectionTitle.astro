@@ -1,0 +1,86 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  align?: "left" | "center";
+  glow?: boolean;
+  /** lg: page-level (3xl-5xl), md: medium (2xl-3xl), sm: sub-section (xl) with icon */
+  size?: "lg" | "md" | "sm";
+  /** Icon color for size="sm" */
+  icon?: "cyan" | "pink" | "green" | "yellow";
+  /** HTML tag to use for title */
+  as?: "h1" | "h2" | "h3";
+  class?: string;
+}
+
+type IconType = "cyan" | "pink" | "green" | "yellow";
+
+const {
+  title,
+  subtitle,
+  align = "left",
+  glow = false,
+  size = "lg",
+  icon = "cyan" as IconType,
+  as: Tag = "h2",
+  class: className = "",
+} = Astro.props;
+
+// Icon mapping for size="sm"
+const iconMap: Record<IconType, string> = {
+  cyan: "◈",
+  pink: "◇",
+  green: "◆",
+  yellow: "★",
+};
+
+const iconColorMap: Record<IconType, string> = {
+  cyan: "neon-cyan",
+  pink: "neon-pink",
+  green: "neon-green",
+  yellow: "neon-yellow",
+};
+
+// Container styles based on size
+const containerStyles = clsx(
+  size === "lg" ? "mb-12" : size === "md" ? "mb-8" : "mb-6",
+  align === "center" && "text-center",
+  className,
+);
+
+// Title styles based on size - all use gradient
+const titleStyles = clsx(
+  "font-display font-bold uppercase",
+  "text-gradient-cyber",
+  glow && "text-glow-cyan",
+  size === "lg" && "text-3xl md:text-4xl lg:text-5xl tracking-tight",
+  size === "md" && "text-2xl md:text-3xl tracking-tight",
+  size === "sm" && "text-xl tracking-wider flex items-center gap-3",
+);
+
+// Subtitle styles based on size
+const subtitleStyles = clsx(
+  "text-gray",
+  size === "lg"
+    ? "mt-4 font-display text-lg"
+    : size === "md"
+      ? "mt-3 font-display text-base"
+      : "mt-2 font-display text-sm",
+);
+---
+
+<div class={containerStyles}>
+  <Tag class={titleStyles}>
+    {
+      size === "sm" && (
+        <span class={clsx("text-2xl", iconColorMap[icon as IconType])}>
+          {iconMap[icon as IconType]}
+        </span>
+      )
+    }
+    {title}
+  </Tag>
+  {subtitle && <p class={subtitleStyles}>{subtitle}</p>}
+</div>
