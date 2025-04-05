@@ -1,0 +1,272 @@
+{
+  "items": {
+    "antd": {
+      "label": "Ant Design",
+      "icon": "/skill-icons/antd.svg"
+    },
+    "astro": {
+      "label": "Astro",
+      "icon": "/skill-icons/astro.svg"
+    },
+    "aws-s3": {
+      "label": "AWS S3",
+      "icon": "/skill-icons/aws.svg"
+    },
+    "azure-blob-storage": {
+      "label": "Azure Blob Storage",
+      "icon": "/skill-icons/azure.svg"
+    },
+    "django": {
+      "label": "Django",
+      "icon": "/skill-icons/django.svg"
+    },
+    "docker": {
+      "label": "Docker",
+      "icon": "/skill-icons/docker.svg"
+    },
+    "docusaurus": {
+      "label": "Docusaurus",
+      "icon": "/skill-icons/docusaurus.svg"
+    },
+    "drf": {
+      "label": "Django REST Framework",
+      "icon": "/skill-icons/drf.svg"
+    },
+    "express": {
+      "label": "Express",
+      "icon": "/skill-icons/express.svg"
+    },
+    "firebase": {
+      "label": "Firebase",
+      "icon": "/skill-icons/firebase.svg"
+    },
+    "gatsby": {
+      "label": "Gatsby",
+      "icon": "/skill-icons/gatsby.svg"
+    },
+    "gin": {
+      "label": "Gin",
+      "icon": "/skill-icons/gin.svg"
+    },
+    "github-actions": {
+      "label": "Github Actions",
+      "icon": "/skill-icons/github-actions.svg"
+    },
+    "go": {
+      "label": "Go",
+      "icon": "/skill-icons/go.svg"
+    },
+    "google-bigquery": {
+      "label": "BigQuery",
+      "icon": "/skill-icons/google-bigquery.svg"
+    },
+    "google-cloud-storage": {
+      "label": "Google Cloud Storage",
+      "icon": "/skill-icons/google-cloud-storage.svg"
+    },
+    "google-looker": {
+      "label": "Looker",
+      "icon": "/skill-icons/google-looker.svg"
+    },
+    "graphql": {
+      "label": "GraphQL",
+      "icon": "/skill-icons/graphql.svg"
+    },
+    "javascript": {
+      "label": "JavaScript",
+      "icon": "/skill-icons/javascript.svg"
+    },
+    "jquery": {
+      "label": "jQuery",
+      "icon": "/skill-icons/jquery.svg"
+    },
+    "mongodb": {
+      "label": "MongoDB",
+      "icon": "/skill-icons/mongodb.svg"
+    },
+    "mui": {
+      "label": "MUI",
+      "icon": "/skill-icons/mui.svg"
+    },
+    "nextjs": {
+      "label": "Next.js",
+      "icon": "/skill-icons/nextjs.svg"
+    },
+    "nodejs": {
+      "label": "Node.js",
+      "icon": "/skill-icons/nodejs.svg"
+    },
+    "nuxtjs": {
+      "label": "Nuxt.js",
+      "icon": "/skill-icons/nuxtjs.svg"
+    },
+    "pnpm": {
+      "label": "pnpm",
+      "icon": "/skill-icons/pnpm.svg"
+    },
+    "postgresql": {
+      "label": "PostgreSQL",
+      "icon": "/skill-icons/postgresql.svg"
+    },
+    "prisma": {
+      "label": "Prisma",
+      "icon": "/skill-icons/prisma.svg"
+    },
+    "python": {
+      "label": "Python",
+      "icon": "/skill-icons/python.svg"
+    },
+    "react": {
+      "label": "React",
+      "icon": "/skill-icons/react.svg"
+    },
+    "redis": {
+      "label": "Redis",
+      "icon": "/skill-icons/redis.svg"
+    },
+    "refine": {
+      "label": "Refine",
+      "icon": "/skill-icons/refine.svg"
+    },
+    "sass": {
+      "label": "Sass",
+      "icon": "/skill-icons/sass.svg"
+    },
+    "storybook": {
+      "label": "Storybook",
+      "icon": "/skill-icons/storybook.svg"
+    },
+    "supabase": {
+      "label": "Supabase",
+      "icon": "/skill-icons/supabase.svg"
+    },
+    "tailwindcss": {
+      "label": "Tailwind CSS",
+      "icon": "/skill-icons/tailwindcss.svg"
+    },
+    "trpc": {
+      "label": "tRPC",
+      "icon": "/skill-icons/trpc.svg"
+    },
+    "typescript": {
+      "label": "TypeScript",
+      "icon": "/skill-icons/typescript.svg"
+    },
+    "vite": {
+      "label": "Vite",
+      "icon": "/skill-icons/vite.svg"
+    },
+    "vue": {
+      "label": "Vue.js",
+      "icon": "/skill-icons/vue.svg"
+    },
+    "webpack": {
+      "label": "Webpack",
+      "icon": "/skill-icons/webpack.svg"
+    }
+  },
+  "categories": [
+    {
+      "id": "frontend",
+      "skills": [
+        "javascript",
+        "typescript",
+        "react",
+        "nextjs",
+        "vue",
+        "nuxtjs",
+        "astro",
+        "gatsby",
+        "vite",
+        "webpack",
+        "pnpm",
+        "refine",
+        "docusaurus",
+        "storybook",
+        "tailwindcss",
+        "mui",
+        "antd",
+        "sass",
+        "jquery"
+      ]
+    },
+    {
+      "id": "backend",
+      "skills": ["nodejs", "express", "go", "python", "django", "gin", "drf", "trpc", "graphql"]
+    },
+    {
+      "id": "database",
+      "skills": ["postgresql", "mongodb", "redis", "prisma"]
+    },
+    {
+      "id": "cloud",
+      "skills": [
+        "aws-s3",
+        "google-cloud-storage",
+        "google-bigquery",
+        "firebase",
+        "supabase",
+        "google-looker",
+        "azure-blob-storage"
+      ]
+    },
+    {
+      "id": "tools",
+      "skills": ["docker", "github-actions"]
+    }
+  ],
+  "works": {
+    "geniee-cdp": [
+      "nextjs",
+      "nodejs",
+      "typescript",
+      "trpc",
+      "pnpm",
+      "mui",
+      "google-bigquery",
+      "google-cloud-storage",
+      "aws-s3",
+      "google-looker",
+      "azure-blob-storage"
+    ],
+    "geniee-chat": [
+      "react",
+      "typescript",
+      "vite",
+      "storybook",
+      "sass",
+      "nodejs",
+      "express",
+      "go",
+      "gin",
+      "django",
+      "drf",
+      "docker"
+    ],
+    "skyfall-skyflag": [
+      "javascript",
+      "typescript",
+      "react",
+      "refine",
+      "antd",
+      "storybook",
+      "docusaurus",
+      "saas"
+    ],
+    "fni-sunrisepark": [
+      "gatsby",
+      "typescript",
+      "react",
+      "docusaurus",
+      "antd",
+      "graphql",
+      "django",
+      "drf",
+      "docker",
+      "mongodb"
+    ],
+    "youzan-saas": ["javascript", "typescript", "react", "webpack", "sass"],
+    "venomous-portfolio": ["astro", "typescript", "tailwindcss", "github-actions"],
+    "venomous-ui": ["vite", "typescript", "react", "vue", "storybook", "github-actions"]
+  }
+}

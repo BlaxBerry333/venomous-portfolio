@@ -1,0 +1,91 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  src?: string;
+  alt: string;
+  fallback?: string;
+  size?: "sm" | "md" | "lg";
+  class?: string;
+}
+
+const { src, alt, fallback, size = "md", class: className = "" } = Astro.props;
+
+const sizeMap = {
+  sm: 100,
+  md: 140,
+  lg: 180,
+};
+
+const sizeValue = sizeMap[size];
+---
+
+<div class={clsx("profile-avatar", className)} style={`--avatar-size: ${sizeValue}px;`}>
+  <div class="profile-avatar-inner">
+    {
+      src ? (
+        <img src={src} alt={alt} class="h-full w-full object-cover" loading="lazy" />
+      ) : (
+        <span class="font-display text-void text-6xl font-black">{fallback || alt.charAt(0)}</span>
+      )
+    }
+  </div>
+  <!-- 角落装饰 -->
+  <div class="profile-avatar-corner profile-avatar-corner-tl"></div>
+  <div class="profile-avatar-corner profile-avatar-corner-br"></div>
+</div>
+
+<style>
+  .profile-avatar {
+    position: relative;
+    width: var(--avatar-size, 140px);
+    height: var(--avatar-size, 140px);
+  }
+
+  .profile-avatar-inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--cyan) 0%, var(--pink) 100%);
+    clip-path: polygon(
+      12px 0,
+      100% 0,
+      100% calc(100% - 12px),
+      calc(100% - 12px) 100%,
+      0 100%,
+      0 12px
+    );
+    overflow: hidden;
+  }
+
+  .profile-avatar-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+  }
+
+  .profile-avatar-corner-tl {
+    top: -4px;
+    left: -4px;
+    border-top: 2px solid var(--cyan);
+    border-left: 2px solid var(--cyan);
+  }
+
+  .profile-avatar-corner-br {
+    bottom: -4px;
+    right: -4px;
+    border-bottom: 2px solid var(--pink);
+    border-right: 2px solid var(--pink);
+  }
+
+  /* === Light Mode === */
+  :global(.light) .profile-avatar-corner-tl {
+    border-color: var(--cyan);
+  }
+
+  :global(.light) .profile-avatar-corner-br {
+    border-color: var(--pink);
+  }
+</style>

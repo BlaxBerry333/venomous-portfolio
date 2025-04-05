@@ -1,0 +1,350 @@
+---
+import SiteLayout from "@/components/layouts/site-layout/SiteLayout.astro";
+import Badge from "@/components/ui/Badge.astro";
+import Button from "@/components/ui/Button.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import Icon from "@/components/ui/Icon.astro";
+import { t, getLocalizedUrl, getLocaleWorkStaticPaths, type Locale } from "@/utils/i18n";
+import {
+  getAllWorkIds,
+  getWorkById,
+  formatDateRange,
+  getAllWorks,
+  groupSkillsByCategory,
+} from "@/utils/data";
+import SkillCard from "@/components/ui/SkillCard.astro";
+import type { AchievementDetail, LearningDetail } from "@/types";
+
+export function getStaticPaths() {
+  const ids = getAllWorkIds();
+  return getLocaleWorkStaticPaths(ids);
+}
+
+const { lang, id } = Astro.params as { lang: Locale; id: string };
+const work = getWorkById(id, lang);
+
+if (!work) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}404`);
+}
+
+// Get related works (same type, exclude current)
+const allWorks = getAllWorks(lang);
+const relatedWorks = allWorks.filter((w) => w.type === work.type && w.id !== work.id).slice(0, 3);
+
+// Helper to check if achievements are detailed objects
+const hasDetailedAchievements =
+  work.achievements &&
+  Array.isArray(work.achievements) &&
+  work.achievements.length > 0 &&
+  typeof work.achievements[0] === "object";
+
+// Helper to check if learnings are detailed objects
+const hasDetailedLearnings =
+  work.learnings &&
+  Array.isArray(work.learnings) &&
+  work.learnings.length > 0 &&
+  typeof work.learnings[0] === "object";
+---
+
+<SiteLayout locale={lang} title={work.title} description={work.description}>
+  <article class="min-h-screen">
+    <!-- ============================================
+         HERO SECTION - 图片 + 标题
+         ============================================ -->
+    <section class="relative">
+      <!-- 项目图片 -->
+      <div class="mx-auto max-w-6xl px-4 pt-8">
+        <div class="work-hero-image border-muted/10 relative overflow-hidden border">
+          <img
+            src={`${import.meta.env.BASE_URL}${work.image}`}
+            alt={work.title}
+            class="h-full w-full object-cover object-top"
+          />
+          <!-- 底部渐变遮罩 -->
+          <div
+            class="from-void via-void/60 pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t to-transparent"
+          >
+          </div>
+        </div>
+      </div>
+
+      <!-- 标题区域 -->
+      <div class="mx-auto max-w-5xl px-4 pt-8 pb-4">
+        <!-- Meta 信息 -->
+        <div class="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-sm">
+          <Badge variant={work.type} size="md">
+            {t(`worksPage.type.${work.type}`, lang)}
+          </Badge>
+          <span class="text-muted sm:inline">|</span>
+          <span class="text-gray sm:inline">
+            {formatDateRange(work.date, lang)}
+          </span>
+        </div>
+
+        <!-- 标题 + 副标题 -->
+        <SectionTitle
+          as="h1"
+          title={work.title}
+          subtitle={work.description}
+          size="lg"
+          class="mb-6 w-full [&>p]:text-sm sm:[&>p]:text-base md:[&>p]:text-lg"
+        />
+
+        <!-- Action Links -->
+        {
+          (work.links.homepage || work.links.github || work.links.demo) && (
+            <div class="flex flex-wrap gap-3">
+              {work.links.homepage && (
+                <Button href={work.links.homepage} variant="primary" size="md">
+                  <Icon name="link" size={14} />
+                  Visit Site
+                </Button>
+              )}
+              {work.links.demo && (
+                <Button href={work.links.demo} variant="primary" size="md">
+                  <Icon name="link" size={14} />
+                  Demo
+                </Button>
+              )}
+              {work.links.github && (
+                <Button href={work.links.github} variant="secondary" size="md">
+                  <Icon name="github" size={14} />
+                  GitHub
+                </Button>
+              )}
+            </div>
+          )
+        }
+      </div>
+    </section>
+
+    <!-- ============================================
+         MAIN CONTENT
+         ============================================ -->
+    <div class="relative">
+      <div class="mx-auto max-w-5xl px-2 py-16 md:pb-24">
+        <!-- ============================================
+             概要 Section - 我在项目中的角色与贡献
+             ============================================ -->
+        {
+          work.overview && (
+            <section class="mb-16 md:mb-24">
+              <SectionTitle title={t("worksPage.detail.overview", lang)} size="md" icon="cyan" />
+              {Array.isArray(work.overview) ? (
+                <div class="font-display text-gray space-y-3 text-base leading-relaxed">
+                  {work.overview.map((paragraph) => (
+                    <p>{paragraph}</p>
+                  ))}
+                </div>
+              ) : (
+                <p class="font-display text-gray text-base leading-relaxed">{work.overview}</p>
+              )}
+            </section>
+          )
+        }
+
+        <!-- ============================================
+             技术栈 Section
+             ============================================ -->
+        {
+          work.skills && work.skills.length > 0 && (
+            <section class="mb-16 md:mb-24">
+              <SectionTitle title={t("worksPage.detail.techStack", lang)} size="md" icon="pink" />
+
+              <div class="space-y-6">
+                {groupSkillsByCategory(work.skills, lang).map((category) => (
+                  <div class="tech-category">
+                    <p class="text-muted mb-3 font-mono text-[10px] tracking-widest uppercase">
+                      {category.label}
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                      {category.skills.map((skillId) => (
+                        <SkillCard id={skillId} size="sm" />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        <!-- ============================================
+             成果 Section - 卡片式布局
+             ============================================ -->
+        {
+          work.achievements && work.achievements.length > 0 && (
+            <section class="mb-16 md:mb-24">
+              <SectionTitle
+                title={t("worksPage.detail.achievements", lang)}
+                size="md"
+                icon="green"
+              />
+
+              {hasDetailedAchievements ? (
+                <div class="space-y-4 md:space-y-6">
+                  {(work.achievements as AchievementDetail[]).map((achievement, index) => (
+                    <div class="bg-surface/50 border-muted/20 border p-4 md:p-6">
+                      {/* 标题 */}
+                      <div class="mb-3 md:mb-4">
+                        <div class="mb-2 flex items-center gap-2 md:gap-3">
+                          <span class="neon-cyan bg-cyan/10 flex-shrink-0 px-1.5 py-0.5 font-mono text-xs md:px-2 md:text-sm">
+                            {String(index + 1).padStart(2, "0")}
+                          </span>
+                          <h3 class="font-display text-base leading-tight font-bold text-white md:text-lg md:leading-none">
+                            {achievement.title}
+                          </h3>
+                        </div>
+                      </div>
+
+                      {/* 描述 */}
+                      <p class="font-display text-gray text-sm leading-relaxed">
+                        {achievement.description}
+                      </p>
+
+                      {/* Highlights */}
+                      {achievement.highlights && achievement.highlights.length > 0 && (
+                        <ul class="mt-3 space-y-1.5 md:mt-4">
+                          {achievement.highlights.map((highlight) => (
+                            <li class="font-display text-muted flex items-baseline gap-2 text-xs md:text-sm">
+                              <span class="neon-cyan text-[10px] md:text-xs">▸</span>
+                              <span>{highlight}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <ul class="space-y-3">
+                  {(work.achievements as string[]).map((item) => (
+                    <li class="text-gray bg-surface/30 border-muted/20 hover:border-cyan/50 flex items-start gap-3 border p-4 transition-colors">
+                      <Icon name="pin" size={18} class="neon-green mt-0.5" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )
+        }
+
+        <!-- ============================================
+             学习与收获 Section
+             ============================================ -->
+        {
+          work.learnings && work.learnings.length > 0 && (
+            <section class="mb-16 md:mb-24">
+              <SectionTitle title={t("worksPage.detail.learnings", lang)} size="md" icon="yellow" />
+
+              {hasDetailedLearnings ? (
+                <div class="grid gap-6 md:grid-cols-2">
+                  {(work.learnings as LearningDetail[]).map((learning) => (
+                    <div class="bg-surface/50 border-muted/20 relative border p-6">
+                      {/* 背景装饰 */}
+                      <div
+                        class="bg-yellow/5 absolute top-0 right-0 h-24 w-24 rounded-full blur-2xl"
+                        aria-hidden="true"
+                      />
+
+                      <div class="relative">
+                        <h3 class="font-display mb-3 flex items-start gap-2 text-lg font-bold text-white">
+                          <span class="neon-yellow">💡</span>
+                          {learning.title}
+                        </h3>
+
+                        <p class="font-display text-gray text-sm leading-relaxed">
+                          {learning.description}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <ul class="grid gap-4 md:grid-cols-2">
+                  {(work.learnings as string[]).map((item) => (
+                    <li class="text-gray bg-surface/30 border-muted/20 hover:border-cyan/50 flex items-start gap-3 border p-4 transition-colors">
+                      <span class="neon-yellow mt-0.5 flex-shrink-0">💡</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )
+        }
+
+        <!-- ============================================
+             相关项目 Section
+             ============================================ -->
+        {
+          relatedWorks.length > 0 && (
+            <section>
+              <SectionTitle title={t("worksPage.detail.moreWorks", lang)} size="md" icon="cyan" />
+
+              <div class="grid gap-6 md:grid-cols-3">
+                {relatedWorks.map((relatedWork) => (
+                  <a
+                    href={getLocalizedUrl(`/works/${relatedWork.id}`, lang)}
+                    class="cyber-block group block overflow-visible transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02]"
+                  >
+                    <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
+                    <span class="cyber-corner cyber-corner-br" aria-hidden="true" />
+                    <div class="relative aspect-video overflow-hidden">
+                      <img
+                        src={`${import.meta.env.BASE_URL}${relatedWork.image}`}
+                        alt={relatedWork.title}
+                        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                      <div class="from-void/80 via-void/30 absolute inset-0 bg-gradient-to-t to-transparent opacity-30 transition-opacity group-hover:opacity-60" />
+                    </div>
+                    <div class="p-4">
+                      <div class="mb-2 flex items-center gap-2">
+                        <Badge variant={relatedWork.type} size="md">
+                          {t(`worksPage.type.${relatedWork.type}`, lang)}
+                        </Badge>
+                      </div>
+                      <h3 class="font-display group-hover-cyan mb-1 line-clamp-2 font-bold text-white transition-colors">
+                        {relatedWork.title}
+                      </h3>
+                      <p class="text-muted font-display line-clamp-1 text-xs">
+                        {relatedWork.subtitle}
+                      </p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </section>
+          )
+        }
+      </div>
+    </div>
+  </article>
+</SiteLayout>
+
+<style>
+  /* Hero image height constraints */
+  .work-hero-image {
+    /* Mobile: max height 50vh */
+    max-height: 50vh;
+    min-height: 200px;
+  }
+
+  @media (min-width: 768px) {
+    .work-hero-image {
+      /* Tablet+: max height 60vh */
+      max-height: 60vh;
+      min-height: 300px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .work-hero-image {
+      /* Desktop: max height 65vh */
+      max-height: 65vh;
+      min-height: 400px;
+    }
+  }
+</style>

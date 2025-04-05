@@ -1,0 +1,57 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  variant?: "default" | "cyan" | "pink" | "green" | "skill";
+  size?: "sm" | "md";
+  class?: string;
+  icon?: string;
+}
+
+const { variant = "default", size = "sm", class: className = "", icon } = Astro.props;
+
+const baseStyles = clsx(
+  "inline-flex items-center gap-2",
+  "font-mono uppercase tracking-wider",
+  "transition-all duration-200",
+);
+
+const variantStyles = {
+  // Default - 暗色背景
+  default: clsx("bg-elevated border border-muted/20", "text-gray", "hover-border-cyan hover-cyan"),
+  // Cyan - 霓虹青
+  cyan: clsx("bg-cyan-10 border border-cyan-30", "neon-cyan"),
+  // Pink - 霓虹粉
+  pink: clsx("bg-pink-10 border border-pink-30", "neon-pink"),
+  // Green - 霓虹绿
+  green: clsx("bg-green-10 border border-green-30", "neon-green"),
+  // Skill - 技能标签
+  skill: clsx("bg-elevated border border-muted/20", "text-gray", "hover-border-cyan hover-cyan"),
+};
+
+const sizeStyles = {
+  sm: "px-2.5 py-1 text-xs",
+  md: "px-3 py-1.5 text-xs",
+};
+
+const combinedStyles = clsx(baseStyles, variantStyles[variant], sizeStyles[size], className);
+
+// 有脉冲指示灯的变体
+const hasPulse = variant === "cyan" || variant === "pink" || variant === "green";
+const pulseColorMap: Record<string, string> = {
+  cyan: "bg-cyan",
+  pink: "bg-pink",
+  green: "bg-green",
+};
+const pulseColor = pulseColorMap[variant] || "";
+---
+
+<span class={combinedStyles}>
+  {
+    hasPulse && (
+      <span class={clsx("h-1.5 w-1.5 animate-pulse rounded-full", pulseColor)} aria-hidden="true" />
+    )
+  }
+  {icon && <img src={icon} alt="" class="h-4 w-4" loading="lazy" />}
+  <slot />
+</span>

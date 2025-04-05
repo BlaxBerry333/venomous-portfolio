@@ -1,0 +1,323 @@
+/* ============================================
+   NEON COLOR SYSTEM - 自定义颜色类
+   ============================================ */
+
+/* === 霓虹文字 - 带发光效果 === */
+.neon-cyan {
+  color: var(--cyan);
+  text-shadow:
+    0 0 4px var(--cyan),
+    0 0 8px var(--cyan),
+    0 0 16px var(--cyan);
+}
+
+.neon-pink {
+  color: var(--pink);
+  text-shadow:
+    0 0 4px var(--pink),
+    0 0 8px var(--pink),
+    0 0 16px var(--pink);
+}
+
+.neon-green {
+  color: var(--green);
+  text-shadow:
+    0 0 4px var(--green),
+    0 0 8px var(--green),
+    0 0 16px var(--green);
+}
+
+.neon-yellow {
+  color: var(--yellow);
+  text-shadow:
+    0 0 4px var(--yellow),
+    0 0 8px var(--yellow),
+    0 0 16px var(--yellow);
+}
+
+/* Light mode: 霓虹发光 → 轻量彩色阴影（保持品牌识别） */
+.light .neon-cyan {
+  text-shadow:
+    0 1px 2px rgba(0, 151, 167, 0.3),
+    0 2px 4px rgba(0, 151, 167, 0.15);
+}
+
+.light .neon-pink {
+  text-shadow:
+    0 1px 2px rgba(216, 27, 96, 0.3),
+    0 2px 4px rgba(216, 27, 96, 0.15);
+}
+
+.light .neon-green {
+  text-shadow:
+    0 1px 2px rgba(0, 200, 83, 0.3),
+    0 2px 4px rgba(0, 200, 83, 0.15);
+}
+
+.light .neon-yellow {
+  text-shadow:
+    0 1px 2px rgba(255, 196, 0, 0.4),
+    0 2px 4px rgba(255, 196, 0, 0.2);
+}
+
+/* === 纯色文字 - 无发光 === */
+.text-cyan {
+  color: var(--cyan);
+}
+
+.text-pink {
+  color: var(--pink);
+}
+
+.text-green {
+  color: var(--green);
+}
+
+.text-yellow {
+  color: var(--yellow);
+}
+
+/* === Hover 状态类 === */
+.hover-cyan:hover {
+  color: var(--cyan);
+}
+
+.hover-pink:hover {
+  color: var(--pink);
+}
+
+.hover-white:hover {
+  color: var(--white);
+}
+
+/* === Group Hover 状态类 === */
+.group:hover .group-hover-cyan {
+  color: var(--cyan);
+}
+
+.group:hover .group-hover-pink {
+  color: var(--pink);
+}
+
+.group:hover .group-hover-white {
+  color: var(--white);
+}
+
+/* === 边框 Hover === */
+.hover-border-cyan:hover {
+  border-color: var(--cyan);
+}
+
+.hover-border-pink:hover {
+  border-color: var(--pink);
+}
+
+/* === 透明度变体 - Cyan === */
+.bg-cyan-10 {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+.bg-cyan-20 {
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+.text-cyan-60 {
+  color: rgba(0, 255, 255, 0.6);
+}
+
+.border-cyan-20 {
+  border-color: rgba(0, 255, 255, 0.2);
+}
+
+.border-cyan-30 {
+  border-color: rgba(0, 255, 255, 0.3);
+}
+
+.border-l-cyan {
+  border-left-color: var(--cyan);
+}
+
+/* === 透明度变体 - Pink === */
+.bg-pink-10 {
+  background-color: rgba(255, 0, 255, 0.1);
+}
+
+.bg-pink-20 {
+  background-color: rgba(255, 0, 255, 0.2);
+}
+
+.border-pink-30 {
+  border-color: rgba(255, 0, 255, 0.3);
+}
+
+/* === 透明度变体 - Green === */
+.bg-green-10 {
+  background-color: rgba(57, 255, 20, 0.1);
+}
+
+.border-green-30 {
+  border-color: rgba(57, 255, 20, 0.3);
+}
+
+/* === Hover 背景透明度 === */
+.hover-bg-cyan-10:hover {
+  background-color: rgba(0, 255, 255, 0.1);
+}
+
+.hover-bg-pink-10:hover {
+  background-color: rgba(255, 0, 255, 0.1);
+}
+
+/* === 发光阴影 Hover === */
+.hover-glow-cyan:hover {
+  box-shadow: var(--glow-cyan);
+}
+
+.hover-glow-pink:hover {
+  box-shadow: var(--glow-pink);
+}
+
+/* === Group Hover 透明度变体 === */
+.group:hover .group-hover-cyan-60 {
+  color: rgba(0, 255, 255, 0.6);
+}
+
+.group:hover .group-hover-cyan-70 {
+  color: rgba(0, 255, 255, 0.7);
+}
+
+/* === Card 角落边框 === */
+.corner-cyan {
+  border-color: var(--cyan);
+}
+
+.corner-pink {
+  border-color: var(--pink);
+}
+
+/* === Card Hover 渐变 === */
+.card-hover-gradient {
+  background: linear-gradient(to bottom right, rgba(0, 255, 255, 0.05), rgba(255, 0, 255, 0.05));
+}
+
+/* === 渐变文字 === */
+.text-gradient-cyber {
+  background: var(--gradient-cyber);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === 渐变背景 === */
+.bg-gradient-cyber {
+  background: linear-gradient(to right, var(--cyan), var(--pink));
+}
+
+/* === 纯色背景 === */
+.bg-cyan-corner {
+  background-color: var(--cyan);
+}
+
+.bg-pink-corner {
+  background-color: var(--pink);
+}
+
+/* === 霓虹边框渐变（双色） === */
+.border-gradient {
+  position: relative;
+  background: var(--dark);
+}
+
+.border-gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  background: var(--gradient-cyber);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ============================================
+   Light Mode 颜色覆盖 - Light Cyberpunk 风格
+   ============================================ */
+.light .bg-cyan-10 {
+  background-color: rgba(0, 151, 167, 0.1);
+}
+
+.light .bg-cyan-20 {
+  background-color: rgba(0, 151, 167, 0.2);
+}
+
+.light .text-cyan-60 {
+  color: rgba(0, 151, 167, 0.7);
+}
+
+.light .border-cyan-20 {
+  border-color: rgba(0, 151, 167, 0.25);
+}
+
+.light .border-cyan-30 {
+  border-color: rgba(0, 151, 167, 0.35);
+}
+
+.light .bg-pink-10 {
+  background-color: rgba(216, 27, 96, 0.1);
+}
+
+.light .bg-pink-20 {
+  background-color: rgba(216, 27, 96, 0.2);
+}
+
+.light .border-pink-30 {
+  border-color: rgba(216, 27, 96, 0.35);
+}
+
+.light .bg-green-10 {
+  background-color: rgba(0, 200, 83, 0.1);
+}
+
+.light .border-green-30 {
+  border-color: rgba(0, 200, 83, 0.3);
+}
+
+.light .hover-bg-cyan-10:hover {
+  background-color: rgba(0, 151, 167, 0.1);
+}
+
+.light .hover-bg-pink-10:hover {
+  background-color: rgba(216, 27, 96, 0.1);
+}
+
+.light .hover-glow-cyan:hover {
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-4px);
+}
+
+.light .hover-glow-pink:hover {
+  box-shadow: var(--glow-pink);
+}
+
+.light .group:hover .group-hover-cyan-60 {
+  color: rgba(0, 151, 167, 0.7);
+}
+
+.light .group:hover .group-hover-cyan-70 {
+  color: rgba(0, 151, 167, 0.8);
+}
+
+.light .corner-cyan {
+  border-color: var(--cyan);
+}
+
+.light .corner-pink {
+  border-color: var(--pink);
+}
+
+.light .card-hover-gradient {
+  background: linear-gradient(to bottom right, rgba(0, 188, 212, 0.08), rgba(236, 64, 122, 0.08));
+}

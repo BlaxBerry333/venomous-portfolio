@@ -1,0 +1,32 @@
+/* ============================================
+   CYBERPUNK DESIGN SYSTEM v4.0
+   模块化样式系统
+   ============================================ */
+
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* === 模块导入 === */
+@import "./variables.css";
+@import "./colors.css";
+@import "./base.css";
+@import "./utilities.css";
+@import "./animations.css";
+
+/* ============================================
+   Tailwind v4 Theme - 仅保留布局必需的颜色引用
+   ============================================ */
+@theme {
+  /* 背景色 - 用于 bg-surface, bg-void 等布局 */
+  --color-void: var(--void);
+  --color-dark: var(--dark);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+
+  /* 文字色 - 用于 text-white, text-gray 等 */
+  --color-white: var(--white);
+  --color-gray: var(--gray);
+  --color-muted: var(--muted);
+}

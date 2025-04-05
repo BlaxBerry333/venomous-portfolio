@@ -1,0 +1,122 @@
+---
+import { type Locale, getLocalizedUrl, t } from "@/utils/i18n";
+import { getSkillCategories } from "@/utils/data";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import TerminalWindow from "@/components/ui/TerminalWindow.astro";
+import TerminalBootSequence from "@/components/ui/TerminalBootSequence.astro";
+import Button from "@/components/ui/Button.astro";
+import SkillCard from "@/components/ui/SkillCard.astro";
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const categories = getSkillCategories(locale);
+const totalSkills = categories.reduce((acc, cat) => acc + cat.skills.length, 0);
+---
+
+<section class="relative py-20 md:py-32">
+  <div class="mx-auto mb-8 max-w-[1000px] px-4">
+    <SectionTitle
+      title={t("skills.title", locale)}
+      subtitle={t("skills.subtitle", locale)}
+      align="center"
+      size="lg"
+    />
+  </div>
+
+  <TerminalWindow glow={false} class="hide-terminal-header mx-auto max-w-[1000px]">
+    <!-- 终端启动序列 -->
+    <TerminalBootSequence
+      id="skills-boot"
+      command="scan --diagnostics ~/tech_stacks"
+      steps={[
+        { message: `Detecting ${totalSkills} skill modules...` },
+        { message: "Status: ", statusText: "Scanning" },
+      ]}
+    />
+
+    <div class="mt-6 py-6">
+      <!-- 技能模块 -->
+      {
+        categories.map((category) => {
+          const shouldShowModule = category.skills.length > 0;
+          if (!shouldShowModule) {
+            return null;
+          }
+          return (
+            <div class="mb-8 last:mb-0">
+              <div class="mb-4 flex items-center gap-2 pb-2">
+                <span class="text-green font-mono text-[11px] font-semibold tracking-[3px]">
+                  # {category.label.toUpperCase()}
+                </span>
+                <span class="module-line ml-3 h-px flex-1 opacity-40" />
+              </div>
+
+              <div class="skill-grid flex flex-nowrap items-center">
+                {category.skills.slice(0, 5).map((skillId) => (
+                  <SkillCard id={skillId} size="md" class="skill-block" />
+                ))}
+                {category.skills.length > 5 && (
+                  <span class="text-muted flex h-16 items-center font-mono text-sm">
+                    +{category.skills.length - 5}
+                  </span>
+                )}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <!-- 底部 CTA -->
+    <div class="pt-6 text-center">
+      <Button href={getLocalizedUrl("/about", locale)} variant="secondary" size="md">
+        {t("hero.cta.about", locale)}
+        <span aria-hidden="true">→</span>
+      </Button>
+    </div>
+  </TerminalWindow>
+</section>
+
+<style>
+  /* Hide terminal header */
+  .hide-terminal-header :global(.terminal-window-header) {
+    display: none;
+  }
+
+  /* Scan line decoration - gradient needs custom CSS */
+  .module-line {
+    background: linear-gradient(to right, var(--green), transparent);
+  }
+
+  /* Skill grid - ensure 5 items fit per row on mobile */
+  .skill-grid {
+    gap: 8px;
+  }
+
+  @media (max-width: 768px) {
+    .skill-grid {
+      gap: 4px;
+    }
+
+    .skill-grid :global(.skill-card) {
+      /* 5 items + 4 gaps (4px) in ~300px width */
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+    }
+
+    .skill-grid :global(.skill-card-icon) {
+      width: 28px;
+      height: 28px;
+    }
+
+    .skill-grid :global(.skill-card-icon img) {
+      width: 20px;
+      height: 20px;
+    }
+  }
+</style>

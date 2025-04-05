@@ -1,0 +1,287 @@
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* === Clip Corner Effects === */
+.clip-corner-tl {
+  clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%, 0 16px);
+}
+
+.clip-corner-tr {
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+
+.clip-corner-bl {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+}
+
+.clip-corner-br {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
+}
+
+.clip-corner-all {
+  clip-path: polygon(
+    16px 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% calc(100% - 16px),
+    calc(100% - 16px) 100%,
+    16px 100%,
+    0 calc(100% - 16px),
+    0 16px
+  );
+}
+
+/* === Terminal Effects === */
+.terminal-border {
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  background: rgba(10, 10, 11, 0.85);
+  backdrop-filter: blur(10px);
+}
+
+.light .terminal-border {
+  border: 1.5px solid rgba(0, 151, 167, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 244, 248, 0.95) 100%);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 151, 167, 0.1);
+}
+
+.glow-cyan {
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(0, 255, 255, 0.05);
+}
+
+.light .glow-cyan {
+  box-shadow:
+    0 4px 20px rgba(0, 151, 167, 0.2),
+    0 0 0 1px rgba(0, 151, 167, 0.1);
+}
+
+/* === Focus Visible Ring === */
+.focus-visible-ring:focus-visible {
+  box-shadow: 0 0 0 2px var(--void), 0 0 0 4px var(--cyan);
+}
+
+.light .focus-visible-ring:focus-visible {
+  box-shadow: 0 0 0 2px var(--void), 0 0 0 4px var(--cyan);
+}
+
+/* === Header Scroll State === */
+.header-scrolled {
+  background-color: rgba(10, 10, 11, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-color: rgba(107, 114, 128, 0.1);
+}
+
+.light .header-scrolled {
+  background-color: rgba(248, 249, 250, 0.8);
+  border-color: rgba(107, 114, 128, 0.1);
+}
+
+/* === Primary Button Internal Elements === */
+.btn-primary-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--cyan), var(--pink));
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+
+/* Light Mode: 使用 vivid 色让按钮更鲜艳 */
+.light .btn-primary-bg {
+  background: linear-gradient(to right, var(--cyan-vivid), var(--pink-vivid));
+}
+
+.btn-primary-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, var(--cyan), var(--pink));
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  opacity: 0;
+  filter: blur(20px);
+  transition: opacity 0.3s;
+}
+
+.light .btn-primary-glow {
+  background: linear-gradient(to right, var(--cyan-vivid), var(--pink-vivid));
+}
+
+.btn-primary:hover .btn-primary-glow {
+  opacity: 0.5;
+}
+
+.btn-primary-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Primary button 不需要 cyber-block 的默认背景 */
+.btn-primary::before {
+  display: none;
+}
+
+/* Secondary button - 默认透明背景，hover时才显示背景 */
+.btn-secondary::before {
+  background: transparent;
+  border-color: rgba(0, 255, 255, 0.2);
+}
+
+.light .btn-secondary::before {
+  border-width: 1.5px;
+  border-color: rgba(0, 151, 167, 0.3);
+}
+
+/* btn-as-primary 隐藏 cyber-block 的 ::before 背景 */
+.btn-as-primary::before {
+  display: none;
+}
+
+/* === Button State Modifiers === */
+.btn-as-primary,
+.btn-as-primary:hover {
+  position: relative;
+  color: var(--void) !important;
+  border: none !important;
+  background: linear-gradient(to right, var(--cyan), var(--pink)) !important;
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 0 100%, 0 8px) !important;
+  box-shadow: none !important;
+}
+
+.btn-as-primary:hover {
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5) !important;
+  transform: scale(1.05);
+}
+
+.light .btn-as-primary,
+.light .btn-as-primary:hover {
+  color: white !important;
+}
+
+/* === Cyber Block - Shared Cut Corner Style === */
+/* 基础结构：使用 ::before 实现切角背景，角落装饰用 .cyber-corner */
+
+.cyber-block {
+  position: relative;
+}
+
+/* 切角背景 - 左上和右下 (默认 15px 切角) */
+.cyber-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  transition: all 0.3s ease;
+  z-index: -1;
+}
+
+.light .cyber-block::before {
+  border-width: 1.5px;
+  border-color: rgba(0, 151, 167, 0.25);
+}
+
+.cyber-block:hover::before {
+  border-color: var(--cyan);
+  background: rgba(0, 255, 255, 0.05);
+  box-shadow:
+    0 0 20px rgba(0, 255, 255, 0.2),
+    inset 0 0 15px rgba(0, 255, 255, 0.03);
+}
+
+.light .cyber-block:hover::before {
+  border-color: var(--cyan);
+  background: rgba(0, 151, 167, 0.05);
+  box-shadow:
+    0 8px 25px rgba(0, 151, 167, 0.15),
+    0 8px 25px rgba(216, 27, 96, 0.1);
+}
+
+/* 角落装饰 - 通用元素 */
+.cyber-corner {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyber-corner-tl {
+  top: 0;
+  left: 0;
+  border-top: 1px solid var(--pink);
+  border-left: 1px solid var(--pink);
+}
+
+.cyber-corner-br {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid var(--pink);
+  border-right: 1px solid var(--pink);
+}
+
+.cyber-block:hover .cyber-corner {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px var(--pink));
+}
+
+.light .cyber-corner-tl {
+  border-color: var(--pink);
+}
+
+.light .cyber-corner-br {
+  border-color: var(--pink);
+}
+
+.light .cyber-block:hover .cyber-corner {
+  filter: drop-shadow(0 0 4px var(--pink));
+}
+
+/* 尺寸变体 - 调整切角比例 */
+.cyber-block-sm::before {
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+
+.cyber-block-lg::before {
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+  background: transparent;
+}
+
+/* === Cyberpunk Background Effects === */
+.bg-grid {
+  position: absolute;
+  left: 50%;
+  width: 200%;
+  height: 80vh;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.light .bg-grid {
+  background-image:
+    linear-gradient(rgba(0, 151, 167, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 151, 167, 0.12) 1px, transparent 1px);
+}
+
+.bg-grid-bottom {
+  bottom: 0;
+  transform: translateX(-50%) perspective(500px) rotateX(60deg);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+}
+
+.bg-grid-top {
+  top: 0;
+  transform: translateX(-50%) perspective(500px) rotateX(-60deg);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+}

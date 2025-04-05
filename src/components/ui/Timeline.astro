@@ -1,0 +1,274 @@
+---
+import clsx from "clsx";
+import Icon from "@/components/ui/Icon.astro";
+import { type Locale, getLocalizedUrl } from "@/utils/i18n";
+import { getCompanyWorks, formatDateRange } from "@/utils/data";
+
+export interface Props {
+  locale: Locale;
+  class?: string;
+}
+
+const { locale, class: className = "" } = Astro.props;
+
+const works = getCompanyWorks(locale);
+---
+
+<div class={clsx("timeline", className)}>
+  {
+    works.map((work, index) => {
+      const isCurrent = index === 0;
+      const isLast = index === works.length - 1;
+      return (
+        <a
+          href={getLocalizedUrl(`/works/${work.id}`, locale)}
+          class={clsx("timeline-item", isLast && "timeline-item--last")}
+        >
+          {/* 时间轴圆点 */}
+          <div class="timeline-dot-wrapper">
+            <div class={clsx("timeline-dot", isCurrent && "timeline-dot--active")}>
+              {isCurrent && <span class="timeline-dot-pulse" />}
+            </div>
+          </div>
+
+          {/* 内容区 */}
+          <div class="timeline-content">
+            {/* 时间 + 状态 */}
+            <div class="timeline-header">
+              <time class={clsx("timeline-date", isCurrent && "timeline-date--active")}>
+                {formatDateRange(work.date, locale)}
+              </time>
+            </div>
+
+            {/* 公司 + 角色 + 部门 */}
+            <h3 class="timeline-company">{work.company}</h3>
+            {work.department && <p class="timeline-department">{work.department}</p>}
+            <p class="timeline-role">{work.role}</p>
+
+            {/* 查看详情箭头 */}
+            <span class="timeline-link">
+              <Icon name="arrow-left" size={14} />
+            </span>
+          </div>
+        </a>
+      );
+    })
+  }
+</div>
+
+<style>
+  .timeline {
+    position: relative;
+  }
+
+  /* === 垂直连接线 === */
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      var(--cyan) 0%,
+      rgba(0, 255, 255, 0.3) 15%,
+      rgba(107, 114, 128, 0.3) 100%
+    );
+  }
+
+  /* === 时间线项目（可点击） === */
+  .timeline-item {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    padding: 0.75rem 1rem 0.75rem 0;
+    margin-bottom: 0.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .timeline-item:hover {
+    background: rgba(0, 255, 255, 0.05);
+  }
+
+  .timeline-item:hover .timeline-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .timeline-item:hover .timeline-company {
+    color: var(--cyan);
+  }
+
+  .timeline-item--last {
+    margin-bottom: 0;
+  }
+
+  /* === 圆点容器 === */
+  .timeline-dot-wrapper {
+    position: relative;
+    flex-shrink: 0;
+    width: 12px;
+    display: flex;
+    justify-content: center;
+    padding-top: 4px;
+  }
+
+  /* === 圆点 === */
+  .timeline-dot {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--muted);
+    border: 2px solid var(--surface);
+    z-index: 1;
+    transition: all 0.2s ease;
+  }
+
+  .timeline-item:hover .timeline-dot:not(.timeline-dot--active) {
+    background: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.15);
+  }
+
+  .timeline-dot--active {
+    background: var(--pink);
+    border-color: var(--void);
+    box-shadow:
+      0 0 0 3px rgba(255, 0, 255, 0.2),
+      0 0 12px var(--pink);
+  }
+
+  /* 当前项脉冲动画 */
+  .timeline-dot-pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: var(--pink);
+    opacity: 0.5;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.3);
+      opacity: 0;
+    }
+  }
+
+  /* === 内容区 === */
+  .timeline-content {
+    flex: 1;
+    min-width: 0;
+    position: relative;
+  }
+
+  .timeline-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  .timeline-date--active {
+    color: var(--cyan);
+  }
+
+  .timeline-company {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.3;
+    transition: color 0.2s ease;
+  }
+
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 0.125rem;
+  }
+
+  .timeline-department {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    opacity: 0.7;
+    margin-top: 0.125rem;
+  }
+
+  /* === 箭头链接 === */
+  .timeline-link {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(-4px);
+    color: var(--cyan);
+    opacity: 0;
+    transition: all 0.2s ease;
+  }
+
+  /* === Light mode === */
+  .light .timeline::before {
+    background: linear-gradient(
+      to bottom,
+      var(--cyan) 0%,
+      rgba(0, 151, 167, 0.3) 15%,
+      rgba(209, 213, 219, 0.3) 100%
+    );
+  }
+
+  .light .timeline-item:hover {
+    background: rgba(0, 151, 167, 0.05);
+  }
+
+  .light .timeline-item:hover .timeline-company {
+    color: var(--cyan);
+  }
+
+  .light .timeline-dot {
+    background: var(--muted);
+    border-color: var(--void);
+  }
+
+  .light .timeline-item:hover .timeline-dot:not(.timeline-dot--active) {
+    background: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0, 151, 167, 0.15);
+  }
+
+  .light .timeline-dot--active {
+    background: var(--pink);
+    border-color: var(--void);
+    box-shadow:
+      0 0 0 3px rgba(216, 27, 96, 0.2),
+      0 0 10px rgba(216, 27, 96, 0.4);
+  }
+
+  .light .timeline-dot-pulse {
+    background: var(--pink);
+  }
+
+  .light .timeline-date--active {
+    color: var(--cyan);
+  }
+
+  .light .timeline-link {
+    color: var(--cyan);
+  }
+</style>
