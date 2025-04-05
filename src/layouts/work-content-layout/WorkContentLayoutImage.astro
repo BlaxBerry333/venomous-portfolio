@@ -1,0 +1,19 @@
+---
+import type { WorkCollectionType } from '@/content/_schema/works';
+
+interface Props {
+  work: WorkCollectionType;
+  class?: string;
+}
+
+const { work, class: _class } = Astro.props as Props;
+---
+
+<img
+  src={work.imageUrl}
+  alt={work.title}
+  draggable="false"
+  loading="lazy"
+  decoding="async"
+  class:list={['mx-auto mt-[20px] mb-[60px] block w-full overflow-hidden', 'rounded-xl', _class]}
+/>

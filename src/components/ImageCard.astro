@@ -1,0 +1,60 @@
+---
+import type { Props as BackgrounProps } from './Background.astro';
+import Background from './Background.astro';
+
+interface Props {
+  title: string;
+  subtitle?: string;
+  label?: string;
+  message?: string;
+  class?: string;
+  backgroundImageUrl?: BackgrounProps['backgroundImageUrl'];
+}
+
+const { title, subtitle, label, message, class: _class, backgroundImageUrl } = Astro.props as Props;
+---
+
+<article
+  class:list={[
+    'relative h-[240px] overflow-hidden',
+    'rounded-xl border border-gray-300',
+    'shadow-md transition-all hover:shadow-xl',
+    'group',
+    _class,
+  ]}
+>
+  <!-- image -->
+  <Background
+    backgroundImageUrl={backgroundImageUrl}
+    class="scale-100 grayscale-30 transition-all duration-300 group-hover:scale-110 group-hover:brightness-125 group-hover:grayscale-0"
+  />
+
+  <!-- informations -->
+  <div class="absolute bottom-0 left-0 w-full bg-black/70 px-4 pt-3 pb-2">
+    {/* title */}
+    <span class="line-clamp-1 font-bold text-white">{title}</span>
+
+    {/* subtitle */}
+    {subtitle && <small class="mb-1 text-gray-400">{subtitle}</small>}
+
+    <!-- label -->
+    {
+      label && (
+        <span
+          class:list={[
+            'rounded-xl border border-gray-300',
+            'mx-1 px-2 py-1 text-xs font-medium text-gray-400',
+          ]}
+        >
+          {label}
+        </span>
+      )
+    }
+
+    <!-- content -->
+    <slot />
+
+    {/* message */}
+    {message && <p class="mt-0 mb-2 line-clamp-2 text-sm">{message}</p>}
+  </div>
+</article>

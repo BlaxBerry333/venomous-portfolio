@@ -1,0 +1,46 @@
+---
+import { ClientRouter } from 'astro:transitions';
+
+import '@/styles/global.css';
+
+import CONFIGS from '@/configs.global';
+import SiteLayoutBackground from './SiteLayoutBackground.astro';
+import SiteLayoutHeader from './SiteLayoutHeader.astro';
+import SiteLayoutMain from './SiteLayoutMain.astro';
+
+const SITE_NAME = CONFIGS.SITE.NAME;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/venomous-portfolio/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{SITE_NAME}</title>
+    <ClientRouter />
+  </head>
+
+  <body>
+    <SiteLayoutHeader />
+    <SiteLayoutBackground />
+    <SiteLayoutMain>
+      <slot />
+    </SiteLayoutMain>
+  </body>
+</html>
+
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100mvh;
+    min-width: 370px;
+  }
+</style>

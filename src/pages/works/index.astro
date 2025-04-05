@@ -1,0 +1,36 @@
+---
+import ImageCard from '@/components/ImageCard.astro';
+import Title from '@/components/Title.astro';
+import CONFIGS from '@/configs.global';
+import { getAllWorks } from '@/content/_schema/works';
+import SiteLayout from '@/layouts/site-layout/SiteLayout.astro';
+import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
+
+const works = await getAllWorks();
+---
+
+<SiteLayout>
+  <Title>{CONFIGS.PAGE_NAME.WORKS}</Title>
+
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+    {
+      works.map((work) => (
+        <a href={`/venomous-portfolio/works/${work.id}`} class="text-inherit no-underline">
+          <ImageCard
+            title={work.data.title}
+            class="backdrop-blur-[100px]"
+            backgroundImageUrl={work.data.imageUrl}
+          >
+            <WorkContentLayoutSkills
+              size={30}
+              class="justify-start py-1"
+              skills={work.data.skills
+                .map((skillGroup: string[]) => skillGroup?.[0])
+                .filter(Boolean)}
+            />
+          </ImageCard>
+        </a>
+      ))
+    }
+  </div>
+</SiteLayout>
