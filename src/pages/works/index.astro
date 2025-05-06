@@ -18,6 +18,8 @@ const works = await getAllWorks();
         <a href={`/venomous-portfolio/works/${work.id}`} class="text-inherit no-underline">
           <ImageCard
             title={work.data.title}
+            subtitle={work.data.subtitle}
+            label={work.data.type}
             class="backdrop-blur-[100px]"
             backgroundImageUrl={work.data.imageUrl}
           >

@@ -1,0 +1,22 @@
+---
+title: 'Venomous Notes'
+subtitle: 'A note-taking system'
+type: 'Personal'
+date: '2023-07'
+imageUrl: '/venomous-portfolio/logos/N.jpg'
+skills:
+  [
+    ['web-infrastructure--docker'],
+    ['web-frontend--nuxtjs', 'web-frontend--typescript', 'database--prisma', 'database--mongodb', 'database--redis'],
+  ]
+---
+
+import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
+
+## Technologies Uesd
+
+<WorkContentLayoutSkills
+  size={50}
+  skills={frontmatter.skills.flat()}
+  class="flex w-full justify-start"
+/>

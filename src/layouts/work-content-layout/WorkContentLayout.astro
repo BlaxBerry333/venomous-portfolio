@@ -1,8 +1,9 @@
 ---
 import type { WorkCollectionType } from '@/content/_schema/works';
-import WorkContentLayoutSkills from './WorkContentLayoutSkills.astro';
 import WorkContentLayoutImage from './WorkContentLayoutImage.astro';
 import Title from '@/components/Title.astro';
+import Prose from '@/components/Prose.astro';
+import Chip from '@/components/Chip.astro';
 
 interface Props {
   id: string;
@@ -14,25 +15,22 @@ const { id, work } = Astro.props as Props;
 
 <section id={id} class="text-md pb-[60px] leading-8 tracking-wide antialiased">
   <!-- Title -->
-  <Title class="mb-0">{work.title}</Title>
+  <Title class="mb-0 text-start">{work.title}</Title>
 
-  <!-- Date -->
-  <small>{work.date}</small>
+  <p class="text-start text-sm">
+    <!-- Date -->
+    {work.date}
+    <!-- Type -->
+    {work.type && <Chip class="py-0">{work.type}</Chip>}
+  </p>
 
   <!-- Image -->
   {work.imageUrl && <WorkContentLayoutImage work={work} class="sm:w-3/5 lg:w-2/5" />}
 
-  <!-- Document Content -->
-  <slot />
-
-  <!-- Skills -->
-  {
-    work.skills.map((skillGroup) => (
-      <WorkContentLayoutSkills
-        size={60}
-        skills={skillGroup}
-        class="mb-2 flex w-full justify-center"
-      />
-    ))
-  }
+  <!-- Markdown Document Content -->
+  <Prose>
+    <slot />
+  </Prose>
+  <br />
+  <br />
 </section>

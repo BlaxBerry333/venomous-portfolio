@@ -6,6 +6,6 @@ interface Props {
 const { class: _class } = Astro.props as Props;
 ---
 
-<h1 class:list={['py-2 text-4xl font-bold tracking-tight', _class]}>
+<h1 class:list={['py-2 text-4xl font-bold tracking-tight text-indigo-950', _class]}>
   <slot />
 </h1>

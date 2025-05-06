@@ -1,6 +1,7 @@
 ---
 import type { Props as BackgrounProps } from './Background.astro';
 import Background from './Background.astro';
+import Chip from './Chip.astro';
 
 interface Props {
   title: string;
@@ -28,6 +29,8 @@ const { title, subtitle, label, message, class: _class, backgroundImageUrl } = A
     backgroundImageUrl={backgroundImageUrl}
     class="scale-100 grayscale-30 transition-all duration-300 group-hover:scale-110 group-hover:brightness-125 group-hover:grayscale-0"
   />
+  <!-- label -->
+  {label && <Chip class="absolute top-2 right-2 z-10">{label}</Chip>}
 
   <!-- informations -->
   <div class="absolute bottom-0 left-0 w-full bg-black/70 px-4 pt-3 pb-2">
@@ -36,20 +39,6 @@ const { title, subtitle, label, message, class: _class, backgroundImageUrl } = A
 
     {/* subtitle */}
     {subtitle && <small class="mb-1 text-gray-400">{subtitle}</small>}
-
-    <!-- label -->
-    {
-      label && (
-        <span
-          class:list={[
-            'rounded-xl border border-gray-300',
-            'mx-1 px-2 py-1 text-xs font-medium text-gray-400',
-          ]}
-        >
-          {label}
-        </span>
-      )
-    }
 
     <!-- content -->
     <slot />

@@ -1,0 +1,35 @@
+---
+title: 'Venomous Portfolio'
+subtitle: 'A personal portfolio website'
+type: 'Personal'
+date: '2025-04'
+imageUrl: '/venomous-portfolio/logos/P.jpg'
+skills:
+  [
+    ['web-frontend--astro', 'web-frontend--typescript', 'web-frontend--tailwindcss'],
+    ['dev-tools--markdown', 'web-infrastructure--github-actions'],
+  ]
+---
+
+import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
+
+A personal portfolio website showcasing all my projects and technical capabilities.
+
+## Project Highlights
+
+- Built with **Astro** framework for modern static site generation
+- Utilized **Markdown/MDX** content collections for structured project management
+- Integrated **Tailwind CSS** design system
+- Established CI/CD pipeline with **GitHub Actions** for documentation deployment
+
+## Technologies Uesd
+
+<WorkContentLayoutSkills
+  size={50}
+  skills={frontmatter.skills.flat()}
+  class="flex w-full justify-start"
+/>
+
+## Related Links
+
+- [Github](https://github.com/BlaxBerry333/venomous-portfolio)

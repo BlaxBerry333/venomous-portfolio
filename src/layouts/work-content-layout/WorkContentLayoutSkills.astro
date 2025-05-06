@@ -7,18 +7,14 @@ interface Props {
 }
 
 const { skills, size = 40, class: _class, itemClass } = Astro.props as Props;
-
-function getSkillImgSRC(skillName: string) {
-  return `https://github.com/BlaxBerry333/programming-notes/blob/main/docs/public/static/skill-icons/${skillName}.png?raw=true`;
-}
 ---
 
 <section class:list={['flex items-center gap-2', _class]}>
   {
-    skills.map((skillName) => (
+    skills.map((skillIconName) => (
       <img
-        src={getSkillImgSRC(skillName)}
-        alt={skillName}
+        src={`/venomous-portfolio/skill-icons/${skillIconName}.png`}
+        alt={skillIconName}
         width={size}
         height={size}
         draggable="false"
