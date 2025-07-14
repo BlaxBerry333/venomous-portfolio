@@ -1,5 +1,5 @@
 ---
-import type { Props as BackgrounProps } from './Background.astro';
+import type { Props as BackgroundProps } from './Background.astro';
 import Background from './Background.astro';
 import Chip from './Chip.astro';
 
@@ -9,7 +9,7 @@ interface Props {
   label?: string;
   message?: string;
   class?: string;
-  backgroundImageUrl?: BackgrounProps['backgroundImageUrl'];
+  backgroundImageUrl?: BackgroundProps['backgroundImageUrl'];
 }
 
 const { title, subtitle, label, message, class: _class, backgroundImageUrl } = Astro.props as Props;
@@ -32,7 +32,7 @@ const { title, subtitle, label, message, class: _class, backgroundImageUrl } = A
   <!-- label -->
   {label && <Chip class="absolute top-2 right-2 z-10">{label}</Chip>}
 
-  <!-- informations -->
+  <!-- information -->
   <div class="absolute bottom-0 left-0 w-full bg-black/70 px-4 pt-3 pb-2">
     {/* title */}
     <span class="line-clamp-1 font-bold text-white">{title}</span>

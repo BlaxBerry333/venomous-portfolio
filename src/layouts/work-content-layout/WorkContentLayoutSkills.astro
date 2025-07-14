@@ -9,7 +9,7 @@ interface Props {
 const { skills, size = 40, class: _class, itemClass } = Astro.props as Props;
 ---
 
-<section class:list={['flex flex-wrap items-center gap-2', _class]}>
+<section class:list={['flex flex-wrap items-center gap-1', _class]}>
   {
     skills.map((skillIconName) => (
       <img
