@@ -1,21 +1,33 @@
 ---
 title: 'Venomous Notes'
-subtitle: 'A note-taking system'
+subtitle: 'note management system'
 type: 'Personal'
 date: '2023-07'
 imageUrl: '/venomous-portfolio/logos/N.jpg'
-skills:
-  [
-    ['web-frontend--nextjs', 'web-backend--trpc', 'database--prisma'],
+skills: [
+    ['web-frontend--nextjs', 'web-frontend--typescript'],
+    [
+      'web-backend--trpc',
+      'database--prisma',
+      'database--postgresql',
+      # 'web-infrastructure--neon',
+    ],
+    ['web-backend--minio'],
   ]
 ---
 
 import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
 
-## Technologies Uesd
+A personal note management system.
+
+## Technologies Used
 
 <WorkContentLayoutSkills
   size={50}
   skills={frontmatter.skills.flat()}
   class="flex w-full justify-start"
 />
+
+## Related Links
+
+- [Github](https://github.com/BlaxBerry333/venomous-notes)
