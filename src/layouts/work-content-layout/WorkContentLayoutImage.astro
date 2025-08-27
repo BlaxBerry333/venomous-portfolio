@@ -1,5 +1,5 @@
 ---
-import type { WorkCollectionType } from '@/content/_schema/works';
+import type { WorkCollectionType } from "@/content/_schema/works";
 
 interface Props {
   work: WorkCollectionType;
@@ -15,5 +15,5 @@ const { work, class: _class } = Astro.props as Props;
   draggable="false"
   loading="lazy"
   decoding="async"
-  class:list={['mx-auto mt-[20px] mb-[40px] block w-full overflow-hidden', 'rounded-xl', _class]}
+  class:list={["mx-auto mt-[20px] mb-[40px] block w-full overflow-hidden", "rounded-xl", _class]}
 />

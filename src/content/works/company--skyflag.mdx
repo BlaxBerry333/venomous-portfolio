@@ -1,6 +1,6 @@
 ---
 title: 'Skyflag'
-subtitle: 'AD monetization platform'
+subtitle: 'モバイルアプリやウェブサイト向けに広告収益化を提供するプラットフォーム。主に成果報酬型広告（オファーウォール）やインセンティブ広告などの仕組みを提供。私は開発チームの一員として広告表示・管理機能の開発を担当。'
 type: 'Company'
 date: '2022-03'
 imageUrl: '/venomous-portfolio/work-images/company--skyflag.jpg'
@@ -9,6 +9,7 @@ skills:
     [
       'web-frontend--react',
       'web-frontend--javascript',
+      'web-frontend--typescript',
       'web-frontend--emotion',
       'web-frontend--storybook',
       'web-frontend--docusaurus',
@@ -18,15 +19,21 @@ skills:
 
 import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
 
-Skyflag is an AD monetization platform that enables advertisers and publishers to efficiently monetize online content through user-friendly and flexible solutions.
+<p>{frontmatter.subtitle}</p>
 
-## Responsibilities and Highlights
+---
 
-- Redesigned and standardized the UI, improving both visual appeal and user experience. Utilized **Storybook** for building reusable components, ensuring consistency across the project and smoother collaboration between teams.
-- Led the selection of the frontend tech stack, documented technical processes, and created guidelines to improve team workflow. Organized tech-sharing sessions and mentored new team members, speeding up their onboarding process.
-- Collaborated with backend and product teams to gather user feedback, iterating on features based on real user data to better align the product with business objectives and user expectations.
+## 担当役割と成果
 
-## Technologies Used
+- フロントエンドリードとして技術スタックを選定し、**React + Typescript** を用いた SPA の再構築により、FCP や LCP を大幅に改善させ、ユーザーエンゲージメントを向上
+- **Storybook** を用いたデザインシステムを導入、コンポーネントを標準化。UI を再設計してデザインの一貫性を確保
+- **Docusaurus** による社内むけのドキュメントサイトを構築・移行し、新卒メンバーが開発に着手するまでの時間を平均の数日から半日に短縮
+- ユーザー行動データに基づき、A/B テストを主導して広告表示ロジックを改善。広告クリック率 ( CTR ) を 5% 向上させ、事業収益に直接貢献
+- 全社過去最速で「新人 Motto 賞」を受賞した
+
+---
+
+## 使用した技術 ( 一部抜粋 )
 
 <WorkContentLayoutSkills
   size={50}
@@ -34,6 +41,16 @@ Skyflag is an AD monetization platform that enables advertisers and publishers t
   class="flex w-full justify-start"
 />
 
-## Related Links
+---
+
+## 得られた知見
+
+- 技術選定、アーキテクチャ設計、ドキュメント化、チームの生産性向上まで、開発プロセス全体を俯瞰し、フロントエンドリーダーシップを発揮して改善を推進する能力を証明
+- デザインシステムの構築・運用ノウハウを獲得した
+- ユーザー中心のデータドリブンな開発プロセスを経験し、定量的なデータに基づいた機能改善の重要性を体感した
+
+---
+
+## 関連リンク
 
 - [Homepage](https://skyflag.info/)

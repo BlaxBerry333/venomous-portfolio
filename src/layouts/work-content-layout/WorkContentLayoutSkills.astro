@@ -1,4 +1,6 @@
 ---
+import clsx from "clsx";
+
 interface Props {
   skills: string[];
   size?: number;
@@ -9,7 +11,7 @@ interface Props {
 const { skills, size = 40, class: _class, itemClass } = Astro.props as Props;
 ---
 
-<section class:list={['flex flex-wrap items-center gap-1', _class]}>
+<section class={clsx("py-4 flex flex-wrap items-center gap-1", _class)}>
   {
     skills.map((skillIconName) => (
       <img
@@ -21,8 +23,8 @@ const { skills, size = 40, class: _class, itemClass } = Astro.props as Props;
         loading="lazy"
         decoding="async"
         class:list={[
-          'overflow-hidden rounded-2xl inset-shadow-sm',
-          'border border-gray-300 bg-gray-100 dark:bg-gray-800',
+          "overflow-hidden rounded-2xl inset-shadow-sm",
+          "border border-gray-300 bg-gray-100 dark:bg-gray-800",
           itemClass,
         ]}
       />

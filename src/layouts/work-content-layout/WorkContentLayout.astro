@@ -1,9 +1,9 @@
 ---
-import type { WorkCollectionType } from '@/content/_schema/works';
-import WorkContentLayoutImage from './WorkContentLayoutImage.astro';
-import Title from '@/components/Title.astro';
-import Prose from '@/components/Prose.astro';
-import Chip from '@/components/Chip.astro';
+import clsx from "clsx";
+
+import type { WorkCollectionType } from "@/content/_schema/works";
+import WorkContentLayoutImage from "./WorkContentLayoutImage.astro";
+import Chip from "@/components/Chip.astro";
 
 interface Props {
   id: string;
@@ -15,22 +15,36 @@ const { id, work } = Astro.props as Props;
 
 <section id={id} class="text-md pb-[60px] leading-8 tracking-wide antialiased">
   <!-- Title -->
-  <Title class="mb-0 text-start">{work.title}</Title>
+  <div class={clsx("text-4xl text-start font-bold tracking-tight text-purple-700", "py-4")}>
+    {work.title}
+  </div>
 
   <p class="text-start text-sm">
+    <!-- Type -->
+    {work.type && <Chip class="mx-2 py-0">{work.type}</Chip>}
     <!-- Date -->
     {work.date}
-    <!-- Type -->
-    {work.type && <Chip class="py-0">{work.type}</Chip>}
   </p>
 
   <!-- Image -->
   {work.imageUrl && <WorkContentLayoutImage work={work} class="sm:w-3/5 lg:w-2/5" />}
 
   <!-- Markdown Document Content -->
-  <Prose>
+  <div
+    class:list={[
+      "prose dark:prose-invert",
+      "prose-lg max-w-none",
+      "prose-h1:my-4 prose-h1:font-bold prose-h1:text-xl",
+      "prose-h2:my-4",
+      "prose-p:my-5 prose-p:text-start prose-p:text-justify prose-p:break-words prose-a:break-all",
+      "prose-ul:my-3 prose-ul:pl-4 prose-ul:text-start prose-ul:text-justify",
+      "prose-li:my-2 prose-li:pl-0 prose-li:text-start prose-li:text-justify",
+      "prose-img:my-0 prose-img:rounded-xl",
+      "prose-a:no-underline prose-a:text-purple-700",
+      "prose-strong:text-purple-700",
+      "prose-code:before:hidden prose-code:after:hidden prose-code:text-purple-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-500 prose-code:rounded prose-code:py-1 prose-code:px-2 prose-code:border prose-code:border-gray-300",
+    ]}
+  >
     <slot />
-  </Prose>
-  <br />
-  <br />
+  </div>
 </section>

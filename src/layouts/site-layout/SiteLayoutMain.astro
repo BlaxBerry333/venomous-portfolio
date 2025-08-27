@@ -1,7 +1,14 @@
 ---
+import clsx from "clsx";
 
+import { SITE_LAYOUT } from "@/styles/global";
 ---
 
-<main class:list={['h-screen w-full lg:w-[1000px]', 'mx-auto px-[20px] pt-[60px] lg:px-0']}>
+<main
+  class={clsx(
+    "h-screen w-full lg:w-[1000px]",
+    `mx-auto px-[8px] pt-[${SITE_LAYOUT.HEADER.HEIGHT}px] lg:pt-[60px] lg:px-0`,
+  )}
+>
   <slot />
 </main>

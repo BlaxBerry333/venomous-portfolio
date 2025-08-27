@@ -1,14 +1,12 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
-import '@/styles/global.css';
+import "@/styles/global.css";
 
-import CONFIGS from '@/configs.global';
-import SiteLayoutBackground from './SiteLayoutBackground.astro';
-import SiteLayoutHeader from './SiteLayoutHeader.astro';
-import SiteLayoutMain from './SiteLayoutMain.astro';
-
-const SITE_NAME = CONFIGS.SITE.NAME;
+import CONFIGS from "@/configs.global";
+import SiteLayoutBackground from "./SiteLayoutBackground.astro";
+import SiteLayoutHeader from "./SiteLayoutHeader.astro";
+import SiteLayoutMain from "./SiteLayoutMain.astro";
 ---
 
 <!doctype html>
@@ -18,11 +16,11 @@ const SITE_NAME = CONFIGS.SITE.NAME;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/venomous-portfolio/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{SITE_NAME}</title>
+    <title>{CONFIGS.SITE.NAME}</title>
     <ClientRouter />
   </head>
 
-  <body>
+  <body class="bg-gray-50 text-black dark:bg-gray-900 dark:text-white">
     <SiteLayoutHeader />
     <SiteLayoutBackground />
     <SiteLayoutMain>
@@ -44,3 +42,11 @@ const SITE_NAME = CONFIGS.SITE.NAME;
     min-width: 370px;
   }
 </style>
+
+<script>
+  document.documentElement.classList.toggle(
+    "dark",
+    localStorage.theme === "dark" ||
+      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+  );
+</script>

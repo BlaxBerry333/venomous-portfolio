@@ -1,15 +1,18 @@
 ---
-import CONFIGS from '@/configs.global';
-import logoImg from '@/assets/logo.svg';
+import clsx from "clsx";
+
+import CONFIGS from "@/configs.global";
+import logoImg from "@/assets/logo.svg";
+import { SITE_LAYOUT } from "@/styles/global";
 ---
 
 <header
-  class:list={[
-    'fixed top-0 right-0 left-0 z-50 h-[60px] w-full',
-    'mx-auto flex justify-center-safe backdrop-blur-xl md:px-0',
-  ]}
+  class={clsx(
+    `fixed top-0 right-0 left-0 z-50 h-[${SITE_LAYOUT.HEADER.HEIGHT}px] w-full`,
+    "mx-auto flex justify-center-safe backdrop-blur-xl md:px-0",
+  )}
 >
-  <h1 class="m-0 h-full w-full border-b-1 border-gray-300 px-[20px] md:w-[1000px]">
+  <h1 class="m-0 h-full w-full border-b-1 border-gray-300 px-[8px] md:w-[1000px]">
     <a href="/venomous-portfolio" class="flex h-full w-max items-center">
       <img
         src={logoImg.src}

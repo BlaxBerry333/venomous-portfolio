@@ -1,28 +1,41 @@
 ---
 title: 'Venomous Portfolio'
-subtitle: 'personal portfolio website'
+subtitle: 'Astro を用いて構築した個人ポートフォリオサイト。作品をコンテンツとして管理し、高速表示と柔軟な拡張性を両立。'
 type: 'Personal'
 date: '2025-04'
 imageUrl: '/venomous-portfolio/logos/P.jpg'
 skills:
   [
-    ['web-frontend--astro', 'web-frontend--tailwindcss'],
-    ['dev-tools--mdx', 'web-infrastructure--github-actions'],
+    [
+      'web-frontend--astro',
+      'web-frontend--typescript',
+      'dev-tools--mdx',
+      'web-frontend--tailwindcss',
+    ],
+    ['web-infrastructure--github-actions'],
   ]
 ---
 
 import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
 
-A personal portfolio website showcasing all my projects and technical capabilities.
+<p>{frontmatter.subtitle}</p>
 
-## Project Highlights
+---
 
-- Built with **Astro** framework for modern static site generation
-- Utilized **Markdown/MDX** content collections for structured project management
-- Integrated **Tailwind CSS** design system
-- Established CI/CD pipeline with **GitHub Actions** for documentation deployment
+## 課題と背景
 
-## Technologies Used
+個人の活動やプロジェクトを体系的に整理し、表現できるポートフォリオが必要でした。特に「高速表示」「保守性の高いコンテンツ管理」「将来的な拡張性」が重要な要件でした。
+
+ページ表示の高速と優れた開発体験の両立のため、主要なフレームワークを比較検討した結果、静的サイト生成に強みを持つ Astro を採用。静的コンテンツの高速表示に最適であると同時に、柔軟に React や Vue コンポーネントを取り入れられる点を評価しました。
+
+{/* この個人ポートフォリオで Astro を選択した理由は、静的な作品ページを対象とした場合、主な目的が高パフォーマンスでのコンテンツ表示とスムーズなインタラクションの実現にあるためです。極限の読み込み速度、優れた個人での開発体験、そしてコンテンツデータの保守性を重視し、プロジェクト初期には下記複数のフレームワークを比較検討した結果、最終的に Astro を採用しました: */}
+{/* - Next.js / Nuxt.js: SSR は静的コンテンツ主体のページに対して不要なクライアントサイドのランタイムが発生します。 */}
+{/* - Vite.js: SPA 初回読み込み速度が遅く、データ構造やルーティング管理の仕組みを別途実装する必要があります。 */}
+{/* - Gatsby.js: SSG はデータ処理に優れていますが、ビルド速度がボトルネックになる場合があります。 */}
+
+---
+
+## 使用した技術 ( 一部抜粋 )
 
 <WorkContentLayoutSkills
   size={50}
@@ -30,6 +43,28 @@ A personal portfolio website showcasing all my projects and technical capabiliti
   class="flex w-full justify-start"
 />
 
-## Related Links
+#### パフォーマンス最適化
+
+- **Astro Islands Architecture** により、静的部分はゼロ JavaScript の HTML を出力 ( 必要なコンポーネントのみ JavaScript を読み込む ) 作品ページの初期表示を高速化
+
+#### タイプセーフなデータ管理
+
+- 「コンテンツ即データ」( Content as Data ) の考え方に基づき、編集やバージョン管理が容易
+- **Astro Content Collections + Zod** により、Markdown/MDX 形式の作品データを構造化・型安全に管理
+
+#### 拡張性と非依存性
+
+- React、Vue、Svelte など異なるフレームワークのコンポーネントを混在利用可能ため、UI 実装に制約がなく、将来的にコンテンツ形式を拡張可能
+
+#### 開発プロセス
+
+- **GitHub Actions** を用いた CI/CD
+- **GitHub Pages** に自動デプロイ
+- **Husky + Prettier + ESLint** などを活用してコード規約と品質を維持
+
+---
+
+## 関連リンク
 
 - [Github](https://github.com/BlaxBerry333/venomous-portfolio)
+- [Demo](https://blaxberry333.github.io/venomous-portfolio/works/)

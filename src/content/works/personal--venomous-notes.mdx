@@ -1,26 +1,30 @@
 ---
 title: 'Venomous Notes'
-subtitle: 'note management system'
+subtitle: '個人ノート管理システム。アイデア・ストーリー・ドキュメントを統合し、知識を体系化する。'
 type: 'Personal'
 date: '2023-07'
 imageUrl: '/venomous-portfolio/logos/N.jpg'
-skills: [
+skills:
+  [
+    ['web-infrastructure--docker'],
     ['web-frontend--nextjs', 'web-frontend--typescript'],
-    [
-      'web-backend--trpc',
-      'database--prisma',
-      'database--postgresql',
-      # 'web-infrastructure--neon',
-    ],
-    ['web-backend--minio'],
+    ['web-backend--trpc', 'database--prisma'],
   ]
 ---
 
 import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
 
-A personal note management system.
+<p>{frontmatter.subtitle}</p>
 
-## Technologies Used
+---
+
+## 課題と背景
+
+業務で型安全なフルスタック開発 に触れる機会が増える中、個人としてもそれらの技術を体系的に理解し実践する必要性を感じました。その題材として、身近で拡張性のある ノート管理アプリケーション を選び、メモ・Markdown・ストーリーといった多形式データを扱うことで、API 設計・状態管理・DB スキーマ設計 など幅広い開発プロセスをトレーニングしました。
+
+---
+
+## 使用した技術 ( 一部抜粋 )
 
 <WorkContentLayoutSkills
   size={50}
@@ -28,6 +32,27 @@ A personal note management system.
   class="flex w-full justify-start"
 />
 
-## Related Links
+#### 型安全なフルスタック
+
+- **tRPC + TypeScript** を組み合わせ、クライアントとサーバー間でエンドツーエンドの型安全 API を構築。API スキーマの二重管理を不要にし、リファクタリングの安全性と開発速度を大幅に向上
+- **React Query** を用いてノートやタスクフローの状態管理を実現。キャッシュ・バックグラウンド更新・楽観的 UI 更新を組み合わせ、性能とユーザー体験を最適化
+- **Prisma** を用いてデータベーススキーマを定義し、マイグレーションから型生成までを自動化。DB 操作の安全性を確保し、メンテナンスコストを削減
+
+#### 開発プロセス
+
+- **Makefile** によるコマンドラッピングで、日常的な操作や CI/CD の作業を簡略化
+- **Docker + Docker Compose** により全サービスをコンテナ化し、開発・テスト・本番環境の一貫性を確保
+- **Husky + lint-staged + Prettier + ESLint + cspell** などを活用してコード規約と品質を維持
+
+---
+
+## 得られた知見
+
+- このプロジェクトを通じて、 型安全なフルスタック開発の実践を通じて、モダンなフルスタック一貫した設計・実装力を強化した、技術選定やアーキテクチャ構築を自分で行うことで、エンジニアリング全体を俯瞰する力を養成した
+- 技術的な観点から、複雑な要件を持つ新規プロダクトの迅速なプロトタイピングや、既存システムの段階的なモダナイゼーションに、柔軟かつ堅牢なソリューションを提案可能に
+
+---
+
+## 関連リンク
 
 - [Github](https://github.com/BlaxBerry333/venomous-notes)

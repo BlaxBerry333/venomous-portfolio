@@ -1,30 +1,53 @@
 ---
 title: 'Geniee CDP'
-subtitle: 'customer data platform'
+subtitle: '複数のチャネルから顧客データを統合・分析し、マーケティング施策に活用するためのプラットフォーム。私は開発チームに所属し、システム設計とデータ統合機能の開発に携わった。'
 type: 'Company'
 date: '2025-05'
 imageUrl: '/venomous-portfolio/work-images/company--geniee-cdp.jpg'
-skills: [['web-frontend--nextjs', 'web-frontend--typescript'], ['web-backend--trpc']]
+skills:
+  [
+    ['web-frontend--nextjs', 'web-frontend--typescript', 'web-backend--trpc'],
+    [
+      'web-infrastructure--aws-s3',
+      'web-infrastructure--azure-blob-storage',
+      'web-infrastructure--google-cloud-bigquery',
+      'web-infrastructure--google-cloud-cloud-storage',
+    ],
+  ]
 ---
 
 import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
 
-Geniee CDP ( Customer Data Platform ) is a centralized platform that integrates, analyzes, and manages customer data from various marketing channels, providing businesses with a comprehensive view of customer information.
+<p>{frontmatter.subtitle}</p>
 
-## Responsibilities and Highlights
+---
 
-- Spearheaded full-stack development with **Next.js** + **tRPC**, building robust CRUD functionalities and enabling type-safe, real-time communication between the front-end and back-end.
-- Developed features to manage service data via node-based workflows, and integrated scalable connections with third-party services ( **AWS**、**Azure**、**BigQuery** etc. )
-- Integrated **Looker Studio** to enhance data visualization within the project, providing clear, actionable insights through interactive dashboards and intuitive reporting, empowering users to make data-driven.
+## 担当役割と成果
 
-## Technologies Used
+- **Next.js (App Router)** による SSR アーキテクチャを設計・導入し、大規模データ基盤と連携する管理画面の高い拡張性とパフォーマンスを実現
+- Rust ベースのバックエンドチームと連携し、API 仕様を共同で定義。週次の同期会を設けて密に連携することで、仕様齟齬による手戻りを削減
+- **Zod + tRPC + Drizzle** を活用し、エンドツーエンドで型安全な開発プロセスを確立。開発効率を向上させつつ、プロダクションで不具合を大幅に削減
+- **AWS S3、Azure Blob Storage、BigQuery、Google Cloud Storage** など複数クラウドサービスを横断的に統合し、異種データソースを一元管理できる仕組みを構築
+
+---
+
+## 使用した技術 ( 一部抜粋 )
 
 <WorkContentLayoutSkills
   size={50}
   skills={frontmatter.skills.flat()}
   class="flex w-full justify-start"
 />
+---
 
-## Related Links
+## 得られた知見
+
+- 技術選定やアーキテクチャ設計をリードし、ビジネス要件と技術的実現可能性を両立させる意思決定プロセスを経験
+- マルチクラウド環境でのデータ統合アーキテクチャ設計能力を習得。これにより、複雑なデータ要件を持つプロダクトの価値を最大化する基盤構築に貢献
+- エンドツーエンドの型安全性が、開発速度と品質保証の両立にいかに貢献するかを実証。具体的な不具合削減率として成果を可視化
+
+---
+
+## 関連リンク
 
 - [Homepage](https://cx.geniee.co.jp/product/cdp/)

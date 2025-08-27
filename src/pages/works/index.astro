@@ -1,34 +1,56 @@
 ---
-import ImageCard from '@/components/ImageCard.astro';
-import { getAllWorks } from '@/content/_schema/works';
-import SiteLayout from '@/layouts/site-layout/SiteLayout.astro';
-import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
+import WorkImageCard from "@/components/WorkImageCard.astro";
+import CONFIGS from "@/configs.global";
+import { getAllWorks, WorkType } from "@/content/_schema/works";
+import SiteLayout from "@/layouts/site-layout/SiteLayout.astro";
 
 const works = await getAllWorks();
+const COMPANY_WORKS = works.filter((work) => work.data.type === WorkType.Company);
+const PERSONAL_WORKS = works.filter((work) => work.data.type === WorkType.Personal);
 ---
 
 <SiteLayout>
-  <div class="grid grid-cols-1 gap-4 py-4 md:grid-cols-2 lg:grid-cols-3">
-    {
-      works.map((work) => (
-        <a href={`/venomous-portfolio/works/${work.id}`} class="text-inherit no-underline">
-          <ImageCard
-            title={work.data.title}
-            subtitle={work.data.subtitle}
-            label={work.data.type}
-            class="backdrop-blur-[100px]"
-            backgroundImageUrl={work.data.imageUrl}
-          >
-            <WorkContentLayoutSkills
-              size={30}
-              class="justify-start py-1"
-              skills={work.data.skills
-                .map((skillGroup: string[]) => skillGroup?.[0])
-                .filter(Boolean)}
+  <section class="py-16 lg:py-0">
+    <h1 class="mb-4 text-4xl font-bold text-purple-700">
+      Company Works - {COMPANY_WORKS.length}
+    </h1>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
+      {
+        COMPANY_WORKS.map((work) => (
+          <a href={`${CONFIGS.SITE.BASE}/works/${work.id}`} class="text-inherit no-underline">
+            <WorkImageCard
+              title={work.data.title}
+              message={work.data.subtitle}
+              label={work.data.type}
+              class="backdrop-blur-[100px]"
+              backgroundImageUrl={work.data.imageUrl}
             />
-          </ImageCard>
-        </a>
-      ))
-    }
-  </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <hr class="border-gray-300 md:my-8" />
+
+  <section class="py-16 lg:py-0">
+    <h1 class="mb-4 text-4xl font-bold text-purple-700">
+      Personal Works - {PERSONAL_WORKS.length}
+    </h1>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-4 lg:grid-cols-3">
+      {
+        PERSONAL_WORKS.map((work) => (
+          <a href={`${CONFIGS.SITE.BASE}/works/${work.id}`} class="text-inherit no-underline">
+            <WorkImageCard
+              title={work.data.title}
+              message={work.data.subtitle}
+              label={work.data.type}
+              class="backdrop-blur-[100px]"
+              backgroundImageUrl={work.data.imageUrl}
+            />
+          </a>
+        ))
+      }
+    </div>
+  </section>
 </SiteLayout>

@@ -1,14 +1,18 @@
 export default {
-  plugins: ["prettier-plugin-astro", "prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
+  plugins: [
+    'prettier-plugin-astro',
+    'prettier-plugin-organize-imports',
+    'prettier-plugin-tailwindcss',
+  ],
   overrides: [
     {
-      files: "*.astro",
+      files: '*.astro',
       options: {
-        parser: "astro",
+        parser: 'astro',
       },
     },
   ],
 
   printWidth: 100,
-  singleQuote: true,
+  singleQuote: false,
 };
