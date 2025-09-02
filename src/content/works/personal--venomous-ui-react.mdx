@@ -1,17 +1,17 @@
 ---
-title: 'Venomous UI Library'
-subtitle: '個人専用の React UI コンポーネントライブラリ。迅速な開発を支え、フロントエンド基盤として柔軟に再利用可能。'
-type: 'Personal'
-date: '2025-04'
-imageUrl: '/venomous-portfolio/logos/U.jpg'
+title: "Venomous UI Library"
+subtitle: "個人用 React UI コンポーネントライブラリ。迅速な開発を支え、フロントエンド基盤として柔軟に再利用可能。"
+type: "Personal"
+date: "2025-04"
+imageUrl: "/venomous-portfolio/logos/U.jpg"
 skills:
   [
-    ['web-frontend--react', 'web-frontend--typescript', 'web-frontend--vite'],
-    ['web-frontend--storybook', 'web-infrastructure--github-actions'],
+    ["web-frontend--react", "web-frontend--typescript", "web-frontend--vite"],
+    ["web-frontend--storybook", "web-infrastructure--github-actions"],
   ]
 ---
 
-import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
+import WorkContentLayoutSkills from "@/layouts/work-content-layout/WorkContentLayoutSkills.astro";
 
 <p>{frontmatter.subtitle}</p>
 
@@ -19,11 +19,9 @@ import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLa
 
 ## 課題と背景
 
-以前の練習プロジェクトでは同じ機能や UI を繰り返し実装することが多く、時間の浪費や標準化不足が課題でした。
+以前の練習プロジェクトでは同じ機能や UI を繰り返し実装することが多く、時間の浪費や標準化不足が課題だった。また、Material UI、Ant Design など既存ライブラリは機能豊富だがカスタマイズ性に難があり、自分のニーズに最適化しづらい問題があった。
 
-また、Material UI や Ant Design など既存ライブラリは機能豊富ながらもカスタマイズ性に難があり、自分のニーズに最適化しづらいという問題がありました。
-
-そこで、ゼロから独自の UI ライブラリを構築することで「開発効率」と「柔軟性」を両立。さらにドキュメント化や CI/CD を含め、単なるコンポーネント実装を超えた「再利用可能なフロントエンド基盤」として整備しました。
+そこでゼロから独自のUIライブラリを構築し、「開発効率」と「柔軟性」を両立。ドキュメント化やCI/CDも含め、単なるコンポーネント実装を超えた「再利用可能なフロントエンド基盤」として整備した。
 
 ---
 
@@ -37,26 +35,26 @@ import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLa
 
 #### スタイル設計
 
-- 複数テーマ切替機能を実装し、カラースキームやタイポグラフィを Design Token として管理。これにより、デザインの一貫性と拡張性を確保
+- 複数テーマ切替機能を実装し、カラースキームやタイポグラフィを Design Token として管理。デザインの一貫性と拡張性を確保
 - inline-style と className ( Tailwind CSS スタイル ) の両方に対応し、利用者が最適な方法でスタイルを上書きできる高いカスタマイズ性を実現
 - **Framer Motion** を導入し、宣言的なアニメーションを実装。ユーザー体験を向上させるインタラクティブなコンポーネントを提供
 
 #### モジュール最適化
 
-- Vite ESM サポートを活用し、マルチエントリビルド ( multi-entry / multi-output ) を採用。これにより、利用者は必要なモジュールだけをインポートでき ( オンデマンド読込 )、Tree Shaking によって最終的なバンドルサイズを最小化
+- Vite の ESM サポートを活用し、マルチエントリビルド ( multi-entry / multi-output ) を採用。これにより利用者はオンデマンド読込でき ( 必要なモジュールだけをインポート )、Tree Shaking で最終的なバンドルサイズを最小化
 
 #### 開発プロセス
 
-- **GitHub Actions** を用いた CI/CD
-- **GitHub Pages** に **Storybook** インタラクティブページとドキュメントを自動デプロイ
-- **Husky + lint-staged + Prettier + ESLint + cspell** などを活用してコード規約と品質を維持
+- **GitHub Actions** によるCI/CD
+- **GitHub Pages** に **Storybook** のインタラクティブページとドキュメントを自動デプロイ
+- **Husky + lint-staged + Prettier + ESLint + cspell** などでコード規約と品質を維持
 
 ---
 
 ## 得られた知見
 
-- コンポーネント実装に留まらず、Design Token 設計、ドキュメント化、CI/CD パイプラインまで含めたフロントエンド基盤のデザインシステム全体をゼロから構築する能力を証明
-- 大規模な開発チームにおいてデザインと実装の一貫性を保ち、開発効率を最大化するためのフロントエンド基盤構築に直接活かすことができます。再利用性と拡張性を考慮したアーキテクチャ設計能力を示した
+- コンポーネント実装に留まらず、Design Token 設計、ドキュメント化、CI/CD パイプラインまで含めたフロントエンド基盤のデザインシステム全体をゼロから構築する能力を示した
+- 大規模開発チームにおいてデザインと実装の一貫性を保ち、開発効率を最大化するためのフロントエンド基盤構築に直接活かせる。再利用性と拡張性を考慮したアーキテクチャ設計能力を示した
 
 ---
 

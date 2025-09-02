@@ -1,18 +1,18 @@
 ---
-title: 'Venomous Workflow'
-subtitle: 'ノードベースの可視化ワークフロー。画面上でノードをドラッグ＆ドロップして配置し、データの流れや処理順序を直感的に操作可能。'
-type: 'Personal'
-date: '2023-07'
-imageUrl: '/venomous-portfolio/logos/W.jpg'
+title: "Venomous Workflow"
+subtitle: "個人用ノードベースの可視化ワークフロー。ドラッグ＆ドロップでデータの流れや処理順を直感的に操作できる。"
+type: "Personal"
+date: "2023-07"
+imageUrl: "/venomous-portfolio/logos/W.jpg"
 skills:
   [
-    ['web-infrastructure--docker'],
-    ['web-frontend--react', 'web-frontend--typescript', 'web-frontend--vite'],
-    ['web-backend--django', 'web-backend--django-rest-framework', 'database--postgresql'],
+    ["web-infrastructure--docker"],
+    ["web-frontend--react", "web-frontend--typescript", "web-frontend--vite"],
+    ["web-backend--django", "web-backend--django-rest-framework", "database--postgresql"],
   ]
 ---
 
-import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLayoutSkills.astro';
+import WorkContentLayoutSkills from "@/layouts/work-content-layout/WorkContentLayoutSkills.astro";
 
 <p>{frontmatter.subtitle}</p>
 
@@ -20,7 +20,7 @@ import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLa
 
 ## 課題と背景
 
-業務において複雑なビジネスプロセスやローコードオーケストレーションプラットフォームを扱う中で、内部の仕組みを理解する必要性を強く感じました。そのため個人プロジェクトとして、ワークフローをノードベースでモデリングし、DRF を用いたサーバーサイドアーキテクチャを設計することで、実践的な理解と応用力の獲得を目指しました。
+業務で複雑なビジネスプロセスやローコードオーケストレーションプラットフォームを扱う中で、内部の仕組みを理解する必要性を強く感じた。そこで個人プロジェクトとして、ワークフローをノードベースでモデリングし、DRF を用いたサーバーサイドアーキテクチャを設計することで、実践的な理解と応用力の獲得を目指した。
 
 ---
 
@@ -35,28 +35,30 @@ import WorkContentLayoutSkills from '@/layouts/work-content-layout/WorkContentLa
 #### フロントエンド
 
 - **React Flow** を使用し、ノードのドラッグ＆ドロップ、接続、設定フォームを含む、完全にインタラクティブなエディタを構築。複雑なデータフローを直感的に操作できる UI を実現
-- **Vite** の `import.meta.glob` 機能を用い、ファイルシステムベースのルーティングを実装 ( Next.js 風ディレクトリ )。手動でのルート設定を不要にし、コード分割も自動で行うことで、高い開発効率と拡張性を確保
+- **Vite** の Glob インポート機能を用い、ファイルシステムベースのルーティングを実装 ( Next.js 風ディレクトリ、手動でのルート設定を不要にし、コード分割も自動で行う )
 - **React Query** を使用してタスクフローの状態管理を行い、キャッシュ・バックグラウンド更新・楽観的更新を活用し、性能とユーザー体験を最適化
-- **Axios** インターセプターインターセプターでトークンリフレッシュ処理を実装。ユーザーセッションが途切れることのない、シームレスな認証状態の維持を実現 ( 401 レスポンスを検知し、自動で RefreshToken を使用して新しい AccessToken を取得しリクエストを再試行する )
+- **Axios** インターセプターでトークンリフレッシュ処理を実装 ( ユーザーセッションが途切れない、シームレスな認証状態を実現 )
 
 #### バックエンド
 
-- **Django** の MVT モデルに従い、業務を独立した App に分割し、明確な境界を確立。フロントエンドから渡される柔軟なワークフローデータを JSONField で保存
-- **DRF** により統一された RESTful API を提供し、ダブルトークン ( AccessToken / RefreshToken ) によってリクエストの即時性と安全性を保証
-- 今後の計画: サーバー側ワークフローノードの検証機構を導入し、データベース登録データの堅牢性を確保。Celery などの非同期タスクキューを統合して処理時間の長いワークフロータスクを実行し、複雑な条件ロジックやタスクスケジューリング機能を実装することで、システムの自動化能力を向上させる
+- **Django** の MVT モデルに従い、業務を独立した App に分割し、明確な責務境界を確立
+  {/* - フロントエンドから渡される柔軟なワークフローデータを JSONField で保存 */}
+- **DRF** により統一された RESTful API を提供し、ダブルトークン ( AccessToken / RefreshToken ) により、リクエストの即時性と安全性を保証
+- 今後の計画: サーバー側ワークフローノードの検証機構を導入し、データベース登録データの堅牢性を確保。Celery などの非同期タスクキューを統合して処理時間の長いワークフロータスクを実行し、複雑な条件ロジックやタスクスケジューリング機能を追加し、システムの自動化能力を強化する
 
 #### 開発プロセス
 
 - **Makefile** によるコマンドラッピングで、日常的な操作や CI/CD の作業を簡略化
-- **Docker + Docker Compose** により全サービスをコンテナ化し、開発・テスト・本番環境の一貫性を確保
-- **Prettier + ESLint + black** などを活用してコード規約と品質を維持
+- **Docker + Docker Compose** で全サービスをコンテナ化し、開発・テスト・本番環境の一貫性を確保
+- **Prettier + ESLint + black** などでコード規約と品質を維持
 
 ---
 
 ## 得られた知見
 
-- ワークフローエンジンという複雑なシステムを、フロントエンドからバックエンドまで一貫して設計・実装する能力を証明。抽象的なビジネス要件を具体的な技術的ソリューションに落とし込むスキルを示した
-- 社内の定型業務を自動化するプラットフォームや、ビジネスサイドが直接操作できるローコードツールの開発に貢献できる能力を証明
+- ワークフローエンジンという複雑なシステムを、フロントエンドからバックエンドまで一貫して設計・実装する能力を証明した
+- 抽象的なビジネス要件を具体的な技術ソリューションに落とし込むスキルを示した
+- ビジネスサイドが直接操作できるローコードツールの開発にも貢献できるスキルを示した
 
 ---
 
