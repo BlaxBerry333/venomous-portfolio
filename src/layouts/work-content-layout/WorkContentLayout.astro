@@ -1,6 +1,4 @@
 ---
-import clsx from "clsx";
-
 import type { WorkCollectionType } from "@/content/_schema/works";
 import WorkContentLayoutImage from "./WorkContentLayoutImage.astro";
 import Chip from "@/components/Chip.astro";
@@ -15,9 +13,9 @@ const { id, work } = Astro.props as Props;
 
 <section id={id} class="text-md pb-[60px] leading-8 tracking-wide antialiased">
   <!-- Title -->
-  <div class={clsx("text-4xl text-start font-bold tracking-tight text-purple-700", "py-4")}>
+  <h1 class="mb-4 text-4xl font-bold text-purple-700">
     {work.title}
-  </div>
+  </h1>
 
   <p class="text-start text-sm">
     <!-- Type -->
