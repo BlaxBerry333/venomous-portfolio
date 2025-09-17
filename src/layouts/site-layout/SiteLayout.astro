@@ -53,10 +53,24 @@ const { headerClass, mainClass, footerClass } = Astro.props as Props;
   }
 </style>
 
-<script>
-  document.documentElement.classList.toggle(
-    "dark",
-    localStorage.theme === "dark" ||
-      (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
-  );
+<script is:inline>
+  // 主题初始化函数
+  function initTheme() {
+    document.documentElement.classList.toggle(
+      "dark",
+      localStorage.theme === "dark" ||
+        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+    );
+
+    // 更新主题图标
+    if (window.updateAllThemeIcons) {
+      window.updateAllThemeIcons();
+    }
+  }
+
+  // 初始化主题
+  initTheme();
+
+  // 监听页面导航事件
+  document.addEventListener("astro:page-load", initTheme);
 </script>

@@ -2,7 +2,8 @@
 import clsx from "clsx";
 
 import CONFIGS from "@/configs.global";
-import logoImg from "@/assets/logo.svg";
+import ThemeToggle from "@/components/ThemeToggle.astro";
+import { DESIGN_CLASSNAME } from "@/styles/design";
 
 interface Props {
   class?: string;
@@ -18,21 +19,31 @@ const { class: _class } = Astro.props as Props;
     _class,
   )}
 >
-  <h1
+  <div
     class={clsx(
       "m-0 h-full w-full md:w-[1000px] px-[8px]",
-      "border-b-1 border-gray-300 dark:border-gray-600",
+      "border-b-1 border-gray-200 dark:border-gray-800",
+      "flex items-center justify-between",
     )}
   >
-    <a href="/venomous-portfolio" class="flex h-full w-max items-center">
-      <img
-        src={logoImg.src}
-        alt={CONFIGS.SITE.NAME}
-        draggable="false"
-        decoding="async"
-        loading="lazy"
-        class="block h-[40px] backdrop-blur-[100px]"
-      />
-    </a>
-  </h1>
+    <!-- Logo -->
+    <h1 class="m-0">
+      <a href={CONFIGS.SITE.BASE} class="flex h-full w-max items-center">
+        <!-- <img
+          src={logoImg.src}
+          alt={CONFIGS.SITE.NAME}
+          draggable="false"
+          decoding="async"
+          loading="lazy"
+          class="block h-[40px] backdrop-blur-[100px]"
+        /> -->
+        <span class={clsx("text-2xl font-bold", DESIGN_CLASSNAME.COLOR_GRADIENT_TEXT)}
+          >{CONFIGS.SITE.NAME}</span
+        >
+      </a>
+    </h1>
+
+    <!-- Theme Toggle -->
+    <ThemeToggle />
+  </div>
 </header>
