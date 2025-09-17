@@ -14,12 +14,12 @@ const { class: _class } = Astro.props as Props;
   class={clsx(
     "flex items-center justify-center",
     "py-4 mt-8",
-    " text-gray-300 dark:text-gray-600",
+    "text-gray-700 dark:text-gray-300",
     _class,
   )}
 >
   <p class="text-sm">
     &copy; {new Date().getFullYear()}
-    {CONFIGS.SITE.NAME}
+    {CONFIGS.APP.AUTHOR} - All rights reserved
   </p>
 </footer>
