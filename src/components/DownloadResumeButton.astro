@@ -1,0 +1,44 @@
+---
+import clsx from "clsx";
+import { DESIGN_CLASSNAME } from "@/styles/design.ts";
+
+export interface Props {
+  text?: string;
+  class?: string;
+}
+
+const { text = "📄 履歴書をダウンロード", class: _class = "" } = Astro.props;
+---
+
+<button
+  id="downloadResumeBtn"
+  class={clsx(
+    "rounded-full px-4 py-2 text-sm font-medium shadow-lg",
+    "transform transition-all duration-200 hover:scale-105 hover:shadow-xl",
+    "print:hidden",
+    DESIGN_CLASSNAME.COLOR_GRADIENT_BACKGROUND,
+    _class,
+  )}
+>
+  {text}
+</button>
+
+<script>
+  // Download functionality
+  function initDownloadButton() {
+    const downloadBtn = document.getElementById("downloadResumeBtn");
+
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", () => {
+        // Trigger browser print dialog
+        window.print();
+      });
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", initDownloadButton);
+
+  // Re-initialize for navigation (Astro view transitions)
+  document.addEventListener("astro:page-load", initDownloadButton);
+</script>

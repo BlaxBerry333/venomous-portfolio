@@ -1,9 +1,91 @@
 ---
-return Astro.redirect("/venomous-portfolio/works/");
+import clsx from "clsx";
+
+import SiteLayout from "@/layouts/site-layout/SiteLayout.astro";
+import { DESIGN_CLASSNAME } from "@/styles/design.ts";
+import CONFIGS from "@/configs.global";
+
+const information = {
+  profile: {
+    name: "Chen",
+    avatarName: "陳",
+    description: "Webエンジニア & 革新技術愛好家",
+  },
+  links: [
+    {
+      text: "作品集を見る",
+      href: `${CONFIGS.SITE.BASE}/works`,
+      hrefTarget: "_self",
+    },
+    {
+      text: "履歴書を見る",
+      href: `${CONFIGS.SITE.BASE}/resume`,
+      hrefTarget: "_self",
+    },
+    {
+      text: "GitHub ( 練習用 )",
+      href: "https://github.com/BlaxBerry333",
+      hrefTarget: "_blank",
+    },
+  ],
+} as const;
 ---
 
-<html lang="en">
-  <head>
-    <meta http-equiv="refresh" content="0;url=/venomous-portfolio/works/" />
-  </head>
-</html>
+<SiteLayout
+  mainClass={clsx(
+    "flex flex-col items-center justify-center",
+    "min-h-screen w-full space-y-8 px-2 sm:px-0 pt-16 sm:pt-0",
+    "text-center",
+  )}
+  footerClass={clsx("mt-[-60px]")}
+>
+  <!-- Profile -->
+  <section class="mt-12 flex flex-col items-center justify-center">
+    <!-- Avatar -->
+    <div
+      class={clsx(
+        "h-32 w-32 sm:h-40 sm:w-40 rounded-full shadow-2xl",
+        "flex items-center justify-center mb-6",
+        DESIGN_CLASSNAME.COLOR_GRADIENT_BACKGROUND,
+        "text-6xl font-bold",
+      )}
+    >
+      {information.profile.avatarName}
+    </div>
+    <!-- Name -->
+    <h1
+      class={clsx(
+        "mb-0 sm:mb-2",
+        DESIGN_CLASSNAME.COLOR_GRADIENT_TEXT,
+        "text-center text-4xl font-bold sm:text-5xl lg:text-6xl",
+      )}
+    >
+      Hello, I'm {information.profile.name}
+    </h1>
+    <!-- Description -->
+    <p class="mx-auto text-xl text-gray-600 sm:text-2xl dark:text-gray-300">
+      {information.profile.description}
+    </p>
+  </section>
+
+  <!-- Links-->
+  <section class="my-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+    {
+      information.links.map(({ href, hrefTarget, text }) => (
+        <a
+          href={href}
+          target={hrefTarget}
+          class={clsx(
+            "rounded-full px-8 py-3 font-bold shadow-lg",
+            "transform transition-all duration-200 hover:scale-105 hover:shadow-xl",
+            hrefTarget === "_self"
+              ? DESIGN_CLASSNAME.COLOR_GRADIENT_BACKGROUND
+              : "text-purple-700 outline-2 outline-offset-[-2px] outline-purple-700 dark:text-purple-400 dark:outline-purple-400",
+          )}
+        >
+          {text}
+        </a>
+      ))
+    }
+  </section>
+</SiteLayout>

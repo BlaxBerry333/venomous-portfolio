@@ -1,4 +1,6 @@
 ---
+import { DESIGN_CLASSNAME } from "@/styles/design";
+
 interface Props {
   class?: string;
 }
@@ -8,9 +10,9 @@ const { class: _class } = Astro.props as Props;
 
 <span
   class:list={[
-    "rounded-xl border border-gray-300",
-    "px-2 py-1 text-xs font-bold tracking-wider text-white",
-    "bg-purple-700 backdrop-blur",
+    "inline-block rounded-xl border border-gray-300 backdrop-blur",
+    "px-2 py-1 text-center text-xs font-bold tracking-wider text-white",
+    DESIGN_CLASSNAME.COLOR_GRADIENT_BACKGROUND,
     _class,
   ]}
 >

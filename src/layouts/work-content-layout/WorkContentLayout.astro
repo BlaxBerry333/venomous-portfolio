@@ -2,6 +2,7 @@
 import type { WorkCollectionType } from "@/content/_schema/works";
 import WorkContentLayoutImage from "./WorkContentLayoutImage.astro";
 import Chip from "@/components/Chip.astro";
+import { DESIGN_CLASSNAME } from "@/styles/design";
 
 interface Props {
   id: string;
@@ -11,10 +12,12 @@ interface Props {
 const { id, work } = Astro.props as Props;
 ---
 
-<section id={id} class="text-md pt-16 pb-[60px] leading-8 tracking-wide antialiased lg:pt-0">
+<section id={id} class="mb-[60px] py-6 leading-8 tracking-wide antialiased">
   <!-- Title -->
-  <h1 class="mb-4 text-4xl font-bold text-purple-700">
-    {work.title}
+  <h1 class="mb-4 text-4xl font-bold text-shadow-xs dark:text-shadow-none">
+    <span class={DESIGN_CLASSNAME.COLOR_GRADIENT_TEXT}>
+      {work.title}
+    </span>
   </h1>
 
   <p class="text-start text-sm">
@@ -38,8 +41,8 @@ const { id, work } = Astro.props as Props;
       "prose-ul:my-3 prose-ul:pl-4 prose-ul:text-start prose-ul:text-justify",
       "prose-li:my-2 prose-li:pl-0 prose-li:text-start prose-li:text-justify",
       "prose-img:my-0 prose-img:rounded-xl",
-      "prose-a:no-underline prose-a:text-purple-700",
-      "prose-strong:text-purple-700",
+      "prose-a:no-underline prose-a:text-purple-700 prose-a:dark:text-purple-400",
+      "prose-strong:text-purple-700 prose-strong:dark:text-purple-400",
       "prose-code:before:hidden prose-code:after:hidden prose-code:text-purple-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-500 prose-code:rounded prose-code:py-1 prose-code:px-2 prose-code:border prose-code:border-gray-300",
     ]}
   >

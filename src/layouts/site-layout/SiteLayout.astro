@@ -7,6 +7,15 @@ import CONFIGS from "@/configs.global";
 import SiteLayoutBackground from "./SiteLayoutBackground.astro";
 import SiteLayoutHeader from "./SiteLayoutHeader.astro";
 import SiteLayoutMain from "./SiteLayoutMain.astro";
+import SiteLayoutFooter from "./SiteLayoutFooter.astro";
+
+interface Props {
+  headerClass?: string;
+  mainClass?: string;
+  footerClass?: string;
+}
+
+const { headerClass, mainClass, footerClass } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -21,11 +30,12 @@ import SiteLayoutMain from "./SiteLayoutMain.astro";
   </head>
 
   <body class="bg-gray-50 text-black dark:bg-gray-900 dark:text-white">
-    <SiteLayoutHeader />
     <SiteLayoutBackground />
-    <SiteLayoutMain>
+    <SiteLayoutHeader class={headerClass} />
+    <SiteLayoutMain class={mainClass}>
       <slot />
     </SiteLayoutMain>
+    <SiteLayoutFooter class={footerClass} />
   </body>
 </html>
 
