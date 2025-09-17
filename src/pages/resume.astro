@@ -20,6 +20,11 @@ const information = {
     "デザインシステム構築・CI/CD 設計・型安全な開発プロセス構築等を通じて開発チーム全体の生産性向上を実現し、複数のプロジェクトで表彰実績を獲得",
     "個人プロジェクトでもUIライブラリ・ワークフローシステム等の基盤開発を主導し、常に最新技術をキャッチアップして実践活用している",
   ],
+  skills: {
+    フロントエンド: ["React", "Vue", "TypeScript", "Dart", "Tailwind CSS"],
+    バックエンド: ["Python", "Go", "Node.js"],
+    "クラウド・インフラ": ["Docker", "AWS S3", "BigQuery", "Google Cloud Storage"],
+  },
   workExperience: [
     {
       id: "company--geniee-cdp",
@@ -29,7 +34,7 @@ const information = {
       project: "データ統合プラットフォーム",
       achievements: [
         "管理画面を構築し、高パフォーマンスを実現して管理者の操作効率を向上させた",
-        "AWS S3、BigQuery、Google Cloud Storage、Azure Blob Storageなど複数クラウドサービスの統合に参画し、異種データソースの一元管理およびデータ取得フローの最適化を実現した",
+        "複数クラウドサービスの統合に参画し、異種データソースの一元管理およびデータ取得フローの最適化を実現した",
       ],
       technologies: [
         "Next.js",
@@ -95,11 +100,6 @@ const information = {
       ],
     },
   ],
-  skills: {
-    フロントエンド: ["React", "Vue", "TypeScript", "Tailwind CSS"],
-    バックエンド: ["Python", "Go", "Node.js"],
-    "クラウド・インフラ": ["Docker", "AWS S3", "BigQuery", "Google Cloud Storage"],
-  },
 } as const;
 ---
 
@@ -145,16 +145,20 @@ const information = {
       {
         information.summary.map((item) => (
           <div class="flex items-center space-x-3">
-            <div
-              class={clsx(
-                "h-2 w-2 flex-shrink-0 rounded-full",
-                DESIGN_CLASSNAME.COLOR_GRADIENT_BACKGROUND,
-              )}
-            />
+            <span class="hidden text-2xl text-purple-500 sm:block">▸</span>
             <p class="text-gray-700 sm:text-lg dark:text-gray-300">{item}</p>
           </div>
         ))
       }
+      <div class="flex items-center space-x-3">
+        <span class="hidden text-2xl text-purple-500 sm:block">▸</span>
+        <a
+          href={`${CONFIGS.SITE.BASE}/works`}
+          class="text-lg font-bold text-purple-700 hover:underline dark:text-purple-400"
+        >
+          作品集を見る...
+        </a>
+      </div>
     </div>
   </section>
 
@@ -165,7 +169,7 @@ const information = {
       {
         information.workExperience.map((job) => (
           <div class="rounded-xl bg-white px-4 py-6 shadow-lg sm:px-8 sm:py-10 dark:bg-gray-800">
-            <div class="mb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+            <div class="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white">{job.project}</h3>
                 <span class="font-bold text-purple-700 dark:text-purple-400">
@@ -174,24 +178,22 @@ const information = {
               </div>
               <span class="text-sm text-gray-500 dark:text-gray-400">{job.period}</span>
             </div>
-            <div class="mb-4">
+            <div class="mb-6">
               <h4 class="mb-2 font-semibold text-gray-900 dark:text-white">主な成果・担当業務：</h4>
               <ul class="space-y-2">
                 {job.achievements.map((achievement) => (
-                  <li class="flex items-center space-x-2">
-                    <span class="text-lg text-purple-500">▸</span>
+                  <li>
                     <span class="text-gray-700 dark:text-gray-300">{achievement}</span>
                   </li>
                 ))}
-                <li class="flex items-center space-x-2">
-                  <span class="text-lg text-purple-500">▸</span>
-                  <a href={`${CONFIGS.SITE.BASE}/works/${job.id}.mdx`} class="text-purple-500">
-                    🔗 詳細を見る
-                  </a>
-                </li>
+                <a
+                  href={`${CONFIGS.SITE.BASE}/works/${job.id}.mdx`}
+                  class="font-bold text-purple-700 hover:underline dark:text-purple-400"
+                >
+                  詳細を見る...
+                </a>
               </ul>
             </div>
-
             <div class="flex flex-wrap gap-2">
               {job.technologies.map((tech) => (
                 <span
