@@ -36,8 +36,8 @@ export async function getAllWorks(): Promise<WorkCollectionEntryType[]> {
       return a.data.type === "Company" ? -1 : 1;
     }
     // type 相同，按 date 降序
-    const aDate = new Date(a.data.date);
-    const bDate = new Date(b.data.date);
+    const aDate = new Date(a.data.date.split(" - ")[0]);
+    const bDate = new Date(b.data.date.split(" - ")[0]);
     return bDate.getTime() - aDate.getTime();
   });
 }
