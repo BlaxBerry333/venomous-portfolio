@@ -10,12 +10,13 @@ import SiteLayoutMain from "./SiteLayoutMain.astro";
 import SiteLayoutFooter from "./SiteLayoutFooter.astro";
 
 interface Props {
+  pageName?: string;
   headerClass?: string;
   mainClass?: string;
   footerClass?: string;
 }
 
-const { headerClass, mainClass, footerClass } = Astro.props as Props;
+const { pageName, headerClass, mainClass, footerClass } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -25,7 +26,7 @@ const { headerClass, mainClass, footerClass } = Astro.props as Props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/venomous-portfolio/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{CONFIGS.SITE.NAME}</title>
+    <title>{CONFIGS.SITE.NAME} {pageName ? `| ${pageName}` : ""}</title>
     <ClientRouter />
   </head>
 
