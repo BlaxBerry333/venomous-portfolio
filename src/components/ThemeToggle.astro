@@ -55,10 +55,10 @@ const { class: _class = "" } = Astro.props;
 
     if (isDark) {
       document.documentElement.classList.remove("dark");
-      localStorage.theme = "light";
+      sessionStorage.theme = "light";
     } else {
       document.documentElement.classList.add("dark");
-      localStorage.theme = "dark";
+      sessionStorage.theme = "dark";
     }
 
     // 更新所有主题切换按钮的图标

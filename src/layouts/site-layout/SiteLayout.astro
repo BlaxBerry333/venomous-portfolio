@@ -59,8 +59,8 @@ const { pageName, headerClass, mainClass, footerClass } = Astro.props as Props;
   function initTheme() {
     document.documentElement.classList.toggle(
       "dark",
-      localStorage.theme === "dark" ||
-        (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
+      sessionStorage.theme === "dark" ||
+        (!("theme" in sessionStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches),
     );
 
     // 更新主题图标
