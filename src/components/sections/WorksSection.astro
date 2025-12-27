@@ -1,0 +1,70 @@
+---
+import { type Locale, getLocalizedUrl, t } from "@/utils/i18n";
+import { getFeaturedWorks } from "@/utils/data";
+import WorkCard from "@/components/ui/WorkCard.astro";
+import Button from "@/components/ui/Button.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import TerminalWindow from "@/components/ui/TerminalWindow.astro";
+import TerminalBootSequence from "@/components/ui/TerminalBootSequence.astro";
+
+export interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+
+const featuredWorks = getFeaturedWorks(locale);
+---
+
+<section class="relative py-20 md:py-32">
+  <div class="mx-auto mb-8 max-w-[1000px] px-4">
+    <SectionTitle
+      title={t("featuredWorks.title", locale)}
+      subtitle={t("featuredWorks.subtitle", locale)}
+      align="center"
+      size="lg"
+    />
+  </div>
+
+  <TerminalWindow glow={false} class="hide-terminal-header mx-auto max-w-[1000px]">
+    <!-- 终端启动序列 -->
+    <TerminalBootSequence
+      id="works-boot"
+      command="cat ~/works/featured.json"
+      steps={[
+        { message: "Loading featured projects..." },
+        { message: "Status: ", statusText: "Rendering" },
+      ]}
+    />
+
+    <!-- 作品网格 -->
+    <div class="mt-6 grid grid-cols-1 gap-6 py-6 md:grid-cols-[repeat(auto-fit,minmax(320px,1fr))]">
+      {
+        featuredWorks.map((work) => (
+          <WorkCard
+            id={work.id}
+            title={work.title}
+            subtitle={work.subtitle}
+            image={`${import.meta.env.BASE_URL}${work.image}`}
+            type={work.type}
+            locale={locale}
+          />
+        ))
+      }
+    </div>
+
+    <!-- 底部 CTA -->
+    <div class="pt-6 text-center">
+      <Button href={getLocalizedUrl("/works", locale)} variant="secondary" size="md">
+        {t("hero.cta.works", locale)}
+        <span aria-hidden="true">→</span>
+      </Button>
+    </div>
+  </TerminalWindow>
+</section>
+
+<style>
+  .hide-terminal-header :global(.terminal-window-header) {
+    display: none;
+  }
+</style>

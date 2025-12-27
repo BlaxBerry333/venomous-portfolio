@@ -3,6 +3,10 @@ import unusedImports from 'eslint-plugin-unused-imports';
 import tsParser from '@typescript-eslint/parser';
 
 export default [
+  // Ignore files with known parser issues
+  {
+    ignores: ['src/components/layouts/site-layout/SiteLayout.astro'],
+  },
   ...eslintPluginAstro.configs.recommended,
   {
     files: ['**/*.astro'],

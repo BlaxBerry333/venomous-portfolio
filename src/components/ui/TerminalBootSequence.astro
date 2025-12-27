@@ -1,0 +1,131 @@
+---
+import clsx from "clsx";
+import TerminalText from "./TerminalText.astro";
+
+export interface BootStep {
+  /** 显示的消息文本 */
+  message: string;
+  /** 是否显示最终状态文本（如 "Ready"） */
+  statusText?: string;
+}
+
+export interface Props {
+  /** 初始命令（如 ./init_portfolio.sh） */
+  command: string;
+  /** 启动步骤配置 */
+  steps: BootStep[];
+  /** 组件唯一ID（用于多实例场景） */
+  id?: string;
+  /** 额外的 class */
+  class?: string;
+}
+
+const { command, steps, id = "terminal-boot", class: className = "" } = Astro.props;
+
+const containerStyles = clsx("text-left text-[13px] leading-[1.8] font-mono", className);
+
+// 计算动画延迟
+const baseDelay = 400;
+const stepInterval = 800;
+---
+
+<div class={containerStyles} id={id} data-boot-sequence>
+  <!-- 初始命令行 -->
+  <div class="mb-2">
+    <TerminalText type="prompt" />
+    <TerminalText type="command"> {command}</TerminalText>
+  </div>
+
+  <!-- 启动步骤 -->
+  {
+    steps.map((step, index) => {
+      const lineId = `${id}-line-${index + 1}`;
+      const showDelay = baseDelay + index * stepInterval;
+      const okDelay = showDelay + 600;
+
+      return (
+        <div
+          class="boot-step mb-2 pl-4 transition-opacity duration-300"
+          id={lineId}
+          style="opacity: 0;"
+          data-show-delay={showDelay}
+          data-ok-delay={okDelay}
+          data-has-status={step.statusText ? "true" : "false"}
+          data-status-text={step.statusText || ""}
+        >
+          <span class="boot-status text-muted transition-colors duration-200">[..]</span>
+          <span class="text-muted"> {step.message}</span>
+          {step.statusText && (
+            <span class="status-text text-muted transition-colors duration-200">
+              {step.statusText}
+            </span>
+          )}
+        </div>
+      );
+    })
+  }
+</div>
+
+<style>
+  /* 动画状态类 - JS 动态添加 */
+  .boot-status.ok {
+    color: var(--green);
+  }
+
+  .status-text.ready {
+    color: var(--green);
+  }
+</style>
+
+<script is:inline>
+  function initBootSequences() {
+    const containers = document.querySelectorAll("[data-boot-sequence]");
+
+    containers.forEach((container) => {
+      const steps = container.querySelectorAll(".boot-step");
+
+      steps.forEach((step) => {
+        const showDelay = parseInt(step.dataset.showDelay || "400");
+        const okDelay = parseInt(step.dataset.okDelay || "1000");
+        const hasStatus = step.dataset.hasStatus === "true";
+        const statusTextValue = step.dataset.statusText || "";
+
+        // 重置状态
+        step.style.opacity = "0";
+        const bootStatus = step.querySelector(".boot-status");
+        const statusText = step.querySelector(".status-text");
+        if (bootStatus) {
+          bootStatus.textContent = "[..]";
+          bootStatus.classList.remove("ok");
+        }
+        if (statusText) {
+          statusText.textContent = statusTextValue;
+          statusText.classList.remove("ready");
+        }
+
+        // 显示行
+        setTimeout(() => {
+          step.style.opacity = "1";
+        }, showDelay);
+
+        // 更新状态为 [OK]
+        setTimeout(() => {
+          if (bootStatus) {
+            bootStatus.textContent = "[OK]";
+            bootStatus.classList.add("ok");
+          }
+          if (hasStatus && statusText) {
+            statusText.textContent = "Ready";
+            statusText.classList.add("ready");
+          }
+        }, okDelay);
+      });
+    });
+  }
+
+  // 页面加载时运行
+  initBootSequences();
+
+  // Astro 页面切换时重新运行
+  document.addEventListener("astro:page-load", initBootSequences);
+</script>

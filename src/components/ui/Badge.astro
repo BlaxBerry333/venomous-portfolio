@@ -1,0 +1,59 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  variant?: "company" | "personal" | "default" | "cyan" | "pink" | "green";
+  size?: "sm" | "md";
+  class?: string;
+  pulse?: boolean;
+}
+
+const { variant = "default", size = "sm", class: className = "", pulse = false } = Astro.props;
+
+const baseStyles = clsx(
+  "inline-flex items-center justify-center",
+  "font-mono uppercase tracking-wider",
+  pulse && "gap-1.5",
+);
+
+const variantStyles = {
+  // Company - 霓虹青
+  company: clsx("bg-cyan-10 border border-cyan-30", "neon-cyan"),
+  // Personal - 霓虹粉
+  personal: clsx("bg-pink-10 border border-pink-30", "neon-pink"),
+  // Default - 暗色
+  default: clsx("bg-elevated border border-muted/20", "text-gray"),
+  // Cyan
+  cyan: clsx("bg-cyan-10 border border-cyan-30", "neon-cyan"),
+  // Pink
+  pink: clsx("bg-pink-10 border border-pink-30", "neon-pink"),
+  // Green
+  green: clsx("bg-green-10 border border-green-30", "neon-green"),
+};
+
+const sizeStyles = {
+  sm: "px-2 py-0.5 text-[10px]",
+  md: "px-3 py-1 text-xs",
+};
+
+const combinedStyles = clsx(baseStyles, variantStyles[variant], sizeStyles[size], className);
+
+// 脉冲颜色
+const pulseColor = {
+  company: "bg-cyan",
+  personal: "bg-pink",
+  cyan: "bg-cyan",
+  pink: "bg-pink",
+  green: "bg-green",
+  default: "bg-text-muted",
+}[variant];
+---
+
+<span class={combinedStyles}>
+  {
+    pulse && (
+      <span class={clsx("h-1.5 w-1.5 animate-pulse rounded-full", pulseColor)} aria-hidden="true" />
+    )
+  }
+  <slot />
+</span>

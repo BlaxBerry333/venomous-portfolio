@@ -1,0 +1,454 @@
+{
+  "geniee-cdp": {
+    "type": "company",
+    "date": {
+      "start": "2025-05",
+      "end": null
+    },
+    "image": "/work-images/company--geniee-cdp.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/cdp/"
+    },
+    "featured": true,
+    "title": "GENIEE CDP",
+    "subtitle": "AI 驱动的客户数据平台",
+    "description": "统一管理线上/线下客户数据，搭载 JAPAN AI 驱动的 AI 分析功能。与 GENIEE MA / ENGAGE / ANALYTICS 等营销云产品标准集成。",
+    "role": "全栈工程师",
+    "company": "Geniee 株式会社",
+    "department": "CDP 事业部",
+    "overview": "负责前端 + BFF（tRPC）的设计与实现。构建多云连接基础设施、LLM 集成功能和可视化工作流编辑器。",
+    "achievements": [
+      {
+        "title": "Next.js + tRPC 全栈架构构建",
+        "description": "设计并实现了整合前端和 BFF 的类型安全架构。实现了从 API 定义到前端一致的类型推断。",
+        "highlights": [
+          "Server Components + Streaming SSR 快速首屏加载",
+          "tRPC 端到端类型安全",
+          "Zod Schema 输入输出验证"
+        ]
+      },
+      {
+        "title": "Connection 管理系统（多云数据集成）",
+        "description": "设计并实现了 AWS S3 / GCS / Azure Blob Storage 连接的统一管理功能。",
+        "highlights": [
+          "服务专用 UI 模板 + tRPC router 分离",
+          "Workflow 节点松耦合引用设计",
+          "连接测试和凭证加密管理"
+        ]
+      },
+      {
+        "title": "BigQuery SQL 编辑器和数据预览",
+        "description": "构建了让非工程师也能查看和分析 BigQuery 数据的管理后台功能。",
+        "highlights": [
+          "Monaco Editor + Schema 联动自动补全",
+          "大规模数据分页支持",
+          "查询历史和保存功能"
+        ]
+      },
+      {
+        "title": "JAPAN AI 集成：元数据自动生成",
+        "description": "利用 LLM API 实现 BigQuery 表元数据（描述、列说明）的自动生成功能。",
+        "highlights": [
+          "批处理 + 指数退避重试",
+          "状态管理实现处理进度可视化",
+          "Few-shot prompt 提升输出质量"
+        ]
+      },
+      {
+        "title": "连续 2 期 OKR 评价 A+",
+        "description": "任职期间全期获得最高评价"
+      }
+    ],
+    "learnings": [
+      {
+        "title": "生产级 LLM 设计",
+        "description": "批处理、超时、重试的实现模式。通过 status 管理实现处理状态可视化和恢复设计。"
+      }
+    ]
+  },
+  "geniee-chat": {
+    "type": "company",
+    "date": {
+      "start": "2023-08",
+      "end": "2025-04"
+    },
+    "image": "/work-images/company--geniee-chat.jpg",
+    "links": {
+      "homepage": "https://cx.geniee.co.jp/product/chat/"
+    },
+    "featured": true,
+    "title": "GENIEE CHAT ( Chamo )",
+    "subtitle": "企业级聊天机器人 SaaS",
+    "description": "简化网站客户支持和营销活动的聊天工具 SaaS。统一管理实时支持和自动回复。已服务 4500+ 企业客户。",
+    "role": "全栈工程师 / 前端技术负责人",
+    "company": "Geniee 株式会社",
+    "department": "GENIEE CHAT 事业部",
+    "overview": "领导 5 人前端团队的架构设计和代码审查。新功能从数据库设计到 API 到前端端到端实现。",
+    "achievements": [
+      {
+        "title": "完全替换遗留前端",
+        "description": "使用 Vite + React Hooks (TypeScript) 完全重建运营 5 年以上的 Webpack + React Class Components。大幅提升开发体验和生产性能。",
+        "highlights": [
+          "Dev Server 启动 45s → 3s（提升 93%）",
+          "HMR 5-8s → 500ms（提升 90%）",
+          "生产构建 4min → 50s（提升 79%）",
+          "包体积 2.8MB → 1.1MB（减少 61%）",
+          "类型覆盖率 0% → 95%+"
+        ]
+      },
+      {
+        "title": "设计系统构建",
+        "description": "基于 MUI v5 设计并实现产品专用的 Design Token 体系。提升 UI 一致性和可维护性。",
+        "highlights": [
+          "3 层 Token 设计（Primitive / Semantic / Component）",
+          "Storybook 组件目录",
+          "主题切换和暗色模式支持"
+        ]
+      },
+      {
+        "title": "场景画布（无代码工作流编辑器）",
+        "description": "从零使用 React Flow 设计并实现可视化编辑器。从 DB 设计到 API 到前端全程负责。场景设置时间从 60-90 分钟缩短至 10-15 分钟。",
+        "highlights": [
+          "DFS 算法循环引用检测",
+          "JSON diff 版本管理和差异显示",
+          "变量作用域管理（本地/全局）",
+          "非工程师也能直观操作的 UI"
+        ]
+      },
+      {
+        "title": "静态资源管理系统",
+        "description": "构建了允许用户上传的静态资源（图片/视频/JS/CSS）在聊天机器人中使用的功能。从 DB 设计到 API 到前端全程负责。"
+      },
+      {
+        "title": "连续 4 期 OKR 评价 A+",
+        "description": "任职期间全期获得最高评价"
+      },
+      {
+        "title": "任职期间零重大事故",
+        "description": "通过质量管理和代码审查预防生产事故"
+      }
+    ],
+    "learnings": [
+      {
+        "title": "免费版/付费版功能设计",
+        "description": "从开发初期就设计 Feature Flag，按套餐实现访问控制。从一开始就内置控制能力，比事后添加限制成本更低。"
+      }
+    ]
+  },
+  "skyfall-skyflag": {
+    "type": "company",
+    "date": {
+      "start": "2023-03",
+      "end": "2023-07"
+    },
+    "image": "/work-images/company--skyfall-skyflag.jpg",
+    "links": {
+      "homepage": "https://skyflag.info/"
+    },
+    "featured": false,
+    "title": "SKYFLAG",
+    "subtitle": "激励广告平台",
+    "description": "为移动应用和网站提供效果广告（offer wall）和激励广告的平台。在 LINE、DMM、MIXI、NTT Docomo 等大公司有实施案例。",
+    "role": "前端技术负责人 / 代理 EM",
+    "company": "Skyfall 株式会社",
+    "department": "产品本部",
+    "overview": "领导前端开发，在 EM 缺席期间管理开发团队运营。负责新管理后台的技术选型和构建、开发流程整备。",
+    "achievements": [
+      {
+        "title": "新统一管理后台技术选型和设计",
+        "description": "为多产品管理构建新的 Admin Panel。实现快速发布。",
+        "highlights": [
+          "Refine（React admin framework）自动生成 CRUD",
+          "Ant Design 统一 UI/UX",
+          "权限管理和多租户设计"
+        ]
+      },
+      {
+        "title": "SKYFLAG 客户端技术更新",
+        "description": "执行 React / TypeScript 主要版本更新和依赖漏洞修复。",
+        "highlights": [
+          "破坏性变更处理和兼容性保障",
+          "回归测试质量保证",
+          "分阶段迁移策略"
+        ]
+      },
+      {
+        "title": "开发团队流程整备（代理 EM）",
+        "description": "EM 缺席期间代理开发团队运营。提升团队生产力和质量。",
+        "highlights": [
+          "编码规范文档化和标准化",
+          "Scrum 导入迭代管理",
+          "Docusaurus 技术文档整备",
+          "新毕业工程师入职引导"
+        ]
+      },
+      {
+        "title": "公司历史最快「新人 Motto 奖」获奖",
+        "description": "入职 3 个月内获得全公司表彰"
+      }
+    ],
+    "learnings": [
+      {
+        "title": "短期内出成果的优先级排序",
+        "description": "优先推进高影响力举措，通过文档化防止知识孤岛。即使任期短暂，留下「系统」也能创造持久价值。"
+      }
+    ]
+  },
+  "fni-sunrisepark": {
+    "type": "company",
+    "date": {
+      "start": "2021-11",
+      "end": "2023-02"
+    },
+    "image": "/work-images/company--fni-sunrisepark.jpg",
+    "links": {
+      "homepage": "https://saga-sunrisepark.com/"
+    },
+    "featured": false,
+    "title": "佐贺 Sunrise Park 预约系统",
+    "subtitle": "公共设施预约系统",
+    "description": "佐贺县大型体育文化综合设施「佐贺 Sunrise Park」的在线预约和管理系统。2023年5月盛大开业，是国民体育大会（SAGA2024）的主场馆。",
+    "role": "前端技术负责人",
+    "company": "株式会社 FAIR NEXT INNOVATION",
+    "department": "IT 解决方案事业部",
+    "overview": "负责 toC 预约网站、toB 管理后台和 Django 后端。同时担任外部团队（6人）的技术负责人、代码审查和入职引导。",
+    "achievements": [
+      {
+        "title": "多团队代码库整合和重构",
+        "description": "在多个外部团队轮换中维护代码质量和整合。",
+        "highlights": [
+          "编码规范文档化和标准化",
+          "全 PR 代码审查构建质量关卡",
+          "技术债务可视化和计划性解决"
+        ]
+      },
+      {
+        "title": "迁移到 Gatsby + GraphQL",
+        "description": "推动从基于 REST API 的架构迁移到 Gatsby + GraphQL。提升数据获取效率和开发体验。",
+        "highlights": [
+          "消除 Over-fetching 减少带宽消耗",
+          "Schema 优先的类型安全开发",
+          "GraphQL Playground 自文档化"
+        ]
+      },
+      {
+        "title": "外部团队（6 人）管理和入职引导",
+        "description": "作为多国籍外部团队的技术负责人，负责团队建设和技术指导。",
+        "highlights": [
+          "Docusaurus 技术文档整备",
+          "Scrum 运营和迭代管理",
+          "代码审查技术指导和知识共享"
+        ]
+      }
+    ],
+    "learnings": [
+      {
+        "title": "文档驱动",
+        "description": "假设人员会轮换，始终保持文档最新。"
+      },
+      {
+        "title": "务实的技术选型",
+        "description": "选择团队能理解的技术。以「类型安全能减少错误」为卖点推动 GraphQL 落地。"
+      },
+      {
+        "title": "审查作为质量关卡",
+        "description": "当团队成员技能水平参差不齐时，代码审查是唯一可靠的质量关卡。"
+      }
+    ]
+  },
+  "fni-ses": {
+    "type": "company",
+    "date": {
+      "start": "2019-10",
+      "end": "2021-09"
+    },
+    "image": "/work-images/company--fni-ses.webp",
+    "links": {},
+    "featured": false,
+    "title": "SES 驻场开发",
+    "subtitle": "业务系统前端开发",
+    "description": "以 SES 合同形式驻场客户现场，负责业务系统前端开发。",
+    "role": "前端工程师（SES）",
+    "company": "株式会社 FAIR NEXT INNOVATION",
+    "department": "IT 事业本部",
+    "overview": "使用 React + TypeScript 开发业务管理系统管理后台。负责主数据管理、报表输出、工作流申请等多个模块。",
+    "achievements": [
+      {
+        "title": "业务管理系统前端开发",
+        "description": "负责内部业务管理系统的多个模块。实现主数据管理、数据检索、报表输出功能。",
+        "highlights": [
+          "主数据管理画面（CRUD、批量导入/导出）",
+          "复合条件搜索、排序、分页",
+          "PDF/Excel 报表生成、打印预览"
+        ]
+      },
+      {
+        "title": "工作流申请功能",
+        "description": "实现申请・审批流程的前端。负责表单设计到状态管理。",
+        "highlights": [
+          "动态表单生成（根据申请类型切换字段）",
+          "审批状态显示、历史管理",
+          "文件上传、附件功能"
+        ]
+      }
+    ],
+    "learnings": [
+      {
+        "title": "日本开发现场",
+        "description": "来日后第一份工作。实践中掌握报连相、纳期管理、品质重视的开发流程。"
+      },
+      {
+        "title": "SES 驻场工作方式",
+        "description": "适应客户现场规则和开发流程，同时与自社保持联络。"
+      }
+    ]
+  },
+  "youzan-saas": {
+    "type": "company",
+    "date": {
+      "start": "2017-07",
+      "end": "2019-06"
+    },
+    "image": "/work-images/company--youzan-sass.png",
+    "links": {},
+    "featured": false,
+    "title": "有赞微商城",
+    "subtitle": "电商 SaaS 平台",
+    "description": "为商家提供微商城搭建、店铺装修、营销工具的电商 SaaS 平台。2018 年港股上市，服务超过 10 万付费商家。",
+    "role": "前端开发工程师",
+    "company": "杭州有赞科技有限公司",
+    "department": "零售业务前端组",
+    "overview": "作为团队成员参与商家后台店铺装修模块、营销活动配置工具的前端开发。同时参与内部业务组件库的维护与 Bug 修复。",
+    "achievements": [
+      {
+        "title": "店铺装修模块开发",
+        "description": "参与商家后台店铺装修功能的前端开发。该功能支持拖拽式页面编辑，配置后可在 H5 和小程序同步展示。",
+        "highlights": [
+          "实现部分装修组件的属性面板",
+          "参与拖拽排序功能的 Bug 修复",
+          "编写装修组件的单元测试"
+        ]
+      },
+      {
+        "title": "营销活动配置工具",
+        "description": "参与满减、秒杀、优惠券等营销活动配置界面的开发。协助实现活动规则的表单验证逻辑。",
+        "highlights": [
+          "实现优惠券配置页面的表单联动",
+          "参与活动时间冲突检测逻辑开发",
+          "修复库存校验的边界 Bug"
+        ]
+      },
+      {
+        "title": "内部业务组件库维护",
+        "description": "参与公司 Vue 内部业务组件库的维护。修复组件 Bug，完善组件文档，贡献业务通用组件。",
+        "highlights": [
+          "修复日期选择器、弹窗等组件的边界问题",
+          "补充组件单元测试",
+          "编写组件使用示例文档"
+        ]
+      }
+    ],
+    "learnings": [
+      {
+        "title": "SaaS 产品的可配置化设计",
+        "description": "SaaS 需要同时服务不同规模的商家，学会用配置驱动 UI，而非硬编码业务逻辑。"
+      },
+      {
+        "title": "企业级前端工程化",
+        "description": "第一次接触完整的前端工程体系：ESLint/Prettier 代码规范、Git Flow 分支管理、Code Review 流程、CI/CD 自动化部署。"
+      },
+      {
+        "title": "组件化思维",
+        "description": "从「写页面」到「抽组件」的思维转变。理解了 Props 设计、状态提升、组件通信的最佳实践。"
+      }
+    ]
+  },
+  "venomous-portfolio": {
+    "type": "personal",
+    "date": {
+      "start": "2025-08",
+      "end": null
+    },
+    "image": "/logos/P.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-portfolio",
+      "demo": "https://blaxberry333.github.io/venomous-portfolio/works/"
+    },
+    "featured": false,
+    "title": "Venomous Portfolio",
+    "subtitle": "个人作品集网站",
+    "description": "使用 Astro 构建的个人作品集网站。在考虑 Next.js、Nuxt.js、Gatsby.js 后选择了 Astro。",
+    "role": "个人项目",
+    "overview": "Islands Architecture + Content Collections 静态网站生成。i18n 支持（日语/英语/中文）。",
+    "achievements": [
+      {
+        "title": "Islands Architecture",
+        "description": "在静态 HTML 上仅加载最少 JavaScript，平衡显示速度和灵活性。",
+        "highlights": [
+          "Partial Hydration 最小 JS 加载",
+          "Lighthouse 性能分数 95+"
+        ]
+      },
+      {
+        "title": "Content Collections",
+        "description": "采用「内容即数据」方法，实现类型安全的内容管理。",
+        "highlights": [
+          "Zod Schema 数据验证",
+          "i18n 支持（日语/英语/中文）"
+        ]
+      },
+      {
+        "title": "CI/CD 自动化",
+        "description": "使用 GitHub Actions 构建自动化部署流水线。",
+        "highlights": [
+          "Pull Request 自动构建验证",
+          "自动部署到 GitHub Pages"
+        ]
+      }
+    ]
+  },
+  "venomous-ui": {
+    "type": "personal",
+    "date": {
+      "start": "2025-04",
+      "end": null
+    },
+    "image": "/logos/U.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-ui",
+      "demo": "https://blaxberry333.github.io/venomous-ui/"
+    },
+    "featured": false,
+    "title": "Venomous UI Library",
+    "subtitle": "React UI 组件库",
+    "description": "个人 React UI 组件库。实现了基于 Design Token 的主题系统。",
+    "role": "个人项目",
+    "overview": "Vite ESM 构建、Storybook 文档化、作为 npm 包发布。",
+    "achievements": [
+      {
+        "title": "多主题系统",
+        "description": "实现多主题切换，灵活定制。",
+        "highlights": [
+          "Design Token 管理颜色/排版",
+          "明暗模式支持"
+        ]
+      },
+      {
+        "title": "高度可定制性",
+        "description": "多种样式方式满足用户偏好。",
+        "highlights": [
+          "inline-style 行内指定",
+          "className (Tailwind CSS) 类名指定"
+        ]
+      },
+      {
+        "title": "优化的构建",
+        "description": "利用 Vite ESM 支持实现高效打包输出。",
+        "highlights": [
+          "多入口构建支持",
+          "Tree Shaking 移除未使用代码"
+        ]
+      }
+    ]
+  }
+}

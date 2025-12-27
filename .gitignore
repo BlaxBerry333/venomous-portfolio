@@ -24,3 +24,8 @@ pnpm-debug.log*
 
 # Cache
 .cache/
+
+# AI
+CLAUDE.md
+.claude/
+_*.md

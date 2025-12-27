@@ -1,0 +1,82 @@
+---
+import clsx from "clsx";
+
+export interface FilterItem {
+  key: string;
+  label: string;
+  count?: number;
+}
+
+export interface Props {
+  items: FilterItem[];
+  defaultActive?: string;
+  class?: string;
+  id?: string;
+}
+
+const {
+  items,
+  defaultActive = items[0]?.key,
+  class: className = "",
+  id = "filter-tabs",
+} = Astro.props;
+
+const buttonBaseStyles = clsx(
+  "btn-secondary cyber-block cyber-block-sm group",
+  "inline-flex items-center justify-center gap-2",
+  "px-4 py-2 text-xs",
+  "font-display font-bold uppercase tracking-widest",
+  "transition-all duration-300",
+  "cursor-pointer",
+  "bg-transparent text-cyan",
+  "hover:scale-105",
+  "active:scale-[0.98]",
+);
+---
+
+<div class:list={["flex flex-wrap justify-center gap-3", className]} id={id}>
+  {
+    items.map((item) => (
+      <button
+        type="button"
+        class:list={[buttonBaseStyles, item.key === defaultActive && "btn-as-primary"]}
+        data-filter={item.key}
+      >
+        <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
+        <span class="cyber-corner cyber-corner-br" aria-hidden="true" />
+        {item.label}
+        {item.count !== undefined && <span class="opacity-60">({item.count})</span>}
+      </button>
+    ))
+  }
+</div>
+
+<script is:inline>
+  function setupFilterTabs() {
+    const containers = document.querySelectorAll("[id$='filter-tabs']");
+
+    containers.forEach((container) => {
+      const tabs = container.querySelectorAll("button");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          // Update active tab
+          tabs.forEach((t) => t.classList.remove("btn-as-primary"));
+          tab.classList.add("btn-as-primary");
+
+          // Dispatch custom event with filter value
+          const filter = tab.getAttribute("data-filter");
+          container.dispatchEvent(
+            new CustomEvent("filter-change", {
+              detail: { filter },
+              bubbles: true,
+            }),
+          );
+        });
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", setupFilterTabs);
+  document.addEventListener("astro:page-load", setupFilterTabs);
+</script>

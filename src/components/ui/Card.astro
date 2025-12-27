@@ -1,0 +1,97 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  variant?: "default" | "cyber" | "elevated";
+  href?: string;
+  class?: string;
+  interactive?: boolean;
+  corners?: boolean;
+}
+
+const {
+  variant = "default",
+  href,
+  class: className = "",
+  interactive = false,
+  corners = true,
+} = Astro.props;
+
+const baseStyles = clsx("relative overflow-hidden", "transition-all duration-300");
+
+const variantStyles = {
+  default: clsx("bg-surface", "border border-muted/20", "hover-border-cyan"),
+  cyber: clsx("bg-surface", "border border-muted/20", "hover-border-cyan"),
+  elevated: clsx("bg-elevated", "border border-muted/20", "hover-border-cyan"),
+};
+
+const interactiveStyles = interactive
+  ? clsx("group cursor-pointer", "hover-glow-cyan", "active:scale-[0.99]")
+  : "group";
+
+const combinedStyles = clsx(baseStyles, variantStyles[variant], interactiveStyles, className);
+---
+
+{
+  href ? (
+    <a href={href} class={combinedStyles}>
+      {corners && (
+        <>
+          <div
+            class="corner-cyan absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 transition-colors"
+            aria-hidden="true"
+          />
+          <div
+            class="corner-pink absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 transition-colors"
+            aria-hidden="true"
+          />
+          <div
+            class="corner-pink absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 transition-colors"
+            aria-hidden="true"
+          />
+          <div
+            class="corner-cyan absolute right-0 bottom-0 h-4 w-4 border-r-2 border-b-2 transition-colors"
+            aria-hidden="true"
+          />
+        </>
+      )}
+      <div class="relative z-10">
+        <slot />
+      </div>
+      <div
+        class="card-hover-gradient absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden="true"
+      />
+    </a>
+  ) : (
+    <div class={combinedStyles}>
+      {corners && (
+        <>
+          <div
+            class="corner-cyan absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 transition-colors"
+            aria-hidden="true"
+          />
+          <div
+            class="corner-pink absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 transition-colors"
+            aria-hidden="true"
+          />
+          <div
+            class="corner-pink absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 transition-colors"
+            aria-hidden="true"
+          />
+          <div
+            class="corner-cyan absolute right-0 bottom-0 h-4 w-4 border-r-2 border-b-2 transition-colors"
+            aria-hidden="true"
+          />
+        </>
+      )}
+      <div class="relative z-10">
+        <slot />
+      </div>
+      <div
+        class="card-hover-gradient absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden="true"
+      />
+    </div>
+  )
+}

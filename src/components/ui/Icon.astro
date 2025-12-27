@@ -1,0 +1,33 @@
+---
+import clsx from "clsx";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+
+export interface Props {
+  name: string;
+  size?: number | string;
+  class?: string;
+}
+
+const { name, size = 16, class: className = "" } = Astro.props;
+
+const sizeValue = typeof size === "number" ? `${size}px` : size;
+
+// Read SVG file content at build time
+const iconPath = join(process.cwd(), "public", "icons", `${name}.svg`);
+let svgContent = "";
+try {
+  svgContent = readFileSync(iconPath, "utf-8");
+  // Remove width/height attributes and add our own sizing via style
+  svgContent = svgContent.replace(/width="[^"]*"/, "").replace(/height="[^"]*"/, "");
+} catch {
+  console.warn(`Icon not found: ${name}`);
+}
+---
+
+<span
+  class={clsx("inline-flex items-center justify-center flex-shrink-0", className)}
+  style={`width: ${sizeValue}; height: ${sizeValue};`}
+  aria-hidden="true"
+  set:html={svgContent}
+/>

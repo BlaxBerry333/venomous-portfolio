@@ -1,0 +1,83 @@
+---
+import SiteLayout from "@/components/layouts/site-layout/SiteLayout.astro";
+import SectionTitle from "@/components/ui/SectionTitle.astro";
+import WorkCard from "@/components/ui/WorkCard.astro";
+import FilterTabs from "@/components/ui/FilterTabs.astro";
+import { getLocaleStaticPaths, t, type Locale } from "@/utils/i18n";
+import { getAllWorks } from "@/utils/data";
+
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const allWorks = getAllWorks(lang);
+
+const companyWorks = allWorks.filter((w) => w.type === "company");
+const personalWorks = allWorks.filter((w) => w.type === "personal");
+
+const filterItems = [
+  { key: "all", label: t("worksPage.filter.all", lang), count: allWorks.length },
+  { key: "company", label: t("worksPage.filter.company", lang), count: companyWorks.length },
+  { key: "personal", label: t("worksPage.filter.personal", lang), count: personalWorks.length },
+];
+---
+
+<SiteLayout locale={lang} title={t("worksPage.pageTitle", lang)}>
+  <div class="px-4 pt-24 pb-16">
+    <div class="mx-auto max-w-6xl">
+      <!-- Header -->
+      <div class="mb-12 text-center">
+        <SectionTitle
+          title={t("worksPage.pageTitle", lang)}
+          subtitle={t("worksPage.pageSubtitle", lang)}
+          align="center"
+        />
+      </div>
+
+      <!-- Filter Tabs -->
+      <FilterTabs items={filterItems} class="mb-12" />
+
+      <!-- Works Grid -->
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="works-grid">
+        {
+          allWorks.map((work) => (
+            <div data-type={work.type} class="work-item">
+              <WorkCard
+                id={work.id}
+                title={work.title}
+                subtitle={work.subtitle}
+                image={`${import.meta.env.BASE_URL}${work.image}`}
+                type={work.type}
+                locale={lang}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</SiteLayout>
+
+<script is:inline>
+  function setupWorkFilters() {
+    const filterTabs = document.getElementById("filter-tabs");
+    const items = document.querySelectorAll(".work-item");
+
+    filterTabs?.addEventListener("filter-change", (e) => {
+      const filter = e.detail.filter;
+
+      items.forEach((item) => {
+        const type = item.getAttribute("data-type");
+        if (filter === "all" || type === filter) {
+          item.style.display = "";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", setupWorkFilters);
+  document.addEventListener("astro:page-load", setupWorkFilters);
+</script>

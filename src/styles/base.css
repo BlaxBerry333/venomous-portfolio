@@ -1,0 +1,102 @@
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100dvh;
+  min-width: 370px;
+}
+
+/* Font families */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Default body font */
+body {
+  font-family: var(--font-body);
+  background-color: var(--void);
+  color: var(--white);
+}
+
+/* Light mode */
+.light body {
+  background-color: var(--void);
+  color: var(--white);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection highlight */
+::selection {
+  background-color: rgba(0, 255, 255, 0.3);
+}
+
+.light ::selection {
+  background-color: rgba(8, 145, 178, 0.3);
+}
+
+/* Focus visible outline */
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SCROLLBAR STYLING
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 255, 255, 0.3);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.5);
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: rgba(8, 145, 178, 0.3);
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: rgba(8, 145, 178, 0.5);
+}
+
+/* ============================================
+   JAPANESE FONT WEIGHT ADJUSTMENTS
+   ============================================ */
+:lang(ja) h1 {
+  font-weight: 700;
+}
+
+:lang(ja) h2,
+:lang(ja) h3 {
+  font-weight: 500;
+}

@@ -1,0 +1,62 @@
+/* ============================================
+   CSS Variables - 唯一的颜色定义源
+   ============================================ */
+
+:root {
+  /* === 霓虹色 - 品牌主色 === */
+  --cyan: #00ffff;
+  --pink: #ff00ff;
+
+  /* === 霓虹色 - 语义色 === */
+  --green: #39ff14;
+  --yellow: #ffff00;
+
+  /* === 背景层次 === */
+  --void: #0a0a0b;
+  --dark: #0d0d0f;
+  --surface: #121218;
+  --elevated: #1a1a22;
+
+  /* === 文字 === */
+  --white: #f0f0f0;
+  --gray: #888899;
+  --muted: #6b7280;
+
+  /* === 品牌渐变 === */
+  --gradient-cyber: linear-gradient(135deg, var(--cyan) 0%, var(--pink) 100%);
+
+  /* === 字体 === */
+  --font-display: "Orbitron", "Rajdhani", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Rajdhani", "Noto Sans JP", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+  /* === 发光效果 === */
+  --glow-cyan: 0 0 20px rgba(0, 255, 255, 0.4);
+  --glow-pink: 0 0 20px rgba(255, 0, 255, 0.4);
+}
+
+/* ============================================
+   Light Mode 覆盖
+   ============================================ */
+.light {
+  /* === 霓虹色（降低饱和度） === */
+  --cyan: #0891b2;
+  --pink: #be185d;
+  --green: #15803d;
+  --yellow: #ca8a04;
+
+  /* === 背景层次 === */
+  --void: #f8f9fa;
+  --dark: #ffffff;
+  --surface: #f1f3f5;
+  --elevated: #e9ecef;
+
+  /* === 文字 === */
+  --white: #1a1a2e;
+  --gray: #495057;
+  --muted: #868e96;
+
+  /* === 发光效果（降低强度） === */
+  --glow-cyan: 0 0 12px rgba(8, 145, 178, 0.25);
+  --glow-pink: 0 0 12px rgba(190, 24, 93, 0.25);
+}

@@ -1,0 +1,39 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  /** Terminal window title (shown in header) */
+  title?: string;
+  /** Whether to show the terminal dots (red/yellow/green) */
+  showDots?: boolean;
+  /** Whether to apply glow effect */
+  glow?: boolean;
+  /** Additional class names */
+  class?: string;
+}
+
+const { title = "", showDots = true, glow = true, class: className = "" } = Astro.props;
+
+const containerStyles = clsx("p-6 terminal-border rounded-lg", glow && "glow-cyan", className);
+---
+
+<div class={containerStyles}>
+  {/* Terminal header */}
+  {
+    (showDots || title) && (
+      <div class="terminal-window-header border-cyan-20 mb-6 flex items-center gap-3 border-b pb-4">
+        {showDots && (
+          <div class="flex gap-1.5">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
+            <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
+            <span class="h-2.5 w-2.5 rounded-full bg-[#27ca40]" />
+          </div>
+        )}
+        {title && <span class="text-muted font-mono text-xs">{title}</span>}
+      </div>
+    )
+  }
+
+  {/* Content slot */}
+  <slot />
+</div>
