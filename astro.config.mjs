@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwindcss from '@tailwindcss/vite';
+import { version } from './package.json';
 
 export default defineConfig({
   site: "https://BlaxBerry333.github.io",
@@ -13,6 +13,9 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    define: {
+      __APP_VERSION__: JSON.stringify(version),
+    },
   },
 });

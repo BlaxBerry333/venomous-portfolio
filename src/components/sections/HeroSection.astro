@@ -4,14 +4,19 @@ import Button from "@/components/ui/Button.astro";
 import TerminalWindow from "@/components/ui/TerminalWindow.astro";
 import TerminalBootSequence from "@/components/ui/TerminalBootSequence.astro";
 
+declare const __APP_VERSION__: string;
+
 export interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
+const version = __APP_VERSION__;
 ---
 
-<section class="relative flex min-h-screen items-center justify-center overflow-hidden">
+<section
+  class="relative flex min-h-[calc(100dvh-60px)] items-center justify-center overflow-hidden"
+>
   <TerminalWindow title="chen@portfolio ~ " class="mx-4 w-full max-w-[1000px] p-8 md:p-8">
     <!-- 主标题区域 -->
     <div class="mt-30 mb-10 text-center">
@@ -26,7 +31,7 @@ const { locale } = Astro.props;
     <TerminalBootSequence
       command="./init_portfolio.sh"
       steps={[
-        { message: "Loading Chen.Portfolio v4.2.0..." },
+        { message: `Loading Chen.Portfolio v${version}...` },
         { message: "Status: ", statusText: "Initializing" },
       ]}
     />

@@ -1,7 +1,7 @@
 {
   "name": "venomous-portfolio",
   "type": "module",
-  "version": "0.0.1",
+  "version": "2.2.0",
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
