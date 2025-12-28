@@ -213,7 +213,6 @@ export function getProfile(locale: Locale): ProfileLocalized {
     // i18n content from profile translations
     title: (content?.basic as Record<string, string>)?.title ?? "",
     description: (content?.description as string[]) ?? [],
-    currentCompany: (content?.basic as Record<string, string>)?.currentCompany,
   };
 }
 

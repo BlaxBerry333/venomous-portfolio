@@ -1,10 +1,10 @@
 {
   "basic": {
-    "title": "Fullstack Engineer / Frontend Tech Lead",
-    "currentCompany": "株式会社ジーニー CDP事業部"
+    "title": "Fullstack Engineer"
   },
   "description": [
-    "東京を拠点に活動するフルスタックエンジニア。React、TypeScript、Next.js を中心としたモダンな Web 開発を得意とする。DB設計から API 実装、フロントエンド開発まで一貫して担当できる。",
-    "フロントエンド主軸のフルスタックエンジニアとして、DB設計から API 実装、フロントエンド開発まで一貫して担当できます。"
+    "東京拠点のフルスタックエンジニア。EC / AdTech / SaaS / 公共システム等、多様な To B プロダクト開発に従事。",
+    "フロントエンドアーキテクチャ設計からパフォーマンス最適化、DB 設計から API 実装まで一貫して対応可能。",
+    "複数プロジェクトでテックリードを経験し、多国籍チームのマネジメントやコードレビューを担当。レガシーモダン化や Design System 構築の実績あり。"
   ]
 }

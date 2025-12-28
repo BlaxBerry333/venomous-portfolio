@@ -1,10 +1,10 @@
 {
   "basic": {
-    "title": "Fullstack Engineer / Frontend Tech Lead",
-    "currentCompany": "Geniee, Inc. - CDP Division"
+    "title": "Fullstack Engineer"
   },
   "description": [
-    "Full-stack engineer based in Tokyo. Specializing in modern web development with React, TypeScript, and Next.js. Capable of handling end-to-end development from DB design to API implementation to frontend.",
-    "As a frontend-focused full-stack engineer, I can handle end-to-end development from DB design to API implementation to frontend development."
+    "Full-stack engineer based in Tokyo with experience across EC, AdTech, SaaS, and public sector systems.",
+    "Capable of end-to-end development from frontend architecture and performance optimization to DB design and API implementation.",
+    "Served as tech lead on multiple projects, managing multinational teams and code reviews. Track record in legacy modernization and Design System development."
   ]
 }

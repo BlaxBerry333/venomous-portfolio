@@ -22,5 +22,4 @@ export interface ProfileLocalized {
   };
   title: string;
   description: string[];
-  currentCompany?: string;
 }
