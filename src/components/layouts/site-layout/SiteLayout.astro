@@ -133,4 +133,109 @@ const langAttr = locale === "zh" ? "zh-CN" : locale;
       window.updateAllThemeIcons();
     }
   });
+
+  // ============================================
+  // Glitch Animation Fallback for browsers without View Transitions API
+  // (e.g., iOS Safari, Firefox)
+  // ============================================
+  (function () {
+    const supportsViewTransitions = typeof document.startViewTransition === "function";
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let isNavigating = false;
+
+    // 获取页面主容器
+    function getMainElement() {
+      return document.querySelector("main");
+    }
+
+    // 页面入场动画（首次加载/刷新/直接访问 URL）
+    // 注意：此脚本是 is:inline，只在完整页面加载时执行
+    // Astro SPA 导航不会重新执行此脚本，所以不用担心与 View Transitions 冲突
+    function playEnterAnimation() {
+      if (prefersReducedMotion) return;
+
+      const main = getMainElement();
+      if (!main) return;
+
+      // 播放入场动画
+      main.style.opacity = "0";
+      requestAnimationFrame(() => {
+        main.classList.add("glitch-load-in");
+        main.style.opacity = "";
+
+        main.addEventListener("animationend", () => main.classList.remove("glitch-load-in"), {
+          once: true,
+        });
+      });
+    }
+
+    // 仅对不支持 View Transitions 的浏览器启用链接拦截
+    function setupFallbackNavigation() {
+      if (supportsViewTransitions || prefersReducedMotion) return;
+
+      document.addEventListener("click", (e) => {
+        // 防止重复导航
+        if (isNavigating) return;
+
+        // 查找最近的链接元素
+        const link = e.target.closest("a[href]");
+        if (!link) return;
+
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        // 跳过外部链接、锚点链接、特殊协议
+        if (
+          href.startsWith("http") ||
+          href.startsWith("//") ||
+          href.startsWith("#") ||
+          href.startsWith("mailto:") ||
+          href.startsWith("tel:") ||
+          href.startsWith("javascript:") ||
+          link.hasAttribute("download") ||
+          link.getAttribute("target") === "_blank"
+        ) {
+          return;
+        }
+
+        // 阻止默认导航
+        e.preventDefault();
+        isNavigating = true;
+
+        const main = getMainElement();
+        if (!main) {
+          window.location.href = href;
+          return;
+        }
+
+        // 定义导航函数（只执行一次）
+        let hasNavigated = false;
+        const navigate = () => {
+          if (hasNavigated) return;
+          hasNavigated = true;
+          window.location.href = href;
+        };
+
+        // 播放退场动画
+        main.classList.add("glitch-out");
+
+        // 动画完成后导航
+        main.addEventListener("animationend", navigate, { once: true });
+
+        // 安全超时：如果动画没有触发（例如 CSS 加载失败），强制导航
+        setTimeout(navigate, 550);
+      });
+    }
+
+    // 初始化
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => {
+        playEnterAnimation();
+        setupFallbackNavigation();
+      });
+    } else {
+      playEnterAnimation();
+      setupFallbackNavigation();
+    }
+  })();
 </script>

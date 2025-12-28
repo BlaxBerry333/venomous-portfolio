@@ -39,12 +39,36 @@
   }
 }
 
+/* View Transitions API (支持的浏览器) */
 ::view-transition-old(root) {
   animation: page-glitch-out 0.5s ease-out forwards;
 }
 
 ::view-transition-new(root) {
   animation: page-glitch-in 0.6s ease-out forwards;
+}
+
+/* === Fallback 故障动画类 (不支持 View Transitions 的浏览器) === */
+
+/* 初始隐藏状态 - 防止闪烁 */
+.glitch-initial {
+  opacity: 0;
+}
+
+/* 退场动画 */
+.glitch-out {
+  animation: page-glitch-out 0.5s ease-out forwards;
+  pointer-events: none;
+}
+
+/* 入场动画 */
+.glitch-in {
+  animation: page-glitch-in 0.6s ease-out forwards;
+}
+
+/* 页面首次加载入场动画 - 复用 page-glitch-in 保持风格统一 */
+.glitch-load-in {
+  animation: page-glitch-in 0.5s ease-out forwards;
 }
 
 /* ============================================
@@ -62,6 +86,14 @@
   ::view-transition-old(root),
   ::view-transition-new(root) {
     animation: none !important;
+  }
+
+  /* Fallback 动画也需禁用 */
+  .glitch-out,
+  .glitch-in,
+  .glitch-load-in {
+    animation: none !important;
+    opacity: 1 !important;
   }
 }
 
