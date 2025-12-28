@@ -233,47 +233,47 @@ const works = getCompanyWorks(locale);
   .light .timeline::before {
     background: linear-gradient(
       to bottom,
-      #0891b2 0%,
-      rgba(8, 145, 178, 0.3) 15%,
+      var(--cyan) 0%,
+      rgba(0, 151, 167, 0.3) 15%,
       rgba(209, 213, 219, 0.3) 100%
     );
   }
 
   .light .timeline-item:hover {
-    background: rgba(8, 145, 178, 0.05);
+    background: rgba(0, 151, 167, 0.05);
   }
 
   .light .timeline-item:hover .timeline-company {
-    color: #0891b2;
+    color: var(--cyan);
   }
 
   .light .timeline-dot {
-    background: #9ca3af;
-    border-color: #f8f9fa;
+    background: var(--muted);
+    border-color: var(--void);
   }
 
   .light .timeline-item:hover .timeline-dot:not(.timeline-dot--active) {
-    background: #0891b2;
-    box-shadow: 0 0 0 3px rgba(8, 145, 178, 0.15);
+    background: var(--cyan);
+    box-shadow: 0 0 0 3px rgba(0, 151, 167, 0.15);
   }
 
   .light .timeline-dot--active {
-    background: #db2777;
-    border-color: #f8f9fa;
+    background: var(--pink);
+    border-color: var(--void);
     box-shadow:
-      0 0 0 3px rgba(219, 39, 119, 0.2),
-      0 0 10px rgba(219, 39, 119, 0.4);
+      0 0 0 3px rgba(216, 27, 96, 0.2),
+      0 0 10px rgba(216, 27, 96, 0.4);
   }
 
   .light .timeline-dot-pulse {
-    background: #db2777;
+    background: var(--pink);
   }
 
   .light .timeline-date--active {
-    color: #0891b2;
+    color: var(--cyan);
   }
 
   .light .timeline-link {
-    color: #0891b2;
+    color: var(--cyan);
   }
 </style>

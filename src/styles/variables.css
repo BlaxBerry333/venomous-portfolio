@@ -36,27 +36,43 @@
 }
 
 /* ============================================
-   Light Mode 覆盖
+   Light Mode 覆盖 - Light Cyberpunk 风格
    ============================================ */
 .light {
-  /* === 霓虹色（降低饱和度） === */
-  --cyan: #0891b2;
-  --pink: #be185d;
-  --green: #15803d;
-  --yellow: #ca8a04;
+  /* === 品牌色 - 保持冲击力的饱和色 === */
+  --cyan: #0097a7;
+  --pink: #d81b60;
+  --green: #00c853;
+  --yellow: #ffc400;
 
-  /* === 背景层次 === */
-  --void: #f8f9fa;
-  --dark: #ffffff;
-  --surface: #f1f3f5;
-  --elevated: #e9ecef;
+  /* === 辅助强调色（用于渐变）=== */
+  --cyan-vivid: #00bcd4;
+  --pink-vivid: #ec407a;
+
+  /* === 背景层次 - 微暖灰底色 === */
+  --void: #f5f5f7;
+  --dark: #fafafa;
+  --surface: #ffffff;
+  --elevated: #f0f4f8;
 
   /* === 文字 === */
   --white: #1a1a2e;
-  --gray: #495057;
-  --muted: #868e96;
+  --gray: #4a5568;
+  --muted: #718096;
 
-  /* === 发光效果（降低强度） === */
-  --glow-cyan: 0 0 12px rgba(8, 145, 178, 0.25);
-  --glow-pink: 0 0 12px rgba(190, 24, 93, 0.25);
+  /* === 品牌渐变 - 使用 vivid 色 === */
+  --gradient-cyber: linear-gradient(135deg, var(--cyan-vivid) 0%, var(--pink-vivid) 100%);
+
+  /* === 发光 → 彩色阴影（Light Mode 核心特征）=== */
+  --glow-cyan:
+    0 4px 14px rgba(0, 151, 167, 0.25),
+    0 1px 3px rgba(0, 151, 167, 0.15);
+  --glow-pink:
+    0 4px 14px rgba(216, 27, 96, 0.25),
+    0 1px 3px rgba(216, 27, 96, 0.15);
+
+  /* === 渐变阴影（组合双色）=== */
+  --glow-cyber:
+    0 8px 25px rgba(0, 151, 167, 0.15),
+    0 8px 25px rgba(216, 27, 96, 0.15);
 }

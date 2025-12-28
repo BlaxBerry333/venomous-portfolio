@@ -40,8 +40,11 @@
 }
 
 .light .terminal-border {
-  border: 1px solid rgba(8, 145, 178, 0.3);
-  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgba(0, 151, 167, 0.35);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(240, 244, 248, 0.95) 100%);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(0, 151, 167, 0.1);
 }
 
 .glow-cyan {
@@ -51,7 +54,9 @@
 }
 
 .light .glow-cyan {
-  box-shadow: 0 0 15px rgba(8, 145, 178, 0.15);
+  box-shadow:
+    0 4px 20px rgba(0, 151, 167, 0.2),
+    0 0 0 1px rgba(0, 151, 167, 0.1);
 }
 
 /* === Focus Visible Ring === */
@@ -84,6 +89,11 @@
   clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
 }
 
+/* Light Mode: 使用 vivid 色让按钮更鲜艳 */
+.light .btn-primary-bg {
+  background: linear-gradient(to right, var(--cyan-vivid), var(--pink-vivid));
+}
+
 .btn-primary-glow {
   position: absolute;
   inset: 0;
@@ -92,6 +102,10 @@
   opacity: 0;
   filter: blur(20px);
   transition: opacity 0.3s;
+}
+
+.light .btn-primary-glow {
+  background: linear-gradient(to right, var(--cyan-vivid), var(--pink-vivid));
 }
 
 .btn-primary:hover .btn-primary-glow {
@@ -118,7 +132,8 @@
 }
 
 .light .btn-secondary::before {
-  border-color: rgba(8, 145, 178, 0.2);
+  border-width: 1.5px;
+  border-color: rgba(0, 151, 167, 0.3);
 }
 
 /* btn-as-primary 隐藏 cyber-block 的 ::before 背景 */
@@ -167,7 +182,8 @@
 }
 
 .light .cyber-block::before {
-  border-color: rgba(8, 145, 178, 0.2);
+  border-width: 1.5px;
+  border-color: rgba(0, 151, 167, 0.25);
 }
 
 .cyber-block:hover::before {
@@ -179,9 +195,11 @@
 }
 
 .light .cyber-block:hover::before {
-  border-color: #0891b2;
-  background: rgba(8, 145, 178, 0.05);
-  box-shadow: 0 0 15px rgba(8, 145, 178, 0.15);
+  border-color: var(--cyan);
+  background: rgba(0, 151, 167, 0.05);
+  box-shadow:
+    0 8px 25px rgba(0, 151, 167, 0.15),
+    0 8px 25px rgba(216, 27, 96, 0.1);
 }
 
 /* 角落装饰 - 通用元素 */
@@ -215,11 +233,15 @@
 }
 
 .light .cyber-corner-tl {
-  border-color: #be185d;
+  border-color: var(--pink);
 }
 
 .light .cyber-corner-br {
-  border-color: #be185d;
+  border-color: var(--pink);
+}
+
+.light .cyber-block:hover .cyber-corner {
+  filter: drop-shadow(0 0 4px var(--pink));
 }
 
 /* 尺寸变体 - 调整切角比例 */
@@ -246,8 +268,8 @@
 
 .light .bg-grid {
   background-image:
-    linear-gradient(rgba(8, 145, 178, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(8, 145, 178, 0.1) 1px, transparent 1px);
+    linear-gradient(rgba(0, 151, 167, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 151, 167, 0.12) 1px, transparent 1px);
 }
 
 .bg-grid-bottom {

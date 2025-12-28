@@ -34,10 +34,14 @@ body {
   color: var(--white);
 }
 
-/* Light mode */
+/* Light mode - 添加双色径向渐变背景 */
 .light body {
   background-color: var(--void);
   color: var(--white);
+  background-image:
+    radial-gradient(ellipse at 0% 0%, rgba(0, 151, 167, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 100% 100%, rgba(216, 27, 96, 0.06) 0%, transparent 50%);
+  background-attachment: fixed;
 }
 
 /* Smooth scrolling */
@@ -51,7 +55,7 @@ html {
 }
 
 .light ::selection {
-  background-color: rgba(8, 145, 178, 0.3);
+  background-color: rgba(0, 151, 167, 0.3);
 }
 
 /* Focus visible outline */
@@ -82,11 +86,11 @@ html {
 }
 
 .light ::-webkit-scrollbar-thumb {
-  background: rgba(8, 145, 178, 0.3);
+  background: rgba(0, 151, 167, 0.3);
 }
 
 .light ::-webkit-scrollbar-thumb:hover {
-  background: rgba(8, 145, 178, 0.5);
+  background: rgba(0, 151, 167, 0.5);
 }
 
 /* ============================================
