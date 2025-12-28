@@ -377,32 +377,28 @@
     "featured": false,
     "title": "Venomous Portfolio",
     "subtitle": "個人ポートフォリオサイト",
-    "description": "Astro で構築した個人ポートフォリオサイト。Next.js、Nuxt.js、Gatsby.js を検討した上で Astro を選択。",
+    "description": "Astro で構築した個人ポートフォリオサイト。",
     "role": "個人開発",
-    "overview": "Islands Architecture + Content Collections による静的サイト生成。i18n 対応（日本語/英語/中国語）。",
+    "overview": "ポートフォリオは静的コンテンツ中心で JS インタラクションが少ないため、ゼロ JS by default の Astro を採用。サイバーパンク風のデザインシステムを自作。",
     "achievements": [
       {
-        "title": "Islands Architecture",
-        "description": "静的 HTML に必要最小限の JavaScript のみを読み込み、表示速度と柔軟性を両立。",
+        "title": "サイバーパンク風デザインシステム",
+        "description": "統一されたビジュアル言語を一から設計・実装。",
         "highlights": [
-          "Partial Hydration による最小限の JS ロード",
-          "Lighthouse パフォーマンススコア 95+"
+          "ネオン配色（シアン/マゼンタ）のダーク/ライト両テーマ設計",
+          "カットコーナー UI（clip-path による切り欠きボタン）",
+          "透視グリッド背景 + ネオン光彩エフェクト",
+          "ターミナル風コンポーネント（起動シーケンス演出）",
+          "CSS Animation による自作グリッチページ遷移"
         ]
       },
       {
-        "title": "Content Collections",
-        "description": "「コンテンツ as データ」の考え方を採用し、型安全なコンテンツ管理を実現。",
+        "title": "軽量な多言語対応",
+        "description": "静的サイトかつ翻訳量が少ないため、ライブラリを使わず軽量実装。",
         "highlights": [
-          "Zod スキーマによるデータバリデーション",
-          "i18n 対応（日本語/英語/中国語）"
-        ]
-      },
-      {
-        "title": "CI/CD 自動化",
-        "description": "GitHub Actions による自動デプロイパイプラインを構築。",
-        "highlights": [
-          "プルリクエスト時の自動ビルド検証",
-          "GitHub Pages への自動デプロイ"
+          "JSON + TypeScript による自前 i18n 実装",
+          "構造化データのため Markdown 不要、JSON で管理",
+          "言語別ファイル分離 + 日本語フォールバック"
         ]
       }
     ]
@@ -420,34 +416,43 @@
     },
     "featured": false,
     "title": "Venomous UI Library",
-    "subtitle": "React UI コンポーネントライブラリ",
-    "description": "個人用 React UI コンポーネントライブラリ。Design Token ベースのテーマシステムを実装。",
+    "subtitle": "UI コンポーネントライブラリ",
+    "description": "Design Token + CSS 変数ベースのテーマシステムを備えた UI コンポーネントライブラリ。",
     "role": "個人開発",
-    "overview": "Vite による ESM ビルド、Storybook によるドキュメント化、npm パッケージとして公開。",
+    "overview": "業務で MUI / Vuetify / Ant Design 等を使ってきたが、テーマシステムの仕組みを深く理解したかったため自作。各ライブラリの良い部分を参考にしつつ、自分好みの API 設計で実装。",
     "achievements": [
       {
-        "title": "マルチテーマシステム",
-        "description": "複数テーマ切替機能を実装し、柔軟なカスタマイズを実現。",
+        "title": "CSS 変数ベースのテーマシステム",
+        "description": "各ライブラリのテーマ設計を参考に、CSS 変数で実装。型安全な Theme Callback を提供。",
         "highlights": [
-          "Design Token によるカラー/タイポグラフィ管理",
-          "ライト/ダークモード対応"
+          "Palette / Semantic / Background の多層カラー設計",
+          "--venomous-* CSS 変数 + getCssVar() 型安全ヘルパー",
+          "style={(theme) => ({...})} による Theme Callback",
+          "ライト・ダークモード自動切替"
         ]
       },
       {
-        "title": "高いカスタマイズ性",
-        "description": "複数のスタイリング方式に対応し、利用者の好みに合わせたカスタマイズが可能。",
+        "title": "軽量・疎結合な設計",
+        "description": "外部依存は clsx のみ。コンポーネント単位で分離し、使用分だけ読み込む設計。",
         "highlights": [
-          "inline-style によるインライン指定",
-          "className (Tailwind CSS) によるクラス指定"
+          "コンポーネント単位の CSS 注入（重複防止機構付き）",
+          "Vite マルチエントリ ESM ビルド",
+          "Storybook によるドキュメント・デモ"
         ]
+      }
+    ],
+    "learnings": [
+      {
+        "title": "アクセシビリティ（a11y）",
+        "description": "現状は未対応。今後必ず実装予定。ARIA 属性・キーボード操作・スクリーンリーダー対応を段階的に追加していく。"
       },
       {
-        "title": "最適化されたビルド",
-        "description": "Vite の ESM サポートを活用し、効率的なバンドル出力を実現。",
-        "highlights": [
-          "マルチエントリビルド対応",
-          "Tree Shaking による未使用コード除去"
-        ]
+        "title": "SSR 対応の課題",
+        "description": "SSR/RSC との適切な共存方法を模索中。CSS 変数注入のタイミング制御が課題。"
+      },
+      {
+        "title": "i18n は意図的に非対応",
+        "description": "Ant Design の ConfigProvider + locale 方式は便利だが、ライブラリ側にテキストを持たせる設計。本ライブラリは UI のみに集中し、i18n は利用者に委ねる方針を選択。"
       }
     ]
   }

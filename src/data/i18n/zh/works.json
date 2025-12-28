@@ -377,32 +377,28 @@
     "featured": false,
     "title": "Venomous Portfolio",
     "subtitle": "个人作品集网站",
-    "description": "使用 Astro 构建的个人作品集网站。在考虑 Next.js、Nuxt.js、Gatsby.js 后选择了 Astro。",
+    "description": "基于 Astro 构建的个人作品集网站。",
     "role": "个人项目",
-    "overview": "Islands Architecture + Content Collections 静态网站生成。i18n 支持（日语/英语/中文）。",
+    "overview": "作品集以静态内容为主、JS 交互少，所以选择零 JS 默认的 Astro。自制赛博朋克设计系统。",
     "achievements": [
       {
-        "title": "Islands Architecture",
-        "description": "在静态 HTML 上仅加载最少 JavaScript，平衡显示速度和灵活性。",
+        "title": "赛博朋克设计系统",
+        "description": "从零设计并实现统一的视觉语言。",
         "highlights": [
-          "Partial Hydration 最小 JS 加载",
-          "Lighthouse 性能分数 95+"
+          "霓虹配色（青色/品红）的深浅双主题设计",
+          "切角 UI（基于 clip-path 的按钮）",
+          "透视网格背景 + 霓虹光晕效果",
+          "终端风格组件（启动序列动效）",
+          "CSS Animation 自制故障风格页面过渡"
         ]
       },
       {
-        "title": "Content Collections",
-        "description": "采用「内容即数据」方法，实现类型安全的内容管理。",
+        "title": "轻量多语言支持",
+        "description": "静态站点且翻译量少，未使用库，采用轻量实现。",
         "highlights": [
-          "Zod Schema 数据验证",
-          "i18n 支持（日语/英语/中文）"
-        ]
-      },
-      {
-        "title": "CI/CD 自动化",
-        "description": "使用 GitHub Actions 构建自动化部署流水线。",
-        "highlights": [
-          "Pull Request 自动构建验证",
-          "自动部署到 GitHub Pages"
+          "JSON + TypeScript 自制 i18n 实现",
+          "结构化数据用 JSON 管理（无需 Markdown）",
+          "语言独立文件 + 日语回退机制"
         ]
       }
     ]
@@ -420,34 +416,43 @@
     },
     "featured": false,
     "title": "Venomous UI Library",
-    "subtitle": "React UI 组件库",
-    "description": "个人 React UI 组件库。实现了基于 Design Token 的主题系统。",
+    "subtitle": "UI 组件库",
+    "description": "基于 Design Token + CSS 变量主题系统的 UI 组件库。",
     "role": "个人项目",
-    "overview": "Vite ESM 构建、Storybook 文档化、作为 npm 包发布。",
+    "overview": "工作中用过 MUI / Vuetify / Ant Design 等，但想深入理解主题系统原理所以自制。参考各库优点，按自己喜好设计 API。",
     "achievements": [
       {
-        "title": "多主题系统",
-        "description": "实现多主题切换，灵活定制。",
+        "title": "基于 CSS 变量的主题系统",
+        "description": "参考各库的主题设计，用 CSS 变量实现。提供类型安全的 Theme Callback。",
         "highlights": [
-          "Design Token 管理颜色/排版",
-          "明暗模式支持"
+          "Palette / Semantic / Background 多层颜色设计",
+          "--venomous-* CSS 变量 + getCssVar() 类型安全工具",
+          "style={(theme) => ({...})} Theme Callback 模式",
+          "明暗模式自动切换"
         ]
       },
       {
-        "title": "高度可定制性",
-        "description": "多种样式方式满足用户偏好。",
+        "title": "轻量解耦设计",
+        "description": "外部依赖仅 clsx。组件独立分离，只加载使用的部分。",
         "highlights": [
-          "inline-style 行内指定",
-          "className (Tailwind CSS) 类名指定"
+          "组件级 CSS 注入（带防重复机制）",
+          "Vite 多入口 ESM 构建",
+          "Storybook 文档与演示"
         ]
+      }
+    ],
+    "learnings": [
+      {
+        "title": "无障碍（a11y）",
+        "description": "目前未实现，未来一定会加上。计划逐步添加 ARIA 属性、键盘操作、屏幕阅读器支持。"
       },
       {
-        "title": "优化的构建",
-        "description": "利用 Vite ESM 支持实现高效打包输出。",
-        "highlights": [
-          "多入口构建支持",
-          "Tree Shaking 移除未使用代码"
-        ]
+        "title": "SSR 适配挑战",
+        "description": "SSR/RSC 的正确集成方式仍在摸索中，CSS 变量注入时机是主要难点。"
+      },
+      {
+        "title": "i18n 有意不支持",
+        "description": "Ant Design 的 ConfigProvider + locale 方便但让库持有文本。本库专注纯 UI，i18n 交由使用者处理。"
       }
     ]
   }

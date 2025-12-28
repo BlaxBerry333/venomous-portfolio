@@ -377,32 +377,28 @@
     "featured": false,
     "title": "Venomous Portfolio",
     "subtitle": "Personal Portfolio Site",
-    "description": "Personal portfolio site built with Astro. Chose Astro after considering Next.js, Nuxt.js, Gatsby.js.",
+    "description": "Personal portfolio site built with Astro.",
     "role": "Personal Project",
-    "overview": "Static site generation with Islands Architecture + Content Collections. i18n support (Japanese/English/Chinese).",
+    "overview": "Portfolio is static content with minimal JS interaction, so chose Astro for zero JS by default. Built a custom cyberpunk design system.",
     "achievements": [
       {
-        "title": "Islands Architecture",
-        "description": "Load only minimal JavaScript on static HTML, balancing display speed and flexibility.",
+        "title": "Cyberpunk Design System",
+        "description": "Designed and implemented a cohesive visual language from scratch.",
         "highlights": [
-          "Partial Hydration for minimal JS loading",
-          "Lighthouse performance score 95+"
+          "Neon color scheme (cyan/magenta) with dark/light theme design",
+          "Cut-corner UI (clip-path based buttons)",
+          "Perspective grid backgrounds + neon glow effects",
+          "Terminal-style components (boot sequence animation)",
+          "Custom glitch page transitions with CSS Animation"
         ]
       },
       {
-        "title": "Content Collections",
-        "description": "Adopted 'content as data' approach, enabling type-safe content management.",
+        "title": "Lightweight i18n",
+        "description": "Static site with limited translations, so implemented lightweight solution without libraries.",
         "highlights": [
-          "Data validation with Zod schemas",
-          "i18n support (Japanese/English/Chinese)"
-        ]
-      },
-      {
-        "title": "CI/CD Automation",
-        "description": "Built automated deployment pipeline with GitHub Actions.",
-        "highlights": [
-          "Automatic build verification on pull requests",
-          "Auto-deployment to GitHub Pages"
+          "Custom i18n implementation with JSON + TypeScript",
+          "Structured data managed in JSON (no Markdown needed)",
+          "Language-specific files + Japanese fallback"
         ]
       }
     ]
@@ -420,34 +416,43 @@
     },
     "featured": false,
     "title": "Venomous UI Library",
-    "subtitle": "React UI Component Library",
-    "description": "Personal React UI component library. Implemented Design Token based theme system.",
+    "subtitle": "UI Component Library",
+    "description": "UI component library with Design Token + CSS variable based theme system.",
     "role": "Personal Project",
-    "overview": "ESM build with Vite, documentation with Storybook, published as npm package.",
+    "overview": "Used MUI / Vuetify / Ant Design at work, but wanted to deeply understand theme system internals. Built from scratch, taking inspiration from each library while designing APIs to my preference.",
     "achievements": [
       {
-        "title": "Multi-theme System",
-        "description": "Implemented multiple theme switching for flexible customization.",
+        "title": "CSS Variable-based Theme System",
+        "description": "Implemented with CSS variables, inspired by various libraries. Provides type-safe Theme Callback.",
         "highlights": [
-          "Color/typography management with Design Tokens",
-          "Light/dark mode support"
+          "Multi-layer color design (Palette / Semantic / Background)",
+          "--venomous-* CSS variables + getCssVar() type-safe helper",
+          "style={(theme) => ({...})} Theme Callback pattern",
+          "Auto light/dark mode switching"
         ]
       },
       {
-        "title": "High Customizability",
-        "description": "Multiple styling approaches to match user preferences.",
+        "title": "Lightweight & Decoupled Design",
+        "description": "Only external dependency is clsx. Components are isolated, loading only what's used.",
         "highlights": [
-          "Inline specification with inline-style",
-          "Class specification with className (Tailwind CSS)"
+          "Per-component CSS injection (with deduplication)",
+          "Vite multi-entry ESM build",
+          "Storybook for documentation and demos"
         ]
+      }
+    ],
+    "learnings": [
+      {
+        "title": "Accessibility (a11y)",
+        "description": "Not yet implemented. Planned for future releases. Will add ARIA attributes, keyboard navigation, and screen reader support incrementally."
       },
       {
-        "title": "Optimized Build",
-        "description": "Efficient bundle output leveraging Vite's ESM support.",
-        "highlights": [
-          "Multi-entry build support",
-          "Unused code removal with Tree Shaking"
-        ]
+        "title": "SSR Challenges",
+        "description": "Still exploring proper SSR/RSC integration. CSS variable injection timing is the main challenge."
+      },
+      {
+        "title": "i18n Intentionally Unsupported",
+        "description": "Ant Design's ConfigProvider + locale is convenient but couples text to the library. This library focuses purely on UI, delegating i18n to consumers by design."
       }
     ]
   }
