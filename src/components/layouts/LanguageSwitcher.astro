@@ -36,24 +36,24 @@ const dropdownStyles = clsx(
   "min-w-[120px]",
   "bg-surface border border-muted/20",
   "shadow-lg",
-  "opacity-0 invisible",
-  "group-focus-within:opacity-100 group-focus-within:visible",
-  "transition-all duration-200",
   "z-50",
 );
 ---
 
-<div class="group relative">
+<div class="relative" id="lang-switcher">
   <Button
     variant="outline"
     size="icon"
+    id="lang-switcher-btn"
     aria-label="Switch language"
+    aria-expanded="false"
+    aria-haspopup="listbox"
     class={clsx("font-mono text-xs neon-cyan", className)}
   >
     <span>{shortLocale[currentLocale]}</span>
   </Button>
 
-  <div class={dropdownStyles}>
+  <div class={dropdownStyles} id="lang-dropdown" hidden>
     {
       LOCALES.map((locale) => {
         const isActive = locale === currentLocale;
@@ -76,3 +76,64 @@ const dropdownStyles = clsx(
     }
   </div>
 </div>
+
+<script is:inline>
+  (function () {
+    function initLangSwitcher() {
+      const btn = document.getElementById("lang-switcher-btn");
+      const dropdown = document.getElementById("lang-dropdown");
+      const container = document.getElementById("lang-switcher");
+
+      if (!btn || !dropdown || !container) return;
+
+      // Prevent duplicate event listeners
+      if (btn.dataset.initialized) return;
+      btn.dataset.initialized = "true";
+
+      function open() {
+        dropdown.hidden = false;
+        btn.setAttribute("aria-expanded", "true");
+      }
+
+      function close() {
+        dropdown.hidden = true;
+        btn.setAttribute("aria-expanded", "false");
+      }
+
+      function toggle() {
+        if (dropdown.hidden) {
+          open();
+        } else {
+          close();
+        }
+      }
+
+      // Toggle on click/touch
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggle();
+      });
+
+      // Close when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!container.contains(e.target)) {
+          close();
+        }
+      });
+
+      // Close on escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !dropdown.hidden) {
+          close();
+          btn.focus();
+        }
+      });
+    }
+
+    // Initialize
+    initLangSwitcher();
+
+    // Re-initialize after page transitions
+    document.addEventListener("astro:page-load", initLangSwitcher);
+  })();
+</script>

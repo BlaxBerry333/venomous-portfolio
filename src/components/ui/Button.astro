@@ -10,6 +10,8 @@ export interface Props {
   type?: "button" | "submit" | "reset";
   id?: string;
   "aria-label"?: string;
+  "aria-expanded"?: boolean | "true" | "false";
+  "aria-haspopup"?: boolean | "true" | "false" | "menu" | "listbox" | "tree" | "grid" | "dialog";
 }
 
 const {
@@ -21,6 +23,8 @@ const {
   type = "button",
   id,
   "aria-label": ariaLabel,
+  "aria-expanded": ariaExpanded,
+  "aria-haspopup": ariaHaspopup,
 } = Astro.props;
 
 const baseStyles = clsx(
@@ -92,7 +96,15 @@ const combinedStyles = clsx(baseStyles, variantStyles[variant], sizeStyles[size]
       )}
     </a>
   ) : (
-    <button type={type} id={id} class={combinedStyles} disabled={disabled} aria-label={ariaLabel}>
+    <button
+      type={type}
+      id={id}
+      class={combinedStyles}
+      disabled={disabled}
+      aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-haspopup={ariaHaspopup}
+    >
       {variant === "primary" ? (
         <>
           <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />
