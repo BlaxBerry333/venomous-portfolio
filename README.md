@@ -1,9 +1,27 @@
-# Venomous Portfolio
+# Chen's Portfolio
 
-A personal portfolio website showcasing all my projects and technical capabilities.
+A modern, cyberpunk-styled portfolio website built with Astro.
+
+## Live Demo
+
+🔗 [https://BlaxBerry333.github.io/venomous-portfolio](https://BlaxBerry333.github.io/venomous-portfolio)
 
 ## Tech Stack
 
-|                    | Main Skills                                                                                                                                                                                                                                                                                                                                 |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| venomous-portfolio | <img src="./public/skill-icons/web-frontend--astro.png" style="width:40px;" /> <img src="./public/skill-icons/dev-tools--mdx.png" style="width:40px;" /> <img src="./public/skill-icons/web-frontend--tailwindcss.png" style="width:40px;" /> <img src="./public/skill-icons/web-infrastructure--github-actions.png" style="width:40px;" /> |
+- [Astro](https://astro.build/) v5 with View Transitions
+- [Tailwind CSS](https://tailwindcss.com/) v4
+- [TypeScript]()
+- [GitHub Pages via GitHub Actions](https://pages.github.com/)
+
+## Features
+
+- Cyberpunk / Glitch aesthetic design
+- Multi-language support (日本語 / English / 中文)
+- Dark / Light theme toggle
+- Responsive layout with mobile-first approach
+- Page transition animations with View Transitions API fallback
+- SEO optimized with proper meta tags
+
+## License
+
+All rights reserved.
