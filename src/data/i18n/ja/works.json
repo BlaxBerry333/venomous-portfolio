@@ -16,53 +16,31 @@
     "role": "フルスタックエンジニア",
     "company": "株式会社ジーニー",
     "department": "CDP事業部",
-    "overview": "フロントエンド + BFF（tRPC）の設計・実装を担当。マルチクラウド接続基盤、LLM 連携機能、ビジュアルワークフローエディタを構築。",
+    "overview": "フロントエンド + BFF の設計・実装を担当。マルチクラウドデータソース管理、SQL エディタ、LLM 連携、権限制御等のコアモジュール開発を主導。",
     "achievements": [
       {
-        "title": "Next.js + tRPC によるフルスタックアーキテクチャ構築",
-        "description": "フロントエンドと BFF を統合した型安全なアーキテクチャを設計・実装。API 定義からフロントまで一貫した型推論を実現。",
-        "highlights": [
-          "Server Components + Streaming SSR による高速初期表示",
-          "tRPC によるエンドツーエンド型安全",
-          "Zod スキーマによる入出力バリデーション"
-        ]
+        "title": "Next.js + tRPC フルスタックアーキテクチャ",
+        "description": "フロントエンドと BFF を統合した型安全なアーキテクチャを設計・実装。API 定義からフロントまで一貫した型推論を実現。"
       },
       {
-        "title": "Connection 管理システム（マルチクラウドデータ連携）",
-        "description": "AWS S3 / GCS / Azure Blob Storage への接続を統一的に管理する機能を設計・実装。",
-        "highlights": [
-          "サービス別 UI テンプレート + tRPC router 分離",
-          "Workflow ノードからの疎結合参照設計",
-          "接続テスト・認証情報の暗号化管理"
-        ]
+        "title": "マルチクラウドデータソース管理",
+        "description": "AWS S3 / GCS / Azure Blob Storage 等のマルチクラウドストレージの統一接続管理を設計・実装。"
       },
       {
-        "title": "BigQuery SQL エディタ・データプレビュー機能",
-        "description": "非エンジニアでも BigQuery データを確認・分析できる管理画面機能を構築。",
-        "highlights": [
-          "Monaco Editor + スキーマ連動オートコンプリート",
-          "大規模データのページネーション対応",
-          "クエリ履歴・保存機能"
-        ]
+        "title": "SQL エディタ・データプレビュー",
+        "description": "BigQuery 公式コンソールを参考に、非エンジニアでもデータを確認・分析できる管理画面機能を構築。"
       },
       {
-        "title": "JAPAN AI 連携：メタデータ自動生成機能",
-        "description": "LLM API を活用して BigQuery テーブルのメタデータ（説明文・カラム説明）を自動生成する機能を実装。",
-        "highlights": [
-          "バッチ処理 + 指数バックオフによるリトライ",
-          "ステータス管理による処理状態の可視化",
-          "Few-shot プロンプトによる出力品質向上"
-        ]
+        "title": "LLM 連携：スマートメタデータ生成",
+        "description": "LLM API と連携してデータソースの自動分析とメタデータ生成を実現。バッチ処理と指数バックオフリトライで安定性を確保。"
+      },
+      {
+        "title": "細粒度アクセス制御",
+        "description": "Casbin ベースの RBAC モデルを実装。リソースレベルのアクセス制御と動的ポリシー設定に対応。"
       },
       {
         "title": "連続2期 OKR 評価 A+",
         "description": "担当期間中、全期で最高評価を獲得"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "LLM プロダクション設計",
-        "description": "バッチ処理・タイムアウト・リトライの実装パターン。status 管理による処理状態の可視化とリカバリ設計。"
       }
     ]
   },

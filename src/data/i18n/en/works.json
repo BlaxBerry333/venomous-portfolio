@@ -16,53 +16,31 @@
     "role": "Fullstack Engineer",
     "company": "Geniee, Inc.",
     "department": "CDP Division",
-    "overview": "Responsible for frontend + BFF (tRPC) design and implementation. Built multi-cloud connection infrastructure, LLM integration features, and visual workflow editor.",
+    "overview": "Responsible for frontend + BFF design and implementation. Led development of multi-cloud data source management, SQL editor, LLM integration, and access control modules.",
     "achievements": [
       {
-        "title": "Full-stack Architecture with Next.js + tRPC",
-        "description": "Designed and implemented type-safe architecture integrating frontend and BFF. Achieved consistent type inference from API definition to frontend.",
-        "highlights": [
-          "Server Components + Streaming SSR for fast initial load",
-          "End-to-end type safety with tRPC",
-          "Input/output validation with Zod schemas"
-        ]
+        "title": "Next.js + tRPC Full-stack Architecture",
+        "description": "Designed and implemented type-safe architecture integrating frontend and BFF, achieving consistent type inference from API definition to frontend."
       },
       {
-        "title": "Connection Management System (Multi-cloud Data Integration)",
-        "description": "Designed and implemented unified management for AWS S3 / GCS / Azure Blob Storage connections.",
-        "highlights": [
-          "Service-specific UI templates + tRPC router separation",
-          "Loosely coupled reference design from Workflow nodes",
-          "Connection testing & encrypted credential management"
-        ]
+        "title": "Multi-cloud Data Source Management",
+        "description": "Designed and implemented unified connection management for AWS S3 / GCS / Azure Blob Storage."
       },
       {
-        "title": "BigQuery SQL Editor & Data Preview",
-        "description": "Built admin panel feature enabling non-engineers to view and analyze BigQuery data.",
-        "highlights": [
-          "Monaco Editor + schema-linked auto-completion",
-          "Pagination for large datasets",
-          "Query history & saved queries"
-        ]
+        "title": "SQL Editor & Data Preview",
+        "description": "Built admin panel inspired by BigQuery console, enabling non-engineers to view and analyze data."
       },
       {
-        "title": "JAPAN AI Integration: Auto Metadata Generation",
-        "description": "Implemented auto-generation of BigQuery table metadata (descriptions, column docs) using LLM API.",
-        "highlights": [
-          "Batch processing + exponential backoff retry",
-          "Status management for process visibility",
-          "Few-shot prompts for improved output quality"
-        ]
+        "title": "LLM Integration: Smart Metadata Generation",
+        "description": "Integrated LLM API for automated data source analysis and metadata generation, with batch processing and exponential backoff retry for stability."
+      },
+      {
+        "title": "Fine-grained Access Control",
+        "description": "Implemented RBAC model based on Casbin, supporting resource-level access control and dynamic policy configuration."
       },
       {
         "title": "Consecutive 2 Quarters OKR Rating A+",
         "description": "Achieved top rating for all quarters during tenure"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "Production-ready LLM Design",
-        "description": "Implementation patterns for batch processing, timeout, and retry. State visualization and recovery design through status management."
       }
     ]
   },

@@ -16,53 +16,31 @@
     "role": "全栈工程师",
     "company": "Geniee 株式会社",
     "department": "CDP 事业部",
-    "overview": "负责前端 + BFF（tRPC）的设计与实现。构建多云连接基础设施、LLM 集成功能和可视化工作流编辑器。",
+    "overview": "负责前端 + BFF 设计实现，主导多云数据源管理、SQL 编辑器、LLM 集成、权限控制等核心模块开发。",
     "achievements": [
       {
-        "title": "Next.js + tRPC 全栈架构构建",
-        "description": "设计并实现了整合前端和 BFF 的类型安全架构。实现了从 API 定义到前端一致的类型推断。",
-        "highlights": [
-          "Server Components + Streaming SSR 快速首屏加载",
-          "tRPC 端到端类型安全",
-          "Zod Schema 输入输出验证"
-        ]
+        "title": "Next.js + tRPC 全栈架构",
+        "description": "设计并实现整合前端和 BFF 的类型安全架构，从 API 定义到前端实现一致的类型推断。"
       },
       {
-        "title": "Connection 管理系统（多云数据集成）",
-        "description": "设计并实现了 AWS S3 / GCS / Azure Blob Storage 连接的统一管理功能。",
-        "highlights": [
-          "服务专用 UI 模板 + tRPC router 分离",
-          "Workflow 节点松耦合引用设计",
-          "连接测试和凭证加密管理"
-        ]
+        "title": "多云数据源连接管理",
+        "description": "设计并实现 AWS S3 / GCS / Azure Blob Storage 等多云存储的统一连接管理。"
       },
       {
-        "title": "BigQuery SQL 编辑器和数据预览",
-        "description": "构建了让非工程师也能查看和分析 BigQuery 数据的管理后台功能。",
-        "highlights": [
-          "Monaco Editor + Schema 联动自动补全",
-          "大规模数据分页支持",
-          "查询历史和保存功能"
-        ]
+        "title": "SQL 编辑器与数据预览",
+        "description": "参考 BigQuery 官方控制台，构建让非工程师也能查看和分析数据的管理后台功能。"
       },
       {
-        "title": "JAPAN AI 集成：元数据自动生成",
-        "description": "利用 LLM API 实现 BigQuery 表元数据（描述、列说明）的自动生成功能。",
-        "highlights": [
-          "批处理 + 指数退避重试",
-          "状态管理实现处理进度可视化",
-          "Few-shot prompt 提升输出质量"
-        ]
+        "title": "LLM 集成：智能元数据生成",
+        "description": "对接 LLM API 实现数据源自动分析与元数据生成，采用批处理和指数退避重试保证稳定性。"
+      },
+      {
+        "title": "细粒度权限控制",
+        "description": "基于 Casbin 实现 RBAC 模型，支持资源级访问控制与权限策略动态配置。"
       },
       {
         "title": "连续 2 期 OKR 评价 A+",
         "description": "任职期间全期获得最高评价"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "生产级 LLM 设计",
-        "description": "批处理、超时、重试的实现模式。通过 status 管理实现处理状态可视化和恢复设计。"
       }
     ]
   },
