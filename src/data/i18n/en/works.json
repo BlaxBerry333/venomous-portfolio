@@ -417,42 +417,35 @@
     "featured": false,
     "title": "Venomous UI Library",
     "subtitle": "UI Component Library",
-    "description": "UI component library with Design Token + CSS variable based theme system.",
+    "description": "Repeatedly encountered difficulties with theme customization and style overriding at work. Combined with personal styling preferences, decided to build a lightweight component library supporting both React and Vue from scratch.",
     "role": "Personal Project",
-    "overview": "Used MUI / Vuetify / Ant Design at work, but wanted to deeply understand theme system internals. Built from scratch, taking inspiration from each library while designing APIs to my preference.",
+    "overview": "API design inspired by MUI / Ant Design / Element Plus / styled-components, pursuing clean component interfaces and flexible styling capabilities. Components provide only essential styles and logic, allowing easy customization via CSS-in-JS or className.",
     "achievements": [
       {
-        "title": "CSS Variable-based Theme System",
-        "description": "Implemented with CSS variables, inspired by various libraries. Provides type-safe Theme Callback.",
+        "title": "Theme & Style System",
         "highlights": [
-          "Multi-layer color design (Palette / Semantic / Background)",
-          "--venomous-* CSS variables + getCssVar() type-safe helper",
-          "style={(theme) => ({...})} Theme Callback pattern",
-          "Auto light/dark mode switching"
+          "Built-in Design Tokens with selective override",
+          "CSS Variable based, Dark Mode supported",
+          "Component style prop accepts CSS object or (theme) => ({...}) callback"
         ]
       },
       {
-        "title": "Lightweight & Decoupled Design",
-        "description": "Only external dependency is clsx. Components are isolated, loading only what's used.",
+        "title": "Multi-framework & On-demand Loading",
         "highlights": [
-          "Per-component CSS injection (with deduplication)",
-          "Vite multi-entry ESM build",
-          "Storybook for documentation and demos"
+          "Subpath Exports separating React / Vue / Core modules",
+          "On-demand imports, only used frameworks and components are bundled",
+          "Marked side-effect free, enabling Tree-shaking"
         ]
+      },
+      {
+        "title": "Accessibility (a11y)",
+        "description": "Auto ARIA linking, focus trapping, keyboard navigation across all components."
       }
     ],
     "learnings": [
       {
-        "title": "Accessibility (a11y)",
-        "description": "Not yet implemented. Planned for future releases. Will add ARIA attributes, keyboard navigation, and screen reader support incrementally."
-      },
-      {
-        "title": "SSR Challenges",
-        "description": "Still exploring proper SSR/RSC integration. CSS variable injection timing is the main challenge."
-      },
-      {
-        "title": "i18n Intentionally Unsupported",
-        "description": "Ant Design's ConfigProvider + locale is convenient but couples text to the library. This library focuses purely on UI, delegating i18n to consumers by design."
+        "title": "SSR/RSC Integration Challenge",
+        "description": "CSS Variable values are unknown at server render time. Requires Cookie or CSS dual-write strategies to prevent theme flash. Currently researching Next.js App Router compatibility."
       }
     ]
   }

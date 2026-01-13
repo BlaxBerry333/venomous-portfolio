@@ -417,42 +417,35 @@
     "featured": false,
     "title": "Venomous UI Library",
     "subtitle": "UI 组件库",
-    "description": "基于 Design Token + CSS 变量主题系统的 UI 组件库。",
+    "description": "业务中多次遇到主题定制繁琐、样式覆盖困难的问题，加上个人对样式写法有偏好，决定从头设计一套同时支持 React 和 Vue 的轻量组件库。",
     "role": "个人项目",
-    "overview": "工作中用过 MUI / Vuetify / Ant Design 等，但想深入理解主题系统原理所以自制。参考各库优点，按自己喜好设计 API。",
+    "overview": "参考 MUI / Ant Design / Element Plus / styled-components 等主流库的 API 设计理念，追求简洁的组件接口和灵活的样式定制能力。组件仅提供基础样式和必要逻辑，无论 CSS-in-JS 还是 className 都能轻松实现样式自定义。",
     "achievements": [
       {
-        "title": "基于 CSS 变量的主题系统",
-        "description": "参考各库的主题设计，用 CSS 变量实现。提供类型安全的 Theme Callback。",
+        "title": "主题与样式系统",
         "highlights": [
-          "Palette / Semantic / Background 多层颜色设计",
-          "--venomous-* CSS 变量 + getCssVar() 类型安全工具",
-          "style={(theme) => ({...})} Theme Callback 模式",
-          "明暗模式自动切换"
+          "内置 Design Token，支持选择性覆盖",
+          "基于 CSS Variable，支持 Dark Mode",
+          "组件 style 属性支持 CSS 对象或 (theme) => ({...}) 回调"
         ]
       },
       {
-        "title": "轻量解耦设计",
-        "description": "外部依赖仅 clsx。组件独立分离，只加载使用的部分。",
+        "title": "多框架支持与按需加载",
         "highlights": [
-          "组件级 CSS 注入（带防重复机制）",
-          "Vite 多入口 ESM 构建",
-          "Storybook 文档与演示"
+          "Subpath Exports 分离 React / Vue / Core 模块",
+          "支持按需导入，仅打包使用的框架和组件",
+          "标记无副作用，支持 Tree-shaking"
         ]
+      },
+      {
+        "title": "无障碍（a11y）",
+        "description": "ARIA 属性自动关联、焦点陷阱、全组件键盘导航。"
       }
     ],
     "learnings": [
       {
-        "title": "无障碍（a11y）",
-        "description": "目前未实现，未来一定会加上。计划逐步添加 ARIA 属性、键盘操作、屏幕阅读器支持。"
-      },
-      {
-        "title": "SSR 适配挑战",
-        "description": "SSR/RSC 的正确集成方式仍在摸索中，CSS 变量注入时机是主要难点。"
-      },
-      {
-        "title": "i18n 有意不支持",
-        "description": "Ant Design 的 ConfigProvider + locale 方便但让库持有文本。本库专注纯 UI，i18n 交由使用者处理。"
+        "title": "SSR/RSC 集成挑战",
+        "description": "CSS Variable 在服务端渲染时值未知，需要 Cookie 或 CSS 双写方案解决主题闪烁问题。正在研究 Next.js App Router 兼容方案。"
       }
     ]
   }

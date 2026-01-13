@@ -417,42 +417,35 @@
     "featured": false,
     "title": "Venomous UI Library",
     "subtitle": "UI コンポーネントライブラリ",
-    "description": "Design Token + CSS 変数ベースのテーマシステムを備えた UI コンポーネントライブラリ。",
+    "description": "業務でテーマカスタマイズの煩雑さ、スタイル上書きの困難さに何度も直面。スタイル記述への個人的なこだわりもあり、React と Vue 両対応の軽量コンポーネントライブラリをゼロから設計。",
     "role": "個人開発",
-    "overview": "業務で MUI / Vuetify / Ant Design 等を使ってきたが、テーマシステムの仕組みを深く理解したかったため自作。各ライブラリの良い部分を参考にしつつ、自分好みの API 設計で実装。",
+    "overview": "MUI / Ant Design / Element Plus / styled-components 等の API 設計思想を参考に、シンプルなコンポーネントインターフェースと柔軟なスタイルカスタマイズを追求。コンポーネントは基本スタイルと必要なロジックのみ提供し、CSS-in-JS でも className でも容易にスタイル調整が可能。",
     "achievements": [
       {
-        "title": "CSS 変数ベースのテーマシステム",
-        "description": "各ライブラリのテーマ設計を参考に、CSS 変数で実装。型安全な Theme Callback を提供。",
+        "title": "テーマ・スタイルシステム",
         "highlights": [
-          "Palette / Semantic / Background の多層カラー設計",
-          "--venomous-* CSS 変数 + getCssVar() 型安全ヘルパー",
-          "style={(theme) => ({...})} による Theme Callback",
-          "ライト・ダークモード自動切替"
+          "Design Token 内蔵、選択的カスタマイズ可能",
+          "CSS Variable ベース、Dark Mode 対応",
+          "コンポーネントの style 属性は CSS オブジェクトまたは (theme) => ({...}) コールバックに対応"
         ]
       },
       {
-        "title": "軽量・疎結合な設計",
-        "description": "外部依存は clsx のみ。コンポーネント単位で分離し、使用分だけ読み込む設計。",
+        "title": "マルチフレームワーク対応・オンデマンドロード",
         "highlights": [
-          "コンポーネント単位の CSS 注入（重複防止機構付き）",
-          "Vite マルチエントリ ESM ビルド",
-          "Storybook によるドキュメント・デモ"
+          "Subpath Exports で React / Vue / Core モジュール分離",
+          "オンデマンドインポート対応、使用するフレームワークとコンポーネントのみバンドル",
+          "副作用なしマーク、Tree-shaking 対応"
         ]
+      },
+      {
+        "title": "アクセシビリティ（a11y）",
+        "description": "ARIA 属性自動連携、フォーカストラップ、全コンポーネントのキーボード操作対応。"
       }
     ],
     "learnings": [
       {
-        "title": "アクセシビリティ（a11y）",
-        "description": "現状は未対応。今後必ず実装予定。ARIA 属性・キーボード操作・スクリーンリーダー対応を段階的に追加していく。"
-      },
-      {
-        "title": "SSR 対応の課題",
-        "description": "SSR/RSC との適切な共存方法を模索中。CSS 変数注入のタイミング制御が課題。"
-      },
-      {
-        "title": "i18n は意図的に非対応",
-        "description": "Ant Design の ConfigProvider + locale 方式は便利だが、ライブラリ側にテキストを持たせる設計。本ライブラリは UI のみに集中し、i18n は利用者に委ねる方針を選択。"
+        "title": "SSR/RSC 統合の課題",
+        "description": "CSS Variable の値はサーバーレンダリング時に未確定。テーマフラッシュ防止には Cookie または CSS 二重出力が必要。Next.js App Router との互換性を研究中。"
       }
     ]
   }
