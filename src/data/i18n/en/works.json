@@ -111,48 +111,22 @@
     "title": "SKYFLAG",
     "subtitle": "Reward Ad Platform",
     "description": "Platform providing performance-based ads (offer wall) and incentive ads for mobile apps and websites. Implementations at major companies including LINE, DMM, MIXI, and NTT Docomo.",
-    "role": "Frontend Tech Lead / Acting EM",
+    "role": "Frontend Tech Lead",
     "company": "Skyfall, Inc.",
     "department": "Product Division",
-    "overview": "Led frontend development and managed development team operations during EM absence. Handled tech selection and construction for new admin panel, development process setup.",
+    "overview": "Responsible for tech selection and architecture design for new admin panel, led frontend tech upgrades.",
     "achievements": [
       {
-        "title": "New Unified Admin Panel Tech Selection & Design",
-        "description": "Built new Admin Panel for multi-product management. Achieved rapid release timeline.",
-        "highlights": [
-          "Auto-generated CRUD with Refine (React admin framework)",
-          "Unified UI/UX with Ant Design",
-          "Permission management & multi-tenant design"
-        ]
+        "title": "New Admin Panel Development",
+        "description": "Built product admin panel from scratch based on Refine + Ant Design."
       },
       {
-        "title": "SKYFLAG Client Tech Updates",
-        "description": "Executed major version updates for React / TypeScript and dependency vulnerability fixes.",
-        "highlights": [
-          "Breaking change handling & compatibility assurance",
-          "Quality assurance through regression testing",
-          "Phased migration strategy"
-        ]
-      },
-      {
-        "title": "Development Team Process Setup (Acting EM)",
-        "description": "Managed development team operations during EM absence. Improved team productivity and quality.",
-        "highlights": [
-          "Documented & standardized coding conventions",
-          "Scrum introduction for iteration management",
-          "Technical documentation with Docusaurus",
-          "New grad engineer onboarding"
-        ]
+        "title": "Frontend Tech Stack Upgrade",
+        "description": "Led React / TypeScript major version upgrades, handled breaking changes, ensured smooth migration."
       },
       {
         "title": "Fastest 'Newcomer Motto Award' in Company History",
-        "description": "Received company-wide recognition within 3 months of joining"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "Prioritization for Short-term Results",
-        "description": "Prioritized high-impact initiatives and documented processes to prevent knowledge silos. Even in short tenures, leaving behind 'systems' creates lasting value."
+        "description": "Received company-wide recognition within 2 months of joining"
       }
     ]
   },
@@ -173,48 +147,15 @@
     "role": "Frontend Tech Lead",
     "company": "FAIR NEXT INNOVATION, Inc.",
     "department": "IT Solutions Division",
-    "overview": "Handled toC reservation site, toB admin panel, and Django backend. Also served as tech lead, code reviewer, and onboarding lead for external team (6 people).",
+    "overview": "Responsible for toC reservation site and toB admin panel development, also served as tech lead for 6-person external team.",
     "achievements": [
       {
-        "title": "Multi-team Codebase Integration & Refactoring",
-        "description": "Maintained code quality and integration as multiple external teams rotated through.",
-        "highlights": [
-          "Documented & standardized coding conventions",
-          "Quality gate through all-PR code review",
-          "Tech debt visualization & planned resolution"
-        ]
+        "title": "REST API → Gatsby + GraphQL Migration",
+        "description": "Led frontend architecture upgrade, eliminated over-fetching, achieved schema-first type-safe development."
       },
       {
-        "title": "Migration to Gatsby + GraphQL",
-        "description": "Drove migration from REST API-based architecture to Gatsby + GraphQL. Improved data fetching efficiency and developer experience.",
-        "highlights": [
-          "Eliminated over-fetching for reduced bandwidth",
-          "Schema-first type-safe development",
-          "Self-documenting with GraphQL Playground"
-        ]
-      },
-      {
-        "title": "External Team (6 people) Management & Onboarding",
-        "description": "Tech lead for multinational external team, handling team building and technical mentoring.",
-        "highlights": [
-          "Technical documentation with Docusaurus",
-          "Scrum operations & sprint management",
-          "Technical mentoring & knowledge sharing through code review"
-        ]
-      }
-    ],
-    "learnings": [
-      {
-        "title": "Documentation-driven",
-        "description": "Always keep documentation up-to-date, assuming people will rotate."
-      },
-      {
-        "title": "Practical Tech Selection",
-        "description": "Choose technologies the team can understand. GraphQL was sold on 'type safety reduces mistakes'."
-      },
-      {
-        "title": "Review as Quality Gate",
-        "description": "When team members have varying skill levels, code review becomes the only reliable quality gate."
+        "title": "External Team Technical Management",
+        "description": "Led 6-person multinational external team, responsible for code review, technical documentation, and quality control."
       }
     ]
   },
@@ -233,35 +174,15 @@
     "role": "Frontend Engineer (SES)",
     "company": "FAIR NEXT INNOVATION, Inc.",
     "department": "IT Division",
-    "overview": "Developed admin panels for business management system with React + TypeScript. Handled multiple modules including master data management, report generation, and workflow applications.",
+    "overview": "First job after coming to Japan. Independently developed multiple core modules of business management system using React + TypeScript.",
     "achievements": [
       {
-        "title": "Business Management System Frontend",
-        "description": "Developed multiple modules for internal business management system. Implemented master data management, data search, and report generation.",
+        "title": "Business Management System Core Modules",
+        "description": "Independently responsible for frontend development of master data management, dynamic forms, workflow approval, report generation modules.",
         "highlights": [
-          "Master data management (CRUD, bulk import/export)",
-          "Complex search, sorting & pagination",
-          "PDF/Excel report generation, print preview"
+          "Role-based menu and button-level permission control",
+          "Virtual scroll rendering optimization for 10K+ row data tables"
         ]
-      },
-      {
-        "title": "Workflow Application Feature",
-        "description": "Implemented frontend for application and approval workflow. Handled form design to status management.",
-        "highlights": [
-          "Dynamic form generation (field switching by application type)",
-          "Approval status display & history management",
-          "File upload & attachment functionality"
-        ]
-      }
-    ],
-    "learnings": [
-      {
-        "title": "Japanese Development Practices",
-        "description": "First job in Japan. Practiced Ho-Ren-So, deadline management, and quality-focused development processes."
-      },
-      {
-        "title": "SES On-site Work Style",
-        "description": "Adapted to client's rules and development flow while maintaining communication with home company."
       }
     ]
   },

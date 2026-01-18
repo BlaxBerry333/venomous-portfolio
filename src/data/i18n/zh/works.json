@@ -108,44 +108,22 @@
     "title": "SKYFLAG",
     "subtitle": "激励广告平台",
     "description": "为移动应用和网站提供效果广告（offer wall）和激励广告的平台。在 LINE、DMM、MIXI、NTT Docomo 等大公司有实施案例。",
-    "role": "前端技术负责人 / 代理 EM",
+    "role": "前端技术负责人",
     "company": "Skyfall 株式会社",
     "department": "产品本部",
-    "overview": "领导前端开发，在 EM 缺席期间管理开发团队运营。负责新管理后台的技术选型和构建、开发流程整备。",
+    "overview": "负责新管理后台的技术选型和架构设计，主导前端技术升级。",
     "achievements": [
       {
-        "title": "新统一管理后台技术选型和设计",
-        "description": "为多产品管理构建新的 Admin Panel。实现快速发布。",
-        "highlights": [
-          "Refine（React admin framework）自动生成 CRUD",
-          "Ant Design 统一 UI/UX",
-          "权限管理和多租户设计"
-        ]
+        "title": "新管理后台构建",
+        "description": "基于 Refine + Ant Design 从零构建产品管理后台。"
       },
       {
-        "title": "SKYFLAG 客户端技术更新",
-        "description": "执行 React / TypeScript 主要版本更新和依赖漏洞修复。",
-        "highlights": ["破坏性变更处理和兼容性保障", "回归测试质量保证", "分阶段迁移策略"]
+        "title": "前端技术栈升级",
+        "description": "主导 React / TypeScript 主版本升级，处理破坏性变更，确保平滑迁移。"
       },
       {
-        "title": "开发团队流程整备（代理 EM）",
-        "description": "EM 缺席期间代理开发团队运营。提升团队生产力和质量。",
-        "highlights": [
-          "编码规范文档化和标准化",
-          "Scrum 导入迭代管理",
-          "Docusaurus 技术文档整备",
-          "新毕业工程师入职引导"
-        ]
-      },
-      {
-        "title": "公司历史最快「新人 Motto 奖」获奖",
-        "description": "入职 3 个月内获得全公司表彰"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "短期内出成果的优先级排序",
-        "description": "优先推进高影响力举措，通过文档化防止知识孤岛。即使任期短暂，留下「系统」也能创造持久价值。"
+        "title": "公司历史最快「新人 Motto 奖」",
+        "description": "入职 2 个月内获得全公司表彰"
       }
     ]
   },
@@ -166,48 +144,15 @@
     "role": "前端技术负责人",
     "company": "株式会社 FAIR NEXT INNOVATION",
     "department": "IT 解决方案事业部",
-    "overview": "负责 toC 预约网站、toB 管理后台和 Django 后端。同时担任外部团队（6人）的技术负责人、代码审查和入职引导。",
+    "overview": "负责 toC 预约网站和 toB 管理后台开发，同时担任 6 人外部团队的技术负责人。",
     "achievements": [
       {
-        "title": "多团队代码库整合和重构",
-        "description": "在多个外部团队轮换中维护代码质量和整合。",
-        "highlights": [
-          "编码规范文档化和标准化",
-          "全 PR 代码审查构建质量关卡",
-          "技术债务可视化和计划性解决"
-        ]
+        "title": "REST API → Gatsby + GraphQL 迁移",
+        "description": "主导前端架构升级，消除 Over-fetching，实现 Schema 优先的类型安全开发。"
       },
       {
-        "title": "迁移到 Gatsby + GraphQL",
-        "description": "推动从基于 REST API 的架构迁移到 Gatsby + GraphQL。提升数据获取效率和开发体验。",
-        "highlights": [
-          "消除 Over-fetching 减少带宽消耗",
-          "Schema 优先的类型安全开发",
-          "GraphQL Playground 自文档化"
-        ]
-      },
-      {
-        "title": "外部团队（6 人）管理和入职引导",
-        "description": "作为多国籍外部团队的技术负责人，负责团队建设和技术指导。",
-        "highlights": [
-          "Docusaurus 技术文档整备",
-          "Scrum 运营和迭代管理",
-          "代码审查技术指导和知识共享"
-        ]
-      }
-    ],
-    "learnings": [
-      {
-        "title": "文档驱动",
-        "description": "假设人员会轮换，始终保持文档最新。"
-      },
-      {
-        "title": "务实的技术选型",
-        "description": "选择团队能理解的技术。以「类型安全能减少错误」为卖点推动 GraphQL 落地。"
-      },
-      {
-        "title": "审查作为质量关卡",
-        "description": "当团队成员技能水平参差不齐时，代码审查是唯一可靠的质量关卡。"
+        "title": "外部团队技术管理",
+        "description": "带领 6 人多国籍外部团队，负责代码审查、技术文档整备和质量把控。"
       }
     ]
   },
@@ -226,35 +171,15 @@
     "role": "前端工程师（SES）",
     "company": "株式会社 FAIR NEXT INNOVATION",
     "department": "IT 事业本部",
-    "overview": "使用 React + TypeScript 开发业务管理系统管理后台。负责主数据管理、报表输出、工作流申请等多个模块。",
+    "overview": "来日后第一份工作。使用 React + TypeScript 独立负责业务管理系统多个核心模块开发。",
     "achievements": [
       {
-        "title": "业务管理系统前端开发",
-        "description": "负责内部业务管理系统的多个模块。实现主数据管理、数据检索、报表输出功能。",
+        "title": "业务管理系统核心模块",
+        "description": "独立负责主数据管理、动态表单、工作流审批、报表生成等模块的前端开发。",
         "highlights": [
-          "主数据管理画面（CRUD、批量导入/导出）",
-          "复合条件搜索、排序、分页",
-          "PDF/Excel 报表生成、打印预览"
+          "基于角色的菜单和按钮级权限控制",
+          "万级数据表格虚拟滚动渲染优化"
         ]
-      },
-      {
-        "title": "工作流申请功能",
-        "description": "实现申请・审批流程的前端。负责表单设计到状态管理。",
-        "highlights": [
-          "动态表单生成（根据申请类型切换字段）",
-          "审批状态显示、历史管理",
-          "文件上传、附件功能"
-        ]
-      }
-    ],
-    "learnings": [
-      {
-        "title": "日本开发现场",
-        "description": "来日后第一份工作。实践中掌握报连相、纳期管理、品质重视的开发流程。"
-      },
-      {
-        "title": "SES 驻场工作方式",
-        "description": "适应客户现场规则和开发流程，同时与自社保持联络。"
       }
     ]
   },
