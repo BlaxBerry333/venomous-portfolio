@@ -61,55 +61,36 @@
     "role": "全栈工程师 / 前端技术负责人",
     "company": "Geniee 株式会社",
     "department": "GENIEE CHAT 事业部",
-    "overview": "领导 5 人前端团队的架构设计和代码审查。新功能从数据库设计到 API 到前端端到端实现。",
+    "overview": "从零设计前端架构和技术选型，主导工作流模块开发，负责团队代码审查。",
     "achievements": [
       {
         "title": "完全替换遗留前端",
-        "description": "使用 Vite + React Hooks (TypeScript) 完全重建运营 5 年以上的 Webpack + React Class Components。大幅提升开发体验和生产性能。",
+        "description": "完全重构运营 5 年以上的前端项目。采用 v1/v2 并行策略，新功能全部使用 v2，稳定后停用旧版全面切换。",
         "highlights": [
-          "Dev Server 启动 45s → 3s（提升 93%）",
-          "HMR 5-8s → 500ms（提升 90%）",
-          "生产构建 4min → 50s（提升 79%）",
-          "包体积 2.8MB → 1.1MB（减少 61%）",
-          "类型覆盖率 0% → 95%+"
+          "Webpack → Vite，React Class Components → Hooks + TypeScript",
+          "构建速度、HMR、包体积、类型覆盖率均大幅改善"
         ]
+      },
+      {
+        "title": "无代码工作流编辑器（场景画布）",
+        "description": "基于 React Flow + Django 从零设计可视化工作流编辑器。CS 团队可直接操作，无需依赖开发人员，大幅缩短场景配置时间。",
+        "highlights": ["版本管理与差异对比、变量管理与应用", "工作流模板导出与导入复用"]
       },
       {
         "title": "设计系统构建",
-        "description": "基于 MUI v5 设计并实现产品专用的 Design Token 体系。提升 UI 一致性和可维护性。",
+        "description": "基于 MUI + Storybook 构建产品专用的设计系统。",
         "highlights": [
-          "3 层 Token 设计（Primitive / Semantic / Component）",
-          "Storybook 组件目录",
-          "主题切换和暗色模式支持"
+          "统一多套样式方案（Tailwind/styled-components/CSS Module/MUI）",
+          "用户可在管理后台自定义 Design Tokens 并应用到 Chatbot"
         ]
       },
       {
-        "title": "场景画布（无代码工作流编辑器）",
-        "description": "从零使用 React Flow 设计并实现可视化编辑器。从 DB 设计到 API 到前端全程负责。场景设置时间从 60-90 分钟缩短至 10-15 分钟。",
-        "highlights": [
-          "DFS 算法循环引用检测",
-          "JSON diff 版本管理和差异显示",
-          "变量作用域管理（本地/全局）",
-          "非工程师也能直观操作的 UI"
-        ]
-      },
-      {
-        "title": "静态资源管理系统",
-        "description": "构建了允许用户上传的静态资源（图片/视频/JS/CSS）在聊天机器人中使用的功能。从 DB 设计到 API 到前端全程负责。"
+        "title": "Protobuf 数据类型统一",
+        "description": "使用 Protocol Buffers 统一前后端数据类型定义，确保接口类型安全和数据一致性。"
       },
       {
         "title": "连续 4 期 OKR 评价 A+",
         "description": "任职期间全期获得最高评价"
-      },
-      {
-        "title": "任职期间零重大事故",
-        "description": "通过质量管理和代码审查预防生产事故"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "免费版/付费版功能设计",
-        "description": "从开发初期就设计 Feature Flag，按套餐实现访问控制。从一开始就内置控制能力，比事后添加限制成本更低。"
       }
     ]
   },
@@ -144,11 +125,7 @@
       {
         "title": "SKYFLAG 客户端技术更新",
         "description": "执行 React / TypeScript 主要版本更新和依赖漏洞修复。",
-        "highlights": [
-          "破坏性变更处理和兼容性保障",
-          "回归测试质量保证",
-          "分阶段迁移策略"
-        ]
+        "highlights": ["破坏性变更处理和兼容性保障", "回归测试质量保证", "分阶段迁移策略"]
       },
       {
         "title": "开发团队流程整备（代理 EM）",

@@ -61,55 +61,39 @@
     "role": "フルスタックエンジニア / フロントエンドテックリード",
     "company": "株式会社ジーニー",
     "department": "GENIEE CHAT事業部",
-    "overview": "フロントエンド 5名チームのリードとしてアーキテクチャ設計・コードレビューを実施。新機能は DB設計〜API〜フロントエンドまで一貫して実装。",
+    "overview": "フロントエンドアーキテクチャと技術選定をゼロから設計。Workflow モジュール開発を主導し、チームのコードレビューを担当。",
     "achievements": [
       {
         "title": "レガシーフロントエンドのフルリプレイス",
-        "description": "5年以上運用された Webpack + React Class Components を Vite + React Hooks (TypeScript) で完全刷新。開発体験と本番パフォーマンスを大幅に改善。",
+        "description": "5年以上運用されたフロントエンドを完全刷新。v1/v2 並行運用で新機能は全て v2 で開発、安定後に旧版を廃止し全面移行。",
         "highlights": [
-          "Dev Server 起動 45s → 3s（93%短縮）",
-          "HMR 5-8s → 500ms（90%短縮）",
-          "本番ビルド 4min → 50s（79%短縮）",
-          "バンドルサイズ 2.8MB → 1.1MB（61%削減）",
-          "型カバレッジ 0% → 95%+"
+          "Webpack → Vite、React Class Components → Hooks + TypeScript",
+          "ビルド速度・HMR・バンドルサイズ・型カバレッジ全て大幅改善"
+        ]
+      },
+      {
+        "title": "ノーコード Workflow エディタ（シナリオキャンバス）",
+        "description": "React Flow + Django を用いてビジュアル Workflow エディタをゼロから設計・実装。CS チームが開発者に依頼せず直接シナリオ設定が可能になり、作業時間を大幅に短縮。",
+        "highlights": [
+          "バージョン管理・差分比較、変数管理と活用",
+          "Workflow テンプレートのエクスポート・インポート再利用"
         ]
       },
       {
         "title": "Design System の構築",
-        "description": "MUI v5 をベースに、プロダクト専用の Design Token 体系を設計・実装。UIの一貫性とメンテナンス性を向上。",
+        "description": "MUI + Storybook をベースに、プロダクト専用の Design System を構築。",
         "highlights": [
-          "Primitive / Semantic / Component の3層 Token 設計",
-          "Storybook によるコンポーネントカタログ",
-          "テーマ切替・ダークモード対応"
+          "複数のスタイル方式（Tailwind/styled-components/CSS Module/MUI）を統一",
+          "管理画面でユーザーが Design Tokens をカスタマイズし Chatbot に適用可能"
         ]
       },
       {
-        "title": "シナリオキャンバス（ノーコード Workflow エディタ）",
-        "description": "React Flow を用いたビジュアルエディタをゼロから設計・実装。DB設計〜API〜フロントエンドまで一貫して担当。シナリオ設定時間を 60-90分 → 10-15分に短縮。",
-        "highlights": [
-          "DFS アルゴリズムによる循環参照検知",
-          "JSON diff によるバージョン管理・差分表示",
-          "変数スコープ管理（ローカル/グローバル）",
-          "非エンジニアでも直感的に操作可能な UI"
-        ]
-      },
-      {
-        "title": "静的リソース管理システム",
-        "description": "ユーザーがアップロードした静的リソース（画像/動画/JS/CSS）を Chatbot で利用可能にする機能を構築。DB設計〜API〜フロントエンドまで一貫して担当。"
+        "title": "Protobuf によるデータ型統一",
+        "description": "Protocol Buffers でフロントエンド・バックエンド間のデータ型定義を統一。インターフェースの型安全性とデータ整合性を確保。"
       },
       {
         "title": "連続4期 OKR 評価 A+",
         "description": "担当期間中、全期で最高評価を獲得"
-      },
-      {
-        "title": "在籍中の重大障害 0件",
-        "description": "品質管理とコードレビューによりプロダクション障害を未然防止"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "無料版/有料版の機能設計",
-        "description": "開発初期から Feature Flag を設計し、プランごとのアクセス制御を実装。後から制限を加えるより、最初から制御可能な設計にすることが重要。"
       }
     ]
   },

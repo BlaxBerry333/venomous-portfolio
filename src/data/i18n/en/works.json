@@ -61,55 +61,39 @@
     "role": "Fullstack Engineer / Frontend Tech Lead",
     "company": "Geniee, Inc.",
     "department": "GENIEE CHAT Division",
-    "overview": "Led 5-person frontend team on architecture design and code review. Implemented new features end-to-end from DB design to API to frontend.",
+    "overview": "Designed frontend architecture and tech stack from scratch. Led workflow module development and team code review.",
     "achievements": [
       {
         "title": "Full Legacy Frontend Replacement",
-        "description": "Completely rebuilt 5+ year old Webpack + React Class Components with Vite + React Hooks (TypeScript). Dramatically improved developer experience and production performance.",
+        "description": "Completely rebuilt 5+ year old frontend project. Ran v1/v2 in parallel, developed all new features in v2, then deprecated legacy after stabilization.",
         "highlights": [
-          "Dev Server startup 45s → 3s (93% faster)",
-          "HMR 5-8s → 500ms (90% faster)",
-          "Production build 4min → 50s (79% faster)",
-          "Bundle size 2.8MB → 1.1MB (61% smaller)",
-          "Type coverage 0% → 95%+"
+          "Webpack → Vite, React Class Components → Hooks + TypeScript",
+          "Major improvements in build speed, HMR, bundle size, and type coverage"
+        ]
+      },
+      {
+        "title": "No-code Workflow Editor (Scenario Canvas)",
+        "description": "Designed visual workflow editor from scratch with React Flow + Django. CS team can operate directly without developer assistance, significantly reducing scenario setup time.",
+        "highlights": [
+          "Version management & diff comparison, variable management",
+          "Workflow template export & import for reuse"
         ]
       },
       {
         "title": "Design System Construction",
-        "description": "Designed and implemented product-specific Design Token system based on MUI v5. Improved UI consistency and maintainability.",
+        "description": "Built product-specific Design System based on MUI + Storybook.",
         "highlights": [
-          "3-layer Token design (Primitive / Semantic / Component)",
-          "Component catalog with Storybook",
-          "Theme switching & dark mode support"
+          "Unified multiple styling approaches (Tailwind/styled-components/CSS Module/MUI)",
+          "Users can customize Design Tokens in admin panel and apply to Chatbot"
         ]
       },
       {
-        "title": "Scenario Canvas (No-code Workflow Editor)",
-        "description": "Designed and implemented visual editor using React Flow from scratch. Handled end-to-end from DB design to API to frontend. Reduced scenario setup time from 60-90min to 10-15min.",
-        "highlights": [
-          "DFS algorithm for circular reference detection",
-          "JSON diff for version management & diff display",
-          "Variable scope management (local/global)",
-          "Intuitive UI for non-engineers"
-        ]
-      },
-      {
-        "title": "Static Resource Management System",
-        "description": "Built feature to use user-uploaded static resources (images/videos/JS/CSS) in Chatbot. Handled end-to-end from DB design to API to frontend."
+        "title": "Protobuf Data Type Unification",
+        "description": "Unified frontend-backend data type definitions using Protocol Buffers, ensuring interface type safety and data consistency."
       },
       {
         "title": "Consecutive 4 Quarters OKR Rating A+",
         "description": "Achieved top rating for all quarters during tenure"
-      },
-      {
-        "title": "Zero Critical Incidents During Tenure",
-        "description": "Prevented production incidents through quality management and code review"
-      }
-    ],
-    "learnings": [
-      {
-        "title": "Free/Paid Feature Design",
-        "description": "Design Feature Flags from early development and implement access control by plan tier. Building in control from the start costs less than adding restrictions later."
       }
     ]
   },
