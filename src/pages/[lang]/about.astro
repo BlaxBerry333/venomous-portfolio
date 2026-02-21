@@ -17,6 +17,9 @@ const { lang } = Astro.params as { lang: Locale };
 const profile = getProfile(lang);
 const skillCategories = getSkillCategories(lang);
 const avatarUrl = import.meta.env.ASTRO_APP_AVATAR_URL;
+const resumeFile = import.meta.env.ASTRO_APP_RESUME_FILE;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+const resumeUrl = resumeFile ? `${baseUrl}/resume/${resumeFile}` : null;
 
 const tabs = [
   { key: "experience", label: t("aboutPage.sections.experience", lang), icon: "calendar" },
@@ -63,19 +66,35 @@ const tabs = [
             </h1>
 
             <!-- 操作按钮 -->
-            <div class="flex flex-wrap justify-center gap-3 lg:justify-start">
+            <div class="flex flex-col items-center gap-4 lg:flex-row lg:items-start">
               {
                 profile.social.github && (
-                  <Button href={profile.social.github} variant="primary" size="md">
+                  <Button href={profile.social.github} variant="primary" size="lg">
                     <Icon name="github" size={16} />
                     GitHub
                   </Button>
                 )
               }
-              <Button href={getLocalizedUrl("/works", lang)} variant="secondary" size="md">
-                {t("hero.cta.works", lang)}
-                <span aria-hidden="true">→</span>
-              </Button>
+              <div class="flex gap-4">
+                <Button href={getLocalizedUrl("/works", lang)} variant="secondary" size="lg">
+                  {t("hero.cta.works", lang)}
+                  <span aria-hidden="true">→</span>
+                </Button>
+                {
+                  resumeUrl && (
+                    <Button
+                      href={resumeUrl}
+                      variant="secondary"
+                      size="lg"
+                      target="_blank"
+                      aria-label={t("resume.ariaLabel", lang)}
+                    >
+                      {t("resume.download", lang)}
+                      <span aria-hidden="true">→</span>
+                    </Button>
+                  )
+                }
+              </div>
             </div>
           </div>
         </div>

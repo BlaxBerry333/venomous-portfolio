@@ -27,7 +27,7 @@
     "subtitle": "これまでに携わった主なプロジェクト"
   },
   "worksPage": {
-    "pageTitle": "MY WORKS",
+    "pageTitle": "作品集",
     "pageSubtitle": "これまでに携わったプロジェクト",
     "filter": {
       "all": "すべて",
@@ -50,7 +50,7 @@
     }
   },
   "aboutPage": {
-    "pageTitle": "ABOUT ME",
+    "pageTitle": "自己紹介",
     "pageSubtitle": "東京を拠点に活動するエンジニア",
     "sections": {
       "bio": "自己紹介",
@@ -65,8 +65,8 @@
     "loading": "読み込み中..."
   },
   "footer": {
-    "tagline": "Building with passion",
-    "copyright": "All rights reserved."
+    "tagline": "熱意を用いて構築する",
+    "copyright": "すべての権利は保留されています。"
   },
   "skillCategories": {
     "frontend": "フロントエンド",
@@ -74,5 +74,9 @@
     "database": "データベース",
     "cloud": "クラウド",
     "tools": "開発ツール"
+  },
+  "resume": {
+    "download": "経歴書を見る",
+    "ariaLabel": "職務経歴書を表示"
   }
 }

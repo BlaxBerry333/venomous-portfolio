@@ -5,6 +5,8 @@ export interface Props {
   variant?: "primary" | "secondary" | "outline";
   size?: "sm" | "md" | "lg" | "icon";
   href?: string;
+  target?: string;
+  download?: boolean | string;
   class?: string;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
@@ -18,6 +20,8 @@ const {
   variant = "primary",
   size = "md",
   href,
+  target,
+  download,
   class: className = "",
   disabled = false,
   type = "button",
@@ -74,7 +78,14 @@ const combinedStyles = clsx(baseStyles, variantStyles[variant], sizeStyles[size]
 
 {
   href ? (
-    <a href={href} class={combinedStyles} aria-label={ariaLabel}>
+    <a
+      href={href}
+      class={combinedStyles}
+      aria-label={ariaLabel}
+      target={target || undefined}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
+      download={download || undefined}
+    >
       {variant === "primary" ? (
         <>
           <span class="cyber-corner cyber-corner-tl" aria-hidden="true" />

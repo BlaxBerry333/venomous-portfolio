@@ -74,5 +74,9 @@
     "database": "Database",
     "cloud": "Cloud Services",
     "tools": "Dev Tools"
+  },
+  "resume": {
+    "download": "View Resume (JA)",
+    "ariaLabel": "View Resume"
   }
 }

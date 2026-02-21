@@ -74,5 +74,9 @@
     "database": "数据库",
     "cloud": "云服务",
     "tools": "开发工具"
+  },
+  "resume": {
+    "download": "查看简历（日文版）",
+    "ariaLabel": "查看简历"
   }
 }

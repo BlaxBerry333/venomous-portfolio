@@ -12,6 +12,9 @@ export interface Props {
 
 const { locale } = Astro.props;
 const version = __APP_VERSION__;
+const resumeFile = import.meta.env.ASTRO_APP_RESUME_FILE;
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+const resumeUrl = resumeFile ? `${baseUrl}/resume/${resumeFile}` : null;
 ---
 
 <section
@@ -48,6 +51,20 @@ const version = __APP_VERSION__;
         {t("hero.cta.works", locale)}
         <span aria-hidden="true">→</span>
       </Button>
+      {
+        resumeUrl && (
+          <Button
+            href={resumeUrl}
+            variant="secondary"
+            size="lg"
+            target="_blank"
+            aria-label={t("resume.ariaLabel", locale)}
+          >
+            {t("resume.download", locale)}
+            <span aria-hidden="true">→</span>
+          </Button>
+        )
+      }
     </div>
   </TerminalWindow>
 </section>
