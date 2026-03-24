@@ -186,6 +186,43 @@
       }
     ]
   },
+  "venomous-datasource": {
+    "type": "personal",
+    "date": {
+      "start": "2026-03",
+      "end": null
+    },
+    "image": "/logos/D.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-datasource"
+    },
+    "featured": false,
+    "title": "Venomous Datasource Library",
+    "subtitle": "Unified Multi-cloud Data Source SDK for Node.js",
+    "description": "A TypeScript SDK providing a consistent API for tabular, document, and file-based data sources.",
+    "role": "Personal Project",
+    "overview": [
+      "Born from hands-on pain building a CDP data platform — juggling divergent SDKs for BigQuery, Firestore, S3 and others meant repetitive boilerplate and inconsistent error handling across every integration. Built this library to give myself a single, consistent interface that can be selectively imported per data source, with room to add more connectors as needs arise."
+    ],
+    "achievements": [
+      {
+        "title": "Unified Connector Interface Design",
+        "description": "Three interface types (Tabular / Document / File) with consistent method signatures. All connectors share the same pagination, filtering, and result types — switching data sources requires zero API relearning.",
+        "highlights": [
+          "6 connectors: BigQuery, Google Sheets, Firestore, S3, GCS, Azure Blob",
+          "Subpath exports — only the needed cloud SDK is installed, zero unused dependency"
+        ]
+      },
+      {
+        "title": "Extension Model & Security Foundation",
+        "description": "New data sources are added by implementing a single typed interface with 11+ reusable core utilities. Built-in streaming (AsyncIterable/ReadableStream), parameterized queries, path-traversal prevention, and auto credential redaction.",
+        "highlights": [
+          "Structured error hierarchy with 6 error classes",
+          "Zero-config auth via platform credential chain (ADC, IAM roles, managed identity)"
+        ]
+      }
+    ]
+  },
   "venomous-ui": {
     "type": "personal",
     "date": {

@@ -186,6 +186,43 @@
       }
     ]
   },
+  "venomous-datasource": {
+    "type": "personal",
+    "date": {
+      "start": "2026-03",
+      "end": null
+    },
+    "image": "/logos/D.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-datasource"
+    },
+    "featured": false,
+    "title": "Venomous Datasource Library",
+    "subtitle": "多云统一数据源 SDK ( Node.js )",
+    "description": "为表格型、文档型及文件型数据源提供统一 API 的 TypeScript SDK。",
+    "role": "个人项目",
+    "overview": [
+      "源于 CDP 数据平台开发的实际痛点 — 每次对接 BigQuery、Firestore、S3 等不同数据源都要面对重复的样板代码和各异的错误处理。为此构建了这个工具库：按数据源按需导入、统一 API 接口，同时预留了随时扩展更多连接器的能力。"
+    ],
+    "achievements": [
+      {
+        "title": "统一连接器接口设计",
+        "description": "三类接口（Tabular / Document / File）统一方法签名，全部连接器共享相同的分页、过滤和结果类型 — 切换数据源零 API 学习成本。",
+        "highlights": [
+          "6 个连接器：BigQuery、Google Sheets、Firestore、S3、GCS、Azure Blob",
+          "subpath exports — 仅安装所需云 SDK，未使用依赖零引入"
+        ]
+      },
+      {
+        "title": "扩展模型 & 安全基础层",
+        "description": "新增数据源只需实现单一类型化接口，复用 11+ 核心工具函数。内置流式处理（AsyncIterable/ReadableStream）、参数化查询、路径遍历防护与凭证自动脱敏。",
+        "highlights": [
+          "6 个错误类的结构化层级",
+          "基于平台凭证链（ADC、IAM、托管标识）的零配置认证"
+        ]
+      }
+    ]
+  },
   "venomous-ui": {
     "type": "personal",
     "date": {

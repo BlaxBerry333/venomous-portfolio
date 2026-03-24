@@ -186,6 +186,43 @@
       }
     ]
   },
+  "venomous-datasource": {
+    "type": "personal",
+    "date": {
+      "start": "2026-03",
+      "end": null
+    },
+    "image": "/logos/D.jpg",
+    "links": {
+      "github": "https://github.com/BlaxBerry333/venomous-datasource"
+    },
+    "featured": false,
+    "title": "Venomous Datasource Library",
+    "subtitle": "マルチクラウド統合データソース SDK ( Node.js )",
+    "description": "テーブル型・ドキュメント型・ファイル型データソースに統一 API を提供する TypeScript SDK。",
+    "role": "個人開発",
+    "overview": [
+      "CDP データプラットフォーム構築の実務から生まれたライブラリ。BigQuery・Firestore・S3 など異なる SDK を扱うたびに繰り返し発生するボイラープレートとエラーハンドリングの不統一を解消するため、データソース単位で選択的にインポートでき、将来のコネクタ追加にも対応可能な統一インターフェースを自分用に構築。"
+    ],
+    "achievements": [
+      {
+        "title": "統一コネクタインターフェース設計",
+        "description": "3種インターフェース（Tabular / Document / File）で統一メソッドシグネチャを実現。全コネクタが同一のページネーション・フィルタリング・結果型を共有し、データソース切替時の API 再学習コストをゼロに。",
+        "highlights": [
+          "6 コネクタ: BigQuery, Google Sheets, Firestore, S3, GCS, Azure Blob",
+          "subpath exports — 必要なクラウド SDK のみインストール、不要な依存ゼロ"
+        ]
+      },
+      {
+        "title": "拡張モデル & セキュリティ基盤",
+        "description": "新規データソースは単一の型付きインターフェース実装と 11 以上の再利用可能なコアユーティリティで追加可能。ストリーミング（AsyncIterable/ReadableStream）・パラメータ化クエリ・パストラバーサル防止・クレデンシャル自動秘匿を組み込み。",
+        "highlights": [
+          "6 エラークラスによる構造化エラー階層",
+          "プラットフォームクレデンシャルチェーン（ADC, IAM, マネージド ID）によるゼロコンフィグ認証"
+        ]
+      }
+    ]
+  },
   "venomous-ui": {
     "type": "personal",
     "date": {
