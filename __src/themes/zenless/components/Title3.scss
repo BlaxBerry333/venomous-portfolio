@@ -1,0 +1,40 @@
+// portfolio__zenless-title-3 — Zenless 三档小节标题
+// 结构：[主标题 display h3] + [可选 mono 副标 ▸ subtitle] + 底部 accent 分隔线
+
+.portfolio__zenless-title-3 {
+  --portfolio__zenless-title-3--size: 28px;
+
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 24px;
+
+  // 默认带分隔线
+  padding-bottom: 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--theme-accent) 32%, transparent);
+
+  // 关闭分隔线（divider={false}）
+  &--no-divider {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  &__text {
+    margin: 0;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: var(--portfolio__zenless-title-3--size);
+    letter-spacing: -0.01em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    font-family: var(--theme-font-mono);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--theme-accent);
+    text-transform: uppercase;
+  }
+}

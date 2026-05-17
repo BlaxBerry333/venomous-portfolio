@@ -1,0 +1,34 @@
+// portfolio__manga-panel — 漫画风分镜框
+// 视觉为主：黑边 + 偏移硬阴影 + 可选网点底
+// 动效层（hover / 入场）由调用方通过 framer-motion props 控制
+
+.portfolio__manga-panel {
+  --portfolio__manga-panel--border-width: 3px;
+  --portfolio__manga-panel--shadow-offset: 6px;
+
+  position: relative;
+  overflow: hidden;
+  border: var(--portfolio__manga-panel--border-width) solid var(--theme-fg);
+  box-shadow:
+    var(--portfolio__manga-panel--shadow-offset) var(--portfolio__manga-panel--shadow-offset) 0
+    var(--theme-fg);
+
+  &__halftone {
+    --portfolio__manga-panel__halftone--opacity: 0.18;
+    --portfolio__manga-panel__halftone--color: currentColor;
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: var(--portfolio__manga-panel__halftone--color);
+    opacity: var(--portfolio__manga-panel__halftone--opacity);
+
+    // 网点图案（与原 .manga-ui--halftone 一致，本地化避免依赖全局 utility）
+    background-image: radial-gradient(
+      circle at 1.5px 1.5px,
+      currentColor 1.5px,
+      transparent 1.7px
+    );
+    background-size: 10px 10px;
+  }
+}

@@ -1,0 +1,14 @@
+// portfolio__void-skill-tokens — Void About Skill Tokens（双栏 stratum）
+
+.portfolio__void-skill-tokens {
+  @media (max-width: 720px) {
+    &__stratum {
+      grid-template-columns: 1fr !important;
+      gap: 20px !important;
+
+      > div:last-child {
+        min-height: auto !important;
+      }
+    }
+  }
+}

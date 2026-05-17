@@ -1,0 +1,119 @@
+.portfolio--nebula-locale-switcher {
+  --item-size: 32px;
+  --item-gap: 2px;
+  --item-count: 3;
+
+  position: fixed;
+  top: clamp(16px, 2.5vw, 28px);
+  right: clamp(16px, 2.5vw, 28px);
+  z-index: var(--z-overlay);
+  display: inline-flex;
+  align-items: center;
+  padding: 4px;
+  gap: var(--item-gap);
+  font-family: var(--nebula-font-family-mono);
+  background: color-mix(in srgb, var(--nebula-color-bg) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--nebula-color-text) 18%, transparent);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--nebula-color-text) 6%, transparent),
+    var(--nebula-shadow-neon-soft);
+
+  &__track {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--item-gap);
+  }
+
+  &__indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: var(--item-size);
+    height: var(--item-size);
+    border-radius: 999px;
+    pointer-events: none;
+    transform: translateX(calc(var(--active-index) * (var(--item-size) + var(--item-gap))));
+    transition: transform 380ms var(--ease-out-expo);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--nebula-color-neon-1) 0%,
+        color-mix(in srgb, var(--nebula-color-neon-1) 50%, var(--nebula-color-neon-2) 50%) 50%,
+        var(--nebula-color-neon-2) 100%
+      );
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--item-size);
+    height: var(--item-size);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--nebula-color-muted);
+    text-decoration: none;
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+      color 320ms var(--ease-out-expo),
+      text-shadow 320ms var(--ease-out-expo),
+      background-color 320ms var(--ease-out-expo),
+      transform 120ms var(--ease-out-expo);
+
+    &:hover {
+      color: var(--nebula-color-text);
+      text-shadow: var(--nebula-text-shadow-neon-soft);
+    }
+
+    &:focus-visible {
+      outline: none;
+      color: var(--nebula-color-text);
+      box-shadow: 0 0 0 1px var(--nebula-color-neon-1);
+    }
+
+    &:active {
+      transform: scale(0.88);
+      transition-duration: 80ms;
+    }
+
+    &--active {
+      color: var(--nebula-color-text);
+      text-shadow: var(--nebula-text-shadow-neon-strong);
+      background: color-mix(in srgb, var(--nebula-color-text) 6%, transparent);
+      cursor: default;
+
+      &:active {
+        transform: none;
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__indicator,
+    &__item {
+      transition: none;
+    }
+  }
+}

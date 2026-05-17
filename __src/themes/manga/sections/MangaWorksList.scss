@@ -1,0 +1,16 @@
+// portfolio__manga-works-list — Manga Works 网格
+
+.portfolio__manga-works-list {
+  &__shelf {
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr !important;
+      justify-items: center;
+      gap: var(--space-md) !important;
+
+      > * {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  }
+}

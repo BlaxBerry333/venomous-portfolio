@@ -1,0 +1,36 @@
+// portfolio__zenless-bars — Zenless 风 N 段竖条装饰
+// 纯视觉，非进度条；用于"等级 / 频谱 / 信号强度"暗示
+
+.portfolio__zenless-bars {
+  --portfolio__zenless-bars--gap: 3px;
+  --portfolio__zenless-bars--height: 28px;
+  --portfolio__zenless-bars--color: var(--theme-accent);
+
+  display: inline-flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  gap: var(--portfolio__zenless-bars--gap);
+  height: var(--portfolio__zenless-bars--height);
+
+  // ---- color modifier ----
+  &--orange {
+    --portfolio__zenless-bars--color: #ff6b00;
+  }
+
+  &--green {
+    --portfolio__zenless-bars--color: var(--theme-accent);
+  }
+
+  &--purple {
+    --portfolio__zenless-bars--color: #8b5cf6;
+  }
+
+  // ---- element: 单条 ----
+  &__item {
+    --portfolio__zenless-bars__item--width: 4px;
+
+    display: inline-block;
+    width: var(--portfolio__zenless-bars__item--width);
+    background: var(--portfolio__zenless-bars--color);
+  }
+}

@@ -1,0 +1,39 @@
+// portfolio__manga-title-1 — 漫画风一档大标题
+// 结构：[顶部贴纸式角标(Tag)] + [主标题 display 字体 + accent 偏移硬阴影]
+// 旋转 / 阴影色由 props 通过 CSS 变量注入；入场动画走 framer-motion
+
+.portfolio__manga-title-1 {
+  --portfolio__manga-title-1--rotate: -2deg;
+  --portfolio__manga-title-1--shadow-color: var(--theme-accent);
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+
+  &__text {
+    margin: 0;
+
+    font-family: var(--theme-font-display);
+    // 下限放低，保证窄屏长词（BACKGROUND / HARD BOSS 等）也能容纳
+    font-size: clamp(56px, 14vw, 140px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+
+    // 阴影偏移用 em（相对字号），保证 PC / 移动端视觉占比一致
+    // 8/140 ≈ 0.057em
+    text-shadow:
+      0.057em 0.057em 0 var(--portfolio__manga-title-1--shadow-color);
+
+    // 长词在窄屏自动换行（极端情况切词，避免溢出容器）
+    overflow-wrap: anywhere;
+  }
+
+  // 仅静态（无 motion）形态走 transform；motion 形态由 framer-motion 接管
+  &__text--static {
+    transform: rotate(var(--portfolio__manga-title-1--rotate));
+  }
+}

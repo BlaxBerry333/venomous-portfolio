@@ -1,0 +1,85 @@
+// portfolio__manga-quote — 漫画风名言/引言框
+// BEM: portfolio__<theme>-<component>[__<element>][--<modifier>]
+//
+// 动态值（rotate / padding / maxWidth / minHeight）通过 CSS Custom Properties 注入；
+// 离散枚举（color: red / yellow / black / white）走 modifier class。
+
+.portfolio__manga-quote {
+  // ---- 动态 CSS 变量（由 JSX 注入，带默认值兜底）----
+  --portfolio__manga-quote--rotate: 0.6deg;
+  --portfolio__manga-quote--padding: 18px;
+  --portfolio__manga-quote--max-width: 620px;
+  --portfolio__manga-quote--min-height: auto;
+  --portfolio__manga-quote--bg: var(--theme-bg);
+  --portfolio__manga-quote--fg: var(--theme-fg);
+  --portfolio__manga-quote--shadow: var(--theme-accent-2);
+
+  position: relative;
+  margin: 0;
+  padding: var(--portfolio__manga-quote--padding);
+  max-width: var(--portfolio__manga-quote--max-width);
+  min-height: var(--portfolio__manga-quote--min-height);
+
+  background: var(--portfolio__manga-quote--bg);
+  color: var(--portfolio__manga-quote--fg);
+  border: 4px solid var(--theme-fg);
+  box-shadow: 8px 8px 0 var(--portfolio__manga-quote--shadow);
+
+  font-family: var(--theme-font-body);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.5;
+
+  transform: rotate(var(--portfolio__manga-quote--rotate));
+
+  // ---- modifier: color 配色 ----
+  &--red {
+    --portfolio__manga-quote--bg: var(--theme-accent);
+    --portfolio__manga-quote--fg: var(--theme-fg);
+    --portfolio__manga-quote--shadow: var(--theme-fg);
+  }
+
+  &--yellow {
+    --portfolio__manga-quote--bg: var(--theme-accent-2);
+    --portfolio__manga-quote--fg: var(--theme-fg);
+    --portfolio__manga-quote--shadow: var(--theme-fg);
+  }
+
+  &--black {
+    --portfolio__manga-quote--bg: var(--theme-fg);
+    --portfolio__manga-quote--fg: var(--theme-bg);
+    --portfolio__manga-quote--shadow: var(--theme-accent);
+  }
+
+  &--white {
+    --portfolio__manga-quote--bg: var(--theme-bg);
+    --portfolio__manga-quote--fg: var(--theme-fg);
+    --portfolio__manga-quote--shadow: var(--theme-accent-2);
+  }
+
+  // ---- element: stamp 角章 ----
+  &__stamp {
+    --portfolio__manga-quote__stamp--bg: var(--theme-accent);
+    --portfolio__manga-quote__stamp--fg: var(--theme-fg);
+
+    position: absolute;
+    top: -16px;
+    left: 12px;
+    padding: 2px 8px;
+
+    background: var(--portfolio__manga-quote__stamp--bg);
+    color: var(--portfolio__manga-quote__stamp--fg);
+    border: 2px solid var(--theme-fg);
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+  }
+
+  // red 底配 stamp 颜色翻转（避免红压红脏色）
+  &--red &__stamp {
+    --portfolio__manga-quote__stamp--bg: var(--theme-fg);
+    --portfolio__manga-quote__stamp--fg: var(--theme-bg);
+  }
+}

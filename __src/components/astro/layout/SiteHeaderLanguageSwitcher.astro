@@ -1,0 +1,46 @@
+---
+import type { Locale, Theme } from "@/types";
+import { LOCALES, getLocaleDisplayName, getLocalizedUrl } from "@/utils/i18n";
+
+interface Props {
+  locale: Locale;
+  /** Current theme; required on showcase pages so language swap keeps theme. */
+  theme?: Theme;
+}
+
+const { locale, theme } = Astro.props;
+
+// Strip base + locale + (optional) theme segment so we can swap locale prefix.
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const fullPath = Astro.url.pathname;
+const withoutBase = fullPath.replace(new RegExp(`^${base}`), "");
+const withoutLocale = withoutBase.replace(/^\/(ja|en|zh)(?=\/|$)/, "");
+const withoutTheme = theme
+  ? withoutLocale.replace(/^\/(void|manga|zenless)(?=\/|$)/, "")
+  : withoutLocale;
+const targetPath = withoutTheme.replace(/\/$/, "") || "/";
+---
+
+<div class="portfolio__site-header-switcher" role="radiogroup" aria-label="Language">
+  {
+    LOCALES.map((lc) => (
+      <a
+        class:list={[
+          "portfolio__site-header-switcher__option",
+          { "portfolio__site-header-switcher__option--active": locale === lc },
+        ]}
+        href={getLocalizedUrl(targetPath, lc, theme)}
+        role="radio"
+        aria-checked={locale === lc}
+        aria-label={getLocaleDisplayName(lc)}
+        title={getLocaleDisplayName(lc)}
+      >
+        {lc.toUpperCase()}
+      </a>
+    ))
+  }
+</div>
+
+<style lang="scss" is:global>
+  @use "./SiteHeaderSwitcher.scss";
+</style>

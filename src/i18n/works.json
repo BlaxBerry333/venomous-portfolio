@@ -1,0 +1,573 @@
+{
+  "area": {
+    "professional": {
+      "zh": "职业作品",
+      "ja": "業務開発",
+      "en": "Professional"
+    },
+    "personal": {
+      "zh": "个人作品",
+      "ja": "個人開発",
+      "en": "Personal"
+    }
+  },
+
+  "works": {
+    "geniee-cdp": {
+      "area": "professional",
+      "period": {
+        "zh": "2025.05 – 至今",
+        "ja": "2025.05 – 現在",
+        "en": "2025.05 – Present"
+      },
+      "title": {
+        "zh": "GENIEE CDP — 顾客数据平台 SaaS",
+        "ja": "GENIEE CDP — 顧客データ基盤 SaaS",
+        "en": "GENIEE CDP — Customer Data Platform SaaS"
+      },
+      "description": {
+        "zh": "GENIEE 对外提供的 Customer Data Platform SaaS。客户企业接入自己分散在网站、APP、CRM、第三方广告等渠道的顾客数据，由平台完成身份归并（Identity Resolution）与字段统一后，再由 GENIEE 自家的 MA / ENGAGE / ANALYTICS 等产品矩阵以及客户企业自己的下游分析链路消费。",
+        "ja": "GENIEE が外部に提供している Customer Data Platform SaaS。顧客企業が自社の Web・アプリ・CRM・サードパーティ広告等のチャネルに散らばった顧客データを取り込み、本基盤側で ID 名寄せと項目統一を行った上で、GENIEE 自社の MA / ENGAGE / ANALYTICS 等のプロダクト群、および顧客企業側の下流分析導線によって消費される。",
+        "en": "A Customer Data Platform SaaS that GENIEE offers to its enterprise clients. Client companies pipe in customer data scattered across their own web, mobile-app, CRM and third-party ad channels; the platform performs identity resolution and field unification, after which the unified data is consumed by GENIEE's own product suite (MA / ENGAGE / ANALYTICS) and by the client's own downstream analytics pipelines."
+      },
+      "background": {
+        "zh": "客户企业普遍卡在「数据孤岛」上——网站行为、APP 统计、离线 CRM、第三方广告平台各自存在，用户身份对不上、字段口径也对不齐，导致策略制定与效果分析都非常吃力。这套 SaaS 要做的，是把这些分散数据源接到一起，完成身份归并与字段统一，再把可信的「单用户视图」供给上层营销、分析、推荐等场景使用。我是在同公司另一个项目（GENIEE CHAT）上的表现获得认可之后，被邀请加入本项目，负责改善与优化前端侧的架构与功能模块。",
+        "ja": "顧客企業の多くは「データのサイロ化」に行き詰まっており、Web 行動・アプリ計測・オフライン CRM・サードパーティ広告プラットフォームがそれぞれ独立した結果、ユーザー ID も指標定義も揃わず、施策設計と効果検証の重い障害となっていた。本 SaaS の役割は、それら分散データソースを束ね、ID 名寄せと項目統一を経て、信頼できる「単一ユーザービュー」を上位のマーケティング・分析・レコメンド等のシナリオへ供給することにある。私は同社内の別プロジェクト（GENIEE CHAT）における実績が評価され、本プロジェクトへ招かれる形で参画し、フロントエンド側のアーキテクチャと機能モジュールの改善・最適化を担当することとなった。",
+        "en": "Client companies are routinely blocked by data silos — website behavior, app analytics, offline CRM and third-party ad platforms each stand on their own, with user identities and field definitions out of alignment, which makes both strategy design and post-campaign analysis painful. The platform's role is to wire those fragmented sources together, perform identity resolution and field unification, and serve the resulting trustworthy single-user view to downstream marketing, analytics and recommendation scenarios. Following recognition for my work on another project at the same company (GENIEE CHAT), I was invited to join this project to improve and optimize the frontend-side architecture and feature modules."
+      },
+      "skills": [
+        "next-js",
+        "react",
+        "typescript",
+        "material-ui",
+        "node-js",
+        "trpc",
+        "casbin",
+        "bigquery",
+        "google-tag-manager",
+        "google-analytics"
+      ],
+      "previewCode": "editor",
+      "links": [
+        {
+          "url": "https://cx.geniee.co.jp/product/cdp/",
+          "label": {
+            "zh": "产品信息",
+            "ja": "プロダクト情報",
+            "en": "Product"
+          }
+        }
+      ],
+      "professional": {
+        "role": {
+          "zh": "独当一面的工程师。负责 Next.js 侧管理界面的开发与架构维护，承担核心模块的端到端实现。",
+          "ja": "一人前エンジニアとして、Next.js 側管理画面の開発とアーキテクチャ保守を担当。コアモジュールの end-to-end 実装を担う。",
+          "en": "Individual Contributor (IC). Own the development and architectural upkeep of the Next.js admin console and deliver core modules end-to-end."
+        },
+        "achievements": [
+          {
+            "zh": "设计并落地基于 Next.js SSR 的全栈架构：将 Casbin 权限判定与 BigQuery / GCS / S3 / Azure Blob 等多云数据源 SDK 统一收束在服务端执行，客户端仅消费已经过权限裁剪的安全数据。这样既减轻了浏览器的负担，又把权限逻辑与凭据封死在服务侧，从架构层杜绝了凭据泄漏的可能。",
+            "ja": "Next.js SSR をベースとしたフルスタックアーキテクチャを設計・実装。Casbin による権限判定と BigQuery / GCS / S3 / Azure Blob などマルチクラウドデータソースの SDK をすべてサーバー側に収束させ、クライアントは権限フィルタ済みの安全なデータのみを消費する構造とした。ブラウザ負荷を軽減すると同時に、権限ロジックと認証情報をサーバー側に閉じ込めることで、アーキテクチャ層から認証情報漏洩の可能性を遮断した。",
+            "en": "Designed and shipped a Next.js SSR-based fullstack architecture: Casbin-based authorization and the multi-cloud data-source SDKs (BigQuery / GCS / S3 / Azure Blob) all execute on the server, and the client only consumes data that has already been authorization-filtered. This both lightens the browser and seals the authorization logic and credentials behind the server boundary, eliminating credential-leak risk at the architectural layer."
+          },
+          {
+            "zh": "以 tRPC 将 BFF ↔ 前端整体打通为端到端 100% 类型安全的数据通道——任何 API 改动都会在 TypeScript 编译期立即暴露为编译错误，让一个跨多个产品矩阵、API 频繁演进的 SaaS 前端获得了很强的「抗 API 变更」韧性，明显降低了联调阶段的回归成本。",
+            "ja": "tRPC により BFF ↔ フロントエンド間を end-to-end 100% Type-Safe なデータ経路として接続。API 変更は TypeScript のコンパイル時に即座にエラーとして顕在化する仕組みにより、複数プロダクト群を跨ぎ API が頻繁に進化する SaaS フロントエンドに、強い「API 変更耐性」をもたらし、結合検証段階のリグレッションコストを明確に低減させた。",
+            "en": "Wired the BFF ↔ frontend boundary into an end-to-end 100% type-safe data path with tRPC. Any API change surfaces immediately as a TypeScript compile error, giving a SaaS frontend that spans multiple product suites and constantly-evolving APIs strong resilience to API churn, and noticeably cutting regression cost during integration testing."
+          },
+          {
+            "zh": "在分析与数据可视化能力线上，自主提案并主导落地「集成 BigQuery 的高定制 SQL 编辑器」与「元数据自动生成」两项核心功能：从「非技术成员调取与配置数据的门槛过高」这一痛点的洞察、到方案设计、再到核心代码实现全部由我推动，显著降低了运营与分析角色直接触达数据的成本，提升了客户企业侧数据配置与分析的流转效率。",
+            "ja": "分析・データ可視化機能ラインにおいて、「BigQuery 統合の高カスタマイズ SQL エディタ」と「メタデータ自動生成」の 2 つのコア機能を自ら起案し、実装まで主導した。「非技術メンバーがデータの取得・設定を行う際のハードルが高い」という課題の発掘から、設計・コア実装に至る一連を一気通貫で推進し、運用・分析担当者がデータに直接触れるコストを大きく下げ、顧客企業側のデータ設定・分析業務の回転を加速させた。",
+            "en": "On the analytics and data-visualization capability line, proposed and led the delivery of two core features end-to-end: a heavily customized SQL editor integrated with BigQuery, and an automatic metadata-generation flow. From spotting the pain point — non-technical members facing a high friction barrier when pulling and configuring data — through to design and core implementation, the entire arc was driven by me; the result substantially lowered the cost for ops and analytics roles to reach the data directly and accelerated the data-configuration and analytics cycle on the client-company side."
+          },
+          {
+            "zh": "统一了 GTM / GA4 的埋点规范，让前端事件与下游分析口径在字段命名、参数结构、触发时机这几个维度都对齐，避免了「前端埋了、分析侧读不出来」这种长期消耗团队精力的问题。",
+            "ja": "GTM / GA4 の計測ルールを統一し、フロントエンドのイベントと下流分析側の指標定義をフィールド命名・パラメータ構造・発火タイミングの各次元で揃えた。これにより、「フロントエンドでは計測しているが分析側で読み取れない」という、チームの稼働を長期的に消耗するタイプの問題を未然に防いだ。",
+            "en": "Unified the GTM / GA4 tracking conventions so that frontend events align with downstream analytics definitions across field naming, parameter structure and firing timing. This pre-empted the chronic \"the frontend tracked it but the analytics side can't read it\" problem that quietly drains team capacity over time."
+          },
+          {
+            "zh": "推动前端的开发方式从依赖个人判断的较松散风格，向「设计主导（Design-Driven）」转移——架构与组件设计先固定下来再进入实现；并以勉强会的形式把这套做法对公司内其他事业部的技术成员进行了分享，作为可供其他团队参考的实践模板，而非强制规范。",
+            "ja": "フロントエンドの開発スタイルを、個人裁量に依存した属人的なものから「設計主導（Design-Driven）」へと切り替えた。アーキテクチャとコンポーネント設計を先に固めてから実装に入る流れを定着させ、さらに勉強会の形で社内の他事業部の技術メンバーにも共有した。強制ルールではなく、各チームが参照できる実践テンプレートとして提示している。",
+            "en": "Moved the frontend's way of working from a loose, person-dependent default toward a design-driven approach — architecture and component design are nailed down first, implementation follows. I also shared this approach with engineering members in other business units through internal tech sessions, offering it as a reference template that other teams can draw on rather than a mandated convention."
+          }
+        ],
+        "performance": {
+          "zh": "持续独当一面地负责该 SaaS 前端侧的架构演进与核心实现，是埋点规范与前端架构相关讨论的主要技术对接人。凭借跨项目经验横展、分析与数据可视化能力的落地，以及对开发体制规范化的贡献，连续 2 个季度在公司 OKR 评估中拿到最高等级 A+。",
+          "ja": "一人前エンジニアとして本 SaaS のフロントエンド側のアーキテクチャ進化とコア実装を継続的に担当しており、計測ルールとフロントエンドアーキテクチャに関する議論の主要な技術窓口を担っている。前プロジェクトからの経験横展開、分析・データ可視化機能の実装、開発体制の規範化への貢献が評価され、社内 OKR 評価で 2 期連続最高評価 A+ を獲得。",
+          "en": "I continue to independently drive the frontend's architectural evolution and core implementation on this SaaS, and serve as the main technical point of contact for tracking conventions and frontend-architecture discussions. Recognized for porting experience from the previous project onto this one, landing the analytics and data-visualization capabilities, and contributing to the codification of development practices, I earned the top A+ rating in the company's OKR review for two consecutive quarters."
+        }
+      }
+    },
+
+    "geniee-chat": {
+      "area": "professional",
+      "period": {
+        "zh": "2023.08 – 2025.05",
+        "ja": "2023.08 – 2025.05",
+        "en": "2023.08 – 2025.05"
+      },
+      "title": {
+        "zh": "GENIEE CHAT — Chatbot 型 Web 接客 SaaS",
+        "ja": "GENIEE CHAT — チャットボット型 Web 接客 SaaS",
+        "en": "GENIEE CHAT — Chatbot-Driven Web Engagement SaaS"
+      },
+      "description": {
+        "zh": "GENIEE CHAT（serviced by Chamo）是面向企业的 Chatbot 型 Web 接客 SaaS，主打通过 Chatbot 型 EFO（表单优化）与对话式接客来提升网站 CVR、并把客户应对自动化，国内累计导入 4,500+ 社。本职期间主导了它管理后台的现代化重构与平滑迁移，并交付了可视化 Workflow 编辑器的前端实现。",
+        "ja": "GENIEE CHAT（serviced by Chamo）は企業向けのチャットボット型 Web 接客 SaaS。チャットボット型 EFO（フォーム最適化）と対話型接客により、サイトの CVR 向上と顧客対応の自動化を実現するプロダクトで、国内累計 4,500 社以上の導入実績を持つ。本職期間中、管理画面のモダン化リファクタリングと無停止移行を主導し、可視化 Workflow エディタのフロントエンド実装も担当した。",
+        "en": "GENIEE CHAT (serviced by Chamo) is a chatbot-driven web-engagement SaaS for enterprises, lifting site CVR and automating customer support through chatbot-style EFO (entry-form optimization) and conversational engagement; the product has been adopted by 4,500+ companies in Japan. During this engagement I led the modernization rewrite and zero-downtime migration of its admin console, and also delivered the frontend of a visual Workflow editor."
+      },
+      "background": {
+        "zh": "管理后台经过多年迭代与并购，堆叠出了大量历史代码债务：SCSS 失控、组件状态混乱、潜在安全漏洞，与多种编程语言（Django / Go）构成的后端微服务之间的通信也已无序。这次重构的目标，是在不影响 CS 客服日常运营的前提下，把这套支撑 4,500+ 企业客户的管理后台整体迁移到新架构上——既要保住后端 API 的兼容性，也要把多种语言运行时的微服务收敛到一个能稳定演进的前端架构之下。",
+        "ja": "管理画面は長年の改修と M&A の積み重ねで、深刻な技術負債を抱えていた。SCSS は破綻し、コンポーネントの状態管理は混乱、潜在的なセキュリティリスクも残り、複数言語ランタイム（Django / Go）で構成されたバックエンドのマイクロサービスとの通信も整っていない状態だった。今回のリファクタリングのゴールは、CS の日常業務を止めずに、4,500 社以上の企業顧客を支える本管理画面を新アーキテクチャへ移行させること。バックエンド API の互換を保ちながら、複数ランタイムにまたがるマイクロサービスを、安定して進化できるフロントエンドアーキテクチャの下にまとめ直す必要があった。",
+        "en": "Years of iteration and M&A had left the admin console with serious technical debt: a broken SCSS layer, tangled component state, latent security issues, and disorderly communication with backend microservices written across multiple language runtimes (Django / Go). The goal of this rewrite was to migrate the entire admin console — which underpins 4,500+ enterprise customers — onto a new architecture without disrupting the CS team's daily operations, while keeping the backend APIs backward-compatible and bringing the polyglot backend microservices under a frontend architecture capable of stable long-term evolution."
+      },
+      "skills": [
+        "vite",
+        "react",
+        "typescript",
+        "storybook",
+        "sass",
+        "tailwind-css",
+        "material-ui",
+        "node-js",
+        "python-django",
+        "python-drf",
+        "go-gin",
+        "protobuf"
+      ],
+      "previewCode": "workflow",
+      "links": [
+        {
+          "url": "https://cx.geniee.co.jp/product/chat/",
+          "label": {
+            "zh": "产品信息",
+            "ja": "プロダクト情報",
+            "en": "Product"
+          }
+        },
+        {
+          "url": "https://zenn.dev/geniee/articles/a35d7665c58d5a",
+          "label": {
+            "zh": "技术博客",
+            "ja": "技術ブログ",
+            "en": "Tech Blog"
+          }
+        }
+      ],
+      "professional": {
+        "role": {
+          "zh": "全栈工程师。从 0 主导管理后台的前端架构与工程基座搭建，框架成型后由团队成员承接细节实现、由我做代码评审；新功能侧则横跨前端与对应 Django / Gin API，独立完成端到端实现。",
+          "ja": "フルスタックエンジニアとして、管理画面のフロントエンドアーキテクチャと工程基盤をゼロから主導して立ち上げた。骨格が固まった後の細部実装はチームメンバーに引き継ぎ、自身はコードレビューを担当。新機能側では、フロントエンドと対応する Django / Gin の API を横断して end-to-end で実装する立場を担っていた。",
+          "en": "Fullstack engineer. Built the admin console's frontend architecture and engineering foundation from zero; once the skeleton was in place, detailed implementation inside that frame was handed off to other team members under my code review. On the new-feature side, I delivered end-to-end across the frontend and the matching Django / Gin API work single-handedly."
+        },
+        "achievements": [
+          {
+            "zh": "从 0 设计并落地管理后台的前端工程基座（React + TypeScript + Vite），把已经失控的 SCSS 与组件状态整体重构，并整理出带文档、可复用度高的 UI 组件层；依赖包从约 2,300 个收敛到约 575 个（−75%），Critical 级漏洞清零。",
+            "ja": "管理画面のフロントエンド工程基盤（React + TypeScript + Vite）をゼロから設計・実装し、破綻していた SCSS とコンポーネント状態を全面的にリファクタリングした上で、ドキュメント付き・再利用性の高い UI コンポーネント層を体系的に整備した。依存パッケージは約 2,300 件から約 575 件（−75%）まで圧縮し、Critical 脆弱性をゼロにした。",
+            "en": "Designed and shipped the admin console's frontend engineering foundation (React + TypeScript + Vite) from zero, refactoring the runaway SCSS and component-state layers wholesale and curating a documented, highly reusable UI component layer. Shrank the dependency footprint from ~2,300 to ~575 packages (−75%) and brought Critical-level vulnerabilities down to zero."
+          },
+          {
+            "zh": "用现代 bundler 替换旧构建链路（Webpack → Vite），开发体验从根本上回到了可用水平：本地冷启动 30s → 1s、HMR 20s → 1s、构建 53.18s → 17.90s。",
+            "ja": "旧ビルド導線をモダンな bundler に差し替え（Webpack → Vite）、開発体験を抜本的に回復させた：ローカルコールドスタート 30s → 1s、HMR 20s → 1s、ビルド 53.18s → 17.90s。",
+            "en": "Replaced the legacy build pipeline with a modern bundler (Webpack → Vite), restoring developer experience to a usable level: local cold-start 30s → 1s, HMR 20s → 1s, build 53.18s → 17.90s."
+          },
+          {
+            "zh": "把「不动后端 API、只重做前端画面」定为整套重构的核心方针：用 Node.js BFF 收敛多源异步数据与状态缓存，把上游 Django / Go 微服务隔离在后端边界以内。再以六阶段渐进切换（路由 → 应用内链接 → 默认跳转 → 旧资源下线（Service Out））推进，每阶段完成后对已迁完的旧功能立即 Code Freeze，杜绝新旧两套并行维护带来的二重开发浪费，最终对 CS 客服侧完成了无停机迁移。",
+            "ja": "「バックエンド API には手を入れず、フロントエンド画面のみ作り直す」を本リファクタリングの中核方針として置き、Node.js BFF で複数ソースの非同期データと状態キャッシュを束ね、上流の Django / Go マイクロサービスをバックエンド境界の内側に隔離した。さらに 6 段階の段階的切替（ルーティング → アプリ内リンク → デフォルト遷移 → 旧資源の Service Out）で進め、各段階の完了時点で移行済みの旧機能に即座に Code Freeze を敷くことで、新旧 2 系統の並行メンテナンスによる二重開発の浪費を遮断。最終的に CS 側に対して無停止移行を完遂した。",
+            "en": "Established \"don't touch the backend APIs, only rebuild the frontend\" as the central principle of the rewrite: stood up a Node.js BFF to consolidate multi-source async data and state caching, keeping the upstream Django / Go microservices behind the backend boundary. Drove a six-stage progressive cutover (routing → in-app links → default redirects → legacy-asset retirement / Service Out), applying a Code Freeze to each batch of migrated legacy modules as soon as it landed — eliminating the double-maintenance waste of running both stacks in parallel and ultimately delivering a zero-downtime migration for the CS team."
+          },
+          {
+            "zh": "新功能开发跨语言完成端到端落地，并对其他成员在已搭好的框架内做代码评审；其中一个产出，是把原本耗时 1 小时以上的 CS 客服业务流程压缩到 1 分钟左右。",
+            "ja": "新機能開発では言語を跨いで end-to-end の実装を完遂し、整備済みの枠組みの中で他メンバーの実装に対してコードレビューを行った。成果の 1 つとして、従来 1 時間以上を要していた CS 業務フローを 1 分強まで短縮させた。",
+            "en": "Across new-feature work, delivered end-to-end implementations spanning multiple language runtimes, and reviewed other members' code inside the framework I had already laid down. One concrete outcome: compressing a CS workflow that previously took over an hour down to just over a minute."
+          },
+          {
+            "zh": "深入对接 Business 与 CS 部门完成需求对齐，主导交付可视化节点式 Workflow 编辑器与对话版本管理机制——把过去散落在代码里的业务流程转成可配置对象，让客户企业的运营人员能自己在画布上拖拽节点、连线配置 chatbot 的应答逻辑，整个流程无需研发介入。",
+            "ja": "Business・CS 部門と直接要件を擦り合わせた上で、可視化ノード式 Workflow エディタと会話バージョン管理機構の実装を主導した。コード中に散在していた業務フローを設定可能なオブジェクトへ置き換え、顧客企業側の運用担当者がキャンバス上でノードをドラッグ・配線して chatbot の応答ロジックを自ら構成できる状態を作り、開発介入なしで運用を回せるようにした。",
+            "en": "Aligned requirements directly with the Business and CS teams, then led the delivery of a visual node-based Workflow editor and a conversation-versioning layer — turning business flows that used to live scattered through code into configurable objects, so operators on the client side can drag and wire nodes on a canvas to configure chatbot response logic themselves, with no engineering involvement needed."
+          },
+          {
+            "zh": "主导搭建公司统一的 Design System，以 Storybook 实践组件驱动开发（CDD），把 ToB 管理后台与 ToC 聊天弹窗这两侧此前各自演化的视觉资产收束到同一套设计语言之下，消除了界面割裂，整体品质与后续维护性都得到提升。",
+            "ja": "全社共通の Design System の構築を主導。Storybook によるコンポーネント駆動開発（CDD）を採用し、ToB 管理画面と ToC チャットウィジェットでそれぞれ独自に育っていたビジュアル資産を、同一のデザイン言語の下に収束させた。UI の分断を解消し、全体品質と将来の保守性を引き上げた。",
+            "en": "Drove the buildout of a company-wide Design System, using Storybook for component-driven development to fold the ToB admin console and the ToC chat widget — which had been evolving their visual assets in isolation — into a single design language; this removed the UI split and lifted both overall quality and long-term maintainability."
+          }
+        ],
+        "performance": {
+          "zh": "这两年里从高级前端工程师扩展到全栈工程师职责，是这条产品线上跨前后端的关键贡献者，也是新人加入这块代码时的主要技术对接人。在团队技术升级、架构无停机演进与可视化 Workflow 等复杂功能上的贡献，让我在公司 OKR 评估中连续 4 个季度拿到最高等级 A+。",
+          "ja": "この 2 年間でシニアフロントエンドエンジニアからフルスタックエンジニアへと担当範囲を広げ、本プロダクトラインにおいてフロントエンド・バックエンドを横断する主要貢献者となり、新メンバーが本コードベースへ参画する際の技術窓口も担っていた。チームの技術アップグレード、無停止でのアーキテクチャ進化、そして可視化 Workflow 等複雑機能への貢献が評価され、社内 OKR 評価で 4 期連続最高評価 A+ を獲得した。",
+          "en": "Across these two years I expanded from a Senior Frontend role into fullstack scope, becoming a key cross-stack contributor on this product line and the main technical point of contact for newcomers entering the codebase. My contributions to the team's tech upgrade, the zero-downtime architectural migration, and complex features such as the visual Workflow editor earned me the top A+ rating in the company's OKR review for four consecutive quarters."
+        }
+      }
+    },
+
+    "skyfall-skyflag": {
+      "area": "professional",
+      "period": {
+        "zh": "2023.03 – 2023.07",
+        "ja": "2023.03 – 2023.07",
+        "en": "2023.03 – 2023.07"
+      },
+      "title": {
+        "zh": "SKYFLAG — 成果报酬型广告运营支援 SaaS",
+        "ja": "SKYFLAG — 成果報酬型広告運用支援 SaaS",
+        "en": "SKYFLAG — Performance-Based Ad Operations SaaS"
+      },
+      "description": {
+        "zh": "SKYFLAG 是株式会社 Skyfall 提供的成果报酬型广告运营支援 SaaS，以激励/奖励型广告为核心，围绕变现、推广、调研三条产品线，向游戏、工具、内容类移动端 App 提供运营与获客解决方案。本职期间从 0 搭建了其新管理后台的前端架构与开发体制。",
+        "ja": "SKYFLAG は株式会社 Skyfall が提供する成果報酬型広告の運用支援 SaaS。リワード（成果報酬）型広告を軸に、マネタイズ・プロモーション・リサーチの 3 つのプロダクトラインで、ゲーム・ツール・コンテンツ系のモバイル App に対する運用支援と新規ユーザー獲得ソリューションを展開している。本職期間中、新ダッシュボード（管理画面）のフロントエンドアーキテクチャと開発体制をゼロから立ち上げた。",
+        "en": "SKYFLAG is a performance-based ad operations SaaS from Skyfall Inc. Built around reward-based advertising, the product is organized into three lines — monetization, promotion and research — and supplies operations support and user-acquisition solutions to mobile apps across games, tools and content categories. During this engagement I built the new admin dashboard's frontend architecture and development practices from zero."
+      },
+      "background": {
+        "zh": "这是一段「初期阶段从 0 起步」的工作：当时公司侧的管理基座（Dashboard 共通架构）还没有整备完成，本项目自身又顶着极短的交付周期，与此同时团队成员之间的技术经验存在明显落差。要在这种条件下交付一个能持续演进的 B 端管理后台，光靠成员各自发挥不可能稳定下来——必须先把架构、路由、表单、数据获取等通用层一次性定死，让不同经验水平的人都能在同一套规则之内稳定产出。这段工作的核心，是在「无既成基座、紧工期、经验落差」三重约束下，先建立这一层「规则」。",
+        "ja": "本案件は「初期フェーズで、ゼロから立ち上げる」性質の仕事だった。当時、社内の管理基盤（ダッシュボードの共通アーキテクチャ）はまだ整備されておらず、プロジェクト自体も非常に短い工期を背負っていた。さらにチームメンバー間で技術経験の差もはっきりしていた。こうした条件下で継続的に進化できる BtoB 向け管理画面を世に出すには、メンバー個々の裁量に頼っていては立ち行かない。アーキテクチャ、ルーティング、フォーム、データ取得といった共通層を一度きちんと固め、経験差のあるメンバー全員が同じルールの中で安定して開発できる状態を先に作る必要があった。本案件の中核は、「既成の基盤がない・短工期・経験差」という三重の制約下で、まずこの「ルール」の層を組み上げることにあった。",
+        "en": "This was an \"early-stage, zero-baseline\" piece of work: at the time the company had no settled internal dashboard foundation (no shared architecture in place), the project itself ran on an extremely tight delivery window, and the technical experience of team members varied widely. Shipping a B2B admin console that could keep evolving under those conditions could not be left to individual judgment — the architecture, routing, form and data-fetching layers had to be nailed down once, so engineers of very different experience levels could all produce stably within the same set of rules. The core of this engagement was, under the triple constraint of \"no pre-existing foundation, tight schedule and uneven experience,\" putting that 'rules' layer in place first."
+      },
+      "skills": ["react", "typescript", "ant-design", "storybook", "refine", "docusaurus"],
+      "previewCode": "analytics",
+      "links": [
+        {
+          "url": "https://skyflag.info/",
+          "label": {
+            "zh": "产品信息",
+            "ja": "プロダクト情報",
+            "en": "Product"
+          }
+        }
+      ],
+      "professional": {
+        "role": {
+          "zh": "前端技术负责人。主导新管理后台的架构设计与技术选型，负责前端开发规范的落地，并作为前端侧窗口直接对接业务部门完成需求梳理与任务拆解。",
+          "ja": "フロントエンドテックリードとして、新管理画面のアーキテクチャ設計と技術選定を主導し、フロントエンド側の開発規約の整備、ならびに業務部門との要件整理・タスク分解の窓口を担当した。",
+          "en": "Frontend tech lead. Owned the architecture and technology choices of the new admin console, drove the rollout of the frontend development conventions, and served as the frontend-side point of contact for working through requirements and task breakdown with the business team."
+        },
+        "achievements": [
+          {
+            "zh": "在「无既成基座 + 短工期」的条件下选型并引入了企业级管理后台框架 Refine——把路由、表单与 Data Provider 一体化收束在统一基座上，让架构层不再需要每个开发者自己拼装。这是这套规则体系的第一层落地，决定了后续模块都按同一种节奏生长。",
+            "ja": "「既成の基盤がない・短工期」という条件下で、企業向け管理画面フレームワーク Refine を選定・導入した。ルーティング、フォーム、Data Provider を統一された土台に収束させ、アーキテクチャ層を各開発者が個別に組み立てる必要のない状態にしている。これは本案件で組み上げた「ルール」体系の第一層の実装であり、以降のすべてのモジュールが同じリズムで成長する前提を定めた。",
+            "en": "Under the \"no pre-existing foundation, tight schedule\" constraint, selected and introduced the enterprise admin framework Refine — folding routing, forms and the Data Provider onto a single, unified base so that the architectural layer no longer had to be hand-assembled by each developer. This was the first concrete layer of the rule system, setting the cadence in which every subsequent module would grow."
+          },
+          {
+            "zh": "在框架基座之上，制定了前端开发设计方针与面向未来扩展的组件设计规范——明确「业务组件 vs 通用组件」的边界、props 命名取舍与状态归属规则，让经验水平不同的成员能在同一套设计语言下产出风格一致、互不污染的代码。",
+            "ja": "フレームワーク基盤の上に、フロントエンドの設計方針と、将来の機能拡張を見据えたコンポーネント設計規約を策定した。業務コンポーネントと汎用コンポーネントの境界、props 命名の取捨選択、状態の所属ルールを明示し、経験差のあるメンバーが同じデザイン言語の下で、スタイルが揃い、互いに干渉しないコードを書ける状態を作っている。",
+            "en": "On top of that framework base, drafted the frontend design guidelines and a forward-looking component-design specification — making the boundary between business and general-purpose components, the trade-offs in prop naming and the rules of state ownership explicit, so that engineers of different experience levels could produce stylistically consistent, non-interfering code within the same design language."
+          },
+          {
+            "zh": "因入职短时间内高效推进了核心产品研发与技术基座建设，获颁株式会社 Skyfall 史上最快记录的「新人 Motto 赏」（Motto 为该公司核心企业价值观）。",
+            "ja": "入社後の短期間でコアプロダクトの研究開発と技術基盤整備を効率的に推進したことが評価され、株式会社 Skyfall における過去最速記録での「新人 Motto 賞」を受賞（Motto は同社のコアバリュー）。",
+            "en": "In recognition of how quickly the core product's development and technical foundation moved forward after joining, I was awarded Skyfall Inc.'s \"New Hire Motto Award\" — at the fastest pace on record in the company's history (\"Motto\" is the company's core corporate value)."
+          }
+        ],
+        "performance": {
+          "zh": "在「无既成基座、紧工期、经验落差」的初期阶段把新管理后台的「规则层」从 0 撑起来——这套底座之后让团队不再依赖个体经验也能稳定演进。短期内即获得全社认可，并拿下了社内最快记录的「新人 Motto 赏」。",
+          "ja": "「既成基盤がない・短工期・経験差」という初期フェーズの中で、新管理画面の「ルール層」をゼロから組み上げ、以降チームが個々人の経験に依存せず安定して進化できる土台を提供した。短期間で全社的に評価され、社内最速記録での「新人 Motto 賞」受賞につながっている。",
+          "en": "Under the early-stage triple constraint of \"no pre-existing foundation, a tight schedule, and uneven experience,\" stood up the 'rules layer' of the new admin console from zero — a base that later let the team keep evolving without leaning on individual experience. The work was recognized company-wide within a short period, capped by receiving the \"New Hire Motto Award\" at the fastest pace ever recorded in the company."
+        }
+      }
+    },
+
+    "fni-saga-sunrise-park": {
+      "area": "professional",
+      "period": {
+        "zh": "2019.11 – 2023.02",
+        "ja": "2019.11 – 2023.02",
+        "en": "2019.11 – 2023.02"
+      },
+      "title": {
+        "zh": "SAGA Sunrise Park — 施設预约系统",
+        "ja": "SAGAサンライズパーク — 施設予約システム",
+        "en": "SAGA Sunrise Park — Reservation System"
+      },
+      "description": {
+        "zh": "面向日本佐贺县大型自治体级公共设施 SAGAサンライズパーク 的数字化转型（DX）基座。系统由面向普通用户的来园与设施预约（ToC）和面向多部门协作的内部运营管理（ToB）两侧组成。早期作为前端成员加入，后期升任技术负责人，主导跨前后端的架构收束与外部协同团队的技术管理。",
+        "ja": "佐賀県の自治体級大型公共施設「SAGAサンライズパーク」向けの DX 基盤。来園・施設予約の ToC と、複数部署が協働する内部運営管理の ToB から成る。前半はフロントエンドのチームメンバーとして参画し、後半はテックリードとして、フロント・バックエンド双方を横断するアーキテクチャの収束と、外部協業チームの技術マネジメントを主導した。",
+        "en": "A DX platform for SAGA Sunrise Park, a municipality-scale public facility in Saga, Japan. The system spans a ToC reservation surface for visitors and a ToB operations console for cross-department staff. Joined as a frontend member and later moved into a Tech Lead role, driving cross-stack architectural consolidation and managing an external partner team."
+      },
+      "background": {
+        "zh": "这是政府 / 自治体侧多部门深度参与的大型受托项目，业务逻辑与利益相关方都很复杂。难点不止在交付，而在长期可维护：项目周期跨越数年，开发团队结构经历过数次更迭，技术资产严重属人化、新人加入成本高；早期前后端通信与 API 处理逻辑分散在各处，对长期演进与功能扩展是持续风险。另一面是公共设施特有的流量形态——重大赛事 / 演出会触发瞬间爆发式高并发，必须在架构层就把这条爆量路径处理掉。",
+        "ja": "行政・自治体側の複数部署が深く関与する大型受託案件で、業務ロジックもステークホルダーも複雑だった。難所は納品そのものよりも長期の保守性で、プロジェクトが複数年にわたる中で開発体制は何度も入れ替わり、技術資産が属人化して新人の立ち上げコストが高騰していた。初期はフロント・バックエンド間の通信や API 処理が各所に散在し、長期的な進化と機能拡張のリスクとなっていた。さらに公共施設ならではのトラフィック特性、つまり大型イベント開催時の瞬間的な高並列アクセスを、アーキテクチャ層で先回りして吸収しておく必要もあった。",
+        "en": "A large contracted engagement with deep involvement from multiple government / municipal stakeholders — heavy on both business logic and political surface. The real difficulty was long-term maintainability, not delivery: across a multi-year project the team composition shifted several times, technical assets became person-dependent, and onboarding cost climbed. Early on, frontend-backend communication and API handling were scattered across the codebase, creating ongoing risk for future evolution. On top of that, public facilities have a distinctive traffic shape — major events and performances trigger sudden, extreme concurrency spikes — and that burst path had to be solved at the architectural layer up front."
+      },
+      "skills": [
+        "gatsby",
+        "react",
+        "typescript",
+        "ant-design",
+        "sass",
+        "docusaurus",
+        "graphql",
+        "python",
+        "python-django",
+        "python-drf",
+        "docker",
+        "mongodb"
+      ],
+      "previewCode": "campus",
+      "links": [
+        {
+          "url": "https://saga-sunrisepark.com/",
+          "label": {
+            "zh": "产品信息",
+            "ja": "プロダクト情報",
+            "en": "Product"
+          }
+        }
+      ],
+      "professional": {
+        "role": {
+          "zh": "前端工程师 → 技术负责人。早期负责基于 Gatsby + GraphQL 的 ToC 预约端 UI/UX；在团队体制变更窗口期主动把边界扩展到 ToB 管理后台与 Django API 后端，实现单人横断前、后端开发。升任技术负责人后负责对接外部协同团队、统一设计方针与代码评审标准。",
+          "ja": "フロントエンドエンジニア → テックリード。前半は Gatsby + GraphQL 上の ToC 予約画面の UI/UX を担当。体制変更の窓口期に自発的に守備範囲を広げ、ToB 管理画面と Django API 領域まで踏み込んで、フロントとバックエンドを一人で横断する開発体制を実現した。テックリード昇格後は外部協業チームとの窓口を担い、設計方針とコードレビュー基準の統一を主導。",
+          "en": "Frontend Developer → Tech Lead. Initially owned the UI/UX of the Gatsby + GraphQL ToC reservation surface. During a team-restructuring window, proactively expanded scope into the ToB admin console and the Django API backend, running cross-stack development single-handedly. After moving into the Tech Lead seat, took the interface with the external partner team and unified the design guidelines and code-review bar."
+        },
+        "achievements": [
+          {
+            "zh": "把此前分散的 API 通信整体收束到 GraphQL 聚合层，统一了数据获取入口，显著提升了系统的可维护性与可扩展性。",
+            "ja": "従来各所に散在していた API 通信を GraphQL 集約層に全面的に収束させ、データ取得の入口を統一。システムの保守性と拡張性を大幅に引き上げた。",
+            "en": "Consolidated the previously scattered API communication into a single GraphQL aggregation layer, unifying the data-fetching entry point and meaningfully lifting the system's maintainability and extensibility."
+          },
+          {
+            "zh": "针对人员频繁更迭带来的「技术属人化」痛点，用 Docusaurus 搭建了体系化的设计资料、API 规范与前端开发指南，把项目技术资产沉淀为可查阅的公共文档，显著压低了新成员的上手成本。",
+            "ja": "人員入替の多さがもたらす「技術の属人化」という痛点に対し、Docusaurus を用いて設計資料・API 仕様・フロント開発ガイドを体系化。プロジェクトの技術資産を参照可能な公共ドキュメントとして沈殿させ、新メンバーの立ち上がりコストを大きく圧縮した。",
+            "en": "To attack the person-dependent-knowledge problem driven by frequent team turnover, used Docusaurus to set up structured design docs, API specs and frontend development guides — crystallizing the project's technical assets into queryable shared documentation and meaningfully lowering newcomer ramp-up cost."
+          },
+          {
+            "zh": "针对公共设施在重大赛事 / 演出时「瞬间爆发超高并发」的痛点，采用 Gatsby (SSG) 架构在构建期把页面预渲染为静态 HTML 并托管至 CDN，把服务器 CPU 与数据库从突发流量中解放出来，仅将核心的表单提交等动态交互回流至后端，完成了高质量的架构解耦。",
+            "ja": "公共施設特有の「大型イベント時の瞬発的な超高並列アクセス」という痛点に対し、Gatsby (SSG) を採用してビルド時にページを静的 HTML へ事前レンダリングし CDN にホストする戦略を取った。サーバー CPU と DB を突発トラフィックから解放し、フォーム送信などコア動的インタラクションのみをバックエンドへ還流させる形で、高品質なアーキテクチャ解耦を達成。",
+            "en": "Against the bursty traffic profile typical of public facilities — sudden extreme concurrency spikes during major events and performances — chose Gatsby (SSG) to pre-render pages into static HTML at build time and serve them from CDN, freeing server CPU and the database from the surge. Only core dynamic interactions like form submissions were routed back to the backend, yielding a clean architectural decoupling."
+          },
+          {
+            "zh": "升任技术负责人后对接外部协同开发团队，通过明确的设计方针与统一的代码评审标准，遏制了多团队协作下的代码质量参差，最终确保了这套面向自治体的公共服务系统稳定上线。",
+            "ja": "テックリード昇格後は外部協業チームとの窓口を担い、明確な設計方針と統一されたコードレビュー基準を整備。複数チーム協業下でのコード品質のバラつきを抑え込み、自治体向け公共サービスシステムの安定リリースを担保した。",
+            "en": "After stepping into the Tech Lead role, served as the interface with the external partner team, instituting clear design guidelines and a unified code-review bar that curbed quality variance across teams and secured a stable launch of this municipality-facing public-service system."
+          }
+        ],
+        "performance": {
+          "zh": "在这段时间完成了从前端成员到技术负责人的成长路径，是这家受托开发公司里能横跨前后端、并能直接管控外部协同团队交付质量的关键担当。项目时间线与园区翻新进度对齐——SAGAサンライズパーク 在 2023 年春季陆续开业（如 SAGA Arena 于 2023 年 5 月开幕），与 2023 年 2 月完成阶段交付完美闭环。",
+          "ja": "この期間にフロントエンドのチームメンバーからテックリードまでキャリアパスを進め、フロント・バックエンド両方を横断しつつ、外部協業チームの品質マネジメントまで担える、当該受託会社のキーパーソンとなった。プロジェクトの時系列はパークのリニューアル計画と整合しており、SAGAサンライズパーク は 2023 年春に順次開業（SAGA Arena は 2023 年 5 月開幕）、2023 年 2 月の段階納品と綺麗にクロージングしている。",
+          "en": "Across this stretch I grew from frontend member to Tech Lead, becoming the key contributor at this contract-development firm able to span both stacks and directly manage delivery quality from an external partner team. The project timeline aligns cleanly with the park's renovation rollout — SAGA Sunrise Park opened in stages in spring 2023 (SAGA Arena opened in May 2023) — closing neatly against the February 2023 milestone delivery."
+        }
+      }
+    },
+
+    "youzan-full-scope": {
+      "area": "professional",
+      "period": {
+        "zh": "2017.07 – 2018.05",
+        "ja": "2017.07 – 2018.05",
+        "en": "2017.07 – 2018.05"
+      },
+      "title": {
+        "zh": "有赞 — 前端综合开发",
+        "ja": "有赞 — フロントエンド全般",
+        "en": "Youzan — Frontend, Full Scope"
+      },
+      "description": {
+        "zh": "在有赞零售业务线做前端综合开发：从业务页面与功能实现、移动端兼容、Vue 业务组件抽象，到构建打包、线上问题排查与性能修补——前端这条线上的工作几乎全部都接触过一轮。同时以团队成员身份参与公司开源移动端组件库 Vant 的早期开发与维护，贡献过组件实现与问题修复，并跟进 issue、版本演进与社区反馈。当年做过的零售与微商城两条产品线在多年后的今天已不再对外提供，但那段一线训练沉淀下来的工程直觉至今仍在工作中持续发挥作用。",
+        "ja": "有赞のリテール領域でフロントエンド全般を担当：業務ページ・機能実装、モバイル互換対応、Vue 業務コンポーネントの抽象化、ビルド・バンドル、本番不具合の調査とパフォーマンス改修まで、フロントの仕事をひと通り経験した。並行して、社内 OSS のモバイル向けコンポーネントライブラリ Vant の初期開発・保守にもチームメンバーとして参加し、コンポーネント実装や不具合修正を投入しつつ、issue・バージョン進化・コミュニティのフィードバックを追っていた。当時担当していた「リテール」「微商城」の二つのプロダクトラインは、長い時間を経て現在は対外提供を終えているが、その時期の現場で身につけた工程上の判断軸は、いまも仕事の中で生き続けている。",
+        "en": "Worked across the full frontend surface on Youzan's retail business line — page and feature implementation, mobile compatibility, Vue-based business-component abstraction, build / bundling, production-incident investigation and performance tuning. In parallel, took part as a team member in the early development and maintenance of Vant, the company's open-source mobile component library, contributing component implementations and bug fixes while tracking its issues, version evolution and community feedback. The two product lines I worked on at the time — retail and the social-commerce SaaS — are no longer publicly offered today, but the frontline engineering instincts shaped during that period continue to drive my work now."
+      },
+      "background": {
+        "zh": "这是我职业生涯的第一份前端工作，也是第一次进入「成规模的前端团队」。在这之前，对组件设计与工程规范的认知都还停留在「能让一个页面跑起来」的程度——进了有完整工程规范、有资深工程师主持架构判断、还有公司级组件库 Vant 在身边实际跑业务的环境后，才意识到「能跑」和「能在大项目里跑得住」是两件事。作为第一份工作，前端这条线上能碰到的几乎全部都是头一次直面——业务页面、移动端兼容、组件抽象、构建打包、线上排查、规范与代码评审流程——而真正决定这段经历价值的，并不是当时产出了多少功能，而是被一整套工程规范认真训练过一轮，建立起几条第一线的工程直觉：业务组件 vs 通用组件的边界要从设计层划清、移动端兼容性要靠规范兜底而非靠灵感打补丁、代码评审不是挑刺而是在团队里持续构建共识。",
+        "ja": "キャリア最初のフロントエンド職で、初めて「規模のあるフロントエンドチーム」に所属した時期にあたる。それ以前のコンポーネント設計や工程規約に対する理解は「とりあえずページを動かす」レベルにとどまっていた。整備された工程規約、シニアエンジニアがアーキテクチャ判断を引き受ける体制、本番業務で走っている全社レベルのコンポーネントライブラリ（Vant）が身近にある環境に入って初めて、「動くコード」と「大規模プロダクトの中で動き続けるコード」が別物だと肌で理解した。最初の職場として、業務ページ、モバイル互換、コンポーネント抽象、ビルド・バンドル、本番調査、規約とコードレビューのフロー、いずれも初体験だった。この期間の価値はアウトプット量ではなく、工程規約に一度きちんと通された経験そのものにある。そこで身につけた現場の判断軸は次の数本にまとめられる。業務コンポーネントと汎用コンポーネントの境界は設計段階で引き切る、モバイル互換性はひらめきではなく規約で支える、コードレビューは粗探しではなくチームの中で継続的に合意を作る場である、というものだ。",
+        "en": "This was my first frontend job and the first time I was embedded in a frontend team operating at real scale. Prior to that, my grasp of component design and engineering discipline only ran as far as \"getting a page to render.\" Stepping into an environment with structured engineering conventions, seniors actively making architectural calls, and a company-wide mobile component library (Vant) running in production right next to my daily work, I quickly understood that \"code that runs\" and \"code that keeps running inside a large product\" are not the same thing. As a first job, almost every surface in the frontend stack was something I confronted head-on for the first time — business pages, mobile compatibility, component abstraction, build / bundling, production-incident investigation, conventions and review flow. What ultimately gave the period its value was not output volume but being walked through a full set of engineering conventions, which left me with a handful of frontline instincts that still hold: the boundary between business and general-purpose components has to be drawn at the design layer, mobile compatibility must be contained by conventions rather than patched on intuition, and code review is not nit-picking but the continuous work of building shared understanding inside a team."
+      },
+      "skills": ["vue", "react", "javascript", "less", "webpack", "node-js", "art-template"],
+      "previewCode": "widgets",
+      "links": [
+        {
+          "url": "https://vant-ui.github.io/vant/#/en-US",
+          "label": {
+            "zh": "VanUI 组件库",
+            "ja": "VanUI ライブラリ",
+            "en": "VanUI Library"
+          }
+        },
+        {
+          "url": "https://retail.youzan.com",
+          "disabled": true,
+          "label": {
+            "zh": "有赞零售（下线）",
+            "ja": "有赞リテール（終了）",
+            "en": "Youzan Retail (discontinued)"
+          }
+        },
+        {
+          "url": "https://www.youzan.com/v4/weixin",
+          "disabled": true,
+          "label": {
+            "zh": "有赞微商城（下线）",
+            "ja": "有赞微商城（終了）",
+            "en": "Youzan WeiMall (discontinued)"
+          }
+        }
+      ],
+      "professional": {
+        "role": {
+          "zh": "初级前端工程师。负责零售业务线上的前端综合开发——页面与功能实现、业务组件抽象、移动端兼容、Vue 项目的构建打包、线上问题排查与性能修补；同时以团队成员身份参与公司开源移动端组件库 Vant 的早期开发与维护。",
+          "ja": "ジュニアフロントエンドエンジニア。リテール事業領域でフロントエンド全般を担当し、ページ・機能実装、業務コンポーネントの抽象化、モバイル互換対応、Vue プロジェクトのビルド・バンドル、本番不具合の調査とパフォーマンス改修まで横断的にカバーしていた。並行して、社内 OSS のモバイル向けコンポーネントライブラリ Vant の初期開発・保守にもチームメンバーとして参加。",
+          "en": "Junior frontend engineer. Owned full-scope frontend work on the retail business line — page and feature implementation, business-component abstraction, mobile compatibility, build / bundling on Vue projects, production-incident investigation and performance tuning — while also taking part as a team member in the early development and maintenance of Vant, the company's open-source mobile component library."
+        },
+        "achievements": [
+          {
+            "zh": "第一次系统性地接触大型前端项目里的工程规范——目录约定、组件命名、状态归属、PR 模板与代码评审流程——并在资深工程师反复评审与多轮重写中真正理解了所谓「可维护」并不是「写得对」，而是下一个接手的人能在不问作者的前提下读懂、修改、扩展。这条认知从此变成我所有后续项目里写代码的默认基线。",
+            "ja": "大規模フロントエンド案件における工程規約、つまりディレクトリ規約、コンポーネント命名、状態の所属、PR テンプレート、コードレビューのフローを、初めて体系的に経験した。シニアエンジニアによる反復的なレビューと書き直しを重ねた末に、「保守可能なコード」とは「正しく動くコード」ではなく「次に触る人が、作者に問い合わせずに読み・修正し・拡張できるコード」のことだ、と腹落ちした。この認識はそれ以降のすべての案件で、コードを書く際の暗黙の基準として残り続けている。",
+            "en": "First systematic exposure to the engineering conventions that live inside a large frontend codebase — directory conventions, component naming, state ownership, PR templates and the code-review flow. Through repeated senior review and multiple rewrites, I internalized that \"maintainable\" doesn't mean \"correct,\" it means \"the next person can read, modify and extend the code without having to ask the original author.\" That criterion has stayed with me as a baseline for how I write code on every project since."
+          },
+          {
+            "zh": "作为团队成员参与公司开源移动端组件库 Vant 的早期开发与维护——贡献过组件实现与缺陷修复，并跟进 issue 处理、版本演进与社区反馈。这段经历让我得以近距离观察一个被广泛使用的组件库是如何被设计与持续打磨的：组件 API 的粒度取舍、props 命名的语义负担、移动端兼容性如何通过分层规范从根本上兜住而不是逐机型打补丁、组件边界究竟应按 UI 形态切还是按行为语义切。这些判断标准至今仍是我做组件设计与 Design System 时的隐含尺度。",
+            "ja": "会社の OSS モバイル向けコンポーネントライブラリ Vant の初期開発・保守にチームメンバーとして参加し、コンポーネント実装や不具合修正を投入しながら、issue 対応・バージョン進化・コミュニティのフィードバックを追っていた。この経験を通じて、広く使われるコンポーネントライブラリがどのように設計され、継続的に磨かれていくかを近距離で観察できた。コンポーネント API の粒度の取捨選択、props 命名が背負う意味的負荷、モバイル互換性を機種別パッチではなく層構造の規約で根本から押さえる設計、コンポーネント境界を UI 形状で切るか挙動意味で切るかの判断。これらの基準は現在に至るまで、自分のコンポーネント設計や Design System 構築における暗黙の物差しとして残っている。",
+            "en": "Took part as a team member in the early development and maintenance of Vant, the company's open-source mobile component library — contributing component implementations and bug fixes while tracking its issues, version evolution and community feedback. The experience gave me a close-up view of how a widely-used component library is actually designed and continuously refined: how granular each component's API should be, the semantic weight a prop name has to carry, how mobile compatibility is contained at the root through layered conventions instead of device-specific patches, and whether a component boundary belongs along UI shape or behavioral semantics. Those criteria still serve as my implicit yardsticks for component design and Design System work today."
+          },
+          {
+            "zh": "在零售业务侧实现业务组件的过程中，第一次切身确认了「业务组件不应被通用组件污染、通用组件不应承担业务知识」这条边界——它看上去是一句简单的原则，但只有在自己亲手让一个组件因为越界而难以复用之后，这条线才真正变成可执行的判断标准。后来在 SKYFLAG 与 GENIEE CHAT 主导 Design System 时所用的分层取舍，原点都可以追溯到这一段。",
+            "ja": "リテール業務側でいくつかの業務コンポーネントを実装する中で、「業務コンポーネントは汎用コンポーネントを汚染しない、汎用コンポーネントは業務知識を抱え込まない」という境界線を、初めて肌で確認した。言葉にすれば単純な原則だが、自分の手で境界を越えたコンポーネントが再利用しづらくなる現象を経験して初めて、この線が実行可能な判断基準として身につく。のちに SKYFLAG や GENIEE CHAT で Design System を主導した際の階層判断は、すべてここに起点を持っている。",
+            "en": "Implementing business components on the retail side was where I first concretely verified the line that \"business components must not be polluted by general-purpose ones, and the general-purpose layer must not carry business knowledge.\" As a principle it sounds trivial, but only after personally watching a component become hard to reuse because that boundary had been crossed did the rule turn into an actionable judgment standard for me. The layering decisions I later made while leading Design System work at SKYFLAG and GENIEE CHAT all trace their starting point back to this period."
+          }
+        ],
+        "performance": {
+          "zh": "作为职业生涯的起点，这一年的价值不在于产出指标，而在于工程意识的奠基：第一次在有规范、有资深工程师、有可参考组件库 (Vant) 的环境里被完整训练过一轮——它直接决定了我之后所有项目里关于组件边界、移动端兼容与协作流程的默认判断。",
+          "ja": "キャリアの起点として、この 1 年間の価値はアウトプット指標ではなく、エンジニアリング意識の基盤を形作ったことにある。規約があり、シニアエンジニアが判断を担い、参照可能な社内コンポーネントライブラリ（Vant）が傍にある環境で、初めて体系的に訓練された経験だった。コンポーネント境界、モバイル互換性、協業フローについて、以降の案件で既定値となる判断軸は、この期間に直接形作られている。",
+          "en": "As the starting point of my career, the value of this year lies not in output metrics but in laying the foundation of my engineering mindset: it was the first time I had been systematically trained inside an environment with real conventions, senior judgment and a reference-quality internal component library (Vant), and it directly shaped the default judgment I bring to component boundaries, mobile compatibility and collaboration flow on every project since."
+        }
+      }
+    },
+
+    "venomous-ui": {
+      "area": "personal",
+      "period": {
+        "zh": "2026.03 – 至今",
+        "ja": "2026.03 – 現在",
+        "en": "2026.03 – Present"
+      },
+      "title": {
+        "zh": "Venomous UI — 跨框架组件库",
+        "ja": "Venomous UI — クロスフレームワークコンポーネントライブラリ",
+        "en": "Venomous UI — Cross-Framework Component Library"
+      },
+      "description": {
+        "zh": "给 React 和 Vue 用的 Headless 组件库，共用一套核心——这意味着同一份行为不会因为框架不同被独立实现两次，也不会随时间各自漂走。行为部分由库内置，样式则交给使用者选择：要么自己写 CSS，要么按需引入内置样式包，二者皆可。逻辑、样式、组件全部按最小粒度模块化，使用者可以任意导入、自由搭配，也可以在此之上做二次封装。",
+        "ja": "React と Vue 向けの Headless コンポーネントライブラリ。コアロジックは両フレームワーク間で共有されているため、同じ振る舞いをフレームワークの違いだけで二度実装したり、時間とともに乖離していくことがない。振る舞いはライブラリ側で実装済みで、スタイルはユーザーが選択する形式になっている。自前で CSS を書くか、同梱スタイルパッケージを必要に応じて取り込むか、二つから選べる。ロジック・スタイル・コンポーネントはすべて最小粒度でモジュール化されており、任意にインポートして自由に組み合わせることも、その上に独自のラッパーを被せて二次パッケージ化することもできる。",
+        "en": "A Headless component library for React and Vue, sharing one core — meaning the same behavior never gets implemented twice just because the framework differs, and never drifts apart over time. Behavior is owned by the library; styling is left to the consumer's call — write your own CSS, or pull in the bundled styles package on demand. Logic, styles and components are all modularized at the finest granularity, so consumers can import any of them in any combination, or wrap them into their own higher-level abstractions."
+      },
+      "background": {
+        "zh": "在职业项目里跨过 Vue 与 React 两边的栈，经常会撞到同一类痛点：明明是同一个交互意图（弹层、Tabs、Tooltip 的焦点与键盘语义、Dialog 的可访问性边界），却因为框架不同被独立实现了两遍，时间一长两边的行为细节就会缓慢漂移。早年也参与过工厂化组件库的开发，「组件库真正的资产是行为而非样式」这条隐含判断一直留在我手里。这个个人项目就是想把那条判断显式化——把行为沉到框架无关的核心层，把样式拆成独立、可不要的包，让自己对「组件库该长什么样」的理解能在一份自己拍板的代码里走通一遍。",
+        "ja": "業務プロジェクトで Vue と React の両方の現場を跨ぐうちに、同じ類の痛みに繰り返し出くわすことが多かった。インタラクションの意図はまったく同じ（オーバーレイ、Tabs、Tooltip のフォーカスとキーボード意味、Dialog のアクセシビリティ境界）なのに、フレームワークが違うという理由だけで二回独立に実装され、時間とともに双方の振る舞いの細部が緩やかに乖離していく。かつてファクトリ化されたコンポーネントライブラリの開発にも携わっており、「コンポーネントライブラリの本当の資産は振る舞いであって、スタイルではない」という暗黙の判断が手元に残っていた。本個人プロジェクトは、その暗黙の判断を明示化する試みである。振る舞いをフレームワーク非依存のコア層に押し下げ、スタイルを独立した「不要なら使わなくていい」パッケージとして切り出すことで、自分が「コンポーネントライブラリはどうあるべきか」と考えている内容を、自分が責任を持つコードベースの中で一度通しで成立させてみたかった。",
+        "en": "Working across both Vue and React stacks in professional projects, I kept running into the same pain point: the interaction intent was identical (overlays, focus and keyboard semantics for Tabs and Tooltip, the accessibility envelope of a Dialog), and yet because the frameworks differed, the same behavior would be implemented independently twice and the two implementations would slowly drift apart over time. I had also contributed to the development of a factory-grade component library earlier in my career, and the implicit judgment \"the real asset of a component library is behavior, not styles\" had stayed with me. This personal project is the attempt to make that judgment explicit — push the behavior down into a framework-agnostic core layer, split the styles off as an independent, opt-out package, and see whether my view of what a component library should look like would hold up inside a codebase I personally answered for."
+      },
+      "skills": ["vite", "react", "vue", "typescript", "sass", "storybook", "vitest", "shell"],
+      "previewCode": "widgets",
+      "links": [
+        {
+          "url": "https://github.com/BlaxBerry333/venomous-ui",
+          "label": {
+            "zh": "GitHub 仓库",
+            "ja": "GitHub リポジトリ",
+            "en": "GitHub repository"
+          }
+        },
+        {
+          "url": "https://blaxberry333.github.io/venomous-ui/?path=/docs/introduction--welcome",
+          "label": {
+            "zh": "Storybook",
+            "ja": "Storybook",
+            "en": "Storybook"
+          }
+        }
+      ],
+      "personal": {
+        "learnings": [
+          {
+            "zh": "行为/无障碍/键盘逻辑写在框架无关的 utils 层，React 与 Vue 各自的 hooks / composables 只负责把语义结论绑到 DOM。同一份行为两个框架共用，不会再各写一遍后慢慢漂走。",
+            "ja": "振る舞い・アクセシビリティ・キーボードロジックはフレームワーク非依存の utils 層に置き、React の hooks ／ Vue の composables は意味論的結論を DOM に繋ぐだけ。同一の振る舞いを二つのフレームワークで共用し、二度書いて乖離させる構造を断ち切る。",
+            "en": "Behavior, accessibility and keyboard logic live in a framework-agnostic utils layer; React hooks and Vue composables only bind the semantic result to the DOM. One behavior, shared across both frameworks — never written twice and never drifting apart."
+          },
+          {
+            "zh": "换主题只需覆盖 design token，不必触组件内部。内置样式包用 BEM + token 设计，因为 BEM 对外部覆盖最友好——这是按使用成本挑的，不是审美。",
+            "ja": "テーマ差し替えは design token を上書きするだけで完結し、コンポーネント内部に触る必要がない。同梱スタイルパッケージを BEM + token で組んだのは、BEM が外部からの上書きに最も親和的だからであり、使用コストで選んだ結果であって美意識ではない。",
+            "en": "Swapping themes is just overriding design tokens — no need to reach into component internals. The bundled styles package uses BEM + tokens because BEM is the most override-friendly target from the outside; this was a usability call, not an aesthetic one."
+          },
+          {
+            "zh": "粒度决定权完全交回使用者——只想要 Tooltip 的键盘逻辑可以只拿 utils，不必把样式与 DOM 拖进来。exports 里 utils / styles / react / vue 都切到单文件粒度；强制整包导入是上一代的事。",
+            "ja": "粒度の判断は完全にユーザー側へ返している。Tooltip のキーボードロジックだけ欲しければ utils を取ればよく、スタイルや DOM まで持ち込む必要はない。exports で utils／styles／react／vue を単一ファイル粒度まで分割しており、一式インポートを強制するのは前世代の発想だと考えている。",
+            "en": "Granularity decisions belong entirely to the consumer — pull just utils for the Tooltip keyboard logic without dragging the styles or DOM along. In exports, utils / styles / react / vue are sliced down to single-file granularity; mandatory whole-package imports are a previous-generation default."
+          },
+          {
+            "zh": "一致性靠脚本兜底，不靠规范文档——白名单外的颜色值、自造 class 名在 PR 阶段直接打回。为此写了 check:design-tokens、check:classnames 两个校验脚本接进 CI。靠人记一定会漂。",
+            "ja": "一貫性はツールで担保し、規約ドキュメントには頼らない。ホワイトリスト外の色値や勝手に作られた class 名は PR 段階で直接はじく仕組みにしている。そのために check:design-tokens と check:classnames の自作検証スクリプトを書き、CI に組み込んだ。人の記憶に任せれば必ず漂流するからだ。",
+            "en": "Consistency is enforced by tooling, not by convention docs — color values outside the whitelist and improvised class names are rejected at the PR stage. For this I wrote custom check:design-tokens and check:classnames validation scripts wired into CI. Human memory always drifts."
+          }
+        ]
+      }
+    },
+
+    "venomous-portfolio": {
+      "area": "personal",
+      "period": {
+        "zh": "2026.01 – 至今",
+        "ja": "2026.01 – 現在",
+        "en": "2026.01 – Present"
+      },
+      "title": {
+        "zh": "Venomous Portfolio — 多主题作品站",
+        "ja": "Venomous Portfolio — マルチテーマ作品サイト",
+        "en": "Venomous Portfolio — Multi-Theme Portfolio Site"
+      },
+      "description": {
+        "zh": "我的个人作品站，从一开始就是按「同一份内容、多套主题外观」的结构来设计的——主题是可替换的皮，作品与文案是稳定的底；首发主题 NEBULA 以 3D、着色器与节点级交互为表达基调，把整页打造成一处可以慢慢看下去的视觉空间。",
+        "ja": "私の個人作品サイト。最初から「同じコンテンツに、複数のテーマという見た目をかぶせる」構造で組み立てている。テーマは差し替え可能な皮、作品と文言は変わらない芯、という関係だ。先行公開した NEBULA テーマでは 3D・シェーダー・ノード単位のインタラクションを表現の基調に据え、ページ全体をゆっくり眺めていられるビジュアル空間として仕立てている。",
+        "en": "My personal portfolio, designed from the start around the idea of \"one body of content, multiple theme skins\" — themes are an interchangeable surface, while the works and copy underneath stay stable. The first theme, NEBULA, leans on 3D, shaders and node-level interaction to set the visual tone, shaping the site into a space you can quietly linger in."
+      },
+      "background": {
+        "zh": "职业经历几乎都集中在面向企业的 Web SaaS 管理后台，以视觉表达与高交互为核心的前端产品 / Three.js / 着色器一直没机会进生产线。做这个作品站就是为了在自己的项目里把这条线补上，把过去散在草稿里的试验，逐步收成能持续演进、能拿来展示的作品。",
+        "ja": "業務経験はほぼすべて企業向け Web SaaS の管理画面に集中しており、ビジュアル表現や高密度なインタラクションを主軸に据えたフロントエンドプロダクト・Three.js・シェーダーは本番投入の機会がないままだった。このサイトは、その不足を自分のプロジェクトの中で埋めにいくための場所。散らかっていた試作を、継続的に育てて作品として見せられる形まで持っていくのが狙い。",
+        "en": "My career has been almost entirely enterprise Web SaaS admin tools, with no production exposure to the kind of frontend product built around visual expression and rich interaction, nor to Three.js or shaders. This site is where I close that gap on my own time — taking experiments that used to live in scratch files and growing them into work I can keep evolving and actually put in front of people."
+      },
+      "skills": ["astro", "react", "typescript", "sass", "three-js", "glsl", "framer-motion"],
+      "previewCode": "blocks",
+      "links": [
+        {
+          "url": "https://BlaxBerry333.github.io/venomous-portfolio",
+          "label": {
+            "zh": "首页",
+            "ja": "ホーム",
+            "en": "Home"
+          }
+        },
+        {
+          "url": "https://BlaxBerry333.github.io/venomous-portfolio/ja/nebula/design-system",
+          "label": {
+            "zh": "风格设计系统",
+            "ja": "デザインシステム",
+            "en": "Design System"
+          }
+        },
+        {
+          "url": "https://github.com/BlaxBerry333/venomous-portfolio",
+          "label": {
+            "zh": "GitHub 仓库",
+            "ja": "GitHub リポジトリ",
+            "en": "GitHub repository"
+          }
+        }
+      ],
+      "personal": {
+        "learnings": [
+          {
+            "zh": "做完这个项目最明显的变化，是自己对「什么算一个好的前端产品」的评判标准被整体抬高了。过去做企业 SaaS 管理后台，评判更偏「能稳定承担业务、不出错」；而这次每一个画面都要自己回答「它看上去、用上去对不对」——颜色、留白、动效的呼吸感、节奏，这些以前从不进入勾选项的维度，现在变成下意识就会先过一遍的标准。",
+            "ja": "このプロジェクトを通して一番明確に変わったのは、「良いフロントエンドプロダクトとは何か」に対する自分の評価基準そのものが引き上げられたこと。これまでの業務系 SaaS 管理画面では「業務をきちんと支え、壊れない」が評価軸の中心だったが、今回は一画面ごとに「見た目として正しいか、触り心地として正しいか」を自分で判定する必要があった。色・余白・モーションの呼吸感や間（ま）といった、以前なら評価項目に入らなかった軸が、今では無意識に最初に通る基準として組み込まれている。",
+            "en": "The clearest shift after this project is that my internal bar for what counts as a good frontend product has been pulled up across the board. Coming from enterprise SaaS admin work, the bar used to be \"does it reliably do the job and stay unbroken.\" Here, every single surface forced me to answer \"does this look right, does this feel right\" myself — color, spacing, the breathing pattern and pacing of motion. Dimensions that never used to be on my checklist are now the first ones I unconsciously run through."
+          },
+          {
+            "zh": "和业务项目最大的不同是：这次没有设计稿可参照，从主题色板、字体节奏、留白尺度，到 Card / Section / Timeline / GravityGraph 等所有基础组件的形态与交互语汇，都是自己定义出来的——也就意味着「这里为什么用这个色」「为什么这处加 hover、那处不加」「这个间距是 12 还是 16」每一个都没有标准答案，得自己拿一个判断并对结果负责。这是从「实现别人定下的设计」走到「自己来定义一套设计语言」的过程，让我第一次真切体会到工程师在没有设计师托底时要替哪一部分做主。",
+            "ja": "業務プロジェクトとの最大の違いは、参照できるデザインがない状態でゼロから組み上げたことだ。テーマのカラーパレット、タイポグラフィのリズム、余白のスケールから、Card / Section / Timeline / GravityGraph といった基礎コンポーネントの形と振る舞いの語彙まで、すべて自分で定義した。つまり「ここでなぜこの色か」「なぜこの箇所だけ hover を付けて、あの箇所には付けないのか」「この間隔は 12 か、それとも 16 か」といった問いに、正解のないまま自分で答えを出し、その結果に自分で責任を持つ必要があった。「他人の決めたデザインを実装する」段階から「デザインそのものの言語を自分で定義する」段階に踏み込んだ経験で、デザイナーの土台がない状況でエンジニアがどこまでを引き受けるべきかを、初めて実感としてつかむことができた。",
+            "en": "The biggest difference from any business project is that there was no design to reference — everything from the theme palette, typographic rhythm and spacing scale down to the shape and interaction vocabulary of every primitive (Card, Section, Timeline, GravityGraph) had to be defined by me. Which means questions like \"why this color here,\" \"why does this element get hover state but that one doesn't,\" \"is this gap 12 or 16\" never have a canonical answer; I have to make a call and own the result. This was the move from \"implementing somebody else's design\" to \"defining the design language itself,\" and the first time I really understood which decisions an engineer has to step up and own when no designer is backing them."
+          },
+          {
+            "zh": "技术选型层面，第一次把 Astro 作为主框架来用，并且是有意识地选它而不是 Next 或纯 Vite SPA。理由是这个场景的本质是「以静态内容为主、交互只在局部需要」——用 Next 就为了少量交互背上整套 SSR / 客户端运行时；用 SPA 又会让首屏白屏、SEO 与多语言静态化更难。Astro 默认 0 JS、需要交互的地方才把 React 当成 island 局部水合，恰好压在这条业务曲线上。这次之后我对「框架不是越能干越好，越贴合场景才越好」这件事是真的有体感的，而不只是道理上认同。",
+            "ja": "技術選定の面では、Astro を初めてメインフレームワークとして採用し、しかも Next や純粋な Vite SPA ではなく Astro を選ぶという判断を意識的に行った。このサイトの本質は「静的コンテンツが中心で、インタラクションは局所的にしか必要ない」性格のものだ。Next を使えば限定的なインタラクションのために SSR とクライアントランタイム一式を背負うことになり、SPA にすればファーストビューの空白、SEO、多言語の静的化が一気に難しくなる。Astro はデフォルトで JS ゼロ、必要な箇所だけ React を island として部分水和（hydration）させる構成で、ちょうど今回のプロダクト曲線に乗っていた。この経験を経て「フレームワークは万能なものほど良いのではなく、シーンに合っているものほど良い」という考えが、頭での理解ではなく実感として腹に落ちた。",
+            "en": "On the framework side, this was my first time using Astro as the primary framework, and a deliberate choice over Next or a plain Vite SPA. The shape of the site is \"mostly static content, interaction only in specific spots\" — Next would have meant carrying a full SSR / client runtime for a little interactivity, and an SPA would have made first paint, SEO and multilingual static generation noticeably harder. Astro ships zero JS by default and only hydrates the React parts as islands where they're actually needed, which lined up cleanly with this site's shape. After this project, the line \"a framework isn't better for being more capable; it's better for fitting the situation\" finally moved from abstract agreement to something I actually feel."
+          }
+        ]
+      }
+    }
+  }
+}

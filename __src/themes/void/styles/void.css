@@ -1,0 +1,105 @@
+/* ============= Void UI 组件样式 =============
+   全部命名空间走 .void-ui--xxx
+   动效 keyframes 走 void-ui--xxx
+   由 components/ui/void/index.ts 直接 import 触发副作用挂载 */
+
+/* —— HUD 切角装饰 —— */
+.void-ui--corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  pointer-events: none;
+  border-color: var(--theme-accent);
+  border-style: solid;
+  border-width: 0;
+  z-index: 1;
+}
+.void-ui--corner.tl {
+  top: 12px;
+  left: 12px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.void-ui--corner.tr {
+  top: 12px;
+  right: 12px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+.void-ui--corner.bl {
+  bottom: 12px;
+  left: 12px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+.void-ui--corner.br {
+  bottom: 12px;
+  right: 12px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+
+/* —— 切角面板（无边） —— */
+.void-ui--frame {
+  position: relative;
+  background: var(--theme-surface);
+  clip-path: polygon(
+    0 12px,
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+/* —— 切角面板（带渐变描边） —— */
+.void-ui--frame-bordered {
+  background:
+    linear-gradient(var(--theme-surface), var(--theme-surface)) padding-box,
+    linear-gradient(135deg, var(--theme-accent), var(--theme-accent-2)) border-box;
+  border: 1px solid transparent;
+  clip-path: polygon(
+    0 12px,
+    12px 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% calc(100% - 12px),
+    calc(100% - 12px) 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+}
+
+/* —— 共用粒子流关键帧（VoidParticleStream / Works hover / Featured 切换 都用） —— */
+@keyframes void-ui--card-particle {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+/* —— Void 扫描线（极弱 CRT 感） —— */
+.void-ui--scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(232, 236, 242, 0.025) 0px,
+    rgba(232, 236, 242, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: screen;
+  z-index: var(--z-raised);
+}

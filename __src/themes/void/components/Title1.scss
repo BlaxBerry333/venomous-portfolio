@@ -1,0 +1,19 @@
+// portfolio__void-title-1 — Void 风格一档标题（页面级 hero h1）
+// 用于：ComponentsPage / About / Works 三个页面的顶部主标题
+
+.portfolio__void-title-1 {
+  margin: 0;
+
+  font-family: var(--theme-font-display);
+  font-size: clamp(40px, 6vw, 88px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--theme-fg);
+
+  // 尾部强调字（accent prop 注入）
+  &__accent {
+    color: var(--theme-accent);
+    text-shadow: 0 0 24px rgba(107, 216, 230, 0.35);
+  }
+}

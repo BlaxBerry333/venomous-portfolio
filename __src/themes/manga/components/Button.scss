@@ -1,0 +1,111 @@
+// portfolio__manga-button — 漫画风按钮
+// 黑边 + 偏移硬阴影 + 大写 display 字体
+// hover / active 行为由调用方的 framer-motion `whileHover` / `whileTap` 驱动（保持原状）
+// 静态视觉：size + color 走 modifier，restRotate / shadowOffset 走 CSS 变量
+
+.portfolio__manga-button {
+  --portfolio__manga-button--rotate: 0deg;
+
+  // 默认 md 尺寸
+  --portfolio__manga-button--pad-x: 22px;
+  --portfolio__manga-button--pad-y: 12px;
+  --portfolio__manga-button--font: 16px;
+  --portfolio__manga-button--offset: 6px;
+
+  --portfolio__manga-button--bg: var(--theme-fg);
+  --portfolio__manga-button--fg: var(--theme-bg);
+  --portfolio__manga-button--shadow: var(--theme-accent);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  padding: var(--portfolio__manga-button--pad-y) var(--portfolio__manga-button--pad-x);
+  background: var(--portfolio__manga-button--bg);
+  color: var(--portfolio__manga-button--fg);
+  border: 3px solid var(--theme-fg);
+  box-shadow:
+    var(--portfolio__manga-button--offset) var(--portfolio__manga-button--offset) 0
+    var(--portfolio__manga-button--shadow);
+
+  font-family: var(--theme-font-display);
+  font-weight: 900;
+  font-size: var(--portfolio__manga-button--font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  rotate: var(--portfolio__manga-button--rotate);
+
+  // ---- size modifier ----
+  &--sm {
+    --portfolio__manga-button--pad-x: 14px;
+    --portfolio__manga-button--pad-y: 8px;
+    --portfolio__manga-button--font: 13px;
+    --portfolio__manga-button--offset: 4px;
+  }
+
+  &--md {
+    --portfolio__manga-button--pad-x: 22px;
+    --portfolio__manga-button--pad-y: 12px;
+    --portfolio__manga-button--font: 16px;
+    --portfolio__manga-button--offset: 6px;
+  }
+
+  &--lg {
+    --portfolio__manga-button--pad-x: 30px;
+    --portfolio__manga-button--pad-y: 16px;
+    --portfolio__manga-button--font: 20px;
+    --portfolio__manga-button--offset: 8px;
+  }
+
+  // ---- color modifier ----
+  // black = 实心黑底白字，阴影走 accent（红）
+  &--black {
+    --portfolio__manga-button--bg: var(--theme-fg);
+    --portfolio__manga-button--fg: var(--theme-bg);
+    --portfolio__manga-button--shadow: var(--theme-accent);
+  }
+
+  &--red {
+    --portfolio__manga-button--bg: var(--theme-accent);
+    --portfolio__manga-button--fg: var(--theme-fg);
+    --portfolio__manga-button--shadow: var(--theme-fg);
+  }
+
+  &--yellow {
+    --portfolio__manga-button--bg: var(--theme-accent-2);
+    --portfolio__manga-button--fg: var(--theme-fg);
+    --portfolio__manga-button--shadow: var(--theme-fg);
+  }
+
+  &--white {
+    --portfolio__manga-button--bg: transparent;
+    --portfolio__manga-button--fg: var(--theme-fg);
+    --portfolio__manga-button--shadow: var(--theme-fg);
+  }
+
+  // ---- element: badge（右上拟声角标）----
+  &__badge {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    padding: 3px 8px;
+    pointer-events: none;
+
+    background: var(--theme-accent);
+    color: var(--theme-fg);
+    border: 2.5px solid var(--theme-fg);
+    box-shadow: 3px 3px 0 var(--theme-fg);
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+
+    transform: rotate(8deg);
+  }
+}

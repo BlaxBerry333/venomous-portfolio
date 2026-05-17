@@ -1,0 +1,86 @@
+// portfolio__void-tag — Void 风格通用 tag
+// 视觉来自 about/Constellation 的 SkillToken；3 档 variant 由 VOID_TAG_STYLE 通过 inline style 提供
+//
+// 注：hover 视觉（boxShadow / translateY / 粒子 / tooltip）由 React state 驱动；
+//     SCSS 这里只承担 layout / typography 基线 + size modifier。
+
+.portfolio__void-tag {
+  // 默认 md
+  --portfolio__void-tag--pad-x: 20px;
+  --portfolio__void-tag--pad-y: 12px;
+  --portfolio__void-tag--font: 15px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: var(--portfolio__void-tag--pad-y) var(--portfolio__void-tag--pad-x);
+
+  font-family: var(--theme-font-mono);
+  font-size: var(--portfolio__void-tag--font);
+  letter-spacing: 0.04em;
+
+  transition:
+    box-shadow 220ms,
+    transform 220ms;
+
+  // ---- size modifier ----
+  &--xs {
+    --portfolio__void-tag--pad-x: 8px;
+    --portfolio__void-tag--pad-y: 3px;
+    --portfolio__void-tag--font: 12px;
+  }
+
+  &--sm {
+    --portfolio__void-tag--pad-x: 12px;
+    --portfolio__void-tag--pad-y: 5px;
+    --portfolio__void-tag--font: 14px;
+  }
+
+  &--md {
+    --portfolio__void-tag--pad-x: 20px;
+    --portfolio__void-tag--pad-y: 12px;
+    --portfolio__void-tag--font: 15px;
+  }
+
+  &--interactive {
+    cursor: pointer;
+  }
+
+  // ---- element: tooltip 等级悬浮 ----
+  &__tooltip {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 3px 8px;
+    white-space: nowrap;
+    pointer-events: none;
+
+    font-family: var(--theme-font-mono);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--theme-accent);
+    background: var(--theme-bg);
+    border: 1px solid color-mix(in srgb, var(--theme-accent) 40%, transparent);
+  }
+
+  // ---- element: sparks 粒子容器 ----
+  &__sparks {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  &__spark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--theme-accent);
+    box-shadow: 0 0 6px var(--theme-accent);
+    transform: translate(-50%, -50%);
+  }
+}

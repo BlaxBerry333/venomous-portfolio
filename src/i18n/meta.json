@@ -1,0 +1,59 @@
+{
+  "shared": {
+    "all": {
+      "zh": "全部",
+      "ja": "すべて",
+      "en": "All"
+    }
+  },
+  "home": {
+    "title": {
+      "zh": "首页",
+      "ja": "ホーム",
+      "en": "Home"
+    }
+  },
+  "works": {
+    "title": {
+      "zh": "作品集",
+      "ja": "作品集",
+      "en": "Portfolio"
+    }
+  },
+  "about": {
+    "title": {
+      "zh": "关于我",
+      "ja": "私について",
+      "en": "About Me"
+    }
+  },
+  "designSystem": {
+    "title": {
+      "zh": "设计系统",
+      "ja": "デザインシステム",
+      "en": "Design System"
+    }
+  },
+  "notFound": {
+    "title": {
+      "zh": "页面未找到",
+      "ja": "ページが見つかりません",
+      "en": "Page not found"
+    },
+    "heading": {
+      "zh": "迷失在星云中",
+      "ja": "迷子になりました",
+      "en": "Lost in the nebula"
+    },
+    "description": {
+      "zh": "你访问的页面似乎飘出了航线，回到首页看看吧。",
+      "ja": "アクセスしたページは航路から外れたようです。ホームに戻って続きをご覧ください。",
+      "en": "The page you're looking for drifted out of range. Head back to the home page to continue."
+    },
+    "returnHomeText": {
+      "zh": "返回首页",
+      "ja": "ホームへ戻る",
+      "en": "Return home"
+    }
+  }
+}

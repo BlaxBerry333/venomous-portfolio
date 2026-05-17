@@ -1,0 +1,39 @@
+---
+import "@/globals.scss";
+import { LOCALES, type Locale } from "@/utils/i18n";
+import type { Theme } from "@/utils/themes";
+import { ClientRouter } from "astro:transitions";
+// eslint-disable-next-line no-restricted-imports
+import pkg from "../../package.json";
+import ThemeCriticalCSS from "./ThemeCriticalCSS.astro";
+
+interface Props {
+  locale: Locale;
+  theme?: Theme;
+  title?: string;
+  description?: string;
+}
+
+const { locale, theme, title, description = pkg.description } = Astro.props;
+
+const htmlLangAttr = LOCALES[locale].htmlLang;
+const fullTitle = `${title || ""} | Portfolio — Chen`.replace(/^ \| /, "");
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<!doctype html>
+<html lang={htmlLangAttr} data-theme={theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <title>{fullTitle}</title>
+    <ClientRouter />
+    <ThemeCriticalCSS />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

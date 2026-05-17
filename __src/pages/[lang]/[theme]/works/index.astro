@@ -1,0 +1,20 @@
+---
+import SiteLayout from "@/components/astro/layout/SiteLayout.astro";
+import MangaWorksList from "@/themes/manga/sections/MangaWorksList";
+import VoidWorksList from "@/themes/void/sections/VoidWorksList";
+import ZenlessWorksList from "@/themes/zenless/sections/ZenlessWorksList";
+import type { Locale, Theme } from "@/types";
+import { getLocaleThemeStaticPaths } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleThemeStaticPaths();
+}
+
+const { lang, theme } = Astro.params as { lang: Locale; theme: Theme };
+---
+
+<SiteLayout locale={lang} theme={theme} activePage="works" title="Works">
+  {theme === "manga" && <MangaWorksList locale={lang} theme={theme} client:load />}
+  {theme === "zenless" && <ZenlessWorksList locale={lang} theme={theme} client:load />}
+  {theme === "void" && <VoidWorksList locale={lang} theme={theme} client:load />}
+</SiteLayout>

@@ -1,0 +1,33 @@
+---
+import { getEntry } from "astro:content";
+import SiteLayout from "@/components/astro/layout/SiteLayout.astro";
+import { getAllWorkIds, getWorkById } from "@/utils/data";
+import { getLocaleThemeWorkStaticPaths, pickLocale } from "@/utils/i18n";
+import type { Locale, Theme } from "@/types";
+
+export function getStaticPaths() {
+  return getLocaleThemeWorkStaticPaths(getAllWorkIds());
+}
+
+const { lang, theme, id } = Astro.params as {
+  lang: Locale;
+  theme: Theme;
+  id: string;
+};
+const work = getWorkById(id);
+if (!work) {
+  throw new Error(`Unknown work id: ${id}`);
+}
+
+const entry = await getEntry("workDetails", `${id}-${theme}`);
+if (!entry) {
+  throw new Error(`Missing workDetails entry for ${id}-${theme}`);
+}
+const Content = (await entry.render()).Content;
+
+const title = pickLocale(work.title, lang);
+---
+
+<SiteLayout locale={lang} theme={theme} activePage="detail" title={title}>
+  <Content locale={lang} />
+</SiteLayout>

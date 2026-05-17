@@ -1,0 +1,11 @@
+// portfolio__components-page — Codex 组件展示页（多 theme 演示行）
+
+.portfolio__components-page {
+  @media (max-width: 720px) {
+    &__void-row,
+    &__zenless-row {
+      grid-template-columns: 1fr !important;
+      gap: 8px !important;
+    }
+  }
+}

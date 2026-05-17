@@ -1,0 +1,60 @@
+.portfolio--nebula-heading {
+  font-family: var(--nebula-font-family-display);
+  font-weight: 900;
+  color: var(--nebula-color-text);
+
+  &--1 {
+    font-size: clamp(40px, 5vw, 68px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-shadow: var(--nebula-text-shadow-1);
+  }
+
+  &--2 {
+    font-size: clamp(28px, 3.5vw, 44px);
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    text-shadow: var(--nebula-text-shadow-2);
+  }
+
+  &--3 {
+    font-size: 24px;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    text-shadow: var(--nebula-text-shadow-3);
+    margin-bottom: 0.5rem;
+  }
+
+  // Card title 档：字号、字重、发光都降一档；行高放宽给 CJK 留呼吸感。
+  &--4 {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 1.35;
+    text-shadow: var(--nebula-text-shadow-3);
+  }
+
+  // 行数截断：webkit-line-clamp + 最小高度，避免卡片在 1/2 行间抖动。
+  &--clamp-1,
+  &--clamp-2,
+  &--clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  &--clamp-1 {
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    min-height: calc(1em * 1.35 * 1);
+  }
+  &--clamp-2 {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    min-height: calc(1em * 1.35 * 2);
+  }
+  &--clamp-3 {
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    min-height: calc(1em * 1.35 * 3);
+  }
+}

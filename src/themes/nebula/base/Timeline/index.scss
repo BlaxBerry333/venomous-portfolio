@@ -1,0 +1,181 @@
+.portfolio--nebula-timeline {
+  --rail-col: 28px;
+  --node-size: 10px;
+
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+
+  @media (min-width: 768px) {
+    --rail-col: 88px;
+    --node-size: 12px;
+    gap: var(--space-10);
+  }
+
+  // 全段连续的渐变轴线：跨所有 item，首末渐隐
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--rail-col) / 2);
+    width: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--nebula-color-neon-1) 60%, transparent) 0%,
+      color-mix(in srgb, var(--nebula-color-neon-2) 60%, transparent) 100%
+    );
+    opacity: 0.65;
+    mask: linear-gradient(
+      180deg,
+      transparent 0,
+      #000 24px,
+      #000 calc(100% - 24px),
+      transparent 100%
+    );
+    -webkit-mask: linear-gradient(
+      180deg,
+      transparent 0,
+      #000 24px,
+      #000 calc(100% - 24px),
+      transparent 100%
+    );
+    pointer-events: none;
+  }
+
+  &__item {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--rail-col) 1fr;
+    align-items: stretch;
+
+    // Card 开 tilt 后，grid 直接子是 __tilt-root（外面多包了 perspective 层）。
+    // 定位 / token 覆盖挂在 __tilt-root；卡片本体的 gap 覆盖挂在内层 .portfolio--nebula-card。
+    > .portfolio--nebula-card__tilt-root {
+      grid-column: 2;
+      // Timeline 卡片比默认 Card 紧凑一档（改 --card-padding 让出血等跟随；变量向下继承）
+      --card-padding: var(--space-4);
+
+      @media (min-width: 768px) {
+        --card-padding: var(--space-5);
+      }
+    }
+
+    .portfolio--nebula-card {
+      gap: var(--space-3);
+
+      @media (min-width: 768px) {
+        gap: var(--space-4);
+      }
+    }
+  }
+
+  // —— 卡片内部三段：跟 WorkCard 同形，但只服务 Timeline ——
+  &__card-header {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--space-1);
+    min-width: 0;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: var(--space-3);
+
+      > :first-child {
+        min-width: 0;
+        flex: 1;
+      }
+
+      > :last-child {
+        flex-shrink: 0;
+      }
+    }
+  }
+
+  // company / department 组：移动端纵排，桌面横排并以 · 分隔
+  &__card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    min-width: 0;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: var(--space-2);
+
+      > :nth-child(n + 2)::before {
+        content: "·";
+        margin-right: var(--space-2);
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &__card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    padding-top: var(--space-3);
+    border-top: 1px dashed var(--nebula-color-border-soft);
+  }
+
+  &__node {
+    position: absolute;
+    top: 50%;
+    left: calc(var(--rail-col) / 2);
+    width: var(--node-size);
+    height: var(--node-size);
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    background: var(--nebula-color-bg);
+    border: 1px solid color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent);
+    box-shadow:
+      0 0 0 2px var(--nebula-color-bg),
+      0 0 8px color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent),
+      0 0 16px color-mix(in srgb, var(--nebula-color-neon-2) 40%, transparent);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      border-radius: inherit;
+      background: linear-gradient(
+        135deg,
+        var(--nebula-color-neon-1) 0%,
+        var(--nebula-color-neon-2) 100%
+      );
+    }
+  }
+
+  // 职责列表：渲染在 Card 的主体区（children）内
+  &__responsibilities {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      padding-left: var(--space-4);
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.7em;
+        width: 6px;
+        height: 1px;
+        background: color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent);
+        box-shadow: 0 0 6px color-mix(in srgb, var(--nebula-color-neon-1) 60%, transparent);
+      }
+    }
+  }
+}

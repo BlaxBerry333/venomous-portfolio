@@ -1,0 +1,29 @@
+---
+/**
+ * 各主题的"页面级底盘" critical CSS —— 通过 set:html 把 <style> 标签作为字符串注入。
+ *
+ * 为什么必须内联：外链样式表加载/解析前，浏览器会用默认白底渲染 HTML。此时若 React island
+ * （如 nebula 的 Background）尚未水合，会出现白闪 / 黑底黑字 FOUC。把"主题底色 + 文字色"
+ * 塞进 HTML 字节，浏览器一拿到 HTML 就立刻生效。
+ *
+ * 为什么用 set:html 而不是直接写 <style is:inline>：
+ * Astro dev 模式下，子组件里的 <style is:inline> 仍会走 vite 处理流水线，导致这段样式
+ * 被作为独立资源在外链 CSS 之后加载，引发白闪。用 set:html 把整个 <style> 标签作为
+ * 字符串原样注入 HTML，Astro 不再处理，dev / prod 行为完全一致。
+ *
+ * 注意事项：
+ * - 每个主题只放两类规则：背景色 + 文字色。其余 token / 组件样式走外链 globals.scss。
+ * - 这里的颜色值需要与 globals.scss 中对应主题 token (--{theme}-color-bg / -text) 保持一致；
+ *   将来改主题底色时两处都要改。
+ * - 新增主题：往 criticalCss 字符串里追加一段即可。
+ */
+
+const criticalCss = `<style>
+  /* nebula */
+  html[data-theme="nebula"],
+  html[data-theme="nebula"] body { background: #000; }
+  html[data-theme="nebula"] body { color: #fff; }
+</style>`;
+---
+
+<Fragment set:html={criticalCss} />

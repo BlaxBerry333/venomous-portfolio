@@ -1,0 +1,444 @@
+/* =============================================================
+   portfolio-redesign-v3  设计 token
+   主题：Void / Manga / Zenless + Resume 模式
+   切换方式：根 <html data-theme="..."> + data-mode="..."
+   ============================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 禁掉 iOS / Safari 顶部 bounce 拖拽 + 横向溢出弹性 */
+html,
+body {
+  overscroll-behavior: none;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+html {
+  background: var(--theme-bg);
+  transition: background 600ms linear;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  background: var(--theme-bg);
+  color: var(--theme-fg);
+  font-family: var(--theme-font-body);
+  /* 兜住 ZenlessHero 斜带 width:200% / left:-50% 旋转后的横向溢出 —
+     hero 自身保持 overflow:visible 让斜带能纵向探出 hero 覆盖下一节 */
+  overflow-x: hidden;
+  transition:
+    background 600ms linear,
+    color 600ms linear;
+}
+
+/* Void 主题：body 透明让 fixed 星尘场显示，由 html 兜底色 */
+html[data-theme="void"] body {
+  background: transparent;
+}
+
+/* 共享 section 用：默认主题色填充；void 主题透明让星尘场穿透 */
+.theme-bleed-bg {
+  background: var(--theme-bg);
+}
+html[data-theme="void"] .theme-bleed-bg {
+  background: transparent;
+}
+
+/* ===== 共享 token ===== */
+:root {
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 160px;
+
+  /* Site-wide layout tokens — SiteHeader 与所有 section 共享一份 */
+  --site-max-width: 1320px;
+  --site-padding-x: clamp(12px, 5vw, 64px);
+  --site-header-height: 60px;
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-sticky: 30;
+  --z-header: 50;
+  --z-overlay: 80;
+  --z-modal: 90;
+  --z-toast: 100;
+
+  /* 默认 = Void */
+  --theme-bg: #05060a;
+  --theme-fg: #e8ecf2;
+  --theme-accent: #6bd8e6;
+  --theme-font-display: "JetBrains Mono", "Orbitron", "Noto Sans SC", "Noto Sans JP", monospace;
+  --theme-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-radius: 0;
+}
+
+/* §3.A Void — 深空虚无 (青冷单色 + 中性灰阶) */
+html[data-theme="void"] {
+  --theme-bg: #05060a;
+  --theme-fg: #e8ecf2;
+  --theme-fg-muted: #8893a3;
+  --theme-fg-dim: #4a5260;
+  --theme-accent: #6bd8e6; /* 冷青：比纯 #0ff 更柔，深空感 */
+  --theme-accent-2: #6bd8e6; /* 故意 = accent，吃掉历史多色引用 */
+  --theme-success: #6bd8e6; /* 状态色合并：默认全部归青 */
+  --theme-warn: #8893a3; /* 黄→中性灰 */
+  --theme-alert: #c45a5a; /* 唯一保留的告警红：分级用 */
+  --theme-surface: #0b0e14;
+  --theme-elevated: #11151d;
+  --theme-font-display: "JetBrains Mono", "Orbitron", "Noto Sans SC", "Noto Sans JP", monospace;
+  --theme-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+  --theme-radius: 0;
+  --theme-shadow: 0 0 20px rgba(107, 216, 230, 0.18);
+  --theme-shadow-strong: 0 0 40px rgba(107, 216, 230, 0.1);
+}
+
+/* §3.B Manga — 升级少年漫（JoJo / 鬼灭 / 咒术风：密度狂飙的视觉） */
+html[data-theme="manga"] {
+  --theme-bg: #faf7f2;
+  --theme-fg: #0e0e10;
+  --theme-fg-muted: #4a4a52;
+  --theme-fg-dim: #9a9aa2;
+  --theme-accent: #e63946;
+  --theme-accent-2: #ffb703;
+  --theme-tone-1: #1f1f22;
+  --theme-tone-2: #4a4a52;
+  --theme-tone-3: #9a9aa2;
+  --theme-surface: #ffffff;
+  --theme-elevated: #ffffff;
+  --theme-font-display: "Anton", "Bebas Neue", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+  --theme-radius: 0;
+  --theme-shadow: 8px 8px 0 #0e0e10;
+  --theme-shadow-strong: 14px 14px 0 #0e0e10;
+}
+
+/* §3.C Zenless — 绝区零风（街头涂鸦 + 故障 UI + 高饱和荧光） */
+html[data-theme="zenless"] {
+  --theme-bg: #0a0a0a;
+  --theme-fg: #f5f5f0;
+  --theme-fg-muted: #9a9a92;
+  --theme-fg-dim: #5a5a52;
+  --theme-accent: #c5ff00;
+  --theme-accent-2: #8b5cf6;
+  --theme-warn: #ff6b00;
+  --theme-surface: #141414;
+  --theme-elevated: #1c1c1c;
+  --theme-font-display: "Anton", "Bebas Neue", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+  --theme-radius: 0;
+  --theme-shadow: 0 0 28px rgba(197, 255, 0, 0.3);
+  --theme-shadow-strong: 0 0 48px rgba(139, 92, 246, 0.45);
+}
+
+/* Resume Mode (data-mode="resume" 优先级最高) */
+html[data-mode="resume"] {
+  --theme-bg: #ffffff;
+  --theme-fg: #1a1a1a;
+  --theme-fg-muted: #6e6e6e;
+  --theme-fg-dim: #a8a8a8;
+  --theme-accent: #1d4ed8;
+  --theme-accent-2: #1d4ed8;
+  --theme-surface: #ffffff;
+  --theme-elevated: #fafafa;
+  /* Display 走 serif，但 Noto Serif CJK 未加载，CJK 字符 fallback 到 Noto Sans CJK（仍优于系统字体） */
+  --theme-font-display:
+    "Charter", "Source Serif Pro", Georgia, "Noto Sans SC", "Noto Sans JP", serif;
+  --theme-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+  --theme-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+  --theme-radius: 2px;
+  --theme-shadow: none;
+  --theme-shadow-strong: none;
+}
+
+/* focus 全局 */
+:focus-visible {
+  outline: 2px solid var(--theme-accent);
+  outline-offset: 2px;
+}
+
+/* reduced-motion 全局降级 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
+
+/* Skills grid 进场 keyframes */
+@keyframes skill-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 通用闪烁 */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ============= Void (深空虚无) =============
+   HUD / 切角 / 粒子 / 扫描线 选择器命名空间已迁至 components/ui/void/void.css，
+   通过 components/ui/void/index.ts 副作用 import 挂载（命中即载入）。 */
+
+/* ============= Manga (升级少年漫) =============
+   动效 / 网点 / 选择器命名空间已迁至 components/ui/manga/manga.css，
+   通过 components/ui/manga/index.ts 副作用 import 挂载（命中即载入）。 */
+
+/* Zenless 主题样式已抽离到 src/components/ui/zenless/zenless.css */
+
+/* 实用工具 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+/* SitePageSection — 双层结构：外层 <section> 全宽吃背景，内层 <div> 限宽居中 */
+.portfolio--site-page-section {
+  /* 外层默认裸 — 调用方通过 style/className 覆盖背景 / minHeight / overflow 等 */
+  position: relative;
+}
+
+.portfolio--site-page-section-container {
+  max-width: var(--site-max-width);
+  margin: 0 auto;
+  padding: 0 var(--site-padding-x);
+  width: 100%;
+}
+
+/* =============================================================
+   Home: manifesto (第 2 section) + cta heading (footer section)
+   两段大字标语共用一套样式系统，按主题 × 语言精调。
+   - 拉丁文（默认）走主题 display 字体
+   - CJK (zh-CN / ja) 在三主题下都缩字号 + 换 sans + 调字重，
+     因为 display 字体的 condensed/mono 美学只对拉丁字成立，
+     CJK fallback 到 Noto Sans 时必须独立调参才不臃肿。
+   ============================================================= */
+.home-manifesto-line,
+.home-cta-heading {
+  font-family: var(--theme-font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 56px);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: var(--space-md) 0;
+}
+
+/* ---- Void 主题 ---- */
+html[data-theme="void"] .home-manifesto-line,
+html[data-theme="void"] .home-cta-heading {
+  font-family: var(--theme-font-body);
+  font-weight: 300;
+  font-size: clamp(24px, 3.2vw, 44px);
+  line-height: 1.5;
+  letter-spacing: 0;
+  color: var(--theme-fg);
+}
+html[data-theme="void"] .home-manifesto-line--first {
+  color: var(--theme-fg);
+}
+html[data-theme="void"] .home-manifesto-line--last {
+  color: var(--theme-accent);
+}
+/* Void · CJK：进一步缩字号，给 Noto Sans 留呼吸 */
+html[data-theme="void"]:lang(zh-CN) .home-manifesto-line,
+html[data-theme="void"]:lang(ja) .home-manifesto-line,
+html[data-theme="void"]:lang(zh-CN) .home-cta-heading,
+html[data-theme="void"]:lang(ja) .home-cta-heading {
+  font-size: clamp(20px, 2.6vw, 34px);
+  line-height: 1.7;
+}
+
+/* ---- Manga 主题 ---- */
+/* 拉丁字：保持主题 display（Anton）—— 跟 hero 一致
+   CJK：单独切到 Zen Kaku Gothic New（日漫杂志封面常用粗黑），改善 ja/zh 观感 */
+html[data-theme="manga"] .home-manifesto-line,
+html[data-theme="manga"] .home-cta-heading {
+  font-weight: 900;
+}
+html[data-theme="manga"]:lang(zh-CN) .home-manifesto-line,
+html[data-theme="manga"]:lang(ja) .home-manifesto-line,
+html[data-theme="manga"]:lang(zh-CN) .home-cta-heading,
+html[data-theme="manga"]:lang(ja) .home-cta-heading {
+  font-family:
+    "Zen Kaku Gothic New", "Noto Sans JP", "Noto Sans SC", "PingFang SC",
+    "Hiragino Sans", sans-serif;
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 40px);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Zenless 主题 ---- */
+/* 拉丁字保持 Anton；CJK 走 Noto Sans 900 + 微正字距，做街头标语硬朗感 */
+html[data-theme="zenless"] .home-manifesto-line,
+html[data-theme="zenless"] .home-cta-heading {
+  font-weight: 900;
+}
+html[data-theme="zenless"]:lang(zh-CN) .home-manifesto-line,
+html[data-theme="zenless"]:lang(ja) .home-manifesto-line,
+html[data-theme="zenless"]:lang(zh-CN) .home-cta-heading,
+html[data-theme="zenless"]:lang(ja) .home-cta-heading {
+  font-family: "Noto Sans SC", "Noto Sans JP", sans-serif;
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 40px);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+}
+
+/* =============================================================
+   Home footer: 主题切换提示（placed between heading and buttons）
+   每主题独立样式 —— 因为它是 "桥接" 标题陈述句到 CTA 按钮组的引子，
+   气质必须跟当前主题对得上，不然一行 mono 在三种主题下都违和。
+   ============================================================= */
+.home-cta-theme-hint {
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Void: 终端 mono，最 minimal */
+html[data-theme="void"] .home-cta-theme-hint {
+  font-family: var(--theme-font-mono);
+  font-weight: 400;
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.18em;
+  color: var(--theme-fg-muted);
+}
+
+/* Manga: 标牌字 + accent 红，跟分镜框风同步 */
+html[data-theme="manga"] .home-cta-theme-hint {
+  font-family: var(--theme-font-display);
+  font-weight: 700;
+  font-size: clamp(13px, 1.3vw, 16px);
+  letter-spacing: 0.06em;
+  color: var(--theme-accent);
+}
+html[data-theme="manga"]:lang(zh-CN) .home-cta-theme-hint,
+html[data-theme="manga"]:lang(ja) .home-cta-theme-hint {
+  font-family:
+    "Zen Kaku Gothic New", "Noto Sans JP", "Noto Sans SC", "PingFang SC",
+    "Hiragino Sans", sans-serif;
+  font-weight: 700;
+  font-size: clamp(12px, 1.2vw, 15px);
+  letter-spacing: 0.04em;
+}
+
+/* Zenless: display 黑体 + 紫 accent-2，宽字距做"任务提示"感 */
+html[data-theme="zenless"] .home-cta-theme-hint {
+  font-family: var(--theme-font-display);
+  font-weight: 900;
+  font-size: clamp(12px, 1.1vw, 14px);
+  letter-spacing: 0.22em;
+  color: var(--theme-accent-2);
+}
+html[data-theme="zenless"]:lang(zh-CN) .home-cta-theme-hint,
+html[data-theme="zenless"]:lang(ja) .home-cta-theme-hint {
+  font-family: "Noto Sans SC", "Noto Sans JP", sans-serif;
+  font-weight: 900;
+  font-size: clamp(11px, 1vw, 13px);
+  letter-spacing: 0.16em;
+}
+
+/* =============================================================
+   View Transitions — 页面跳转故障转场
+   依赖 Astro <ClientRouter />；reduced-motion 下自动 disable（见上方 @media 块）
+   ============================================================= */
+@keyframes page-glitch-out {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(-5px);
+    filter: blur(2px) hue-rotate(90deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(10px);
+    filter: blur(4px);
+  }
+}
+
+@keyframes page-glitch-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+    filter: blur(4px);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(5px);
+    filter: blur(2px) hue-rotate(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+::view-transition-old(root) {
+  animation: page-glitch-out 0.5s ease-out forwards;
+}
+
+::view-transition-new(root) {
+  animation: page-glitch-in 0.6s ease-out forwards;
+}

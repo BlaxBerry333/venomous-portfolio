@@ -1,0 +1,9 @@
+// portfolio__void-home-featured-works — Void Featured 双栏面板
+
+.portfolio__void-home-featured-works {
+  @media (max-width: 900px) {
+    section &__panel {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}

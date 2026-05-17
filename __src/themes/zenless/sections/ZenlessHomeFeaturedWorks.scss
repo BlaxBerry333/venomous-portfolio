@@ -1,0 +1,10 @@
+// portfolio__zenless-home-featured-works — Featured Works 任务面板
+// 左侧 mission list / 右侧大屏 mission detail
+
+.portfolio__zenless-home-featured-works {
+  &__grid {
+    @media (max-width: 900px) {
+      grid-template-columns: minmax(0, 1fr) !important;
+    }
+  }
+}

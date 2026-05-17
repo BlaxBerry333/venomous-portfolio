@@ -1,0 +1,42 @@
+{
+  "sectionOverview": {},
+  "sectionBackgroundSkills": {
+    "title": {
+      "zh": "背景 & 技术栈",
+      "ja": "背景 & 技術スタック",
+      "en": "Background & Tech Stack"
+    }
+  },
+  "sectionMyInvolvement": {
+    "title": {
+      "zh": "我的参与与产出",
+      "ja": "関わりと成果",
+      "en": "My Involvement & Outcomes"
+    },
+    "headingRole": {
+      "zh": "担当角色",
+      "ja": "担当ロール",
+      "en": "Role"
+    },
+    "headingAchievements": {
+      "zh": "成果与贡献",
+      "ja": "成果と貢献",
+      "en": "Achievements & Contributions"
+    },
+    "headingPerformance": {
+      "zh": "绩效评估",
+      "ja": "評価",
+      "en": "Performance Review"
+    },
+    "headingLearnings": {
+      "zh": "学习与成长",
+      "ja": "学びと成長",
+      "en": "Learnings & Growth"
+    },
+    "viewAllWorksText": {
+      "zh": "查看全部作品集",
+      "ja": "作品集をすべて見る",
+      "en": "View All Projects"
+    }
+  }
+}

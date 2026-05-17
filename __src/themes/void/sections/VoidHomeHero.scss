@@ -1,0 +1,19 @@
+// portfolio__void-home-hero — Void Hero（粒子 CHEN + 副标题）
+
+.portfolio__void-home-hero {
+  // 移动端"换行用空格"占位
+  &__mobile-break {
+    white-space: pre;
+  }
+
+  @media (max-width: 767px) {
+    &__mobile-break {
+      display: block;
+      height: 0;
+    }
+
+    &__subtitle {
+      padding-bottom: 28vh;
+    }
+  }
+}

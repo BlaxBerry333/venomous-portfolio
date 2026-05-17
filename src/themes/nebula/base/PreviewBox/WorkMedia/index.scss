@@ -1,0 +1,7 @@
+.portfolio--nebula-preview-work-media {
+  position: relative;
+  // 抵消卡片 padding，左右 + 上出血到边缘
+  margin: calc(var(--card-padding, 0px) * -1) calc(var(--card-padding, 0px) * -1) 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}

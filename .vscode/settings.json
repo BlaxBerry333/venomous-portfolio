@@ -1,16 +1,28 @@
 {
+    "editor.formatOnSave": true,
+    "[astro][typescript][typescriptreact][javascript][javascriptreact][css][scss][mdx]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit",
+        "source.organizeImports": "explicit",
+    },
+    "prettier.requireConfig": true,
     "cSpell.words": [
         "BlaxBerry",
         "Casbin",
         "chamo",
         "clsx",
+        "frameloop",
         "Geniee",
         "grayscale",
         "jiaxu",
         "Nuxt.js",
         "nuxtjs",
+        "prettiercache",
         "Skyflag",
         "sunrisepark",
-        "Vite"
+        "Vite",
+        "zenless"
     ]
 }

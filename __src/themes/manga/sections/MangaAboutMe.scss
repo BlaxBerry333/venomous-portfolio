@@ -1,0 +1,9 @@
+// portfolio__manga-about-me — Manga About Hero 双列布局
+
+.portfolio__manga-about-me {
+  grid-template-columns: auto 1fr;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr !important;
+  }
+}

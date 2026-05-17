@@ -1,0 +1,34 @@
+---
+import SiteLayout from "@/components/astro/layout/SiteLayout.astro";
+import MangaAboutExperience from "@/themes/manga/sections/MangaAboutExperience";
+import MangaAboutMe from "@/themes/manga/sections/MangaAboutMe";
+import MangaAboutTechStacks from "@/themes/manga/sections/MangaAboutTechStacks";
+import VoidAboutExperience from "@/themes/void/sections/VoidAboutExperience";
+import VoidAboutMe from "@/themes/void/sections/VoidAboutMe";
+import VoidAboutTechStacks from "@/themes/void/sections/VoidAboutTechStacks";
+import ZenlessAboutExperience from "@/themes/zenless/sections/ZenlessAboutExperience";
+import ZenlessAboutMe from "@/themes/zenless/sections/ZenlessAboutMe";
+import ZenlessAboutTechStacks from "@/themes/zenless/sections/ZenlessAboutTechStacks";
+import type { Locale, Theme } from "@/types";
+import { getLocaleThemeStaticPaths } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleThemeStaticPaths();
+}
+
+const { lang, theme } = Astro.params as { lang: Locale; theme: Theme };
+---
+
+<SiteLayout locale={lang} theme={theme} activePage="about" title="About">
+  {theme === "manga" && <MangaAboutMe locale={lang} client:load />}
+  {theme === "zenless" && <ZenlessAboutMe locale={lang} client:load />}
+  {theme === "void" && <VoidAboutMe locale={lang} client:load />}
+
+  {theme === "manga" && <MangaAboutTechStacks locale={lang} client:visible />}
+  {theme === "zenless" && <ZenlessAboutTechStacks locale={lang} client:visible />}
+  {theme === "void" && <VoidAboutTechStacks locale={lang} client:visible />}
+
+  {theme === "manga" && <MangaAboutExperience client:visible />}
+  {theme === "zenless" && <ZenlessAboutExperience client:visible />}
+  {theme === "void" && <VoidAboutExperience client:visible />}
+</SiteLayout>

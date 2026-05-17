@@ -29,3 +29,5 @@ pnpm-debug.log*
 CLAUDE.md
 .claude/
 _*.md
+__ai__/
+

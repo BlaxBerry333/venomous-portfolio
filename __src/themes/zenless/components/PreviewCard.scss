@@ -1,0 +1,111 @@
+// portfolio__zenless-preview-card — Zenless 任务卡
+// works 页"任务情报"卡片同款
+// 结构：顶部封面 + 左上 badge chip + 文字区（status + title + subtitle + skills）
+
+.portfolio__zenless-preview-card {
+  --portfolio__zenless-preview-card--ac: var(--theme-accent);
+
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+
+  background: var(--theme-elevated);
+  border: 2px solid var(--portfolio__zenless-preview-card--ac);
+  box-shadow: 0 0 32px color-mix(in srgb, var(--portfolio__zenless-preview-card--ac) 22%, transparent);
+
+  // ---- element: cover 封面 ----
+  &__cover {
+    --portfolio__zenless-preview-card__cover--image: none;
+
+    position: relative;
+    aspect-ratio: 16/10;
+    background-size: cover;
+    background-position: center;
+
+    background-image:
+      linear-gradient(180deg, transparent 40%, rgba(10, 10, 10, 0.7)),
+      var(--portfolio__zenless-preview-card__cover--image);
+
+    &--blurred {
+      filter: blur(8px) grayscale(0.6);
+    }
+  }
+
+  // ---- element: badge 左上角标 ----
+  &__badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+
+  // ---- element: body 文字区 ----
+  &__body {
+    padding: 16px 18px;
+  }
+
+  // ---- element: status 状态行 ----
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--portfolio__zenless-preview-card--ac);
+  }
+
+  // ---- element: title ----
+  &__title {
+    --portfolio__zenless-preview-card__title--clamp: 2;
+
+    margin: 0;
+    margin-top: 0;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+
+    // 跟 status 共存时 marginTop=6
+    &--with-status {
+      margin-top: 6px;
+    }
+
+    &--clamped {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--portfolio__zenless-preview-card__title--clamp);
+      overflow: hidden;
+      word-break: break-word;
+      min-height: calc(var(--portfolio__zenless-preview-card__title--clamp) * 1.2em);
+    }
+  }
+
+  // ---- element: subtitle ----
+  &__subtitle {
+    margin: 0;
+    margin-top: 6px;
+
+    font-family: var(--theme-font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--theme-fg-muted);
+  }
+
+  // ---- element: skills 技术栈 chip 列表容器 ----
+  &__skills {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 6px;
+    height: 60px;
+    overflow: hidden;
+    margin-top: 12px;
+  }
+}

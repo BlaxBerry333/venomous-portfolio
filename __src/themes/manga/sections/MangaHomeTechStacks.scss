@@ -1,0 +1,64 @@
+// portfolio__manga-home-tech-stacks — Skill Codex 四联画
+
+.portfolio__manga-home-tech-stacks {
+  &__stack {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    // 限制 4 联画整体行宽（避免在大屏铺满后空旷感更重）
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  // 单卡 .row 上挂的 translateX 提供水平错位
+  &__row {
+    width: 100%;
+
+    > * {
+      // Quote 自身宽度由 maxWidth=100% 决定，跟随 row 拉满
+      width: 100%;
+    }
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    // 给右下角注预留空间，避免 tag 末尾与 ??+ MORE 撞上
+    padding-top: 18px;
+  }
+
+  &__quad-more {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+
+    opacity: 0.55;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  @media (max-width: 768px) {
+    // 移动端宽度受限：取消水平错位
+    &__row {
+      transform: none !important;
+    }
+
+    // 移动端 tag 容器：取消顶部 padding（角注挪到底部），加底部 padding 给 +N MORE 让位
+    &__tags {
+      padding-top: 0;
+      padding-bottom: 18px;
+    }
+  }
+}
+
+// 黑底 Quote 里 Title3 文字跟随 Quote 反白色（跨组件辅助规则）
+.portfolio__manga-quote--black .portfolio__manga-title-3__text {
+  color: inherit !important;
+}

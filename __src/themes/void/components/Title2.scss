@@ -1,0 +1,31 @@
+// portfolio__void-title-2 — Void 风格二档标题（分区主标题 h2）
+// 固定形态：eyebrow（mono uppercase 引导线，§-编号）+ 主标题
+
+.portfolio__void-title-2 {
+  &__eyebrow {
+    margin: 0;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--theme-accent);
+  }
+
+  &__text {
+    margin: 0;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: clamp(28px, 3.5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--theme-fg);
+  }
+
+  &__accent {
+    color: var(--theme-accent);
+    text-shadow: 0 0 20px rgba(107, 216, 230, 0.32);
+  }
+}

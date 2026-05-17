@@ -1,0 +1,331 @@
+// portfolio__void-card — Void 风 Card（4 个 variant 候选）
+//
+// variant：
+//   info-row   — 单行：◆ + mono label + 主文，左侧 1px 色边
+//   panel      — 多行容器：包一组 info-row，corner brackets + 极简边框
+//   list-item  — 横长 list：left leading + 中 title/desc + right trailing + ::before 左色边
+//   slab       — 方块卡：顶部 leading 槽 + 主标题 + 描述 + 底部 footer
+//
+// 颜色档位：color modifier 切换 --portfolio__void-card--ac
+// Void 主题里 accent / accent-2 / success 实际同色（归青），warn 偏冷灰。
+// 这里保留接口完整，给未来扩展（或别的主题变体调用）用。
+
+.portfolio__void-card {
+  --portfolio__void-card--ac: var(--theme-accent);
+
+  position: relative;
+  box-sizing: border-box;
+  color: var(--theme-fg);
+
+  // 公用 transition：边框 / 背景 / glow 加亮，无位移（Void 静谧风）
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease;
+
+  // ---- color modifier ----
+  &--color-accent {
+    --portfolio__void-card--ac: var(--theme-accent);
+  }
+
+  &--color-accent-2 {
+    --portfolio__void-card--ac: var(--theme-accent-2);
+  }
+
+  &--color-success {
+    --portfolio__void-card--ac: var(--theme-success);
+  }
+
+  &--color-warn {
+    --portfolio__void-card--ac: var(--theme-warn);
+  }
+
+  // =========================================================
+  //  variant: info-row
+  //  ◆ mono LABEL  +  主文 — 单行
+  //  左侧 2px 色边 + 极淡 ac 背景
+  // =========================================================
+  &--info-row {
+    display: block;
+    padding: 10px 12px 10px 14px;
+    background: color-mix(in srgb, var(--portfolio__void-card--ac) 8%, transparent);
+    border: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 30%, transparent);
+
+    // 左色边
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background: var(--portfolio__void-card--ac);
+      box-shadow: 0 0 8px color-mix(in srgb, var(--portfolio__void-card--ac) 50%, transparent);
+    }
+
+    .portfolio__void-card__label {
+      display: block;
+      margin-bottom: 4px;
+
+      font-family: var(--theme-font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--portfolio__void-card--ac);
+
+      &::before {
+        content: "◆ ";
+      }
+    }
+
+    .portfolio__void-card__title {
+      margin: 0;
+
+      font-family: var(--theme-font-body);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--theme-fg);
+    }
+  }
+
+  // info-row hover：边框 + glow 加亮（无位移）
+  &--info-row.portfolio__void-card--hoverable:hover,
+  &--info-row.portfolio__void-card--active {
+    background: color-mix(in srgb, var(--portfolio__void-card--ac) 14%, transparent);
+    border-color: color-mix(in srgb, var(--portfolio__void-card--ac) 60%, transparent);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--portfolio__void-card--ac) 30%, transparent);
+  }
+
+  // =========================================================
+  //  variant: list-item
+  //  横长 list：leading 槽 + body(title + desc) + trailing 槽
+  //  ::before 左色边，hover/active 时 scaleX 加粗
+  // =========================================================
+  &--list-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px 14px 20px;
+    text-decoration: none;
+    color: inherit;
+    background: color-mix(in srgb, var(--portfolio__void-card--ac) 4%, transparent);
+    border: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 24%, transparent);
+
+    // 左色边
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 2px;
+      background: var(--portfolio__void-card--ac);
+      transform-origin: left center;
+      transition: transform 220ms ease;
+    }
+
+    .portfolio__void-card__leading {
+      display: grid;
+      place-items: center;
+      width: 40px;
+      height: 40px;
+      border: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 50%, transparent);
+
+      font-family: var(--theme-font-mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--portfolio__void-card--ac);
+      text-shadow: 0 0 6px color-mix(in srgb, var(--portfolio__void-card--ac) 60%, transparent);
+    }
+
+    .portfolio__void-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .portfolio__void-card__title {
+      margin: 0;
+
+      font-family: var(--theme-font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--theme-fg);
+    }
+
+    .portfolio__void-card__desc {
+      margin: 0;
+
+      font-family: var(--theme-font-body);
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--theme-fg-muted);
+    }
+
+    .portfolio__void-card__trailing {
+      font-family: var(--theme-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--portfolio__void-card--ac);
+    }
+  }
+
+  // list-item hover/active
+  &--list-item.portfolio__void-card--hoverable:hover,
+  &--list-item.portfolio__void-card--active {
+    background: color-mix(in srgb, var(--portfolio__void-card--ac) 10%, transparent);
+    border-color: color-mix(in srgb, var(--portfolio__void-card--ac) 60%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--portfolio__void-card--ac) 24%, transparent);
+  }
+
+  &--list-item.portfolio__void-card--hoverable:hover::before,
+  &--list-item.portfolio__void-card--active::before {
+    transform: scaleX(3);
+    box-shadow: 0 0 12px var(--portfolio__void-card--ac);
+  }
+
+  // =========================================================
+  //  variant: slab
+  //  方块卡 — 顶部 leading 槽 + 主标 + desc + footer
+  //  细水平扫描线背景（极淡，仅 Void 视觉指纹）
+  // =========================================================
+  &--slab {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: color-mix(in srgb, var(--theme-fg) 3%, var(--theme-bg));
+    border: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 28%, transparent);
+
+    // 极淡扫描线底纹
+    background-image:
+      linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 2px,
+        color-mix(in srgb, var(--portfolio__void-card--ac) 6%, transparent) 2px,
+        color-mix(in srgb, var(--portfolio__void-card--ac) 6%, transparent) 3px
+      );
+    background-size: 100% 3px;
+
+    .portfolio__void-card__leading {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 24%, transparent);
+
+      font-family: var(--theme-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: var(--portfolio__void-card--ac);
+      text-transform: uppercase;
+    }
+
+    .portfolio__void-card__label {
+      display: block;
+      margin: 0;
+
+      font-family: var(--theme-font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--theme-fg-muted);
+    }
+
+    .portfolio__void-card__title {
+      margin: 0;
+
+      font-family: var(--theme-font-mono);
+      font-size: clamp(22px, 2.6vw, 32px);
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      line-height: 1.2;
+      color: var(--theme-fg);
+    }
+
+    .portfolio__void-card__desc {
+      margin: 0;
+
+      font-family: var(--theme-font-body);
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--theme-fg-muted);
+    }
+
+    .portfolio__void-card__footer {
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 18%, transparent);
+
+      font-family: var(--theme-font-mono);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--portfolio__void-card--ac);
+      text-transform: uppercase;
+    }
+
+    // slab 内部 rows：传 rows 时切换为 "多行 LABEL + value" 形态
+    //   - rows 容器顶部留细横线，把 title/desc 与 rows 区分开（视觉参考截图）
+    //   - 行间不再叠加横线（避免与顶部线视觉冗余），仅用 gap 间距
+    .portfolio__void-card__rows {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding-top: 16px;
+      border-top: 1px solid color-mix(in srgb, var(--portfolio__void-card--ac) 24%, transparent);
+    }
+
+    .portfolio__void-card__row {
+      // 每行可独立覆写 ac（用于 STACKS accent / ROLE accent-2 / IMPACT success 三档色 hint）
+      --portfolio__void-card__row--ac: var(--portfolio__void-card--ac);
+    }
+
+    .portfolio__void-card__row-label {
+      display: block;
+      margin-bottom: 6px;
+
+      font-family: var(--theme-font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--portfolio__void-card__row--ac);
+    }
+
+    .portfolio__void-card__row-value {
+      margin: 0;
+
+      font-family: var(--theme-font-body);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.4;
+      color: var(--theme-fg);
+    }
+  }
+
+  // slab hover/active
+  &--slab.portfolio__void-card--hoverable:hover,
+  &--slab.portfolio__void-card--active {
+    border-color: color-mix(in srgb, var(--portfolio__void-card--ac) 60%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--portfolio__void-card--ac) 22%, transparent);
+  }
+
+  // reduced motion
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &--list-item::before {
+      transition: none;
+    }
+  }
+}

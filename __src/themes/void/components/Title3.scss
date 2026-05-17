@@ -1,0 +1,31 @@
+// portfolio__void-title-3 — Void 风格三档标题（章节内小标题 h3）
+// mono uppercase + ◆ 标记 + accent 横线（右侧）
+
+.portfolio__void-title-3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+
+  font-family: var(--theme-font-mono);
+  font-weight: 700;
+  font-size: clamp(14px, 1.2vw, 18px);
+  line-height: 1.2;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--theme-fg);
+
+  &__mark {
+    flex-shrink: 0;
+    color: var(--theme-accent);
+    text-shadow: 0 0 6px var(--theme-accent);
+  }
+
+  &__line {
+    flex-shrink: 0;
+    width: 56px;
+    height: 1px;
+    background: var(--theme-accent);
+    box-shadow: 0 0 6px var(--theme-accent);
+  }
+}

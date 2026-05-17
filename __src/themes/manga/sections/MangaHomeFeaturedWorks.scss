@@ -1,0 +1,24 @@
+// portfolio__manga-home-featured-works — Manga Home Featured Works
+
+.portfolio__manga-home-featured-works {
+  // PC hover preview 遮罩按钮
+  &__preview:hover &__preview-overlay {
+    opacity: 1 !important;
+  }
+
+  // '+N MORE' 角注 — 视觉与 MangaHomeTechStacks 的 __quad-more 同款，但作用域独立
+  &__more-corner {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+
+    opacity: 0.55;
+    pointer-events: none;
+    user-select: none;
+  }
+}
