@@ -1,0 +1,358 @@
+// portfolio__site-header-theme-{dialog,option} — Mobile 主题切换 dialog
+// 每个 option 重新声明全套 --opt-* 变量，完全隔离页面当前主题，
+// 让 dialog 里每个 option 永远代表它本身的风格
+
+.portfolio__site-header-theme-dialog {
+  position: fixed;
+  top: var(--site-header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  max-width: 100vw;
+  height: calc(100vh - var(--site-header-height));
+  max-height: calc(100vh - var(--site-header-height));
+  margin: 0;
+  padding: 0;
+  border: none;
+  z-index: calc(var(--z-header) - 1);
+  overflow-y: auto;
+
+  background: color-mix(in srgb, var(--theme-bg) 92%, transparent);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--theme-fg);
+
+  &[open] {
+    display: block;
+  }
+
+  &:not([open]) {
+    display: none;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px var(--site-padding-x, 16px);
+  }
+}
+
+// ──────────────────────────────────────────────────────────────
+// 共用骨架（颜色 / 字体全部走本地 --opt-* 变量，由 theme variant 覆写）
+// ──────────────────────────────────────────────────────────────
+.portfolio__site-header-theme-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--opt-fg);
+  background: var(--opt-elevated);
+  transition:
+    transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &__leading {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+
+    font-family: var(--opt-font-display);
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--opt-bg);
+    background: var(--opt-accent);
+  }
+
+  &__body {
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__title {
+    font-family: var(--opt-font-display);
+    font-weight: 900;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+    color: var(--opt-fg);
+  }
+
+  &__desc {
+    font-family: var(--opt-font-body);
+    font-size: 12px;
+    color: var(--opt-fg-muted);
+    line-height: 1.4;
+  }
+
+  &__trailing {
+    flex: 0 0 auto;
+    position: relative;
+    z-index: 2;
+
+    font-family: var(--opt-font-mono);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--opt-accent);
+  }
+
+  // ────────────────────────────────────────────────────────────
+  //  VOID —— 采用 VoidCard 的 slab 形态：极淡扫描线底纹 + 主标 + tagline
+  //         尺寸对齐 manga option（padding 16px 18px / min-height 76px）
+  //  调色板硬编（来自 global.css §3.A）
+  // ────────────────────────────────────────────────────────────
+  &--void {
+    --opt-bg: #05060a;
+    --opt-fg: #e8ecf2;
+    --opt-fg-muted: #8893a3;
+    --opt-elevated: #11151d;
+    --opt-accent: #6bd8e6;
+    --opt-font-display: "JetBrains Mono", "Orbitron", "Noto Sans SC", "Noto Sans JP", monospace;
+    --opt-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+    --opt-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+
+    padding: 16px 18px;
+    min-height: 76px;
+    overflow: hidden;
+
+    background-color: color-mix(in srgb, var(--opt-fg) 3%, var(--opt-bg));
+    background-image:
+      linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 2px,
+        color-mix(in srgb, var(--opt-accent) 6%, transparent) 2px,
+        color-mix(in srgb, var(--opt-accent) 6%, transparent) 3px
+      );
+    background-size: 100% 3px;
+    border: 1px solid color-mix(in srgb, var(--opt-accent) 28%, transparent);
+
+    // 顶部扫光条（默认隐藏；hover/active 时显形）—— Void 静谧 hover 指纹
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--opt-accent);
+      opacity: 0;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    &:hover,
+    &.portfolio__site-header-theme-option--active {
+      background-color: color-mix(in srgb, var(--opt-accent) 8%, var(--opt-bg));
+      border-color: color-mix(in srgb, var(--opt-accent) 75%, transparent);
+      box-shadow: 0 0 32px color-mix(in srgb, var(--opt-accent) 35%, transparent);
+    }
+
+    &:hover::before,
+    &.portfolio__site-header-theme-option--active::before {
+      opacity: 1;
+      box-shadow: 0 0 12px var(--opt-accent);
+    }
+
+    &:hover .portfolio__site-header-theme-option__title,
+    &.portfolio__site-header-theme-option--active .portfolio__site-header-theme-option__title {
+      color: var(--opt-accent);
+      text-shadow: 0 0 12px color-mix(in srgb, var(--opt-accent) 50%, transparent);
+    }
+
+    // slab 形态：void 选项不渲染 leading 徽章方块（markup 层已条件移除）
+    // —— body + trailing 在 slab 内自适应到主标/副标/状态
+
+    .portfolio__site-header-theme-option__title {
+      font-family: var(--opt-font-display);
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      color: var(--opt-fg);
+      text-transform: uppercase;
+    }
+
+    .portfolio__site-header-theme-option__desc {
+      font-family: var(--opt-font-body);
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--opt-fg-muted);
+      letter-spacing: 0;
+    }
+
+    .portfolio__site-header-theme-option__trailing {
+      font-family: var(--opt-font-mono);
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      color: var(--opt-accent);
+    }
+  }
+
+  // ────────────────────────────────────────────────────────────
+  //  MANGA —— 升级少年漫（粗黑边 + 偏移硬阴影 + 旋转角章 + 水印）
+  //  调色板硬编（来自 global.css §3.B）
+  // ────────────────────────────────────────────────────────────
+  &--manga {
+    --opt-bg: #faf7f2;
+    --opt-fg: #0e0e10;
+    --opt-fg-muted: #4a4a52;
+    --opt-elevated: #ffffff;
+    --opt-accent: #e63946;
+    --opt-font-display: "Anton", "Bebas Neue", "Noto Sans SC", "Noto Sans JP", sans-serif;
+    --opt-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+    --opt-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+
+    background: var(--opt-bg);
+    color: var(--opt-fg);
+    border: 3px solid var(--opt-fg);
+    box-shadow: 6px 6px 0 var(--opt-fg);
+    overflow: hidden;
+    padding: 16px 18px;
+    min-height: 76px;
+
+    &:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 8px 8px 0 var(--opt-fg);
+    }
+
+    &.portfolio__site-header-theme-option--active {
+      // 保留米白底，用 accent 色硬阴影表达选中 —— 不反白以免脱离 manga 风格指纹
+      box-shadow: 6px 6px 0 var(--opt-accent);
+    }
+
+    .portfolio__site-header-theme-option__leading {
+      width: 42px;
+      height: 42px;
+      font-size: 20px;
+
+      background: var(--opt-accent);
+      color: var(--opt-bg);
+      border: 2px solid var(--opt-fg);
+      box-shadow: 3px 3px 0 var(--opt-fg);
+      transform: rotate(-6deg);
+    }
+
+    .portfolio__site-header-theme-option__manga-watermark {
+      position: absolute;
+      right: -6px;
+      bottom: -18px;
+      pointer-events: none;
+      z-index: 1;
+
+      font-family: var(--opt-font-body);
+      font-weight: 900;
+      font-size: 78px;
+      line-height: 0.85;
+      color: transparent;
+      -webkit-text-stroke: 2px color-mix(in srgb, var(--opt-fg) 35%, transparent);
+
+      transform: rotate(-12deg);
+      transform-origin: 100% 100%;
+    }
+
+    .portfolio__site-header-theme-option__title {
+      font-size: 19px;
+      letter-spacing: 0.02em;
+    }
+
+    .portfolio__site-header-theme-option__desc {
+      font-weight: 700;
+      opacity: 0.85;
+    }
+
+    .portfolio__site-header-theme-option__trailing {
+      color: var(--opt-fg);
+    }
+  }
+
+  // ────────────────────────────────────────────────────────────
+  //  ZENLESS —— 街头涂鸦 + 故障 UI + 高饱和荧光
+  //  调色板硬编（来自 global.css §3.C）
+  // ────────────────────────────────────────────────────────────
+  &--zenless {
+    --opt-bg: #0a0a0a;
+    --opt-fg: #f5f5f0;
+    --opt-fg-muted: #9a9a92;
+    --opt-elevated: #1c1c1c;
+    --opt-accent: #c5ff00;
+    --opt-font-display: "Anton", "Bebas Neue", "Noto Sans SC", "Noto Sans JP", sans-serif;
+    --opt-font-body: "Inter", "Noto Sans SC", "Noto Sans JP", sans-serif;
+    --opt-font-mono: "JetBrains Mono", "Noto Sans SC", "Noto Sans JP", monospace;
+
+    background: color-mix(in srgb, var(--opt-fg) 6%, var(--opt-bg));
+    border: 1px solid color-mix(in srgb, var(--opt-accent) 36%, transparent);
+    box-shadow: 0 0 24px color-mix(in srgb, var(--opt-accent) 14%, transparent);
+    overflow: hidden;
+    padding-left: 21px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 3px;
+      background: var(--opt-accent);
+      transform-origin: left center;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+    }
+
+    &:hover,
+    &.portfolio__site-header-theme-option--active {
+      background: linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--opt-fg) 6%, var(--opt-bg)) 0%,
+        color-mix(in srgb, var(--opt-accent) 22%, transparent) 70%,
+        transparent 100%
+      );
+      border-color: color-mix(in srgb, var(--opt-accent) 60%, transparent);
+      box-shadow: 0 0 32px color-mix(in srgb, var(--opt-accent) 30%, transparent);
+      transform: translateX(2px);
+    }
+
+    &:hover::before,
+    &.portfolio__site-header-theme-option--active::before {
+      transform: scaleX(2.33);
+      box-shadow: 0 0 12px var(--opt-accent);
+    }
+
+    .portfolio__site-header-theme-option__leading {
+      background: transparent;
+      color: var(--opt-accent);
+      border: 1px solid color-mix(in srgb, var(--opt-accent) 50%, transparent);
+      text-shadow: 0 0 8px color-mix(in srgb, var(--opt-accent) 60%, transparent);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &--zenless::before {
+      transition: none;
+    }
+
+    &--zenless:hover,
+    &--zenless.portfolio__site-header-theme-option--active,
+    &--manga:hover {
+      transform: none;
+    }
+  }
+}

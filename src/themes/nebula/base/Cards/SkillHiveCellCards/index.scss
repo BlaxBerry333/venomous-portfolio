@@ -1,0 +1,67 @@
+// =====================================================================
+// SkillHiveCellCards —— 按 skill.area 分组渲染密铺蜂巢
+//
+// 几何结构：
+//   root
+//   └ group (按 area 分组的纵向堆叠 + align-items 决定块体贴左 / 居中)
+//     └ block (单组的密铺块体，固有宽度由 React 算出)
+//       ├ group-head (area 名，左缩进 = 半个 hex，与第一个 hex 中心对齐)
+//       └ grid (flex-wrap，列间距 0，行间靠 HiveCellCard 自带负 margin 咬合)
+//         └ HiveCellCard × N
+//
+// 关键原则：
+//   - 密铺几何只有「相邻行错半格」一条不变量；offset 半格由 React 端按行索引控制
+//   - align 不参与几何，只决定块体在 group 中贴左还是居中 → 永远不会破坏密铺
+//   - block 是固有宽度容器，宽度 = cols * 120 + (有奇数行 ? 60 : 0)
+//
+// 当前实例 sm 档（hex-w 120，hex-h 138.56，行间负 margin -34.64）
+// =====================================================================
+.nebula--SkillHiveCellCards {
+  display: flex;
+  flex-direction: column;
+  transition: opacity 200ms var(--ease-out-expo);
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  // 单组的密铺块体：固有宽度（width 由 React 算出注入到 inline style）
+  // start  → 块体贴左
+  // center → 块体作为整体水平居中
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  // area 名左缩进 = 半个 sm hex-w（60），与块体内第一个 hex 中心对齐
+  &__group-head {
+    padding-left: 60px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0;
+    // 抵消 sm HiveCellCard 自带的 margin-bottom: -34.64px（sm hex-h / 4）
+    padding-bottom: 35px;
+  }
+
+  // align="start"：块体贴左；head 用 padding-left 与第一个 hex 中心对齐（默认）
+  &--align-start &__group {
+    align-items: flex-start;
+  }
+
+  // align="center"：块体作为整体水平居中；head 也跟随块体居中（取消左缩进）
+  &--align-center {
+    .nebula--SkillHiveCellCards__group {
+      align-items: center;
+    }
+    .nebula--SkillHiveCellCards__group-head {
+      align-self: center;
+      padding-left: 0;
+    }
+  }
+}

@@ -1,0 +1,559 @@
+{
+  "items": [
+    {
+      "id": "fintech-dashboard",
+      "type": "company",
+      "demoType": "screenshot",
+      "cover": "https://picsum.photos/seed/work-1/1600/1000",
+      "date": { "start": "2023-03", "end": "2024-09" },
+      "techStack": ["React", "TypeScript", "WebSocket", "D3.js", "Redux Toolkit", "Vite"],
+      "featured": true,
+      "links": {},
+      "screenshots": [
+        "https://picsum.photos/seed/fintech-1/1920/1080",
+        "https://picsum.photos/seed/fintech-2/1920/1080"
+      ],
+      "title": {
+        "ja": "Fintech Dashboard",
+        "en": "Fintech Dashboard",
+        "zh": "Fintech Dashboard"
+      },
+      "subtitle": {
+        "ja": "リアルタイム取引可視化プラットフォーム",
+        "en": "Real-time trading visualization platform",
+        "zh": "实时交易可视化平台"
+      },
+      "myRole": {
+        "ja": "シニアフロントエンド / 6人チーム / 可視化モジュール担当",
+        "en": "Senior Frontend / Team of 6 / Visualization module owner",
+        "zh": "高级前端 / 团队 6 人 / 我负责可视化模块"
+      },
+      "contributions": {
+        "ja": [
+          "K線チャートのレンダリング層を Canvas 2D から WebGL に書き換え、120fps 安定",
+          "WebSocket 再接続戦略とローカルキャッシュ統合、オフライン 30 秒以内で復旧可能",
+          "初期ロードを 4.2s → 1.6s に短縮（Lighthouse 実測）"
+        ],
+        "en": [
+          "Rewrote K-line rendering from Canvas 2D to WebGL, stable at 120fps",
+          "WebSocket reconnect + local cache merge, recoverable within 30s offline",
+          "First paint reduced from 4.2s to 1.6s (Lighthouse)"
+        ],
+        "zh": [
+          "重写 K 线图渲染层，从 Canvas 2D 升级到 WebGL，120fps 稳定",
+          "WebSocket 重连策略与本地缓存合流，离线 30s 内可恢复",
+          "首屏加载从 4.2s → 1.6s（Lighthouse 实测）"
+        ]
+      },
+      "challenges": {
+        "ja": [
+          {
+            "problem": "高頻度プッシュ（200 msg/s）で React diff がメインスレッドをブロック",
+            "solution": "上層は useDeferredValue + WebGL 直描画で React をバイパス"
+          },
+          {
+            "problem": "夜間長時間稼働でメモリリーク",
+            "solution": "FinalizationRegistry 監視 + WeakMap で購読キャッシュ"
+          }
+        ],
+        "en": [
+          {
+            "problem": "High-frequency push (200 msg/s) blocks main thread via React diff",
+            "solution": "Upper layer uses useDeferredValue + WebGL direct draw, bypassing React"
+          },
+          {
+            "problem": "Memory leak after long-running night sessions",
+            "solution": "FinalizationRegistry watch + WeakMap subscription cache"
+          }
+        ],
+        "zh": [
+          {
+            "problem": "数据高频推送（200 msg/s）导致 React diff 阻塞主线程",
+            "solution": "上层组件用 useDeferredValue + WebGL 直绘旁路 React"
+          },
+          {
+            "problem": "夜间长时间运行内存泄漏",
+            "solution": "FinalizationRegistry 监听 + WeakMap 缓存订阅"
+          }
+        ]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "初期ロード", "value": 62, "suffix": "%↓" },
+          { "label": "DAU", "value": 12, "suffix": "万+" },
+          { "label": "クラッシュ率", "value": 87, "suffix": "%↓" }
+        ],
+        "en": [
+          { "label": "First Paint", "value": 62, "suffix": "%↓" },
+          { "label": "DAU", "value": 120, "suffix": "K+" },
+          { "label": "Crash Rate", "value": 87, "suffix": "%↓" }
+        ],
+        "zh": [
+          { "label": "首屏速度", "value": 62, "suffix": "%↓" },
+          { "label": "日活", "value": 12, "suffix": "万+" },
+          { "label": "崩溃率", "value": 87, "suffix": "%↓" }
+        ]
+      }
+    },
+    {
+      "id": "enterprise-cms",
+      "type": "company",
+      "demoType": "nda",
+      "cover": "https://picsum.photos/seed/work-2/1600/1000",
+      "date": { "start": "2022-01", "end": "2023-02" },
+      "techStack": ["Vue 3", "Nuxt", "Pinia", "Vitest", "OpenAPI"],
+      "featured": true,
+      "links": {},
+      "ndaKeywords": ["Micro Frontend", "DSL Form Engine", "Cross-App State Bus", "SSR Hybrid", "OAuth2 SSO"],
+      "title": {
+        "ja": "Enterprise CMS",
+        "en": "Enterprise CMS",
+        "zh": "Enterprise CMS"
+      },
+      "subtitle": {
+        "ja": "大手顧客向けコンテンツ管理システム",
+        "en": "Enterprise content management for key accounts",
+        "zh": "大客户内容管理系统"
+      },
+      "myRole": {
+        "ja": "フロントエンドアーキテクト / 12人チーム",
+        "en": "Frontend Architect / Team of 12",
+        "zh": "前端架构师 / 团队 12 人"
+      },
+      "contributions": {
+        "ja": [
+          "(redacted) マイクロフロントエンド構成の実装",
+          "(redacted) フォーム DSL エンジン",
+          "(redacted) サブアプリ間ステートバス"
+        ],
+        "en": [
+          "(redacted) Micro frontend architecture rollout",
+          "(redacted) Form DSL engine",
+          "(redacted) Cross-app state bus"
+        ],
+        "zh": [
+          "(redacted) 微前端架构落地",
+          "(redacted) 表单 DSL 引擎",
+          "(redacted) 跨子应用状态总线"
+        ]
+      },
+      "challenges": {
+        "ja": [
+          { "problem": "(redacted)", "solution": "(redacted)" },
+          { "problem": "(redacted)", "solution": "(redacted)" }
+        ],
+        "en": [
+          { "problem": "(redacted)", "solution": "(redacted)" },
+          { "problem": "(redacted)", "solution": "(redacted)" }
+        ],
+        "zh": [
+          { "problem": "(redacted)", "solution": "(redacted)" },
+          { "problem": "(redacted)", "solution": "(redacted)" }
+        ]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "運営効率", "value": 45, "suffix": "%↑" },
+          { "label": "リリースサイクル", "value": 50, "suffix": "%↓" }
+        ],
+        "en": [
+          { "label": "Ops Efficiency", "value": 45, "suffix": "%↑" },
+          { "label": "Release Cycle", "value": 50, "suffix": "%↓" }
+        ],
+        "zh": [
+          { "label": "运营效率", "value": 45, "suffix": "%↑" },
+          { "label": "上线周期", "value": 50, "suffix": "%↓" }
+        ]
+      }
+    },
+    {
+      "id": "industrial-iot",
+      "type": "company",
+      "demoType": "nda",
+      "cover": "https://picsum.photos/seed/work-3/1600/1000",
+      "date": { "start": "2020-06", "end": "2021-12" },
+      "techStack": ["React", "MobX", "Three.js", "MQTT.js", "Tauri"],
+      "featured": true,
+      "links": {},
+      "ndaKeywords": ["3D Twin", "MQTT Bridge", "Edge Compute", "Tauri Native"],
+      "title": {
+        "ja": "Industrial IoT Console",
+        "en": "Industrial IoT Console",
+        "zh": "Industrial IoT Console"
+      },
+      "subtitle": {
+        "ja": "産業 IoT コントロールパネル",
+        "en": "Industrial IoT control console",
+        "zh": "工业物联网控制台"
+      },
+      "myRole": {
+        "ja": "Tech Lead / 8人チーム",
+        "en": "Tech Lead / Team of 8",
+        "zh": "Tech Lead / 团队 8 人"
+      },
+      "contributions": {
+        "ja": [
+          "(redacted) 3D 工場モデル描画",
+          "(redacted) MQTT リアルタイムデータ取り込み",
+          "(redacted) Tauri デスクトップパッケージング"
+        ],
+        "en": [
+          "(redacted) 3D factory model rendering",
+          "(redacted) MQTT real-time data ingestion",
+          "(redacted) Tauri desktop packaging"
+        ],
+        "zh": [
+          "(redacted) 3D 工厂模型渲染",
+          "(redacted) MQTT 实时数据接入",
+          "(redacted) 桌面端 Tauri 打包"
+        ]
+      },
+      "challenges": {
+        "ja": [{ "problem": "(redacted)", "solution": "(redacted)" }],
+        "en": [{ "problem": "(redacted)", "solution": "(redacted)" }],
+        "zh": [{ "problem": "(redacted)", "solution": "(redacted)" }]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "停止対応", "value": 70, "suffix": "%↓" },
+          { "label": "OEE", "value": 18, "suffix": "%↑" }
+        ],
+        "en": [
+          { "label": "Downtime Response", "value": 70, "suffix": "%↓" },
+          { "label": "OEE", "value": 18, "suffix": "%↑" }
+        ],
+        "zh": [
+          { "label": "停机响应", "value": 70, "suffix": "%↓" },
+          { "label": "OEE", "value": 18, "suffix": "%↑" }
+        ]
+      }
+    },
+    {
+      "id": "ad-platform",
+      "type": "company",
+      "demoType": "nda",
+      "cover": "https://picsum.photos/seed/work-4/1600/1000",
+      "date": { "start": "2021-01", "end": "2022-01" },
+      "techStack": ["Next.js", "tRPC", "Prisma", "PostgreSQL", "Tailwind"],
+      "featured": false,
+      "links": {},
+      "ndaKeywords": ["DSP", "RTB", "OLAP Query", "Multi-tenant"],
+      "title": {
+        "ja": "Ad Platform",
+        "en": "Ad Platform",
+        "zh": "Ad Platform"
+      },
+      "subtitle": {
+        "ja": "広告配信管理プラットフォーム",
+        "en": "Ad campaign management platform",
+        "zh": "广告投放管理平台"
+      },
+      "myRole": {
+        "ja": "シニアフロントエンド / 10人チーム",
+        "en": "Senior Frontend / Team of 10",
+        "zh": "高级前端 / 团队 10 人"
+      },
+      "contributions": {
+        "ja": ["(redacted)", "(redacted)", "(redacted)"],
+        "en": ["(redacted)", "(redacted)", "(redacted)"],
+        "zh": ["(redacted)", "(redacted)", "(redacted)"]
+      },
+      "challenges": {
+        "ja": [{ "problem": "(redacted)", "solution": "(redacted)" }],
+        "en": [{ "problem": "(redacted)", "solution": "(redacted)" }],
+        "zh": [{ "problem": "(redacted)", "solution": "(redacted)" }]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "広告主 ROI", "value": 32, "suffix": "%↑" },
+          { "label": "操作時間", "value": 40, "suffix": "%↓" }
+        ],
+        "en": [
+          { "label": "Advertiser ROI", "value": 32, "suffix": "%↑" },
+          { "label": "Operation Time", "value": 40, "suffix": "%↓" }
+        ],
+        "zh": [
+          { "label": "广告主 ROI", "value": 32, "suffix": "%↑" },
+          { "label": "操作时长", "value": 40, "suffix": "%↓" }
+        ]
+      }
+    },
+    {
+      "id": "saas-analytics",
+      "type": "company",
+      "demoType": "nda",
+      "cover": "https://picsum.photos/seed/work-5/1600/1000",
+      "date": { "start": "2019-01", "end": "2020-05" },
+      "techStack": ["React", "ECharts", "Apache Arrow", "DuckDB-wasm"],
+      "featured": false,
+      "links": {},
+      "ndaKeywords": ["DuckDB-wasm", "Apache Arrow", "Streaming SQL"],
+      "title": {
+        "ja": "SaaS Analytics",
+        "en": "SaaS Analytics",
+        "zh": "SaaS Analytics"
+      },
+      "subtitle": {
+        "ja": "B2B データ分析プラットフォーム",
+        "en": "B2B data analytics platform",
+        "zh": "B2B 数据分析平台"
+      },
+      "myRole": {
+        "ja": "フロントエンドリード / 5人チーム",
+        "en": "Frontend Lead / Team of 5",
+        "zh": "前端负责人 / 团队 5 人"
+      },
+      "contributions": {
+        "ja": ["(redacted)", "(redacted)"],
+        "en": ["(redacted)", "(redacted)"],
+        "zh": ["(redacted)", "(redacted)"]
+      },
+      "challenges": {
+        "ja": [{ "problem": "(redacted)", "solution": "(redacted)" }],
+        "en": [{ "problem": "(redacted)", "solution": "(redacted)" }],
+        "zh": [{ "problem": "(redacted)", "solution": "(redacted)" }]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "クエリ速度", "value": 58, "suffix": "%↑" },
+          { "label": "顧客単価", "value": 25, "suffix": "%↑" }
+        ],
+        "en": [
+          { "label": "Query Speed", "value": 58, "suffix": "%↑" },
+          { "label": "ARPU", "value": 25, "suffix": "%↑" }
+        ],
+        "zh": [
+          { "label": "查询速度", "value": 58, "suffix": "%↑" },
+          { "label": "客单价", "value": 25, "suffix": "%↑" }
+        ]
+      }
+    },
+    {
+      "id": "personal-shader-toy",
+      "type": "personal",
+      "demoType": "live",
+      "cover": "https://picsum.photos/seed/work-6/1600/1000",
+      "date": { "start": "2024-03", "end": null },
+      "techStack": ["Three.js", "GLSL", "Monaco Editor", "Vite"],
+      "liveUrl": "https://example.com/shader-mini",
+      "featured": true,
+      "links": { "demo": "https://example.com/shader-mini" },
+      "title": {
+        "ja": "ShaderToy Mini",
+        "en": "ShaderToy Mini",
+        "zh": "ShaderToy Mini"
+      },
+      "subtitle": {
+        "ja": "WebGL シェーダーサンドボックス",
+        "en": "WebGL shader sandbox",
+        "zh": "WebGL Shader 沙盒"
+      },
+      "myRole": {
+        "ja": "個人プロジェクト（独立開発）",
+        "en": "Personal project (solo)",
+        "zh": "个人项目（独立开发）"
+      },
+      "contributions": {
+        "ja": [
+          "リアルタイム GLSL エディタ + エラーハイライト",
+          "Uniform 自動 binding（マウス / 時刻 / 解像度）",
+          "サンプルライブラリ 30+ シェーダーテンプレート"
+        ],
+        "en": [
+          "Real-time GLSL editor with error highlighting",
+          "Auto Uniform binding (mouse / time / resolution)",
+          "30+ shader template library"
+        ],
+        "zh": [
+          "实时 GLSL 编辑器 + 错误高亮",
+          "Uniform 自动 binding（鼠标 / 时间 / 分辨率）",
+          "示例库 30+ shader 模板"
+        ]
+      },
+      "challenges": {
+        "ja": [
+          {
+            "problem": "GLSL コンパイルエラーの行番号特定が困難",
+            "solution": "Driver エラーログ正規表現マッチ + Monaco markers"
+          }
+        ],
+        "en": [
+          {
+            "problem": "GLSL compile error line localization is poor",
+            "solution": "Parse driver error log via regex + Monaco markers"
+          }
+        ],
+        "zh": [
+          {
+            "problem": "GLSL 编译错误定位到行号体验差",
+            "solution": "Parse driver 错误日志正则匹配 + Monaco markers"
+          }
+        ]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "GitHub Star", "value": 320, "suffix": "" },
+          { "label": "週間アクティブ", "value": 800, "suffix": "+" }
+        ],
+        "en": [
+          { "label": "GitHub Stars", "value": 320, "suffix": "" },
+          { "label": "Weekly Active", "value": 800, "suffix": "+" }
+        ],
+        "zh": [
+          { "label": "GitHub Star", "value": 320, "suffix": "" },
+          { "label": "周活用户", "value": 800, "suffix": "+" }
+        ]
+      }
+    },
+    {
+      "id": "personal-particle-os",
+      "type": "personal",
+      "demoType": "live",
+      "cover": "https://picsum.photos/seed/work-7/1600/1000",
+      "date": { "start": "2025-01", "end": null },
+      "techStack": ["WebGPU", "TypeScript", "wgsl"],
+      "liveUrl": "https://example.com/particle-os",
+      "featured": true,
+      "links": { "demo": "https://example.com/particle-os" },
+      "title": {
+        "ja": "Particle OS",
+        "en": "Particle OS",
+        "zh": "Particle OS"
+      },
+      "subtitle": {
+        "ja": "WebGPU パーティクルシミュレーター",
+        "en": "WebGPU particle simulator",
+        "zh": "WebGPU 粒子模拟器"
+      },
+      "myRole": {
+        "ja": "個人プロジェクト（独立開発）",
+        "en": "Personal project (solo)",
+        "zh": "个人项目（独立开发）"
+      },
+      "contributions": {
+        "ja": [
+          "Compute shader による百万パーティクルフロー",
+          "六角形空間分割 + 近傍検索",
+          "Apple M シリーズ / Chrome 121+ 対応"
+        ],
+        "en": [
+          "Compute shader powering 1M particle flow field",
+          "Hex spatial partitioning + neighbor query",
+          "Apple M series / Chrome 121+ support"
+        ],
+        "zh": [
+          "Compute shader 写的百万粒子流场",
+          "六边形空间分区 + 邻居查询",
+          "支持 Apple M 系列 / Chrome 121+"
+        ]
+      },
+      "challenges": {
+        "ja": [
+          {
+            "problem": "WebGPU 各ブラウザ実装差",
+            "solution": "feature detect + WebGL2 fallback"
+          }
+        ],
+        "en": [
+          {
+            "problem": "WebGPU implementation differs across browsers",
+            "solution": "Feature detect + WebGL2 fallback"
+          }
+        ],
+        "zh": [
+          {
+            "problem": "WebGPU 各浏览器实现差异",
+            "solution": "feature detect + WebGL2 fallback"
+          }
+        ]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "FPS @ 1M points", "value": 60, "suffix": "fps" },
+          { "label": "ビルドサイズ", "value": 45, "suffix": "KB" }
+        ],
+        "en": [
+          { "label": "FPS @ 1M points", "value": 60, "suffix": "fps" },
+          { "label": "Bundle Size", "value": 45, "suffix": "KB" }
+        ],
+        "zh": [
+          { "label": "FPS @ 1M points", "value": 60, "suffix": "fps" },
+          { "label": "构建大小", "value": 45, "suffix": "KB" }
+        ]
+      }
+    },
+    {
+      "id": "personal-css-studio",
+      "type": "personal",
+      "demoType": "iframe",
+      "cover": "https://picsum.photos/seed/work-8/1600/1000",
+      "date": { "start": "2023-06", "end": null },
+      "techStack": ["Astro", "MDX", "View Transitions API"],
+      "iframeUrl": "https://codesandbox.io/embed/example",
+      "featured": false,
+      "links": { "demo": "https://codesandbox.io/embed/example" },
+      "title": {
+        "ja": "CSS Studio",
+        "en": "CSS Studio",
+        "zh": "CSS Studio"
+      },
+      "subtitle": {
+        "ja": "CSS 動効インスピレーションサイト",
+        "en": "CSS animation inspiration gallery",
+        "zh": "CSS 动效灵感站"
+      },
+      "myRole": {
+        "ja": "個人プロジェクト",
+        "en": "Personal project",
+        "zh": "个人项目"
+      },
+      "contributions": {
+        "ja": ["純 CSS 50+ 動効デモ", "MDX で書いてすぐ反映"],
+        "en": ["Pure CSS 50+ animation demos", "MDX live edit"],
+        "zh": ["纯 CSS 50+ 动效演示", "MDX 即写即看"]
+      },
+      "challenges": {
+        "ja": [
+          {
+            "problem": "iframe 埋め込み時のクロスドメインフォント欠落",
+            "solution": "preconnect + same-origin host"
+          }
+        ],
+        "en": [
+          {
+            "problem": "Cross-domain font missing in iframe embeds",
+            "solution": "preconnect + same-origin host"
+          }
+        ],
+        "zh": [
+          {
+            "problem": "iframe 嵌入跨域字体丢失",
+            "solution": "preconnect + same-origin host"
+          }
+        ]
+      },
+      "businessValue": {
+        "ja": [
+          { "label": "月間 PV", "value": 12, "suffix": "万" },
+          { "label": "滞在時間", "value": 4, "suffix": " min" }
+        ],
+        "en": [
+          { "label": "Monthly PV", "value": 120, "suffix": "K" },
+          { "label": "Avg Time", "value": 4, "suffix": " min" }
+        ],
+        "zh": [
+          { "label": "月 PV", "value": 12, "suffix": "万" },
+          { "label": "用户停留", "value": 4, "suffix": " min" }
+        ]
+      }
+    }
+  ],
+  "pcFeatured": [
+    "personal-particle-os",
+    "personal-shader-toy",
+    "fintech-dashboard",
+    "industrial-iot",
+    "enterprise-cms"
+  ],
+  "mobileFeatured": ["fintech-dashboard", "industrial-iot", "personal-particle-os"]
+}

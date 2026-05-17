@@ -1,0 +1,166 @@
+// portfolio__zenless-card — Zenless 风横条信息卡
+// 三槽位（leading / 中三段 / trailing）容器；左色边（::before）+ hover scaleX
+//
+// 颜色档位通过 --portfolio__zenless-card--ac CSS 变量驱动（由 JSX 注入）
+// 左色边方案：
+//   - 静态：::before 伪元素，绝对定位左 0、宽 3px
+//   - hover/active：::before scaleX(2.33) → 视觉宽度 7px，带回"色边加粗"的动画感
+//   - 用 transform-origin: left + scaleX 动画 → 不撑容器、不让内容位移
+//   - 主元素 border 不再设左边色，避免与 ::before 叠加显"被遮"
+
+.portfolio__zenless-card {
+  --portfolio__zenless-card--ac: var(--theme-accent);
+
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px;
+  // 左 padding 多 3px 给 ::before 让位，避免内容贴色边
+  padding: 14px 18px 14px 21px;
+  overflow: hidden;
+
+  background: var(--theme-elevated, color-mix(in srgb, var(--theme-fg) 6%, var(--theme-bg)));
+  color: var(--theme-fg);
+  border: 1px solid color-mix(in srgb, var(--portfolio__zenless-card--ac) 36%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--portfolio__zenless-card--ac) 14%, transparent);
+
+  transition:
+    background 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  // 左侧色边 — 用 ::before 而不是 border-left，便于 hover 时 scaleX 动画加粗
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3px;
+    background: var(--portfolio__zenless-card--ac);
+    transform-origin: left center;
+    transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  // hover / active：
+  //   1) ::before scaleX(2.33) → 左色边视觉从 3px 加粗到 ~7px（不撑容器，无内容位移）
+  //   2) 横向渐变背景（左侧染色）+ 加亮外发光
+  //   3) 整卡 translateX(2px) 给一点"卡片入位"的动效
+  &:not(.portfolio__zenless-card--no-hover):hover,
+  &.portfolio__zenless-card--active {
+    background: linear-gradient(
+      90deg,
+      var(--theme-elevated, color-mix(in srgb, var(--theme-fg) 6%, var(--theme-bg))) 0%,
+      color-mix(in srgb, var(--portfolio__zenless-card--ac) 22%, transparent) 70%,
+      transparent 100%
+    );
+    border-color: color-mix(in srgb, var(--portfolio__zenless-card--ac) 60%, transparent);
+    box-shadow: 0 0 32px color-mix(in srgb, var(--portfolio__zenless-card--ac) 30%, transparent);
+    transform: translateX(2px);
+  }
+
+  &:not(.portfolio__zenless-card--no-hover):hover::before,
+  &.portfolio__zenless-card--active::before {
+    transform: scaleX(2.33);
+    box-shadow: 0 0 12px var(--portfolio__zenless-card--ac);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &::before {
+      transition: none;
+    }
+
+    &:not(.portfolio__zenless-card--no-hover):hover,
+    &.portfolio__zenless-card--active {
+      transform: none;
+    }
+  }
+
+  // ---- element: leading 槽 ----
+  &__leading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-shrink: 0;
+  }
+
+  // ---- element: body 中部 ----
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  // ---- element: title ----
+  &__title {
+    margin: 0;
+    word-break: break-word;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+
+    &--ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  // ---- element: description ----
+  &__desc {
+    margin: 0;
+    min-width: 0;
+
+    font-family: var(--theme-font-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--theme-fg-muted);
+  }
+
+  // ---- element: metric ----
+  &__metric {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-top: 2px;
+  }
+
+  &__metric-value {
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+
+    color: var(--portfolio__zenless-card--ac);
+    text-shadow: 0 0 12px color-mix(in srgb, var(--portfolio__zenless-card--ac) 35%, transparent);
+  }
+
+  &__metric-label {
+    font-family: var(--theme-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: var(--theme-fg-muted);
+    text-transform: uppercase;
+  }
+
+  // ---- element: trailing 槽 ----
+  &__trailing {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,60 @@
+// portfolio__zenless-title-1 — Zenless 一档大标题
+// works 页 "ALL MISSIONS" 同款
+// 结构：① eyebrow（荧光横线 + mono 小字） ② 主文字 h1/h2
+
+.portfolio__zenless-title-1 {
+  --portfolio__zenless-title-1--margin-bottom: var(--space-2xl);
+  --portfolio__zenless-title-1--font-size: clamp(48px, 8vw, 120px);
+
+  margin-bottom: var(--portfolio__zenless-title-1--margin-bottom);
+
+  // ---- element: eyebrow row 容器 ----
+  &__eyebrow-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  // ---- element: line 荧光横线 ----
+  &__line {
+    width: 48px;
+    height: 2px;
+    flex-shrink: 0;
+    background: var(--theme-accent);
+    box-shadow: 0 0 8px var(--theme-accent);
+    transform-origin: left center;
+  }
+
+  // ---- element: eyebrow mono 小字 ----
+  &__eyebrow {
+    margin: 0;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--theme-accent);
+  }
+
+  // ---- element: title 主文字 ----
+  &__title {
+    margin: 0;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: var(--portfolio__zenless-title-1--font-size);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+
+    text-shadow: 0 0 24px rgba(197, 255, 0, 0.4);
+  }
+
+  // ---- element: title 尾部强调 ----
+  &__title-accent {
+    color: var(--theme-accent);
+  }
+}

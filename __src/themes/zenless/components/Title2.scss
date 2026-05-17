@@ -1,0 +1,72 @@
+// portfolio__zenless-title-2 — Zenless 二档章节小标题
+// 结构：[PHASE chip / 荧光横线+mono 文本] + [▸ mono label] + [主文字 h2]
+
+.portfolio__zenless-title-2 {
+  --portfolio__zenless-title-2--accent-color: var(--theme-accent);
+  --portfolio__zenless-title-2--title-size: clamp(28px, 4vw, 56px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  &__chip-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+
+  &__chip {
+    padding: 6px 14px;
+    background: var(--portfolio__zenless-title-2--accent-color);
+    color: var(--theme-bg);
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+
+    clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  }
+
+  &__phase-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--portfolio__zenless-title-2--accent-color);
+    text-transform: uppercase;
+  }
+
+  &__phase-text-line {
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    background: var(--portfolio__zenless-title-2--accent-color);
+    box-shadow: 0 0 8px var(--portfolio__zenless-title-2--accent-color);
+  }
+
+  &__label {
+    font-family: var(--theme-font-mono);
+    font-size: 11px;
+    color: var(--portfolio__zenless-title-2--accent-color);
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: var(--portfolio__zenless-title-2--title-size);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+  }
+}

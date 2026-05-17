@@ -1,0 +1,67 @@
+{
+  "sectionIntroduction": {
+    "title": {
+      "zh": "关于我自己",
+      "ja": "私について",
+      "en": "Introduction"
+    },
+    "description": {
+      "zh": [
+        "一名常驻东京的全栈工程师，喜欢把模糊的需求拆成可交付的产品，从工程脚手架到交互细节都自己走一遍。",
+        "既能扎进团队节奏，把复杂系统稳稳推进；也能独立把一个想法从草图带到上线。",
+        "比起「能跑就行」，更在意「用着顺手」——视觉表达、性能与可维护性，希望在同一次提交里一起兼顾。"
+      ],
+      "ja": [
+        "東京を拠点とするフルスタックエンジニア。曖昧な要件を納品できるプロダクトへ落とし込むのが好きで、基盤づくりから細部のインタラクションまで一気通貫で手を動かします。",
+        "チームの中に入り、複雑なシステムを着実に前へ進めることも、一つのアイデアをスケッチからリリースまで一人で持ち切ることもできます。",
+        "「動けばいい」より「触って気持ちいい」を大切にしていて、ビジュアル表現・パフォーマンス・保守性を同じコミットの中で揃えたいと考えています。"
+      ],
+      "en": [
+        "A Tokyo-based full-stack engineer who likes turning fuzzy requirements into shippable products — walking the whole path myself, from engineering scaffolding down to interaction detail.",
+        "Comfortable slotting into a team to push a complex system forward step by step, and just as comfortable carrying a single idea from a rough sketch all the way to release on my own.",
+        "More than \"it runs\", I care about \"it feels right\" — visual craft, performance and maintainability, all in the same commit whenever I can manage it."
+      ]
+    },
+    "viewWorksText": {
+      "zh": "查看全部作品集",
+      "ja": "作品集をすべて見る",
+      "en": "View All Projects"
+    },
+    "viewResumeText": {
+      "zh": "查看简历",
+      "ja": "履歴書を見る",
+      "en": "View Resume"
+    },
+    "signature": {
+      "name": {
+        "zh": "CHEN",
+        "ja": "CHEN",
+        "en": "CHEN"
+      },
+      "place": {
+        "zh": "日本 · 东京",
+        "ja": "日本 · 東京",
+        "en": "Tokyo, Japan"
+      },
+      "areas": [
+        {
+          "zh": "全栈",
+          "ja": "フルスタック",
+          "en": "Full-stack"
+        },
+        {
+          "zh": "设计",
+          "ja": "デザイン",
+          "en": "Design"
+        }
+      ]
+    }
+  },
+  "sectionTimeline": {
+    "viewHomeText": {
+      "zh": "返回首页",
+      "ja": "ホームへ戻る",
+      "en": "Back to Home"
+    }
+  }
+}

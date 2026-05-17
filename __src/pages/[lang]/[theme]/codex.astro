@@ -1,0 +1,16 @@
+---
+import SiteLayout from "@/components/astro/layout/SiteLayout.astro";
+import ComponentsPage from "@/components/react/codex/ComponentsPage";
+import type { Locale, Theme } from "@/types";
+import { getLocaleThemeStaticPaths } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleThemeStaticPaths();
+}
+
+const { lang, theme } = Astro.params as { lang: Locale; theme: Theme };
+---
+
+<SiteLayout locale={lang} theme={theme} activePage="codex" title="Codex">
+  <ComponentsPage theme={theme} locale={lang} client:load />
+</SiteLayout>

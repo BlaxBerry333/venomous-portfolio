@@ -1,0 +1,103 @@
+// portfolio__zenless-about-experience — Operation Log 历史任务清单
+// 结构：5 张档案卡 + 年份徽章在每张 Card 的 leading 槽
+
+.portfolio__zenless-about-experience {
+  // 年份徽章 — 由 JSX 通过 --year-ac CSS 变量注入颜色
+  &__year {
+    // 颜色由 JSX 注入；提供兜底默认值
+    --portfolio__zenless-about-experience__year--ac: var(--theme-accent);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 18px;
+    margin-right: 4px;
+    min-width: 110px;
+    border-right: 1px dashed
+      color-mix(in srgb, var(--portfolio__zenless-about-experience__year--ac) 40%, transparent);
+  }
+
+  &__year-num {
+    display: block;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 56px);
+    line-height: 0.85;
+    letter-spacing: -0.04em;
+
+    color: var(--portfolio__zenless-about-experience__year--ac);
+    text-shadow: 0 0 24px
+      color-mix(in srgb, var(--portfolio__zenless-about-experience__year--ac) 25%, transparent);
+  }
+
+  &__year-span {
+    display: block;
+    margin-top: 8px;
+
+    font-family: var(--theme-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+
+    color: var(--portfolio__zenless-about-experience__year--ac);
+  }
+
+  // ---- 移动端（max-width: 640px）—— 整张 Card 改纵向单列档案条 ----
+  @media (max-width: 640px) {
+    &__card.portfolio__zenless-card {
+      grid-template-columns: 1fr;
+      gap: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    &__card .portfolio__zenless-card__leading {
+      display: block;
+      width: 100%;
+      padding: 14px 16px;
+      background: color-mix(in srgb, var(--portfolio__zenless-card--ac) 14%, transparent);
+      border-bottom: 1px dashed
+        color-mix(in srgb, var(--portfolio__zenless-card--ac) 38%, transparent);
+    }
+
+    &__card &__year {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: flex-start;
+      gap: 12px;
+      padding-right: 0;
+      margin-right: 0;
+      border-right: none;
+      min-width: 0;
+    }
+
+    &__card &__year-num {
+      font-size: 40px;
+      line-height: 1;
+    }
+
+    &__card &__year-span {
+      margin-top: 0;
+      font-size: 10px;
+      opacity: 0.85;
+    }
+
+    &__card .portfolio__zenless-card__body {
+      padding: 14px 16px 16px 19px;
+      gap: 8px;
+    }
+
+    &__card .portfolio__zenless-card__title {
+      font-size: 18px;
+    }
+
+    &__card .portfolio__zenless-card__metric {
+      margin-top: 4px;
+    }
+
+    &__card.portfolio__zenless-card:hover {
+      transform: none;
+    }
+  }
+}

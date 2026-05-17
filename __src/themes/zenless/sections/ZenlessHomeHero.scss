@@ -1,0 +1,69 @@
+// portfolio__zenless-home-hero — 绝区零风 Hero（街头涂鸦 + 故障 UI + 高饱和荧光）
+// 斜带：width 200% / left -50%，旋转后稳定超出屏幕两端
+// CHEN 字号 clamp(180px, 26vw, 320px) → 半宽约 13vw，文字目标安全区距 CHEN 中线 ≥18vw
+
+.portfolio__zenless-home-hero {
+  &__stripe {
+    // 默认位置由 modifier 提供
+    &--top {
+      top: 12vh;
+    }
+    &--bottom {
+      top: 82vh;
+    }
+  }
+
+  // 斜带宽 200% / left -50%，flex 子元素 left edge 从 -50vw 起
+  // justify-content: space-between 让左/右端文字自动贴两端
+  // 主文字（PORTFOLIO / WELCOME）padding 把它推到 CHEN 安全区
+  &__stripe-text {
+    &--top {
+      padding-right: 50vw;
+    }
+    &--bottom {
+      padding-left: 85vw;
+    }
+    // 红圈端补位文字：把它推进屏幕（默认在 -50vw / 150vw 处不可见）
+    &--top-left {
+      padding-left: 60vw;
+    }
+    &--bottom-right {
+      padding-right: 60vw;
+    }
+  }
+
+  // 移动端：CHEN 字号占比更大，文字推到屏幕极边
+  @media (max-width: 768px) {
+    &__stripe--top {
+      top: 22vh;
+    }
+    &__stripe--bottom {
+      top: 76vh;
+    }
+
+    &__stripe-text--top {
+      padding-right: 56vw;
+    }
+    &__stripe-text--bottom {
+      padding-left: 56vw;
+    }
+    &__stripe-text--top-left {
+      padding-left: 52vw;
+    }
+    &__stripe-text--bottom-right {
+      padding-right: 52vw;
+    }
+
+    // 警戒线随主斜带移动到 22vh / 76vh
+    &__hazard--top {
+      top: calc(22vh - 8px) !important;
+    }
+    &__hazard--bottom {
+      top: calc(76vh + 56px) !important;
+    }
+
+    &__title {
+      font-size: clamp(140px, 38vw, 240px);
+    }
+  }
+}

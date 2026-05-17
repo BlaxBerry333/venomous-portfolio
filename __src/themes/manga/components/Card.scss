@@ -1,0 +1,230 @@
+// portfolio__manga-card — 漫画风分镜卡片
+// 黑边 + 偏移硬阴影 + 右下大字水印 + 可选网点
+// 离散：color 走 modifier；title clamp 行数走 element + 内联 line-clamp
+// 连续：border / shadow / padding / minHeight / watermarkSize 走 CSS 变量
+
+.portfolio__manga-card {
+  --portfolio__manga-card--border-width: 3px;
+  --portfolio__manga-card--shadow-offset: 6px;
+  --portfolio__manga-card--padding: 14px;
+  --portfolio__manga-card--min-height: 130px;
+
+  --portfolio__manga-card--bg: var(--theme-bg);
+  --portfolio__manga-card--fg: var(--theme-fg);
+  --portfolio__manga-card--shadow: var(--theme-fg);
+
+  position: relative;
+  padding: var(--portfolio__manga-card--padding);
+  min-height: var(--portfolio__manga-card--min-height);
+
+  background: var(--portfolio__manga-card--bg);
+  color: var(--portfolio__manga-card--fg);
+  border: var(--portfolio__manga-card--border-width) solid var(--theme-fg);
+  box-shadow:
+    var(--portfolio__manga-card--shadow-offset) var(--portfolio__manga-card--shadow-offset) 0
+    var(--portfolio__manga-card--shadow);
+
+  // 默认裁切；含 badge 时由 JSX 注入 --overflow:visible 让 badge 跟卡片一起摇
+  overflow: hidden;
+
+  &--has-badge {
+    overflow: visible;
+  }
+
+  // ---- color modifier ----
+  &--white {
+    --portfolio__manga-card--bg: var(--theme-bg);
+    --portfolio__manga-card--fg: var(--theme-fg);
+    --portfolio__manga-card--shadow: var(--theme-fg);
+  }
+
+  &--red {
+    --portfolio__manga-card--bg: var(--theme-accent);
+    --portfolio__manga-card--fg: var(--theme-fg);
+    --portfolio__manga-card--shadow: var(--theme-fg);
+  }
+
+  &--yellow {
+    --portfolio__manga-card--bg: var(--theme-accent-2);
+    --portfolio__manga-card--fg: var(--theme-fg);
+    --portfolio__manga-card--shadow: var(--theme-fg);
+  }
+
+  &--black {
+    --portfolio__manga-card--bg: var(--theme-fg);
+    --portfolio__manga-card--fg: var(--theme-bg);
+    --portfolio__manga-card--shadow: var(--theme-accent);
+  }
+
+  // ---- element: clip 网点/水印裁切容器 ----
+  &__clip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  // ---- element: halftone 网点底 ----
+  &__halftone {
+    --portfolio__manga-card__halftone--opacity: 0.18;
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: var(--portfolio__manga-card--fg);
+    opacity: var(--portfolio__manga-card__halftone--opacity);
+
+    background-image: radial-gradient(
+      circle at 1.5px 1.5px,
+      currentColor 1.5px,
+      transparent 1.7px
+    );
+    background-size: 10px 10px;
+  }
+
+  // ---- element: watermark 右下大字水印 ----
+  &__watermark {
+    --portfolio__manga-card__watermark--size: 120px;
+    --portfolio__manga-card__watermark--stroke-width: 2px;
+    --portfolio__manga-card__watermark--opacity: 0.6;
+    --portfolio__manga-card__watermark--color: var(--portfolio__manga-card--fg);
+    --portfolio__manga-card__watermark--stroke-color: var(--portfolio__manga-card--fg);
+
+    position: absolute;
+    right: -4px;
+    bottom: 8px;
+    pointer-events: none;
+
+    font-family: var(--theme-font-body);
+    font-weight: 900;
+    font-size: var(--portfolio__manga-card__watermark--size);
+    line-height: 0.85;
+    color: var(--portfolio__manga-card__watermark--color);
+    opacity: var(--portfolio__manga-card__watermark--opacity);
+
+    -webkit-text-stroke:
+      var(--portfolio__manga-card__watermark--stroke-width)
+      var(--portfolio__manga-card__watermark--stroke-color);
+
+    transform: rotate(-12deg);
+    transform-origin: 100% 100%;
+  }
+
+  // ---- element: prefix 顶部 mono 小字 ----
+  &__prefix {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+
+    font-family: var(--theme-font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    opacity: 0.7;
+
+    &--placeholder {
+      visibility: hidden;
+    }
+  }
+
+  // ---- element: title 主标 ----
+  &__title {
+    --portfolio__manga-card__title--size: 22px;
+    --portfolio__manga-card__title--clamp: 2;
+
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    margin-top: 4px;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: var(--portfolio__manga-card__title--size);
+    line-height: 1.05;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+
+    // 多行夹断（titleClamp > 0 时由 JSX 加 --clamped modifier）
+    &--clamped {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: var(--portfolio__manga-card__title--clamp);
+      overflow: hidden;
+      word-break: break-word;
+    }
+  }
+
+  // ---- element: subtitle 副文 ----
+  &__subtitle {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    margin-top: 4px;
+
+    font-family: var(--theme-font-body);
+    font-weight: 700;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+
+  // ---- element: badge 角标 ----
+  &__badge {
+    --portfolio__manga-card__badge--rotate: 0deg;
+    --portfolio__manga-card__badge--bg: var(--theme-bg);
+    --portfolio__manga-card__badge--fg: var(--theme-fg);
+
+    position: absolute;
+    z-index: 3;
+    pointer-events: none;
+    white-space: nowrap;
+
+    background: var(--portfolio__manga-card__badge--bg);
+    color: var(--portfolio__manga-card__badge--fg);
+    border: 3px solid var(--theme-fg);
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    text-transform: uppercase;
+
+    transform: rotate(var(--portfolio__manga-card__badge--rotate));
+  }
+
+  // 顶部 badge：贴左上、紧凑、无阴影、默认 -8deg
+  &__badge--top {
+    top: -14px;
+    left: -14px;
+    padding: 5px 12px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+  }
+
+  // 底部 badge：贴右下、稍大、含硬阴影、默认 +4deg
+  &__badge--bottom {
+    bottom: -16px;
+    right: -10px;
+    padding: 7px 14px;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    box-shadow: 5px 5px 0 var(--theme-fg);
+  }
+
+  // badge color modifier
+  &__badge--red {
+    --portfolio__manga-card__badge--bg: var(--theme-accent);
+    --portfolio__manga-card__badge--fg: var(--theme-fg);
+  }
+
+  &__badge--yellow {
+    --portfolio__manga-card__badge--bg: var(--theme-accent-2);
+    --portfolio__manga-card__badge--fg: var(--theme-fg);
+  }
+
+  &__badge--white {
+    --portfolio__manga-card__badge--bg: var(--theme-bg);
+    --portfolio__manga-card__badge--fg: var(--theme-fg);
+  }
+
+  &__badge--black {
+    --portfolio__manga-card__badge--bg: var(--theme-fg);
+    --portfolio__manga-card__badge--fg: var(--theme-bg);
+  }
+}

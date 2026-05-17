@@ -3,6 +3,6 @@ COLOR_GREEN='\033[0;32m'
 COLOR_NO_COLOR='\033[0m'
 
 echo "${COLOR_PURPLE}[Husky pre-commit]${COLOR_NO_COLOR}"
-yarn format:all
-yarn check:all
+npm run format
+npm run check
 echo "${COLOR_GREEN} ✔ ${COLOR_NO_COLOR} OK..."

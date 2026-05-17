@@ -1,0 +1,49 @@
+---
+import { ThemeNebula } from "@/themes/nebula";
+import type { Locale } from "@/utils/i18n";
+import type { Theme } from "@/utils/themes";
+import RootLayout from "./RootLayout.astro";
+
+interface Props {
+  locale: Locale;
+  theme: Theme;
+  title?: string;
+  description?: string;
+  activePage?: "home" | "works" | "about" | "detail" | "designSystem";
+  useNotFoundSwitcher?: boolean;
+}
+
+const { locale, theme, title, description, activePage, useNotFoundSwitcher } = Astro.props;
+const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<RootLayout locale={locale} theme={theme} title={title} description={description}>
+  <main id={`portfolio--${activePage}`} data-active-page={activePage}>
+    {
+      theme === "nebula" && (
+        <>
+          <ThemeNebula.Background client:load transition:persist="nebula-background" />
+          <ThemeNebula.LocaleSwitcher
+            base={base}
+            locale={locale}
+            pathname={pathname}
+            notFound={useNotFoundSwitcher}
+            client:load
+          />
+        </>
+      )
+    }
+
+    <slot />
+  </main>
+</RootLayout>
+
+<style>
+  main {
+    position: relative;
+    z-index: 10;
+    min-height: 100dvh;
+    overflow-x: clip;
+  }
+</style>

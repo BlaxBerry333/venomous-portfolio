@@ -1,0 +1,52 @@
+// portfolio__site-header-switcher — Header 内的 segmented switcher
+// 共享样式：跨三个 .astro 使用（PC 主题切换 / Mobile 主题入口 / 语言切换）
+//
+// 为何 global：三个不同 .astro 文件渲染同一段视觉模式，无法共享 Astro scoped scope；
+// 严格 BEM 前缀避免与全局其他类名冲突。
+
+.portfolio__site-header-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: var(--theme-elevated);
+  border: 1px solid color-mix(in srgb, var(--theme-fg) 20%, transparent);
+  border-radius: var(--theme-radius);
+
+  // PC 主题切换器：默认 inline-flex；Mobile 主题入口在容器外通过 --mobile-only 显示控制
+  &--mobile-only {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: inline-flex;
+    }
+  }
+
+  // 语言切换器：跨断点常驻
+  // 主题 PC 切换器：在 mobile 隐藏
+  &--pc-only {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__option {
+    padding: 6px 10px;
+    background: transparent;
+    color: var(--theme-fg-muted);
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    &--active {
+      background: var(--theme-accent);
+      color: var(--theme-bg);
+    }
+  }
+}

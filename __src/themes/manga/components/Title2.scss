@@ -1,0 +1,30 @@
+// portfolio__manga-title-2 — 漫画风二档章节标题
+// 结构：[贴纸式章节角标 (Tag)] + [日文/副标签]
+// 左右共享同一个 rotate（通过 CSS 变量 portfolio__manga-title-2--rotate）
+
+.portfolio__manga-title-2 {
+  --portfolio__manga-title-2--rotate: -2deg;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+
+  &__label {
+    display: inline-block;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    // 字号对齐左侧 Tag md 视觉高度（≈ 38px）
+    font-size: 40px;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+
+    // 纯变粗黑字：用 fg 色描边加粗笔画，无阴影 / 无错位
+    -webkit-text-stroke: 0.4px var(--theme-fg);
+
+    // 与 stamp 同步倾斜
+    transform: rotate(var(--portfolio__manga-title-2--rotate));
+  }
+}

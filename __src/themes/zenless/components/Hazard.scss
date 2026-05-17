@@ -1,0 +1,65 @@
+// portfolio__zenless-hazard — Zenless 风警戒线 hazard-stripe
+// 黑 + 主题色斜纹。inline 跟容器走 / stripe 全宽斜带
+// 颜色由 --portfolio__zenless-hazard--ac CSS 变量驱动（JSX 注入）
+
+.portfolio__zenless-hazard {
+  --portfolio__zenless-hazard--ac: var(--theme-accent);
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  // 带 label 时：容器 flex 0 gap，让 bar 与 label 紧贴
+  &--with-label {
+    gap: 0;
+  }
+
+  // 带 label 时，bar flex:1 撑开
+  &--with-label .portfolio__zenless-hazard__bar {
+    flex: 1;
+  }
+
+  // ---- element: bar 斜纹条 ----
+  &__bar {
+    display: block;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--portfolio__zenless-hazard--ac) 0,
+      var(--portfolio__zenless-hazard--ac) 16px,
+      #0a0a0a 16px,
+      #0a0a0a 32px
+    );
+
+    &--animated {
+      background-size: 45px 45px;
+      animation: portfolio__zenless-hazard--move 1.6s linear infinite;
+    }
+  }
+
+  // ---- element: label ----
+  &__label {
+    padding: 0 12px;
+
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    white-space: nowrap;
+
+    color: var(--portfolio__zenless-hazard--ac);
+    background: var(--theme-bg);
+  }
+}
+
+@keyframes portfolio__zenless-hazard--move {
+  to {
+    background-position: 45px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio__zenless-hazard__bar--animated {
+    animation: none;
+  }
+}

@@ -1,0 +1,25 @@
+// portfolio__zenless-detail-a — Zenless work-detail 整体（章节响应式）
+// 每个 chapter 内部网格在窄屏塌缩为单列
+
+.portfolio__zenless-detail-a {
+  @media (max-width: 900px) {
+    &__ch2 {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+    }
+
+    &__ch4 {
+      grid-template-columns: 1fr !important;
+      gap: 24px !important;
+
+      > div:first-child {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+    }
+
+    &__ch6 {
+      grid-template-columns: 1fr !important;
+    }
+  }
+}

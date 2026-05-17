@@ -1,0 +1,97 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { ThemeNebula } from "@/themes/nebula";
+import { DEFAULT_LOCALE, loadNotFoundMeta, LOCALE_IDS, LOCALES } from "@/utils/i18n";
+
+const meta = loadNotFoundMeta();
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+const tabTitle = meta.title[DEFAULT_LOCALE];
+const fallbackHref = `${baseUrl}/${LOCALES[DEFAULT_LOCALE].urlSeg}/nebula`;
+---
+
+<PageLayout locale={DEFAULT_LOCALE} theme="nebula" title={tabTitle} useNotFoundSwitcher>
+  <ThemeNebula.Section className="portfolio--404">
+    <ThemeNebula.Heading level={1}>
+      <span lang="en" class="portfolio--404__code">404</span>
+    </ThemeNebula.Heading>
+
+    <div class="portfolio--404__slot portfolio--404__slot--heading">
+      {
+        LOCALE_IDS.map((l) => (
+          <span data-i18n-locale={l} hidden={l !== DEFAULT_LOCALE}>
+            <ThemeNebula.Heading level={2}>{meta.heading[l]}</ThemeNebula.Heading>
+          </span>
+        ))
+      }
+    </div>
+
+    <div class="portfolio--404__slot portfolio--404__slot--description">
+      {
+        LOCALE_IDS.map((l) => (
+          <span data-i18n-locale={l} hidden={l !== DEFAULT_LOCALE}>
+            <ThemeNebula.Text>{meta.description[l]}</ThemeNebula.Text>
+          </span>
+        ))
+      }
+    </div>
+
+    <ThemeNebula.Button href={fallbackHref} data-return-home style={{ justifyContent: "center" }}>
+      {
+        LOCALE_IDS.map((l) => (
+          <span data-i18n-locale={l} hidden={l !== DEFAULT_LOCALE}>
+            {meta.returnHomeText[l]}
+          </span>
+        ))
+      }
+    </ThemeNebula.Button>
+  </ThemeNebula.Section>
+</PageLayout>
+
+<style lang="scss" is:global>
+  .portfolio--404 {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    .portfolio--nebula-heading--1 {
+      font-size: clamp(96px, 22vw, 220px);
+      letter-spacing: 0.04em;
+      line-height: 0.95;
+    }
+
+    /* 切换语言时锁住每个内容槽位的高度/宽度，避免布局抖动。
+     * 槽位永远可见，内部三语 span 只切显隐 → min-height 才能起到锁定作用。 */
+    .portfolio--404__slot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > span:not([hidden]) {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    /* h2 line-height 1.1，最长文案一行能放下 */
+    .portfolio--404__slot--heading {
+      min-height: calc(clamp(28px, 3.5vw, 44px) * 1.1);
+    }
+
+    /* description body line-height 1.9，最长日文窄屏可能换 3 行 */
+    .portfolio--404__slot--description {
+      min-height: calc(15px * 1.9 * 3);
+    }
+
+    .portfolio--nebula-button {
+      min-width: 220px;
+    }
+  }
+
+  /* "404" 数字本身：项目未加载 web 字体，浏览器会按 <html lang> 走系统字体回退
+   * ja 下选日文字体（数字字形偏大）、zh/en 下选西文字体，导致同字号下视觉尺寸不同。
+   * 修法：用 lang="en" 强制走西文回退 + 通用 monospace 关键字（始终用系统等宽字体）。 */
+  .portfolio--404__code {
+    font-family: monospace;
+    font-feature-settings: "tnum" 1;
+  }
+</style>

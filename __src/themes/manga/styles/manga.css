@@ -1,0 +1,43 @@
+/* ============= Manga UI 组件样式 ============= */
+/* 全部命名空间走 .manga-ui--xxx
+   动效 keyframes 走 manga-ui--xxx
+   由 components/ui/manga/index.ts 直接 import 触发副作用挂载 */
+
+/* —— 速度线扫光 —— */
+@keyframes manga-ui--speed {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(120%) skewX(-20deg);
+    opacity: 0;
+  }
+}
+
+/* —— 闪烁（拟声词等装饰元素） —— */
+@keyframes manga-ui--flash {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* —— 大尺寸网点底 —— */
+.manga-ui--halftone {
+  background-image: radial-gradient(
+    circle at 1.5px 1.5px,
+    currentColor 1.5px,
+    transparent 1.7px
+  );
+  background-size: 10px 10px;
+}

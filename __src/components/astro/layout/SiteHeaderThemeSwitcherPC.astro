@@ -1,0 +1,46 @@
+---
+import type { Locale, Theme } from "@/types";
+import { THEMES, getLocalizedUrl } from "@/utils/i18n";
+
+interface Props {
+  locale: Locale;
+  theme?: Theme;
+  subPath: string;
+}
+
+const { locale, theme, subPath } = Astro.props;
+
+const themeLabels: Record<Theme, string> = {
+  void: "Void",
+  manga: "Manga",
+  zenless: "Zenless",
+};
+---
+
+<div
+  class="portfolio__site-header-switcher portfolio__site-header-switcher--pc-only"
+  role="radiogroup"
+  aria-label="Visual theme"
+>
+  {
+    THEMES.map((t) => (
+      <a
+        class:list={[
+          "portfolio__site-header-switcher__option",
+          { "portfolio__site-header-switcher__option--active": theme === t },
+        ]}
+        href={getLocalizedUrl(subPath, locale, t)}
+        role="radio"
+        aria-checked={theme === t}
+        aria-label={themeLabels[t]}
+        title={themeLabels[t]}
+      >
+        {t.toUpperCase()}
+      </a>
+    ))
+  }
+</div>
+
+<style lang="scss" is:global>
+  @use "./SiteHeaderSwitcher.scss";
+</style>

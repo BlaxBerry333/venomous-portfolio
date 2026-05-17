@@ -1,0 +1,100 @@
+// portfolio__manga-tag — 漫画风标签
+// 紧凑、轻微旋转、薄边 + 小阴影
+// 离散：size (xs/sm/md) + color (red/yellow/black/white) 走 modifier
+// 连续：restRotate 走 CSS 变量
+
+.portfolio__manga-tag {
+  --portfolio__manga-tag--rotate: -1.5deg;
+
+  // 默认走 sm 尺寸（与 React props 默认对齐）
+  --portfolio__manga-tag--pad-x: 12px;
+  --portfolio__manga-tag--pad-y: 5px;
+  --portfolio__manga-tag--font: 14px;
+  --portfolio__manga-tag--border: 2.5px;
+  --portfolio__manga-tag--offset: 4px;
+
+  --portfolio__manga-tag--bg: var(--theme-bg);
+  --portfolio__manga-tag--fg: var(--theme-fg);
+  --portfolio__manga-tag--shadow: var(--theme-fg);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+
+  padding: var(--portfolio__manga-tag--pad-y) var(--portfolio__manga-tag--pad-x);
+  background: var(--portfolio__manga-tag--bg);
+  color: var(--portfolio__manga-tag--fg);
+  border: var(--portfolio__manga-tag--border) solid var(--theme-fg);
+  box-shadow:
+    var(--portfolio__manga-tag--offset) var(--portfolio__manga-tag--offset) 0
+    var(--portfolio__manga-tag--shadow);
+
+  font-family: var(--theme-font-display);
+  font-weight: 900;
+  font-size: var(--portfolio__manga-tag--font);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  rotate: var(--portfolio__manga-tag--rotate);
+
+  // ---- size modifier ----
+  &--xs {
+    --portfolio__manga-tag--pad-x: 8px;
+    --portfolio__manga-tag--pad-y: 3px;
+    --portfolio__manga-tag--font: 12px;
+    --portfolio__manga-tag--border: 2px;
+    --portfolio__manga-tag--offset: 3px;
+  }
+
+  &--sm {
+    --portfolio__manga-tag--pad-x: 12px;
+    --portfolio__manga-tag--pad-y: 5px;
+    --portfolio__manga-tag--font: 14px;
+    --portfolio__manga-tag--border: 2.5px;
+    --portfolio__manga-tag--offset: 4px;
+  }
+
+  &--md {
+    --portfolio__manga-tag--pad-x: 16px;
+    --portfolio__manga-tag--pad-y: 8px;
+    --portfolio__manga-tag--font: 16px;
+    --portfolio__manga-tag--border: 3px;
+    --portfolio__manga-tag--offset: 5px;
+  }
+
+  // ---- color modifier ----
+  &--red {
+    --portfolio__manga-tag--bg: var(--theme-accent);
+    --portfolio__manga-tag--fg: var(--theme-fg);
+    --portfolio__manga-tag--shadow: var(--theme-fg);
+  }
+
+  &--yellow {
+    --portfolio__manga-tag--bg: var(--theme-accent-2);
+    --portfolio__manga-tag--fg: var(--theme-fg);
+    --portfolio__manga-tag--shadow: var(--theme-fg);
+  }
+
+  &--white {
+    --portfolio__manga-tag--bg: var(--theme-bg);
+    --portfolio__manga-tag--fg: var(--theme-fg);
+    --portfolio__manga-tag--shadow: var(--theme-fg);
+  }
+
+  &--black {
+    --portfolio__manga-tag--bg: var(--theme-fg);
+    --portfolio__manga-tag--fg: var(--theme-bg);
+    --portfolio__manga-tag--shadow: var(--theme-accent);
+  }
+
+  // ---- element: prefix ----
+  &__prefix {
+    font-family: var(--theme-font-mono);
+    font-weight: 700;
+    // 比主字号小 2px
+    font-size: calc(var(--portfolio__manga-tag--font) - 2px);
+    letter-spacing: 0.1em;
+    opacity: 0.85;
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "sectionHero": {
+    "title": {
+      "zh": "CHEN",
+      "ja": "CHEN",
+      "en": "CHEN"
+    },
+    "scrollHint": {
+      "zh": "向下滚动查看更多",
+      "ja": "下にスクロールしてポートフォリオを見る",
+      "en": "SCROLL TO CHECK PORTFOLIO"
+    }
+  },
+  "sectionTopDescription": {
+    "paragraphs": {
+      "zh": [["这里是我的作品集", "一些做过的东西，一些走过的路"]],
+      "ja": [["わたしのポートフォリオ", "これまで作ったもの、歩いてきた道"]],
+      "en": [["My portfolio", "the work, and the road behind it"]]
+    },
+    "viewAboutMeText": {
+      "zh": "更多了解我",
+      "ja": "私について",
+      "en": "About Me"
+    }
+  },
+  "sectionFeaturedProjects": {
+    "title": {
+      "zh": "代表项目",
+      "ja": "代表プロジェクト",
+      "en": "Featured Projects"
+    },
+    "description": {
+      "zh": "挑了几个能代表近期工作状态的项目——既有职业产品里的关键模块，也有把想法独立做出来的尝试。",
+      "ja": "最近の仕事の中から、自分らしさが出ているプロジェクトをいくつか選んでみました。業務プロダクトの主要モジュールから、一人で最後まで作り切った試作まで。",
+      "en": "A handful of projects that best represent how I've been working lately — from key modules in shipped products to standalone experiments I carried through on my own."
+    },
+    "viewAllText": {
+      "zh": "查看全部作品集",
+      "ja": "作品集をすべて見る",
+      "en": "View All Projects"
+    }
+  },
+  "sectionExpertise": {
+    "title": {
+      "zh": "专业领域",
+      "ja": "専門分野",
+      "en": "Expertise Area"
+    },
+    "description": {
+      "zh": "涵盖不同领域的技术，点击节点以查看详情。",
+      "ja": "多角的な技術スタックを網羅、ノードをクリックして詳細を展開。",
+      "en": "Diverse tech domains covered. Click nodes to explore details."
+    }
+  },
+  "sectionBottomDescription": {
+    "descriptions": {
+      "zh": ["代码", "也是承载思考的语言"],
+      "ja": ["コードは", "考えをつなぐ言葉でもある"],
+      "en": ["code", "is a language for thought"]
+    },
+    "viewResumeText": {
+      "zh": "查看简历",
+      "ja": "履歴書を見る",
+      "en": "View Resume"
+    },
+    "viewDesignText": {
+      "zh": "查看设计稿",
+      "ja": "このデザインを見る",
+      "en": "View Theme's Design"
+    }
+  }
+}

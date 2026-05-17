@@ -1,0 +1,129 @@
+{
+  "title": {
+    "zh": "经历",
+    "ja": "経歴",
+    "en": "Timeline"
+  },
+  "items": [
+    {
+      "id": "geniee-cdp",
+      "period": {
+        "zh": "2025.05 – 至今",
+        "ja": "2025.05 – 現在",
+        "en": "2025.05 – Present"
+      },
+      "company": {
+        "zh": "株式会社 Geniee",
+        "ja": "株式会社ジーニー",
+        "en": "Geniee, Inc."
+      },
+      "role": {
+        "zh": "高级前端工程师",
+        "ja": "シニアフロントエンドエンジニア",
+        "en": "Senior Frontend Engineer"
+      },
+      "department": {
+        "zh": "销售平台本部 - CDP/DC 开发部",
+        "ja": "セールスプラットフォーム本部 - CDP/DC開発部",
+        "en": "Sales Platform Division - CDP/DC Dept."
+      },
+      "workIds": ["geniee-cdp"]
+    },
+    {
+      "id": "geniee-chat",
+      "period": {
+        "zh": "2023.08 – 2025.05",
+        "ja": "2023.08 – 2025.05",
+        "en": "2023.08 – 2025.05"
+      },
+      "company": {
+        "zh": "株式会社 Geniee",
+        "ja": "株式会社ジーニー",
+        "en": "Geniee, Inc."
+      },
+      "role": {
+        "zh": "全栈工程师",
+        "ja": "フルスタックエンジニア",
+        "en": "Fullstack Engineer"
+      },
+      "department": {
+        "zh": "CVG 事业部 - CHAT 开发部",
+        "ja": "CVG事業部 - CHAT開発部",
+        "en": "CVG Division - CHAT Dept."
+      },
+      "workIds": ["geniee-chat"]
+    },
+    {
+      "id": "skyfall",
+      "period": {
+        "zh": "2023.03 – 2023.07",
+        "ja": "2023.03 – 2023.07",
+        "en": "2023.03 – 2023.07"
+      },
+      "company": {
+        "zh": "株式会社 Skyfall",
+        "ja": "株式会社 Skyfall",
+        "en": "Skyfall, Inc."
+      },
+      "role": {
+        "zh": "高级前端工程师",
+        "ja": "シニアフロントエンドエンジニア",
+        "en": "Senior Frontend Engineer"
+      },
+      "department": {
+        "zh": "产品本部",
+        "ja": "プロダクト本部",
+        "en": "Product Division"
+      },
+      "workIds": ["skyfall-skyflag"]
+    },
+    {
+      "id": "fni",
+      "period": {
+        "zh": "2019.11 – 2023.02",
+        "ja": "2019.11 – 2023.02",
+        "en": "2019.11 – 2023.02"
+      },
+      "company": {
+        "zh": "株式会社 FAIR NEXT INNOVATION",
+        "ja": "株式会社 FAIR NEXT INNOVATION",
+        "en": "FAIR NEXT INNOVATION, Inc."
+      },
+      "role": {
+        "zh": "全栈工程师",
+        "ja": "フルスタックエンジニア",
+        "en": "Fullstack Engineer"
+      },
+      "department": {
+        "zh": "IT 解决方案事业部",
+        "ja": "ITソリューション事業部",
+        "en": "IT Solutions Division"
+      },
+      "workIds": ["fni-saga-sunrise-park"]
+    },
+    {
+      "id": "youzan",
+      "period": {
+        "zh": "2017.07 – 2018.05",
+        "ja": "2017.07 – 2018.05",
+        "en": "2017.07 – 2018.05"
+      },
+      "company": {
+        "zh": "杭州有赞科技有限公司",
+        "ja": "杭州有賛科技有限公司",
+        "en": "Youzan Technology Co., Ltd."
+      },
+      "role": {
+        "zh": "前端工程师",
+        "ja": "フロントエンドエンジニア",
+        "en": "Frontend Engineer"
+      },
+      "department": {
+        "zh": "零售前端团队",
+        "ja": "リテールフロントエンドチーム",
+        "en": "Retail Frontend Team"
+      },
+      "workIds": ["youzan-full-scope"]
+    }
+  ]
+}

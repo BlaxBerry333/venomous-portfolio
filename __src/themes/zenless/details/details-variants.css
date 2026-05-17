@@ -1,0 +1,317 @@
+/* =============================================================
+   Zenless Detail (Mission Console A) — utilities
+   命名前缀：.zd-（zenless detail），不污染外部组件。
+   ============================================================= */
+
+/* ----- HUD 栅格背景 ----- */
+.zd-grid-bg {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--theme-accent) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--theme-accent) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* ----- 扫描线（CRT scanline 弱版） ----- */
+.zd-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3px,
+    rgba(197, 255, 0, 0.04) 3px,
+    rgba(197, 255, 0, 0.04) 4px
+  );
+  mix-blend-mode: screen;
+  z-index: 1;
+}
+
+/* ----- 章节边角 corner brackets ----- */
+.zd-corner {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--theme-accent);
+  border-style: solid;
+  border-width: 0;
+  filter: drop-shadow(0 0 4px var(--theme-accent));
+}
+.zd-corner--tl { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.zd-corner--tr { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.zd-corner--bl { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.zd-corner--br { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
+
+/* ChapterRail 用 position:fixed 悬浮，main 内容不让位（避免被挤到右边） */
+
+/* ----- 章节边缘呼吸光晕（active 章节框） ----- */
+.zd-glow-edge {
+  position: absolute;
+  inset: -1px;
+  pointer-events: none;
+  border: 1px solid var(--theme-accent);
+  box-shadow:
+    inset 0 0 32px rgba(197, 255, 0, 0.12),
+    0 0 24px rgba(197, 255, 0, 0.18);
+  animation: zd-glow-breath 2.8s ease-in-out infinite;
+}
+@keyframes zd-glow-breath {
+  0%, 100% { opacity: 0.55; }
+  50% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zd-glow-edge { animation: none; opacity: 0.7; }
+}
+
+/* ----- 平行四边形 chip ----- */
+.zd-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-family: var(--theme-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 700;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+.zd-chip--accent { background: var(--theme-accent); color: var(--theme-bg); }
+.zd-chip--purple { background: var(--theme-accent-2); color: var(--theme-bg); }
+.zd-chip--warn { background: var(--theme-warn); color: var(--theme-bg); }
+.zd-chip--ghost {
+  background: rgba(10, 10, 10, 0.7);
+  color: var(--theme-accent);
+  border: 1px solid var(--theme-accent);
+}
+
+/* ----- counter reel ----- */
+.zd-counter-reel {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ----- A 方案：章节 100vh 容器（直接作用于 section） -----
+   边框：accent 色 32% 描边；无背景，让 grid-bg 透出。
+   内部 padding 控制内容内缩，position:relative 给章节编号定位。 */
+.zd-a-stage {
+  position: relative;
+  min-height: 100vh;
+  width: calc(100% - 2 * var(--site-padding-x));
+  max-width: var(--site-max-width);
+  margin: clamp(48px, 8vw, 120px) auto;
+  border: 1px solid color-mix(in srgb, var(--theme-accent) 32%, transparent);
+  padding: clamp(40px, 6vw, 72px) clamp(20px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 章节内容右下角的大编号（参考 ch7 reward card 描边数字） */
+.zd-a-stage__num {
+  position: absolute;
+  right: clamp(8px, 2vw, 32px);
+  bottom: clamp(-32px, -3vw, -16px);
+  font-family: var(--theme-font-display);
+  font-weight: 900;
+  font-size: clamp(140px, 22vw, 320px);
+  line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--theme-accent) 18%, transparent);
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+.zd-a-stage > *:not(.zd-a-stage__num):not(.zd-corner):not(.zd-glow-edge) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ----- A 方案左侧竖版章节进度条 -----
+   永远固定在视口左侧（不随 work detail 滚动），不占文档流空间。
+   高度 = 100dvh - SiteHeader(60px)；
+   内部 9 个 ZenlessUI.Button flex:1 均分铺满容器，按钮间 gap:8，
+   容器上下 padding:8 确保首尾按钮不贴边。 */
+.zd-a-prog {
+  position: fixed;
+  left: 0;
+  top: 60px;
+  width: 56px;
+  height: calc(100dvh - 60px);
+  z-index: 28;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0;
+  font-family: var(--theme-font-mono);
+  user-select: none;
+  pointer-events: none; /* 容器自身不挡操作 */
+}
+.zd-a-prog__slot {
+  pointer-events: none;
+}
+.zd-a-prog__btn {
+  pointer-events: auto;
+}
+@media (max-width: 900px) {
+  .zd-a-prog { display: none; }
+}
+
+/* ----- 移动响应式收口 ----- */
+@media (max-width: 768px) {
+  .zd-a-stage {
+    width: calc(100% - 24px);
+    margin: 32px auto;
+    padding: 32px 14px;
+  }
+  .zd-a-stage__num { font-size: clamp(80px, 32vw, 160px); }
+}
+
+/* ----- PC（≥901px）让出左侧 ChapterRail（fixed 56px 宽）的视觉空间 -----
+   ChapterRail 是 fixed 56px，不占文档流；stage 默认居中。
+   当视口宽到 1320 + 2*(rail 56 + gutter 24) 以上时居中可见 stage 完全不与 rail 重叠；
+   小于该阈值则收窄 stage 宽度，让两侧均匀让出 rail 空间。 */
+@media (min-width: 901px) {
+  .zd-a-cover { padding-left: 64px; }
+  .zd-a-stage {
+    width: min(1320px, 100% - 2 * (56px + var(--site-padding-x)));
+  }
+}
+
+/* =============================================================
+   Work Detail · 移动端响应式（≤768px）
+   - PanelFrame：padding 64→16，gap 16→12
+   - manga 横向舞台：左右 inset 收窄，按钮缩小
+   - manga 大标题：clamp 下限抬高，硬阴影变薄
+   - 强制双列/三列 grid 在小屏改单列
+   ============================================================= */
+@media (max-width: 768px) {
+  /* —— PanelFrame 通用瘦身：极小内边距 12px —— */
+  .panel-frame {
+    padding: 12px !important;
+    gap: 12px !important;
+  }
+
+  /* —— manga 垂直长滚（移动端）：panel-frame 不再强制 100vh-60px 高度，
+        改为按内容自适应；section 之间用大间距做视觉分隔 —— */
+  .manga-detail-vertical .panel-frame {
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 48px 12px !important;
+  }
+  /* 章节之间额外大间距，避免内容多时挤到一起 */
+  .manga-detail-vertical > div > section + section {
+    margin-top: 64px;
+  }
+  /* manga 垂直版 Panel3 Tech Canvas 占满一屏（视觉沉浸），其它 panel 走自适应 */
+  .manga-detail-vertical .panel-frame .wd-tech-stage {
+    min-height: 60vh;
+  }
+  /* Panel8 demo grid：≤768px 强制单列，避免 minmax(420px) 撑出屏幕 */
+  .panel-frame .wd-demo-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* —— Panel2 移动端重设计：lead 段落字号收紧 + 左侧 4px 漫画引文竖线；
+        metadata 三栏改纵向 spec list（每条 mono 标签 + 内容） —— */
+  .panel-frame .wd-context-lead {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+    padding-left: 14px;
+    border-left: 4px solid var(--theme-accent);
+  }
+  .panel-frame .wd-context-meta {
+    margin-top: 32px !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    border-top: 2px solid var(--theme-fg);
+    border-bottom: 2px solid var(--theme-fg);
+    padding: 16px 0;
+  }
+  .panel-frame .wd-context-meta-item {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .panel-frame .wd-context-meta-item > p:first-child {
+    margin-bottom: 0 !important;
+    font-size: 11px !important;
+    color: var(--theme-accent) !important;
+  }
+  .panel-frame .wd-context-meta-item > p:last-child {
+    font-size: 15px !important;
+  }
+
+  /* —— manga 横向舞台 + 翻页按钮（PC 横向版仍可能在 ≤768px 出现，比如平板）—— */
+  .manga-detail-stage {
+    inset: 60px 8px 96px 8px !important;
+  }
+  .manga-detail-btn {
+    width: 36px !important;
+    height: 56px !important;
+  }
+  /* 翻页按钮在小屏更靠边，避免压住 panel 内容 */
+  .manga-detail-btn-wrap {
+    left: 6px !important;
+  }
+  .manga-detail-btn-wrap.right {
+    left: auto !important;
+    right: 6px !important;
+  }
+
+  /* —— manga 二档章节贴纸（第 06 話 難敵）：移动端整体收紧 gap + label 字号降档 ——
+        stamp 是 MangaUI.Tag，尺寸由 size="md" 自身控制，不再覆盖其内部 padding/font-size */
+  .panel-frame .manga-ui--Title2 { gap: 10px !important; }
+  .panel-frame .manga-ui--Title2-label {
+    font-size: 32px !important;
+  }
+
+  /* —— Panel6 / Panel4 / Panel7 强制单列 —— */
+  .wd-grid-2col,
+  .wd-grid-role,
+  .wd-grid-metrics {
+    grid-template-columns: 1fr !important;
+    gap: var(--space-md) !important;
+  }
+  /* Panel4 中间圆形头像在小屏不占独立列，缩小 */
+  .wd-role-avatar {
+    width: 80px !important;
+    height: 80px !important;
+    justify-self: center;
+  }
+
+  /* —— Panel1 cover：内边距收窄，副标字号降一档 —— */
+  .panel-frame .wd-cover {
+    padding: var(--space-md) !important;
+  }
+
+  /* —— 滚轮 / 触屏切换的内容文字降档 —— */
+  .panel-frame p { font-size: 16px; }
+
+  /* —— Panel3 Tech Stack：小屏下 PanelFrame padding 改成 var(--space-md)=16，
+        同步把 Tech Canvas 的扩张边距改成 16，标题位置也对齐 16 —— */
+  .wd-tech-stage {
+    height: calc(100% + var(--space-md) * 2) !important;
+    width: calc(100% + var(--space-md) * 2) !important;
+    margin: calc(var(--space-md) * -1) !important;
+  }
+  .wd-tech-stage > .manga-ui--Title1,
+  .wd-tech-stage > .portfolio__zenless-title-2,
+  .wd-tech-stage > h2 {
+    top: var(--space-md) !important;
+    left: var(--space-md) !important;
+  }
+  /* —— Panel3 Canvas 顶部让出空间：仅移动端 60px —— */
+  .wd-tech-stage > .wd-tech-canvas {
+    top: 60px !important;
+  }
+  .wd-tech-stage > .wd-tech-fallback {
+    padding-top: calc(var(--space-md) + 60px) !important;
+  }
+}
+

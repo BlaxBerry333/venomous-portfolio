@@ -1,0 +1,10 @@
+// portfolio__void-work-detail — Void Work Detail 页（含 § rail）
+
+.portfolio__void-work-detail {
+  // 小屏 / 移动端隐藏 rail（保持主内容居中可读，§ CONTENTS 在阅读时无空间承载）
+  @media (max-width: 1180px) {
+    &__rail {
+      display: none !important;
+    }
+  }
+}

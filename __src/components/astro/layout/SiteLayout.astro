@@ -1,0 +1,70 @@
+---
+import "@/styles/global.css";
+import type { Locale, Theme } from "@/types";
+import SiteHeader from "./SiteHeader.astro";
+import VoidStardust from "@/themes/void/effects/VoidStardust";
+import { persistThemePreferenceScript } from "@/themes/persistThemePreference";
+import { ClientRouter } from "astro:transitions";
+
+interface Props {
+  locale: Locale;
+  /** URL-derived theme. Required for showcase routes; omit on resume. */
+  theme?: Theme;
+  title?: string;
+  description?: string;
+  /** When true, hide theme switcher (PC + mobile) and apply resume page accents. */
+  resume?: boolean;
+  activePage?: "home" | "works" | "about" | "codex" | "detail" | "resume";
+}
+
+const {
+  locale,
+  theme,
+  title,
+  description = "Chen — Senior Frontend / Design Engineer",
+  resume = false,
+  activePage,
+} = Astro.props;
+
+const htmlLangAttr: Locale | "zh-CN" = locale === "zh" ? "zh-CN" : locale;
+const fullTitle = `${title || ""} | Chen — Portfolio`.replace(/^ \| /, "");
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+const htmlTheme: Theme = theme ?? "void";
+---
+
+<!doctype html>
+<html lang={htmlLangAttr} data-theme={htmlTheme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{fullTitle}</title>
+
+    {theme && <script is:inline set:html={persistThemePreferenceScript(theme)} />}
+
+    <ClientRouter />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Bungee&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&family=Orbitron:wght@700;900&family=Quicksand:wght@500;700&family=Zen+Kaku+Gothic+New:wght@700;900&display=swap"
+    />
+  </head>
+  <body>
+    <SiteHeader locale={locale} theme={theme} resume={resume} activePage={activePage} />
+    {!resume && <VoidStardust client:idle />}
+    <main class="site-main">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  .site-main {
+    padding-top: var(--site-header-height);
+    overflow-x: hidden;
+  }
+</style>

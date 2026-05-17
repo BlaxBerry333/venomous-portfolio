@@ -1,0 +1,80 @@
+.portfolio--nebula-work-card {
+  // —— 头部 meta 行：两端对齐，首项可截断
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-3);
+    min-width: 0;
+
+    > :first-child {
+      min-width: 0;
+      flex: 1;
+    }
+
+    > :last-child {
+      flex-shrink: 0;
+    }
+  }
+
+  // —— 主体：标题纵向排布
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    min-width: 0;
+  }
+
+  // —— tilt 模式下的景深分层：媒体沉、文字浮 ——
+  // .portfolio--nebula-work-card 由 BaseCard 接 className 挂在 __tilt-root 外层
+  // 真正撑起 3D 上下文的是它内部的 __tilt → .portfolio--nebula-card
+  // 媒体区（PreviewBox 的两个变体外壳）：沉到负 Z 拉开景深
+  & .portfolio--nebula-preview-work-media {
+    transform: translateZ(-30px);
+  }
+
+  // 文字区浮到正 Z
+  &__header,
+  &__body {
+    transform: translateZ(24px);
+    transform-style: preserve-3d;
+  }
+
+  // 标题再加一层强调
+  &__body .portfolio--nebula-heading {
+    transform: translateZ(18px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    & .portfolio--nebula-preview-work-media,
+    &__header,
+    &__body,
+    &__body .portfolio--nebula-heading {
+      transform: none;
+    }
+  }
+
+  // —— 虚化模式：默认 blur，hover/focus 时清晰 ——
+  // PreviewBox 两个变体没有共享根类名，分别选 WorkMedia / Image
+  &--blur-preview {
+    & .portfolio--nebula-preview-work-media,
+    & .portfolio--nebula-preview-image {
+      filter: blur(4px) saturate(0.9);
+      transition: filter 320ms ease;
+    }
+
+    &:hover .portfolio--nebula-preview-work-media,
+    &:hover .portfolio--nebula-preview-image,
+    &:focus-within .portfolio--nebula-preview-work-media,
+    &:focus-within .portfolio--nebula-preview-image {
+      filter: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      & .portfolio--nebula-preview-work-media,
+      & .portfolio--nebula-preview-image {
+        transition: none;
+      }
+    }
+  }
+}

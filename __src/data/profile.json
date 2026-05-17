@@ -1,0 +1,58 @@
+{
+  "name": "Chen",
+  "avatar": "https://picsum.photos/seed/avatar/600/600?grayscale",
+  "careerStartYear": 2017,
+  "social": {
+    "github": "https://github.com/BlaxBerry"
+  },
+  "title": {
+    "ja": "Senior Frontend / Design Engineer · WebGL · Performance · Motion Systems",
+    "en": "Senior Frontend / Design Engineer · WebGL · Performance · Motion Systems",
+    "zh": "Senior Frontend / Design Engineer · WebGL · Performance · Motion Systems"
+  },
+  "description": {
+    "ja": [
+      "Web Graphics と Design Engineering、ハイパフォーマンス UI を主軸とするシニアフロントエンドエンジニア。",
+      "Fintech / IoT / CMS / 広告プラットフォーム等のドメインで 6 年以上、本番 Web アプリを構築。",
+      "WebGL / r3f、Motion Design、スケールする Design System に特化。"
+    ],
+    "en": [
+      "Senior Frontend Engineer focused on Web Graphics, design engineering, and high-performance UI.",
+      "6+ years building production web apps in fintech, IoT, CMS and ad-platform domains.",
+      "Specialized in WebGL / r3f, motion design, and design systems at scale."
+    ],
+    "zh": [
+      "高级前端工程师，专注于 Web Graphics、design engineering 与高性能 UI。",
+      "6+ 年生产级 Web 应用经验，覆盖 Fintech / IoT / CMS / 广告平台。",
+      "深耕 WebGL / r3f、motion design、规模化设计系统。"
+    ]
+  },
+  "cta": {
+    "primary": {
+      "label": {
+        "ja": "GitHub",
+        "en": "GitHub",
+        "zh": "GitHub"
+      },
+      "href": "https://github.com/BlaxBerry"
+    },
+    "secondary": [
+      {
+        "label": {
+          "ja": "Resume を見る",
+          "en": "View Resume",
+          "zh": "查看简历"
+        },
+        "href": "/resume"
+      },
+      {
+        "label": {
+          "ja": "コンタクト",
+          "en": "Contact",
+          "zh": "联系我"
+        },
+        "href": "mailto:chen@example.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,262 @@
+// =====================================================================
+// HiveCellCard —— 正六边形 cell，沿用 Card 的 useTilt 3D 交互
+//
+// Card → HiveCellCard 层级映射：
+//   .portfolio--nebula-card__tilt-root   外层  → .nebula--HiveCellCard
+//   .portfolio--nebula-card__tilt        中层  → .nebula--HiveCellCard__tilt
+//   .portfolio--nebula-card             本体  → .nebula--HiveCellCard__body
+//   .portfolio--nebula-card__body        景深  → .nebula--HiveCellCard__content
+//   .portfolio--nebula-card__glow        高光  → .nebula--HiveCellCard__glow
+//
+// 形状：矩形 border-radius → 正六边形 SVG path（fill + 渐变 stroke）
+// 渐变描边：Card 的 ::before mask 1px 渐变 → SVG <linearGradient> stroke 内描边
+// =====================================================================
+.nebula--HiveCellCard {
+  // 正六边形 pointy-top：宽:高 = 1 : 2/√3 ≈ 1 : 1.1547
+  // 默认 md 档：160 × 184.75
+  --hex-w: 160px;
+  --hex-h: 184.75px;
+
+  // 指针驱动的 CSS 变量 —— 与 Card.__tilt-root 一致（默认归零）
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --glow-x: 50%;
+  --glow-y: 50%;
+
+  position: relative;
+  width: var(--hex-w);
+  height: var(--hex-h);
+  flex-shrink: 0;
+  color: inherit;
+  cursor: default;
+  // perspective 挂在外层（与 Card 一致：1200px）
+  perspective: 1200px;
+
+  // ============================================================
+  // 蜂巢排版（cell 自带，让调用方只需 flex-wrap + padding-bottom）
+  //   - 行间咬合：每个 cell 自带 margin-bottom 负值（hex 高的 1/4）
+  //   - 行首错位：offset 修饰符给 margin-left（半个 cell + 半个列间距 4px）
+  // ============================================================
+  margin-bottom: -46.19px; // = md hex-h / 4
+
+  // offset 行首：右移半格。前提是排版容器 column-gap 为 0；
+  // 若调用方设了非 0 column-gap，需要在调用方那侧补偿（cell 不感知容器间距）
+  &--offset {
+    margin-left: calc(var(--hex-w) * 0.5);
+  }
+
+  // ============================================================
+  // 尺寸档 —— 通过覆盖 --hex-w/--hex-h CSS 变量自动驱动整套布局（margin / offset / glow）
+  // 三档跨度均匀（+40px）：
+  //   sm —— 120 × 138.56（密集列表）
+  //   md —— 160 × 184.75（默认，根选择器已设，不写修饰符）
+  //   lg —— 184 × 212.46（详情卡）
+  // ============================================================
+  &--sm {
+    --hex-w: 120px;
+    --hex-h: 138.56px; // = 120 × 2/√3
+    margin-bottom: -34.64px; // = hex-h / 4
+  }
+
+  &--lg {
+    --hex-w: 184px;
+    --hex-h: 212.46px; // = 184 × 2/√3
+    margin-bottom: -53.12px; // = hex-h / 4
+  }
+
+  &:hover {
+    z-index: 2;
+  }
+
+  // 不倾斜模式（与 Card.tilt=false 同形）
+  &--no-tilt {
+    perspective: none;
+  }
+
+  // ============================================================
+  // 中层 __tilt —— 照搬 Card.__tilt
+  // ============================================================
+  &__tilt {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transition: transform 420ms var(--ease-out-expo);
+    will-change: transform;
+  }
+
+  &:hover &__tilt {
+    transition: transform 80ms linear;
+  }
+
+  &--no-tilt &__tilt {
+    transform: none;
+    transition: none;
+  }
+
+  // ============================================================
+  // 本体 __body —— 对应 Card 矩形盒子
+  // 必须 preserve-3d，否则内部 __content 的 translateZ 不生效
+  // （Card 通过 `&__tilt & { preserve-3d }` 给本体设了，照搬）
+  // ============================================================
+  &__body {
+    position: absolute;
+    inset: 0;
+    transform-style: preserve-3d;
+  }
+
+  // ============================================================
+  // SVG 形状层 —— fill + 渐变 stroke 内描边
+  // ============================================================
+  &__shape {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    pointer-events: none;
+  }
+
+  // 填充（对应 Card 的 background）
+  &__fill {
+    fill: color-mix(in srgb, var(--nebula-color-bg) 60%, transparent);
+    transition: fill 320ms var(--ease-out-expo);
+  }
+
+  // 渐变描边 —— Card 的 ::before opacity 默认 0.5 / hover 0.9，照搬
+  &__stroke {
+    opacity: 0.5;
+    transition:
+      opacity 320ms var(--ease-out-expo),
+      stroke-width 320ms var(--ease-out-expo);
+  }
+
+  &:hover &__stroke {
+    opacity: 0.95;
+    stroke-width: 2.6;
+  }
+
+  // solid 视觉强档：底色偏霓虹 + 描边默认更亮
+  &--solid &__fill {
+    fill: color-mix(
+      in srgb,
+      var(--nebula-color-neon-1) 10%,
+      color-mix(in srgb, var(--nebula-color-bg) 55%, transparent)
+    );
+  }
+  &--solid &__stroke {
+    opacity: 0.85;
+  }
+
+  // ============================================================
+  // 内容层 __content —— 对应 Card.__body translateZ(24px)
+  // ============================================================
+  &__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 16px;
+    text-align: center;
+    transform: translateZ(24px);
+    transform-style: preserve-3d;
+    pointer-events: none;
+  }
+  // title：主标签，大字、粗体、双色霓虹文字阴影（吸睛主角）
+  &__title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    color: var(--nebula-color-text);
+    text-shadow: var(--nebula-text-shadow-neon-soft);
+    word-break: break-word;
+  }
+  // subtitle：副标签，小字、letter-spaced uppercase（衬托主角）
+  &__subtitle {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--nebula-color-text) 60%, transparent);
+  }
+
+  &--sm &__content {
+    padding: 0 10px;
+    gap: 4px;
+  }
+  &--sm &__title {
+    font-size: 15px;
+    // sm 档过小，强 shadow 会糊；用 soft 不会太抢
+  }
+  &--sm &__subtitle {
+    font-size: 9px;
+  }
+
+  &--lg &__content {
+    padding: 0 20px;
+    gap: 8px;
+  }
+  &--lg &__title {
+    font-size: 20px;
+    line-height: 1.15;
+    // lg 档作为详情卡主角，用 strong shadow 更燃
+    text-shadow: var(--nebula-text-shadow-neon-strong);
+  }
+  &--lg &__subtitle {
+    font-size: 11px;
+  }
+
+  // ============================================================
+  // 跟指针走的霓虹高光 —— 照搬 Card.__glow
+  //   Card 用 border-radius 自然裁矩形；六边形版本用 SVG mask 裁
+  //   参数（240px circle / neon-1 22% → neon-2 14% → 70% 透明）完全一致
+  // ============================================================
+  &__glow {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateZ(40px);
+    background: radial-gradient(
+      240px circle at var(--glow-x) var(--glow-y),
+      color-mix(in srgb, var(--nebula-color-neon-1) 22%, transparent) 0%,
+      color-mix(in srgb, var(--nebula-color-neon-2) 14%, transparent) 35%,
+      transparent 70%
+    );
+    transition: opacity 320ms var(--ease-out-expo);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 115.47' preserveAspectRatio='xMidYMid meet'><path d='M50 0 L100 28.87 L100 86.6 L50 115.47 L0 86.6 L0 28.87 Z' fill='black'/></svg>")
+      center / 100% 100% no-repeat;
+    mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 115.47' preserveAspectRatio='xMidYMid meet'><path d='M50 0 L100 28.87 L100 86.6 L50 115.47 L0 86.6 L0 28.87 Z' fill='black'/></svg>")
+      center / 100% 100% no-repeat;
+  }
+
+  &:hover &__glow {
+    opacity: 1;
+  }
+
+  // ============================================================
+  // reduced-motion —— 照搬 Card：关掉 3D 倾斜与高光
+  // ============================================================
+  @media (prefers-reduced-motion: reduce) {
+    perspective: none;
+
+    &__tilt {
+      transform: none;
+      transition: none;
+    }
+    &:hover &__tilt {
+      transition: none;
+    }
+    &__content {
+      transform: none;
+    }
+    &__glow {
+      display: none;
+    }
+  }
+}

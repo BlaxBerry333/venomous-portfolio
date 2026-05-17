@@ -1,0 +1,19 @@
+{
+  "sectionIntroduction": {
+    "title": {
+      "zh": "作品集",
+      "ja": "作品集",
+      "en": "Works"
+    },
+    "description": {
+      "zh": "从职业项目到个人实验。点击卡片查看详情。",
+      "ja": "業務で関わったプロダクトも、個人で試した実験も、ひと通り並べています。カードを開くと詳細が見られます。",
+      "en": "From professional projects to personal experiments. Click a card to dive in."
+    },
+    "viewHomeText": {
+      "zh": "返回首页",
+      "ja": "ホームへ戻る",
+      "en": "Back to Home"
+    }
+  }
+}

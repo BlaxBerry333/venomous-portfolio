@@ -1,0 +1,153 @@
+{
+  "categories": [
+    {
+      "id": "frontend",
+      "label": {
+        "ja": "FRONTEND",
+        "en": "FRONTEND",
+        "zh": "FRONTEND"
+      },
+      "caption": {
+        "ja": "ここが本拠地。UI / UX / motion / design systems。",
+        "en": "Where I live. UI / UX / motion / design systems.",
+        "zh": "Where I live. UI / UX / motion / design systems."
+      },
+      "skills": [
+        "React",
+        "Vue 3",
+        "Astro",
+        "Next.js",
+        "Nuxt",
+        "Svelte",
+        "TypeScript",
+        "Vite",
+        "Tailwind",
+        "Framer Motion"
+      ],
+      "levels": {
+        "React": "primary",
+        "TypeScript": "primary",
+        "Vite": "primary",
+        "Astro": "daily",
+        "Next.js": "daily",
+        "Tailwind": "daily",
+        "Framer Motion": "daily",
+        "Vue 3": "familiar",
+        "Nuxt": "familiar",
+        "Svelte": "familiar"
+      }
+    },
+    {
+      "id": "backend",
+      "label": {
+        "ja": "BACKEND",
+        "en": "BACKEND",
+        "zh": "BACKEND"
+      },
+      "caption": {
+        "ja": "頻繁に訪れる。APIs / data layer / auth flow.",
+        "en": "Frequent visits. APIs / data layer / auth flow.",
+        "zh": "Frequent visits. APIs / data layer / auth flow."
+      },
+      "skills": [
+        "Node.js",
+        "NestJS",
+        "tRPC",
+        "GraphQL",
+        "PostgreSQL",
+        "MySQL",
+        "Redis",
+        "Prisma",
+        "Drizzle"
+      ],
+      "levels": {
+        "Node.js": "primary",
+        "PostgreSQL": "daily",
+        "Prisma": "daily",
+        "tRPC": "daily",
+        "NestJS": "familiar",
+        "GraphQL": "familiar",
+        "MySQL": "familiar",
+        "Redis": "familiar",
+        "Drizzle": "familiar"
+      }
+    },
+    {
+      "id": "graphics",
+      "label": {
+        "ja": "GRAPHICS",
+        "en": "GRAPHICS",
+        "zh": "GRAPHICS"
+      },
+      "caption": {
+        "ja": "とどまる理由。WebGL / shaders / motion.",
+        "en": "The reason I stayed. WebGL / shaders / motion.",
+        "zh": "The reason I stayed. WebGL / shaders / motion."
+      },
+      "skills": ["Three.js", "WebGL", "WebGPU", "GLSL", "r3f", "GSAP"],
+      "levels": {
+        "Three.js": "primary",
+        "r3f": "primary",
+        "GLSL": "daily",
+        "WebGL": "daily",
+        "GSAP": "daily",
+        "WebGPU": "familiar"
+      }
+    },
+    {
+      "id": "infra",
+      "label": {
+        "ja": "INFRA",
+        "en": "INFRA",
+        "zh": "INFRA"
+      },
+      "caption": {
+        "ja": "出荷に十分。Deploy / data warehouse / pipelines.",
+        "en": "Enough to ship. Deploy / data warehouse / pipelines.",
+        "zh": "Enough to ship. Deploy / data warehouse / pipelines."
+      },
+      "skills": ["Docker", "GitHub Actions", "Vercel", "Cloudflare", "AWS", "BigQuery"],
+      "levels": {
+        "Vercel": "daily",
+        "GitHub Actions": "daily",
+        "Cloudflare": "daily",
+        "Docker": "familiar",
+        "AWS": "familiar",
+        "BigQuery": "familiar"
+      }
+    }
+  ],
+  "items": {
+    "React": { "label": "React", "icon": "react" },
+    "Vue 3": { "label": "Vue 3", "icon": "vue" },
+    "Astro": { "label": "Astro", "icon": "astro" },
+    "Next.js": { "label": "Next.js", "icon": "nextjs" },
+    "Nuxt": { "label": "Nuxt", "icon": "nuxt" },
+    "Svelte": { "label": "Svelte", "icon": "svelte" },
+    "TypeScript": { "label": "TypeScript", "icon": "typescript" },
+    "Vite": { "label": "Vite", "icon": "vite" },
+    "Tailwind": { "label": "Tailwind", "icon": "tailwind" },
+    "Framer Motion": { "label": "Framer Motion", "icon": "framer" },
+    "Node.js": { "label": "Node.js", "icon": "nodejs" },
+    "NestJS": { "label": "NestJS", "icon": "nestjs" },
+    "tRPC": { "label": "tRPC", "icon": "trpc" },
+    "GraphQL": { "label": "GraphQL", "icon": "graphql" },
+    "PostgreSQL": { "label": "PostgreSQL", "icon": "postgres" },
+    "MySQL": { "label": "MySQL", "icon": "mysql" },
+    "Redis": { "label": "Redis", "icon": "redis" },
+    "Prisma": { "label": "Prisma", "icon": "prisma" },
+    "Drizzle": { "label": "Drizzle", "icon": "drizzle" },
+    "Three.js": { "label": "Three.js", "icon": "threejs" },
+    "WebGL": { "label": "WebGL", "icon": "webgl" },
+    "WebGPU": { "label": "WebGPU", "icon": "webgpu" },
+    "GLSL": { "label": "GLSL", "icon": "glsl" },
+    "r3f": { "label": "r3f", "icon": "r3f" },
+    "GSAP": { "label": "GSAP", "icon": "gsap" },
+    "Docker": { "label": "Docker", "icon": "docker" },
+    "GitHub Actions": { "label": "GitHub Actions", "icon": "github" },
+    "Vercel": { "label": "Vercel", "icon": "vercel" },
+    "Cloudflare": { "label": "Cloudflare", "icon": "cloudflare" },
+    "AWS": { "label": "AWS", "icon": "aws" },
+    "BigQuery": { "label": "BigQuery", "icon": "bigquery" }
+  }
+}

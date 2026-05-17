@@ -1,0 +1,103 @@
+// tablist 本体 —— 一排标签，可换行
+.portfolio--nebula-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+
+  // 单个标签 — 独立霓虹胶囊
+  &__tab {
+    position: relative;
+    appearance: none;
+    margin: 0;
+    min-height: 24px;
+    padding: 9px 20px;
+    cursor: pointer;
+    font-family: var(--nebula-font-family-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--nebula-color-text) 75%, transparent);
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--nebula-color-text) 45%, transparent);
+    border-radius: var(--radius-full);
+    box-shadow: var(--nebula-shadow-neon-soft);
+    -webkit-tap-highlight-color: transparent;
+    isolation: isolate;
+    transition:
+      color 400ms var(--ease-out-expo),
+      border-color 400ms var(--ease-out-expo),
+      box-shadow 400ms var(--ease-out-expo),
+      text-shadow 400ms var(--ease-out-expo),
+      transform 400ms var(--ease-out-expo);
+
+    // 双色霓虹渐变描边
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--nebula-color-neon-1) 0%,
+        color-mix(in srgb, var(--nebula-color-neon-1) 50%, var(--nebula-color-neon-2) 50%) 50%,
+        var(--nebula-color-neon-2) 100%
+      );
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      opacity: 0;
+      transition: opacity 400ms var(--ease-out-expo);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &:hover {
+      color: var(--nebula-color-text);
+      border-color: transparent;
+      box-shadow: var(--nebula-shadow-neon-base);
+      text-shadow: var(--nebula-text-shadow-neon-soft);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--nebula-color-neon-1);
+    }
+
+    // 选中
+    &--active {
+      color: var(--nebula-color-text);
+      border-color: transparent;
+      background: var(--nebula-color-bg);
+      box-shadow: var(--nebula-shadow-neon-strong);
+      text-shadow: var(--nebula-text-shadow-neon-soft);
+      cursor: default;
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      &::before {
+        transition: none;
+      }
+    }
+  }
+
+  // 移动端：大幅缩小，整齐换行
+  @media (max-width: 768px) {
+    &__tab {
+      padding: 7px 14px;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+    }
+  }
+}

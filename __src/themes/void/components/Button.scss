@@ -1,0 +1,32 @@
+// portfolio__void-button — Void 风格按钮
+// 视觉与 about/Constellation 的 SkillToken 一致
+// variant: contained（实底荧光） / outlined（描边发光）
+//
+// 注：hover 视觉由 React state 驱动（非 CSS :hover），样式留 JSX 注入 boxShadow / transform。
+//     这里 SCSS 只承担 layout / typography 基线。
+
+.portfolio__void-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+
+  font-family: var(--theme-font-mono);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    box-shadow 220ms,
+    transform 220ms,
+    color 200ms,
+    background 200ms;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}

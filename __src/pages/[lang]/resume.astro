@@ -1,0 +1,16 @@
+---
+import SiteLayout from "@/components/astro/layout/SiteLayout.astro";
+import ResumeView from "@/components/react/resume/ResumeView";
+import type { Locale } from "@/types";
+import { getLocaleStaticPaths } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const { lang } = Astro.params as { lang: Locale };
+---
+
+<SiteLayout locale={lang} activePage="resume" title="Resume" resume>
+  <ResumeView locale={lang} client:load />
+</SiteLayout>

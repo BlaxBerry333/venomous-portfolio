@@ -1,0 +1,35 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { PagesNebula } from "@/themes/nebula";
+import {
+  getAllWorkIds,
+  getLocaleThemeWorkStaticPaths,
+  getWorkById,
+  loadWorkDetailPageContent,
+  type Locale,
+} from "@/utils/i18n";
+import type { Theme } from "@/utils/themes";
+
+export function getStaticPaths() {
+  return getLocaleThemeWorkStaticPaths(getAllWorkIds());
+}
+
+const { locale, theme, id } = Astro.params as { locale: Locale; theme: Theme; id: string };
+const work = getWorkById(id, locale);
+if (!work) throw new Error(`Unknown work id: ${id}`);
+const content = loadWorkDetailPageContent(locale);
+---
+
+<PageLayout locale={locale} theme={theme} title={work.title} activePage="detail">
+  {
+    theme === "nebula" && (
+      <PagesNebula.WorkDetail
+        work={work}
+        content={content}
+        locale={locale}
+        theme={theme}
+        client:visible
+      />
+    )
+  }
+</PageLayout>

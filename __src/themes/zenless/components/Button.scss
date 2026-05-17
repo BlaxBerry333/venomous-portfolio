@@ -1,0 +1,189 @@
+// portfolio__zenless-button — Zenless 风通用按钮
+// 关键样式：平行四边形 clipPath + 大写 display 字体 + hover 扫光
+//
+// 离散：variant (tab/contained/outlined) × size (sm/md/lg) × active/disabled → modifier
+// 连续：minWidth, skew offset 等 → CSS 变量
+
+.portfolio__zenless-button {
+  // 尺寸 / 切角 / 颜色变量（默认 md + contained）
+  --portfolio__zenless-button--pad-y: 10px;
+  --portfolio__zenless-button--pad-x: 24px;
+  --portfolio__zenless-button--font: 14px;
+  --portfolio__zenless-button--min-width: 70px;
+  --portfolio__zenless-button--skew: 6px;
+
+  --portfolio__zenless-button--bg: var(--theme-accent);
+  --portfolio__zenless-button--fg: var(--theme-bg);
+  --portfolio__zenless-button--border-color: var(--theme-accent);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+
+  min-width: var(--portfolio__zenless-button--min-width);
+  padding: var(--portfolio__zenless-button--pad-y) var(--portfolio__zenless-button--pad-x);
+
+  background: var(--portfolio__zenless-button--bg);
+  color: var(--portfolio__zenless-button--fg);
+  border: 2px solid var(--portfolio__zenless-button--border-color);
+
+  font-family: var(--theme-font-display);
+  font-weight: 900;
+  font-size: var(--portfolio__zenless-button--font);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+
+  clip-path: polygon(
+    var(--portfolio__zenless-button--skew) 0,
+    100% 0,
+    calc(100% - var(--portfolio__zenless-button--skew)) 100%,
+    0 100%
+  );
+
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    box-shadow 200ms ease;
+
+  // ---- size modifier ----
+  &--sm {
+    --portfolio__zenless-button--pad-y: 8px;
+    --portfolio__zenless-button--pad-x: 18px;
+    --portfolio__zenless-button--font: 12px;
+    --portfolio__zenless-button--min-width: 120px;
+    --portfolio__zenless-button--skew: 5px;
+  }
+
+  &--md {
+    --portfolio__zenless-button--pad-y: 10px;
+    --portfolio__zenless-button--pad-x: 24px;
+    --portfolio__zenless-button--font: 14px;
+    --portfolio__zenless-button--min-width: 70px;
+    --portfolio__zenless-button--skew: 6px;
+  }
+
+  &--lg {
+    --portfolio__zenless-button--pad-y: 14px;
+    --portfolio__zenless-button--pad-x: 32px;
+    --portfolio__zenless-button--font: 16px;
+    --portfolio__zenless-button--min-width: 180px;
+    --portfolio__zenless-button--skew: 8px;
+  }
+
+  // ---- variant modifier ----
+  &--contained {
+    --portfolio__zenless-button--bg: var(--theme-accent);
+    --portfolio__zenless-button--fg: var(--theme-bg);
+    --portfolio__zenless-button--border-color: var(--theme-accent);
+  }
+
+  &--outlined {
+    --portfolio__zenless-button--bg: var(--theme-elevated);
+    --portfolio__zenless-button--fg: var(--theme-fg);
+    --portfolio__zenless-button--border-color: color-mix(in srgb, var(--theme-fg) 24%, transparent);
+  }
+
+  // tab inactive：与 outlined 同；active → 与 contained 同
+  &--tab {
+    --portfolio__zenless-button--bg: var(--theme-elevated);
+    --portfolio__zenless-button--fg: var(--theme-fg);
+    --portfolio__zenless-button--border-color: color-mix(in srgb, var(--theme-fg) 24%, transparent);
+  }
+
+  &--tab.portfolio__zenless-button--active {
+    --portfolio__zenless-button--bg: var(--theme-accent);
+    --portfolio__zenless-button--fg: var(--theme-bg);
+    --portfolio__zenless-button--border-color: var(--theme-accent);
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // ---- inner span ----
+  &__inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  // =========================================================
+  //  Hoverable 变体（未填充荧光底的按钮启用）
+  //  hover 不改 border / 文字色（避免与 active tab 视觉重叠），
+  //  只用横向扫光线 + 轻外发光做反馈。
+  // =========================================================
+  &--hoverable {
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      bottom: -10%;
+      left: 0;
+      width: 55%;
+
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(197, 255, 0, 0.32) 50%,
+        transparent 100%
+      );
+
+      transform: translateX(-120%) skewX(-9deg);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 180ms ease;
+      clip-path: inherit;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--theme-accent) !important;
+      box-shadow: 0 0 18px rgba(197, 255, 0, 0.28);
+      outline: none;
+    }
+
+    &:hover::before,
+    &:focus-visible::before {
+      opacity: 1;
+      animation: portfolio__zenless-button--scan 1.6s ease-in-out infinite;
+    }
+  }
+
+  // =========================================================
+  //  Filled-Hoverable 变体（荧光底按钮的 hover 反馈）
+  //  外发光 — 不改文字色 / 不加扫光（避免与 contained 自身的实底冲突）
+  // =========================================================
+  &--filled-hoverable {
+    &:hover,
+    &:focus-visible {
+      box-shadow: 0 0 24px rgba(197, 255, 0, 0.4);
+      outline: none;
+    }
+  }
+}
+
+@keyframes portfolio__zenless-button--scan {
+  0% {
+    transform: translateX(-120%) skewX(-9deg);
+  }
+  70% {
+    transform: translateX(220%) skewX(-9deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-9deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio__zenless-button--hoverable::before {
+    display: none;
+  }
+}

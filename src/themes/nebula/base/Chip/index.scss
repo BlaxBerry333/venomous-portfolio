@@ -1,0 +1,104 @@
+.portfolio--nebula-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 24px;
+  padding: 4px 10px;
+  font-family: var(--nebula-font-family-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: var(--nebula-color-text);
+  text-decoration: none;
+  border-radius: 999px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    color 400ms var(--ease-out-expo),
+    border-color 400ms var(--ease-out-expo),
+    background-color 400ms var(--ease-out-expo),
+    box-shadow 400ms var(--ease-out-expo),
+    text-shadow 400ms var(--ease-out-expo),
+    transform 400ms var(--ease-out-expo);
+
+  &--solid {
+    background: color-mix(in srgb, var(--nebula-color-text) 4%, transparent);
+    border: 1px solid color-mix(in srgb, var(--nebula-color-text) 18%, transparent);
+  }
+
+  &--outline {
+    color: var(--nebula-color-muted);
+    background: transparent;
+    border: 1px dashed color-mix(in srgb, var(--nebula-color-text) 22%, transparent);
+  }
+
+  // 非交互模式：嵌在可点击卡片里，交互反馈交给卡片，自己不抢 hover / 指针
+  &--static {
+    min-height: 0;
+    cursor: inherit;
+
+    &:hover {
+      color: var(--nebula-color-text);
+      border-color: color-mix(in srgb, var(--nebula-color-text) 18%, transparent);
+      background: color-mix(in srgb, var(--nebula-color-text) 4%, transparent);
+      text-shadow: none;
+      box-shadow: none;
+    }
+
+    &.portfolio--nebula-chip--outline:hover {
+      color: var(--nebula-color-muted);
+      background: transparent;
+      border-color: color-mix(in srgb, var(--nebula-color-text) 22%, transparent);
+    }
+  }
+
+  &:hover {
+    color: color-mix(in srgb, var(--nebula-color-neon-1) 70%, var(--nebula-color-text));
+    border-color: color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent);
+    background: color-mix(in srgb, var(--nebula-color-neon-1) 10%, transparent);
+    text-shadow: 0 0 8px color-mix(in srgb, var(--nebula-color-neon-1) 55%, transparent);
+    box-shadow: var(--nebula-shadow-neon-base);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--nebula-color-neon-1);
+  }
+
+  &:active {
+    transform: scale(0.96);
+    transition-duration: 80ms;
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    color: var(--nebula-color-muted);
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__arrow {
+    display: inline-flex;
+    transition: transform 280ms var(--ease-out-expo);
+  }
+
+  &:hover &__arrow {
+    transform: translateX(2px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &__arrow {
+      transition: none;
+    }
+
+    &:active {
+      transform: none;
+    }
+  }
+}

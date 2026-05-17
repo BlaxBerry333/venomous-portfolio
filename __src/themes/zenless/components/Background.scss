@@ -1,0 +1,22 @@
+// portfolio__zenless-background — 档案室背景肌理
+// 一张 absolute inset:0 的背景层，纹理为细网格 + 椭圆遮罩中央可见、四周渐隐
+
+.portfolio__zenless-background {
+  --portfolio__zenless-background--cell-size: 48px;
+  --portfolio__zenless-background--line-color: color-mix(in srgb, var(--theme-fg) 6%, transparent);
+
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(var(--portfolio__zenless-background--line-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--portfolio__zenless-background--line-color) 1px, transparent 1px);
+  background-size:
+    var(--portfolio__zenless-background--cell-size)
+    var(--portfolio__zenless-background--cell-size);
+
+  $mask: radial-gradient(ellipse 70% 60% at 50% 50%, #000 30%, transparent 100%);
+  mask-image: $mask;
+  -webkit-mask-image: $mask;
+}

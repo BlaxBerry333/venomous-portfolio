@@ -1,0 +1,18 @@
+{
+  "titles": {
+    "motivation": {
+      "zh": "设计动机",
+      "ja": "モチベーション",
+      "en": "Motivation"
+    }
+  },
+  "themes": {
+    "nebula": {
+      "motivation": {
+        "zh": "本站视觉系统名为 NEBULA，源于对极端空间的致敬。设计语言深度借鉴了《咒术回战》中 \"无量空处”\" 的感知过载，以及《战锤40K》 中\"亚空间\"的混沌秩序。通过高频次的大规模粒子物理模拟与深度视差交互，试图在浏览器这一方寸屏幕间，复刻那种跨越维度、信息无限流动的深邃感。",
+        "ja": "本サイトのビジュアルシステム「NEBULA」は、極限の空間表現へのオマージュです。『呪術廻戦』の 「無量空処」 が持つ情報の氾濫と、『Warhammer 40k』の 「亜空間（ワープ）」 における混沌とした秩序を再解釈しました。大規模なパーティクル物理シミュレーションと多層的な視差インタラクションを駆使し、ブラウザという限られた空間の中で、次元を超えた深淵な世界観を構築しています。",
+        "en": "Codenamed NEBULA, this visual system is a tribute to extreme existential spaces. The design language draws inspiration from the sensory overload of \"Infinite Void\" (Jujutsu Kaisen) and the chaotic order of \"The Warp\" (Warhammer 40k). By leveraging large-scale particle physics and multi-layered parallax interactions, it aims to recreate a sense of hyper-dimensional depth and infinite information flow within the browser."
+      }
+    }
+  }
+}

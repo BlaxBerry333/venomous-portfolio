@@ -1,0 +1,38 @@
+.portfolio--nebula-text {
+  &--body {
+    font-family: var(--nebula-font-family-display);
+    font-size: 1.1rem;
+    color: var(--nebula-color-text);
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
+
+  &--strong {
+    font-family: var(--nebula-font-family-mono);
+    font-size: 1.25rem;
+    color: var(--nebula-color-text);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: var(--nebula-text-shadow-0);
+  }
+
+  &--label {
+    font-family: var(--nebula-font-family-mono);
+    font-size: 0.8rem;
+    color: var(--nebula-color-neon-1);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-shadow: 0 0 8px var(--nebula-color-neon-1);
+  }
+
+  &--muted {
+    font-family: var(--nebula-font-family-display);
+    font-size: 0.8rem;
+    color: var(--nebula-color-muted);
+    line-height: 1.1;
+    letter-spacing: 0;
+  }
+}

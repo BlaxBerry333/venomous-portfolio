@@ -1,0 +1,44 @@
+// portfolio__manga-title-3 — 漫画风三档小节标题
+// 结构：[主标题(display)] + [可选 mono 副标] + 底部硬实线
+// 比 Hero(一档) 与 Chapter(二档) 更轻：无贴纸 / 无硬阴影 / 无旋转
+
+.portfolio__manga-title-3 {
+  --portfolio__manga-title-3--size: 28px;
+  --portfolio__manga-title-3--divider-color: var(--theme-fg);
+
+  display: block;
+  margin-bottom: 18px;
+
+  &__row {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding-bottom: 8px;
+  }
+
+  &__text {
+    margin: 0;
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: var(--portfolio__manga-title-3--size);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--theme-fg);
+    text-transform: uppercase;
+  }
+
+  &__subtitle {
+    font-family: var(--theme-font-mono);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--theme-accent);
+  }
+
+  &__divider {
+    width: 100%;
+    height: 3px;
+    background: var(--portfolio__manga-title-3--divider-color);
+  }
+}

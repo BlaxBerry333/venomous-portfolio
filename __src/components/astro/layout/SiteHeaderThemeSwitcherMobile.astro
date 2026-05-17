@@ -1,0 +1,152 @@
+---
+import { DEFAULT_THEME } from "@/themes/themePreference";
+import type { Locale, Theme } from "@/types";
+import { THEMES, getLocalizedUrl } from "@/utils/i18n";
+
+interface Props {
+  locale: Locale;
+  theme?: Theme;
+  subPath: string;
+}
+
+const { locale, theme, subPath } = Astro.props;
+const current = theme ?? DEFAULT_THEME;
+
+const themeLabels: Record<Theme, string> = {
+  void: "Void",
+  manga: "Manga",
+  zenless: "Zenless",
+};
+
+const themeTaglines: Record<Theme, string> = {
+  void: "Minimal · monochrome",
+  manga: "Bold · halftone",
+  zenless: "Neon · industrial",
+};
+---
+
+<div
+  class="portfolio__site-header-switcher portfolio__site-header-switcher--mobile-only"
+  role="radiogroup"
+  aria-label="Visual theme"
+>
+  <a
+    class="portfolio__site-header-switcher__option portfolio__site-header-switcher__option--active"
+    href="#"
+    data-theme-trigger
+    aria-checked
+    aria-haspopup="dialog"
+    aria-expanded="false"
+    aria-label={current}
+    title={current}
+  >
+    {current.toUpperCase()}
+  </a>
+</div>
+
+<dialog id="theme-switcher-dialog" class="portfolio__site-header-theme-dialog" data-theme-dialog>
+  <div class="portfolio__site-header-theme-dialog__inner">
+    {
+      THEMES.map((t) => {
+        const isActive = theme === t;
+        const href = getLocalizedUrl(subPath, locale, t);
+
+        return (
+          <a
+            class:list={[
+              "portfolio__site-header-theme-option",
+              `portfolio__site-header-theme-option--${t}`,
+              { "portfolio__site-header-theme-option--active": isActive },
+            ]}
+            href={href}
+            aria-current={isActive ? "true" : undefined}
+          >
+            {t === "manga" && (
+              <span aria-hidden class="portfolio__site-header-theme-option__manga-watermark">
+                漫
+              </span>
+            )}
+            {t !== "void" && (
+              <div class="portfolio__site-header-theme-option__leading">
+                {t.charAt(0).toUpperCase()}
+              </div>
+            )}
+            <div class="portfolio__site-header-theme-option__body">
+              <div class="portfolio__site-header-theme-option__title">{themeLabels[t]}</div>
+              <div class="portfolio__site-header-theme-option__desc">{themeTaglines[t]}</div>
+            </div>
+            <div class="portfolio__site-header-theme-option__trailing">
+              {isActive ? "ACTIVE" : "→"}
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
+</dialog>
+
+<script>
+  function initThemeSwitcher() {
+    const trigger = document.querySelector<HTMLAnchorElement>("[data-theme-trigger]");
+    const dialog = document.querySelector<HTMLDialogElement>("[data-theme-dialog]");
+    if (!trigger || !dialog) return;
+    if (trigger.dataset.bound === "1") return;
+    trigger.dataset.bound = "1";
+
+    const lockScroll = () => {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    };
+    const unlockScroll = () => {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+    };
+
+    trigger.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (dialog.open) {
+        dialog.close();
+      } else {
+        dialog.show();
+        trigger.setAttribute("aria-expanded", "true");
+        lockScroll();
+      }
+    });
+
+    dialog.addEventListener("close", () => {
+      trigger.setAttribute("aria-expanded", "false");
+      unlockScroll();
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dialog.open) return;
+      const target = e.target as Node;
+      if (dialog.contains(target) || trigger.contains(target)) return;
+      dialog.close();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && dialog.open) dialog.close();
+    });
+
+    // 窗口变到非 mobile 宽度时立刻关闭 dialog（mobile-only 入口此时也已隐藏）
+    const MOBILE_MAX = 768;
+    window.addEventListener("resize", () => {
+      if (dialog.open && window.innerWidth > MOBILE_MAX) dialog.close();
+    });
+  }
+
+  initThemeSwitcher();
+  document.addEventListener("astro:page-load", initThemeSwitcher);
+  // 跳页前兜底解锁（防止 view-transition 期间锁残留）
+  document.addEventListener("astro:before-swap", () => {
+    document.documentElement.style.overflow = "";
+    document.body.style.overflow = "";
+  });
+</script>
+
+<style lang="scss" is:global>
+  @use "./SiteHeaderSwitcher.scss";
+  @use "./SiteHeaderThemeSwitcherMobile.scss";
+</style>

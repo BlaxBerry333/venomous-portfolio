@@ -1,0 +1,102 @@
+// portfolio__manga-timeline — 漫画风纵向时间线
+// PC：[date 贴纸] | spine | [内容卡]
+// 移动端：date 贴纸下沉到 card 正上方（inline），spine 收窄到 left:19
+
+.portfolio__manga-timeline {
+  --portfolio__manga-timeline--gap: 56px;
+
+  position: relative;
+  // PC：左缩进让出 spine 视觉空间
+  padding-left: 24px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--portfolio__manga-timeline--gap);
+  }
+
+  // ---- element: spine 主轴 ----
+  &__spine {
+    position: absolute;
+    left: 70px;
+    top: -32px;
+    bottom: -32px;
+    width: 4px;
+    background: var(--theme-fg);
+    box-shadow: 3px 0 0 var(--theme-accent);
+  }
+
+  // ---- element: row 单行容器 ----
+  &__row {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    column-gap: 0;
+    align-items: center;
+  }
+
+  // ---- element: date 时间贴纸 ----
+  &__date {
+    // PC 端的 X 偏移；移动端 @media 把它置 0
+    --portfolio__manga-timeline__date--x: -12px;
+    --portfolio__manga-timeline__date--rotate: 0deg;
+
+    justify-self: start;
+    position: relative;
+    z-index: 1;
+    width: 92px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 6px 0;
+
+    background: var(--theme-fg);
+    color: var(--theme-bg);
+    border: 3px solid var(--theme-fg);
+    box-shadow: 4px 4px 0 var(--theme-accent);
+
+    font-family: var(--theme-font-display);
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+
+    transform:
+      translateX(var(--portfolio__manga-timeline__date--x))
+      rotate(var(--portfolio__manga-timeline__date--rotate));
+  }
+
+  // ---- element: cardwrap 内容卡包装 ----
+  &__cardwrap {
+    --portfolio__manga-timeline__cardwrap--max-width: 640px;
+
+    max-width: var(--portfolio__manga-timeline__cardwrap--max-width);
+  }
+
+  // ---- 移动端响应式：单列堆叠 ----
+  @media (max-width: 768px) {
+    padding-left: 48px;
+
+    &__spine {
+      left: 19px;
+    }
+
+    &__row {
+      grid-template-columns: 1fr;
+      row-gap: 10px;
+      column-gap: 0;
+    }
+
+    &__date {
+      justify-self: start;
+      width: auto;
+      display: inline-block;
+      padding: 4px 12px;
+      font-size: 14px;
+      box-shadow: 3px 3px 0 var(--theme-accent);
+      // 撤销 PC 的 translateX 偏移，仅保留旋转
+      --portfolio__manga-timeline__date--x: 0px;
+    }
+
+    &__cardwrap {
+      max-width: 100%;
+    }
+  }
+}

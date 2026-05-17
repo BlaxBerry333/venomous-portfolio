@@ -1,0 +1,29 @@
+---
+import { redirectToLastThemeScript } from "@/themes/redirectToLastTheme";
+import { DEFAULT_THEME } from "@/themes/themePreference";
+import type { Locale } from "@/types";
+import { getLocaleStaticPaths, getLocalizedUrl } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleStaticPaths();
+}
+
+const { lang } = Astro.params as { lang: Locale };
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+const fallbackUrl = getLocalizedUrl("/", lang, DEFAULT_THEME);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <meta name="robots" content="noindex" />
+    <link rel="canonical" href={fallbackUrl} />
+    <script is:inline set:html={redirectToLastThemeScript(baseUrl, lang, fallbackUrl)} />
+    <noscript>
+      <meta http-equiv="refresh" content={`0;url=${fallbackUrl}`} />
+    </noscript>
+  </head>
+  <body></body>
+</html>

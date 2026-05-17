@@ -1,0 +1,126 @@
+{
+  "manifesto": {
+    "ja": [
+      "ピクセルは手触り。アーキテクチャは骨格",
+      "インターフェースの先へ、バックエンド・クラウド・クロスプラットフォーム、高性能グラフィックス"
+    ],
+    "en": [
+      "Pixels are the feel. Architecture is the bone",
+      "Past the interface — into backends, cloud, cross-platform, high-performance graphics"
+    ],
+    "zh": ["像素是手感。架构是骨架", "不止界面 —— 也走进过后端、云、跨平台、高性能图形"]
+  },
+  "cta": {
+    "themeHint": {
+      "ja": "三つのスタイルを用意しました、テーマ切替で試せます",
+      "en": "Three styles are available, try switching themes",
+      "zh": "我准备了三套风格，切换主题试试看"
+    },
+    "headingLines": {
+      "ja": ["いいものは、", "誰かと作る間に生まれる"],
+      "en": ["The good stuff happens", "between people"],
+      "zh": ["好的东西", "总在合作里显现"]
+    }
+  },
+  "heroSubtitle": {
+    "ja": "WELCOME TO MY PORTFOLIO",
+    "en": "WELCOME TO MY PORTFOLIO",
+    "zh": "WELCOME TO MY PORTFOLIO"
+  },
+  "detail": {
+    "sections": {
+      "ja": [
+        "COVER",
+        "CONTEXT",
+        "STACK",
+        "ROLE",
+        "WHAT I BUILT",
+        "CHALLENGES",
+        "VALUE",
+        "DEMO",
+        "NEXT"
+      ],
+      "en": [
+        "COVER",
+        "CONTEXT",
+        "STACK",
+        "ROLE",
+        "WHAT I BUILT",
+        "CHALLENGES",
+        "VALUE",
+        "DEMO",
+        "NEXT"
+      ],
+      "zh": [
+        "COVER",
+        "CONTEXT",
+        "STACK",
+        "ROLE",
+        "WHAT I BUILT",
+        "CHALLENGES",
+        "VALUE",
+        "DEMO",
+        "NEXT"
+      ]
+    },
+    "nda": {
+      "redacted": {
+        "ja": "機密",
+        "en": "CONFIDENTIAL",
+        "zh": "机密"
+      }
+    }
+  },
+  "manga": {
+    "onomatopoeia": ["ドン!!", "ZZZ", "ガッ", "シュッ", "バン!", "!?"]
+  },
+  "aboutBio": {
+    "ja": [
+      "フロントエンド開発 {years} 年目。一つのピクセルを描くところから、一つのエンジニアリング体系を組み上げるところまで——Web の限界を探ることを、私は止めたことがない。",
+      "私の視線はインターフェースで止まったことがない。この数年、インタラクション層だけでなく、フロントエンドのプロジェクト設計もやってきた。バックエンド開発も数年書いていたし、クラウド周りも触ったことがある。クロスプラットフォーム、画像といった方向にも、実プロジェクトで関わってきた。",
+      "インターフェースを「作り上げる」ことよりも、それがユーザーの手元でどんな状態にあるかの方が気になる。手に馴染むこと、安定していること、時間に耐えること——それこそが、自分の作りたいものだ。"
+    ],
+    "en": [
+      "Year {years} of frontend development. From rendering a single pixel to building an entire engineering system — I've never stopped exploring the limits of the Web.",
+      "My view has never stopped at the interface. Over the years, beyond the interaction layer, I've also handled frontend project architecture, written backends for a few years, and touched some cloud work along the way. Cross-platform and image-related work — I've shipped real projects in both.",
+      "More than just getting an interface \"shipped,\" what I care about is the state it ends up in once it's in the user's hands. Something that feels right, stays stable, holds up over time — that's what I'm trying to build."
+    ],
+    "zh": [
+      "前端开发的第 {years} 年。从实现一个像素，到构建一套工程体系，我从未停止过对 Web 极限的探索。",
+      "我的视线从未止于界面。这些年除了交互层，前端项目的架构我也做；后端开发也写过几年，云相关的也碰过；跨平台、图像这些方向，也都做过实际项目。",
+      "比起把界面\"做出来\"，我更在意它在用户手里是什么状态。顺手、稳定、经得起时间——这才是我想做的东西。"
+    ]
+  },
+  "nav": {
+    "home": {
+      "ja": "ホーム",
+      "en": "HOME",
+      "zh": "主页"
+    },
+    "works": {
+      "ja": "作品",
+      "en": "WORKS",
+      "zh": "作品"
+    },
+    "about": {
+      "ja": "プロフィール",
+      "en": "ABOUT",
+      "zh": "关于"
+    },
+    "codex": {
+      "ja": "CODEX",
+      "en": "CODEX",
+      "zh": "CODEX"
+    },
+    "resume": {
+      "ja": "Resume を見る",
+      "en": "VIEW RESUME",
+      "zh": "查看简历"
+    },
+    "backToShowcase": {
+      "ja": "Showcase に戻る",
+      "en": "BACK TO SHOWCASE",
+      "zh": "返回 Showcase"
+    }
+  }
+}

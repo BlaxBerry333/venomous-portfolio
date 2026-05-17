@@ -1,0 +1,40 @@
+---
+import SiteLayout from "@/components/astro/layout/SiteLayout.astro";
+import HomeDescription from "@/components/react/home/HomeDescription";
+import HomeFooter from "@/components/react/home/HomeFooter";
+import MangaHomeFeaturedWorks from "@/themes/manga/sections/MangaHomeFeaturedWorks";
+import MangaHomeHero from "@/themes/manga/sections/MangaHomeHero";
+import MangaHomeTechStacks from "@/themes/manga/sections/MangaHomeTechStacks";
+import VoidHomeFeaturedWorks from "@/themes/void/sections/VoidHomeFeaturedWorks";
+import VoidHomeHero from "@/themes/void/sections/VoidHomeHero";
+import VoidHomeTechStacks from "@/themes/void/sections/VoidHomeTechStacks";
+import ZenlessHomeFeaturedWorks from "@/themes/zenless/sections/ZenlessHomeFeaturedWorks";
+import ZenlessHomeHero from "@/themes/zenless/sections/ZenlessHomeHero";
+import ZenlessHomeTechStacks from "@/themes/zenless/sections/ZenlessHomeTechStacks";
+import type { Locale, Theme } from "@/types";
+import { getLocaleThemeStaticPaths } from "@/utils/i18n";
+
+export function getStaticPaths() {
+  return getLocaleThemeStaticPaths();
+}
+
+const { lang, theme } = Astro.params as { lang: Locale; theme: Theme };
+---
+
+<SiteLayout locale={lang} theme={theme} activePage="home" title="Home">
+  {theme === "manga" && <MangaHomeHero client:load />}
+  {theme === "zenless" && <ZenlessHomeHero client:load />}
+  {theme === "void" && <VoidHomeHero client:load />}
+
+  <HomeDescription locale={lang} client:visible />
+
+  {theme === "manga" && <MangaHomeFeaturedWorks locale={lang} theme={theme} client:visible />}
+  {theme === "zenless" && <ZenlessHomeFeaturedWorks locale={lang} theme={theme} client:visible />}
+  {theme === "void" && <VoidHomeFeaturedWorks locale={lang} theme={theme} client:visible />}
+
+  {theme === "manga" && <MangaHomeTechStacks locale={lang} theme={theme} client:visible />}
+  {theme === "zenless" && <ZenlessHomeTechStacks locale={lang} theme={theme} client:visible />}
+  {theme === "void" && <VoidHomeTechStacks locale={lang} theme={theme} client:visible />}
+
+  <HomeFooter theme={theme} locale={lang} client:visible />
+</SiteLayout>
