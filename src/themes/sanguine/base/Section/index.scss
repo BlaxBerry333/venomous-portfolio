@@ -1,0 +1,78 @@
+/* sanguine 页面区块布局壳 —— 居中限宽 + 响应式 padding + 纵向留白档位 + 内联标题块 */
+.portfolio--sanguine-section {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 8px;
+
+  @media (min-width: 768px) {
+    padding-inline: var(--page-px);
+  }
+
+  /* normal —— 主内容页 */
+  &--normal {
+    padding-block: 120px;
+
+    @media (min-width: 768px) {
+      padding-block: 160px;
+    }
+  }
+
+  /* compact —— 多区块连排页（work-detail）*/
+  &--compact {
+    padding-block: 80px;
+
+    @media (min-width: 768px) {
+      padding-block: 120px;
+    }
+  }
+
+  /* bleed —— children 横向跑满区块整宽：容器去掉 padding-inline，
+     改把限宽 padding 下放到标题块，让 marquee 这类内容贯穿视口 */
+  &--bleed {
+    padding-inline: 0;
+
+    @media (min-width: 768px) {
+      padding-inline: 0;
+    }
+
+    .portfolio--sanguine-section__head {
+      padding-inline: 8px;
+
+      @media (min-width: 768px) {
+        padding-inline: var(--page-px);
+      }
+    }
+  }
+
+  /* 内联标题块：label + Heading + description */
+  &__head {
+    margin-bottom: 64px;
+
+    @media (min-width: 768px) {
+      margin-bottom: 80px;
+    }
+  }
+
+  /* 碑铭小字：斜体大写、红，垫在 Heading 上方 */
+  &__label {
+    display: inline-block;
+    font-family: var(--sanguine-font-body);
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sanguine-color-accent);
+    margin-bottom: 20px;
+  }
+
+  /* 标题下说明段：与 Heading 拉开，多段则段间紧凑堆叠 */
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+}

@@ -1,0 +1,14 @@
+/* sanguine 作品网格 —— 响应式列数，≤900px 单列 */
+.portfolio--sanguine-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--sanguine-grid-cols, 3), 1fr);
+  gap: 24px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}

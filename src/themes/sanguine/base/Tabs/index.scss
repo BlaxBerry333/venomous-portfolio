@@ -1,0 +1,93 @@
+/* sanguine 胶囊式标签组 —— active 背景是 framer layout 滑块，切换时流动 */
+.portfolio--sanguine-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 6px;
+  background: rgba(245, 245, 245, 0.02);
+  border: 1px solid var(--sanguine-color-line);
+  border-radius: 999px;
+  width: fit-content;
+
+  &__tab {
+    position: relative;
+    padding: 10px 22px;
+    border-radius: 999px;
+    border: 0;
+    background: transparent;
+    font-family: var(--sanguine-font-body);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sanguine-color-muted);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 0.25s ease;
+
+    &:hover {
+      color: var(--sanguine-color-fg);
+    }
+
+    &.is-active {
+      color: var(--sanguine-color-fg);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--sanguine-color-accent);
+      outline-offset: 3px;
+    }
+  }
+
+  /* 流动滑块 —— 深红到主红的渐变，layoutId 驱动在标签间滑移 */
+  &__slider {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: linear-gradient(
+      180deg,
+      var(--sanguine-color-accent) 0%,
+      var(--sanguine-color-accent-deep) 100%
+    );
+    box-shadow: inset 0 1px 0 rgba(245, 245, 245, 0.12);
+    z-index: 0;
+  }
+
+  /* 标签文字浮在滑块之上 */
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* 裸模式 —— 去掉自身胶囊外壳，标签收小（嵌进 switcher 玻璃浮层）*/
+  &--bare {
+    padding: 0;
+    gap: 4px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+
+    .portfolio--sanguine-tabs__tab {
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+    }
+  }
+}
+
+/* 移动端：非 bare（Works filter）撑满整行等分 */
+@media (max-width: 600px) {
+  .portfolio--sanguine-tabs:not(.portfolio--sanguine-tabs--bare) {
+    width: 100%;
+    flex-wrap: nowrap;
+
+    .portfolio--sanguine-tabs__tab {
+      flex: 1;
+      padding: 10px 8px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+  }
+}

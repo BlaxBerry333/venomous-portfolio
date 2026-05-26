@@ -1,0 +1,82 @@
+.portfolio--page-section {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100dvh;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 8px;
+  padding-block: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+
+  @media (min-width: 768px) {
+    padding-inline: var(--page-px);
+    padding-block: 80px;
+    gap: var(--space-12);
+  }
+
+  // ---- 内联标题块（原 SectionTitle）----
+  &__title {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  // label → Heading 之间从 4px(space-1) → 8px(space-2)：给 label 独立的 eyebrow 呼吸感
+  &__title-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  // ---- 标题块下方的说明段落（有 title 时的 description）----
+  // 段间紧凑间距；限宽到 64ch 避免在 1200px container 里被拉成横长读不下
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    max-width: 64ch;
+  }
+
+  // ---- 底部操作行：居中排布的按钮组 ----
+  // 默认贴着上方内容；text-block 模式下额外把 actions 拉开，营造剧场感
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  // ---- 文本段模式（无 title、仅 description）：整段居中、垂直居中 ----
+  &--text-block {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--space-3);
+
+    // H1 字号 mobile 默认走 token (clamp 40–96)，在 ≤480 屏 min 顶到 40px：
+    //   "也是承载思考的语言" 9 字 × 40 ≈ 360（撞屏），"is a language for thought" 必折。
+    //   text-block 是 ≤3 行的声明式短句堆，折行后大字感觉拥挤——
+    //   mobile 收到 28–40 + lh 1.2，让折行也有呼吸；desktop 还原 token。
+    .portfolio--nebula-heading--1 {
+      max-width: 28ch;
+      font-size: clamp(28px, 8vw, 40px);
+      line-height: 1.2;
+    }
+
+    .portfolio--page-section__actions {
+      margin-top: 20%;
+    }
+
+    @media (min-width: 768px) {
+      .portfolio--nebula-heading--1 {
+        font-size: var(--nebula-fs-h1);
+        line-height: var(--nebula-lh-display);
+      }
+    }
+  }
+}

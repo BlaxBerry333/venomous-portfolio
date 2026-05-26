@@ -1,0 +1,20 @@
+.portfolio--sanguine-wd {
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}

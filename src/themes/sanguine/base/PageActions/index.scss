@@ -1,0 +1,30 @@
+/* 区块底部操作行 —— 按钮组 */
+.portfolio--sanguine-page-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+
+  /* center —— 内容区块底部常规操作行 */
+  &--center {
+    justify-content: center;
+  }
+
+  /* inherit —— 跟随父级对齐（偏置宣言区）*/
+  &--inherit {
+    justify-content: inherit;
+  }
+
+  /* 与上方内容的间距 */
+  &--gap-default {
+    margin-top: 80px;
+  }
+
+  &--gap-tight {
+    margin-top: 56px;
+
+    @media (min-width: 768px) {
+      margin-top: 80px;
+    }
+  }
+}

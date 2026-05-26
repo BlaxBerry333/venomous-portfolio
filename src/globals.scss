@@ -1,0 +1,176 @@
+@use "./reset";
+
+// a11y 仅给屏幕阅读器的隐藏文本
+.portfolio--sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:root {
+  --container-max: 1200px;
+  --page-px: clamp(16px, 4vw, 32px);
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  --fs-xs: 12px;
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: 18px;
+  --fs-xl: 20px;
+  --fs-2xl: clamp(24px, 3vw, 32px);
+  --fs-3xl: clamp(28px, 4vw, 40px);
+  --fs-4xl: clamp(32px, 5vw, 56px);
+
+  --lh-tight: 1.2;
+  --lh-normal: 1.5;
+  --lh-loose: 1.75;
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-overlay: 100;
+  --z-modal: 1000;
+
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+
+  --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+// ==================================================
+// nebula 主题
+// ==================================================
+[data-theme="nebula"] {
+  // ==================================================
+  // 调色
+  // ==================================================
+  --nebula-color-neon-1: #2bf0ff;
+  --nebula-color-neon-2: #ff3df0;
+  --nebula-color-bg: #000;
+  --nebula-color-text: #ffffff;
+  --nebula-color-muted: rgba(255, 255, 255, 0.55);
+  --nebula-color-border: color-mix(in srgb, var(--nebula-color-neon-1) 30%, transparent);
+  --nebula-color-border-soft: rgba(255, 255, 255, 0.1);
+  // ==================================================
+  // 文字字体
+  // ==================================================
+  --nebula-font-family-display: "Zen Kaku Gothic New", "Noto Sans JP", -apple-system, sans-serif;
+  --nebula-font-family-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+  // ==================================================
+  // 文字尺寸
+  // ==================================================
+  --nebula-fs-h1: clamp(40px, 7vw, 96px); // mobile 40 / desktop 96
+  --nebula-fs-h2: clamp(24px, 4vw, 48px); // mobile 24 / desktop 48
+  --nebula-fs-h3: clamp(18px, 2.2vw, 28px); // mobile 18 / desktop 28
+  --nebula-fs-h4: clamp(15px, 1.5vw, 20px); // mobile 15 / desktop 20 (卡片标题)
+  --nebula-fs-body: 18px; // body 与 strong 同字号 18，差仅字重（400 vs 700）
+  --nebula-fs-caption: 14px;
+  --nebula-fs-label: 12px;
+  // ==================================================
+  // 文字行高
+  // ==================================================
+  --nebula-lh-display: 1.09; // H1 88 → 96 (24×4)
+  --nebula-lh-title: 1.18; // H2 44 → 52 (13×4)
+  --nebula-lh-tight: 1.3333; // H3 24 → 32 (8×4), H4 18 → 24 (6×4) —— 4/3 比例
+  --nebula-lh-body: 1.7778; // body 18 → 32 (8×4) —— 日文长段阅读舒展行高（web 日文段落经典 1.6–1.8）
+  --nebula-lh-strong: 1.3333; // strong 18 → 24 (6×4) —— inline 时 body 32 > strong 24，line-box 取 body 不撑破
+  --nebula-lh-caption: 1.4286; // muted 14 → 20 (5×4) —— 精确 20/14
+  // ==================================================
+  // letter-spacing
+  // ==================================================
+  --nebula-ls-display: 0.025em;
+  --nebula-ls-body: 0;
+  --nebula-ls-mono: 0.25em; // mono caps（保留给装饰用途）
+  --nebula-ls-label: 0.1em; // 小标签 caps —— 12px 下 0.18 偏松，0.1 更紧实
+  // ==================================================
+  // 文字阴影
+  // ==================================================
+  --nebula-text-shadow-0:
+    0 0 4px rgba(255, 255, 255, 0.8),
+    0 0 12px color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent),
+    0 0 28px rgba(214, 58, 255, 0.4);
+  --nebula-text-shadow-1:
+    0 0 4px rgba(255, 255, 255, 0.8),
+    0 0 12px color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent),
+    0 0 28px color-mix(in srgb, var(--nebula-color-neon-1) 35%, transparent);
+  --nebula-text-shadow-2:
+    0 0 3px rgba(255, 255, 255, 0.7),
+    0 0 9px color-mix(in srgb, var(--nebula-color-neon-1) 50%, transparent),
+    0 0 20px color-mix(in srgb, var(--nebula-color-neon-1) 22%, transparent);
+  --nebula-text-shadow-3:
+    0 0 2px rgba(255, 255, 255, 0.55),
+    0 0 6px color-mix(in srgb, var(--nebula-color-neon-1) 32%, transparent);
+  // 双色霓虹文字阴影 (neon-1 + neon-2)
+  --nebula-text-shadow-neon-soft:
+    0 0 4px color-mix(in srgb, var(--nebula-color-text) 60%, transparent),
+    0 0 10px color-mix(in srgb, var(--nebula-color-neon-1) 35%, transparent),
+    0 0 10px color-mix(in srgb, var(--nebula-color-neon-2) 35%, transparent);
+  --nebula-text-shadow-neon-strong:
+    0 0 6px color-mix(in srgb, var(--nebula-color-text) 80%, transparent),
+    0 0 14px color-mix(in srgb, var(--nebula-color-neon-1) 60%, transparent),
+    0 0 14px color-mix(in srgb, var(--nebula-color-neon-2) 60%, transparent);
+  // ==================================================
+  // 双色霓虹
+  // ==================================================
+  --nebula-shadow-neon-soft:
+    -8px 0 18px -8px color-mix(in srgb, var(--nebula-color-neon-1) 55%, transparent),
+    8px 0 18px -8px color-mix(in srgb, var(--nebula-color-neon-2) 55%, transparent),
+    0 0 24px -10px color-mix(in srgb, var(--nebula-color-neon-1) 30%, transparent),
+    0 0 24px -10px color-mix(in srgb, var(--nebula-color-neon-2) 30%, transparent);
+  --nebula-shadow-neon-base:
+    -14px 0 28px -6px color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent),
+    14px 0 28px -6px color-mix(in srgb, var(--nebula-color-neon-2) 70%, transparent),
+    0 0 36px -8px color-mix(in srgb, var(--nebula-color-neon-1) 45%, transparent),
+    0 0 36px -8px color-mix(in srgb, var(--nebula-color-neon-2) 45%, transparent);
+  --nebula-shadow-neon-strong:
+    -20px 0 44px -4px color-mix(in srgb, var(--nebula-color-neon-1) 85%, transparent),
+    20px 0 44px -4px color-mix(in srgb, var(--nebula-color-neon-2) 85%, transparent),
+    0 0 60px -6px color-mix(in srgb, var(--nebula-color-neon-1) 55%, transparent),
+    0 0 60px -6px color-mix(in srgb, var(--nebula-color-neon-2) 55%, transparent);
+}
+
+// ==================================================
+// sanguine 主题
+// ==================================================
+[data-theme="sanguine"] {
+  --sanguine-color-bg: #0a0a0a;
+  --sanguine-color-fg: #f5f5f5;
+  // 主红 —— 向背景血滴的氧化血红靠拢，比原 #c8102e 暗哑
+  --sanguine-color-accent: #a31621;
+  // 深红 —— 血滴暗部色，做填充渐变的底，给按钮纵深
+  --sanguine-color-accent-deep: #6e0d18;
+  --sanguine-color-muted: rgba(245, 245, 245, 0.55);
+  --sanguine-color-line: rgba(245, 245, 245, 0.1);
+  --sanguine-color-hover: color-mix(in srgb, var(--sanguine-color-accent) 8%, var(--sanguine-color-bg));
+  --sanguine-color-accent-hover: color-mix(in srgb, var(--sanguine-color-accent) 88%, #fff);
+
+  --sanguine-font-display: "Cinzel Decorative", "Cinzel", "Noto Serif SC", serif;
+  --sanguine-font-body: "Cinzel", "Noto Serif SC", serif;
+
+  // 主题根排版：整棵 sanguine 子树继承的字体 / 颜色兜底
+  color: var(--sanguine-color-fg);
+  font-family: var(--sanguine-font-body);
+  font-weight: 400;
+}

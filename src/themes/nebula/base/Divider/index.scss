@@ -1,0 +1,41 @@
+.portfolio--nebula-divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--nebula-color-neon-1), transparent);
+  box-shadow: 0 0 8px var(--nebula-color-neon-1);
+
+  &--labeled {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  &__line {
+    width: 60px;
+    height: 1px;
+    box-shadow: 0 0 8px var(--nebula-color-neon-1);
+
+    &:first-of-type {
+      background: linear-gradient(90deg, transparent, var(--nebula-color-neon-1));
+    }
+    &:last-of-type {
+      background: linear-gradient(90deg, var(--nebula-color-neon-1), transparent);
+    }
+  }
+
+  &__label {
+    font-family: var(--nebula-font-family-mono);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--nebula-color-text);
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-shadow: var(--nebula-text-shadow-0);
+  }
+}

@@ -1,0 +1,43 @@
+# Build output
+dist/
+build/
+
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
+# Dependencies
+node_modules/
+
+# Static assets
+public/
+assets/
+
+# Config files
+*.config.js
+*.config.mjs
+*.config.cjs
+.env*
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Test coverage
+coverage/
+
+# Minified files
+*.min.js
+*.min.css
+
+# Type definitions
+*.d.ts
+
+# IDE settings
+.idea/
+.vscode/
+
+# Generated files
+*.generated.*

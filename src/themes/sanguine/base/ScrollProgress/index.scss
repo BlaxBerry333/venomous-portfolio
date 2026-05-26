@@ -1,0 +1,11 @@
+.portfolio--sanguine-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--sanguine-color-accent);
+  transform-origin: left center;
+  z-index: 9998;
+  pointer-events: none;
+}

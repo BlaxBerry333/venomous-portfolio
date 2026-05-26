@@ -1,0 +1,50 @@
+/* sanguine 404 —— 居中「已凝固」页 */
+.portfolio--sanguine-404 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6, 32px);
+    text-align: center;
+  }
+
+  /* "404" 数字 —— 大字碑铭；lang="en" 强制西文回退 + monospace，避免 ja/zh 字形偏大 */
+  &__code {
+    font-family: monospace;
+    font-feature-settings: "tnum" 1;
+    font-size: clamp(96px, 22vw, 220px);
+    line-height: 0.95;
+    letter-spacing: 0.04em;
+    color: var(--sanguine-color-fg);
+  }
+
+  /* 标题「ここは凝固した」—— 用主红，与白色数字对调 */
+  .portfolio--sanguine-heading {
+    color: var(--sanguine-color-accent);
+  }
+
+  /* 小屏：标题强制单行 —— 字号随视口缩放。不改全局 Heading--2（floor 54px 太大会换行），
+     仅在 404 内按 vw 缩放；nowrap 保证不换行，clamp 下限兜住极窄屏不溢出。 */
+  @media (max-width: 600px) {
+    .portfolio--sanguine-heading {
+      font-size: clamp(20px, 7vw, 54px);
+      white-space: nowrap;
+    }
+  }
+
+  /* description —— 锁高，切换 locale 时不抖动（body 行高下最长日文窄屏约 3 行）*/
+  &__desc {
+    max-width: 52ch;
+    min-height: calc(1em * 1.8 * 3);
+  }
+
+  .portfolio--sanguine-button {
+    min-width: 220px;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,30 @@
+.portfolio--nebula-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--nebula-color-bg);
+  overflow: hidden;
+
+  &__vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 30%,
+      rgba(0, 0, 0, 0.85) 100%
+    );
+  }
+
+  &__edges {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.05) 18%,
+      rgba(0, 0, 0, 0.05) 82%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "area": {
+    "frontend": {
+      "zh": "前端开发",
+      "ja": "フロントエンド",
+      "en": "Frontend"
+    },
+    "backend": {
+      "zh": "后端开发",
+      "ja": "バックエンド",
+      "en": "Backend"
+    },
+    "interactive": {
+      "zh": "视觉交互",
+      "ja": "インタラクティブ",
+      "en": "Interactive"
+    },
+    "cloud-data": {
+      "zh": "云与数据",
+      "ja": "クラウド & データ",
+      "en": "Cloud & Data"
+    }
+  },
+
+  "level": {
+    "proficient": {
+      "zh": "熟练",
+      "ja": "得意",
+      "en": "Proficient"
+    },
+    "familiar": {
+      "zh": "了解",
+      "ja": "経験あり",
+      "en": "Familiar"
+    }
+  },
+
+  "skills": {
+    "art-template": {
+      "label": "art-template",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "astro": {
+      "label": "Astro",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "bigquery": {
+      "label": "BigQuery",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "ant-design": {
+      "label": "Ant Design",
+      "area": "frontend",
+      "level": "familiar"
+    },
+    "aws-s3": {
+      "label": "Amazon S3",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "casbin": {
+      "label": "Casbin",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "docker": {
+      "label": "Docker",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "docusaurus": {
+      "label": "Docusaurus",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "firebase": {
+      "label": "Firebase",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "framer-motion": {
+      "label": "Framer Motion",
+      "area": "interactive",
+      "level": "familiar"
+    },
+    "gatsby": {
+      "label": "Gatsby.js",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "github-actions": {
+      "label": "GitHub Actions",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "glsl": {
+      "label": "GLSL",
+      "area": "interactive",
+      "level": "familiar"
+    },
+    "go": {
+      "label": "Go",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "go-gin": {
+      "label": "Gin",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "google-analytics": {
+      "label": "Google Analytics",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "graphql": {
+      "label": "GraphQL",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "google-cloud-storage": {
+      "label": "Google Cloud Storage",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "google-tag-manager": {
+      "label": "Google Tag Manager",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "javascript": {
+      "label": "Javascript",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "jest": {
+      "label": "Jest",
+      "area": "frontend",
+      "level": "familiar"
+    },
+    "jquery": {
+      "label": "jQuery",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "less": {
+      "label": "Less",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "material-ui": {
+      "label": "Material UI",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "mongodb": {
+      "label": "MongoDB",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "next-js": {
+      "label": "Next.js",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "node-js": {
+      "label": "Node.js",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "nuxt-js": {
+      "label": "Nuxt.js",
+      "area": "frontend",
+      "level": "familiar"
+    },
+    "playwright": {
+      "label": "Playwright",
+      "area": "frontend",
+      "level": "familiar"
+    },
+    "prisma": {
+      "label": "Prisma",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "protobuf": {
+      "label": "Protocol Buffers",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "python": {
+      "label": "Python",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "python-django": {
+      "label": "Django",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "python-drf": {
+      "label": "Django REST Framework",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "react": {
+      "label": "React",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "react-three-fiber": {
+      "label": "React Three Fiber",
+      "area": "interactive",
+      "level": "familiar"
+    },
+    "refine": {
+      "label": "Refine",
+      "area": "frontend",
+      "level": "familiar"
+    },
+    "sass": {
+      "label": "Sass",
+      "area": "frontend",
+      "level": "familiar"
+    },
+    "shell": {
+      "label": "Shell",
+      "area": "backend",
+      "level": "familiar"
+    },
+    "storybook": {
+      "label": "Storybook",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "supabase": {
+      "label": "Supabase",
+      "area": "cloud-data",
+      "level": "familiar"
+    },
+    "tailwind-css": {
+      "label": "Tailwind CSS",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "three-js": {
+      "label": "Three.js",
+      "area": "interactive",
+      "level": "familiar"
+    },
+    "trpc": {
+      "label": "tRPC",
+      "area": "backend",
+      "level": "proficient"
+    },
+    "typescript": {
+      "label": "TypeScript",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "vite": {
+      "label": "Vite",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "vitest": {
+      "label": "Vitest",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "vue": {
+      "label": "Vue",
+      "area": "frontend",
+      "level": "proficient"
+    },
+    "webpack": {
+      "label": "Webpack",
+      "area": "frontend",
+      "level": "proficient"
+    }
+  }
+}

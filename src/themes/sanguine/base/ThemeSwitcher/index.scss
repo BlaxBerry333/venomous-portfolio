@@ -1,0 +1,22 @@
+/* 主题切换 —— fixed 玻璃浮层；内部标签外观走 <Tabs bare> */
+.portfolio--sanguine-theme-switcher {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9990;
+  padding: 6px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--sanguine-color-line);
+  border-radius: 999px;
+  pointer-events: auto;
+
+  @media (max-width: 600px) {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    display: flex;
+    justify-content: center;
+  }
+}

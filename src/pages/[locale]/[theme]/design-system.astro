@@ -1,0 +1,37 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { PagesNebula } from "@/themes/nebula";
+import { PagesSanguine } from "@/themes/sanguine";
+import {
+  getLocaleThemeStaticPaths,
+  getPageTitle,
+  loadThemeContent,
+  type Locale,
+} from "@/utils/i18n";
+import type { Theme } from "@/utils/themes";
+
+export function getStaticPaths() {
+  return getLocaleThemeStaticPaths();
+}
+
+const { locale, theme } = Astro.params as { locale: Locale; theme: Theme };
+const content = loadThemeContent(theme, locale);
+---
+
+<PageLayout
+  locale={locale}
+  theme={theme}
+  title={getPageTitle(locale, "designSystem")}
+  activePage="designSystem"
+>
+  {
+    theme === "nebula" && (
+      <PagesNebula.DesignSystem content={content} locale={locale} theme={theme} client:visible />
+    )
+  }
+  {
+    theme === "sanguine" && (
+      <PagesSanguine.DesignSystem content={content} locale={locale} theme={theme} client:visible />
+    )
+  }
+</PageLayout>

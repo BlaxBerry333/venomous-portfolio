@@ -1,0 +1,88 @@
+/* 单轴台账：一根硬轴贯穿，方形刻痕节点逐条排列。<ol> 由 Timeline 组件渲染 */
+.portfolio--sanguine-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  max-width: 760px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: var(--sanguine-color-line);
+  }
+}
+
+.portfolio--sanguine-timeline__row {
+  position: relative;
+  padding-left: 40px;
+}
+
+.portfolio--sanguine-timeline__node {
+  position: absolute;
+  left: 2px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid var(--sanguine-color-accent);
+  background: transparent;
+}
+
+.portfolio--sanguine-timeline__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.portfolio--sanguine-timeline__period {
+  font-family: var(--sanguine-font-body);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sanguine-color-accent);
+}
+
+.portfolio--sanguine-timeline__company {
+  font-family: var(--sanguine-font-display);
+  font-weight: 900;
+  font-size: clamp(20px, 2.4vw, 28px);
+  line-height: 1.05;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 2px 0;
+}
+
+.portfolio--sanguine-timeline__role {
+  font-family: var(--sanguine-font-body);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+  color: var(--sanguine-color-fg);
+  margin: 0;
+}
+
+.portfolio--sanguine-timeline__dept {
+  font-family: var(--sanguine-font-body);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sanguine-color-muted);
+}
+
+.portfolio--sanguine-timeline__row.is-active {
+  .portfolio--sanguine-timeline__node {
+    background: var(--sanguine-color-accent);
+  }
+  .portfolio--sanguine-timeline__company {
+    color: var(--sanguine-color-accent);
+  }
+}

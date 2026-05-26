@@ -1,0 +1,40 @@
+.portfolio--sanguine-text {
+  font-family: var(--sanguine-font-body);
+  letter-spacing: 0.02em;
+  width: 100%;
+  max-width: 720px;
+
+  /* body — 正文 */
+  &--body {
+    font-weight: 400;
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.65;
+    color: rgba(245, 245, 245, 0.85);
+  }
+
+  /* strong — 强调 */
+  &--strong {
+    font-weight: 700;
+    font-size: clamp(16px, 1.2vw, 19px);
+    line-height: 1.65;
+    color: var(--sanguine-color-fg);
+  }
+
+  /* label — 小型大写标签 */
+  &--label {
+    font-style: italic;
+    font-size: 13px;
+    line-height: 1.4;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sanguine-color-accent);
+  }
+
+  /* muted — 弱化 */
+  &--muted {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--sanguine-color-muted);
+  }
+}

@@ -1,0 +1,62 @@
+---
+import "@/globals.scss";
+import { LOCALES, type Locale } from "@/utils/i18n";
+import type { Theme } from "@/utils/themes";
+import { THEME_STORAGE_KEY } from "@/utils/themes";
+import { ClientRouter } from "astro:transitions";
+// eslint-disable-next-line no-restricted-imports
+import pkg from "../../package.json";
+import ThemeCriticalCSS from "./ThemeCriticalCSS.astro";
+
+interface Props {
+  locale: Locale;
+  theme?: Theme;
+  title?: string;
+  description?: string;
+}
+
+const { locale, theme, title, description = pkg.description } = Astro.props;
+
+const htmlLangAttr = LOCALES[locale].htmlLang;
+const fullTitle = `${title || ""} | Portfolio — Chen`.replace(/^ \| /, "");
+const baseUrl = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<!doctype html>
+<html lang={htmlLangAttr} data-theme={theme}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+    <title>{fullTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {
+      theme === "sanguine" && (
+        <link
+          href="https://fonts.googleapis.com/css2?family=Cinzel:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cinzel+Decorative:wght@700;900&family=Noto+Serif+SC:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      )
+    }
+    <ClientRouter />
+    <ThemeCriticalCSS />
+  </head>
+  <body>
+    <slot />
+    {
+      theme && (
+        <script is:inline data-theme-value={theme} data-key={THEME_STORAGE_KEY}>
+          {`
+            (function () {
+              var s = document.currentScript;
+              try { localStorage.setItem(s.dataset.key, s.dataset.themeValue); } catch (_) {}
+            })();
+          `}
+        </script>
+      )
+    }
+  </body>
+</html>

@@ -1,0 +1,183 @@
+// tablist 本体 —— 一排标签，可换行
+.portfolio--nebula-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 100%;
+
+  // 单个标签 — 独立霓虹胶囊
+  &__tab {
+    position: relative;
+    appearance: none;
+    margin: 0;
+    min-height: 24px;
+    padding: 9px 20px;
+    cursor: pointer;
+    font-family: var(--nebula-font-family-mono);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--nebula-color-text) 75%, transparent);
+    text-decoration: none;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-full);
+    -webkit-tap-highlight-color: transparent;
+    isolation: isolate;
+    transition:
+      color 200ms ease,
+      text-shadow 200ms ease;
+
+    // 选中态的实底胶囊 + 双色霓虹渐变描边 —— opacity 简单过渡
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: var(--nebula-color-bg);
+      box-shadow:
+        var(--nebula-shadow-neon-strong),
+        inset 0 0 0 1px transparent;
+      opacity: 0;
+      transition: opacity 200ms ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    // 双色霓虹渐变描边层
+    &::after {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--nebula-color-neon-1) 0%,
+        color-mix(in srgb, var(--nebula-color-neon-1) 50%, var(--nebula-color-neon-2) 50%) 50%,
+        var(--nebula-color-neon-2) 100%
+      );
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      mask-composite: exclude;
+      -webkit-mask-composite: xor;
+      opacity: 0;
+      transition: opacity 200ms ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    &:hover {
+      color: var(--nebula-color-text);
+      text-shadow: var(--nebula-text-shadow-neon-soft);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--nebula-color-neon-1);
+    }
+
+    // 选中 —— 亮起胶囊与描边
+    &--active {
+      color: var(--nebula-color-text);
+      text-shadow: var(--nebula-text-shadow-neon-soft);
+      cursor: default;
+
+      &::before,
+      &::after {
+        opacity: 1;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      &::before,
+      &::after {
+        transition: none;
+      }
+    }
+  }
+
+  // 标签文字浮在胶囊之上
+  &__text {
+    position: relative;
+    z-index: 1;
+  }
+
+  // 裸模式 —— 去掉外层 gap 收紧，标签收小（嵌进 switcher 玻璃浮层）
+  &--bare {
+    width: fit-content;
+    gap: var(--space-1);
+
+    .portfolio--nebula-tabs__tab {
+      padding: 7px 14px;
+      letter-spacing: 0.16em;
+    }
+  }
+
+  // 等宽方格模式 —— 每个 tab 固定正方格；字数不一也对齐，切换 / 刷新不跳动
+  &--equal {
+    --tab-size: 32px;
+
+    gap: 2px;
+
+    .portfolio--nebula-tabs__tab {
+      // 固定方格：宽高锁死，padding 归零 —— 选中前后尺寸完全不变
+      box-sizing: border-box;
+      width: var(--tab-size);
+      height: var(--tab-size);
+      min-height: 0;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      letter-spacing: normal;
+      text-transform: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      transition:
+        color 200ms ease,
+        text-shadow 200ms ease,
+        transform 120ms var(--ease-out-expo);
+
+      &:active {
+        transform: scale(0.88);
+        transition-duration: 80ms;
+      }
+
+      &--active:active {
+        transform: none;
+      }
+    }
+  }
+
+  // 移动端：大幅缩小，整齐换行
+  @media (max-width: 768px) {
+    &__tab {
+      padding: 7px 14px;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+    }
+
+    &--bare .portfolio--nebula-tabs__tab {
+      padding: 6px 12px;
+    }
+
+    // 等宽方格在移动端收小，但仍保持正方与等尺寸
+    &--equal {
+      --tab-size: 28px;
+
+      .portfolio--nebula-tabs__tab {
+        padding: 0;
+        font-size: 11px;
+        letter-spacing: normal;
+      }
+    }
+  }
+}

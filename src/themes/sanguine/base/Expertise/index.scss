@@ -1,0 +1,76 @@
+/* sanguine 专业领域 —— 领域台账：编号 + 领域名 + 横排技能胶囊，逐行硬线 */
+.portfolio--sanguine-expertise {
+  display: flex;
+  flex-direction: column;
+
+  &__row {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 40px;
+    align-items: start;
+    padding: 28px 0;
+    border-top: 1px solid var(--sanguine-color-line);
+
+    &:last-child {
+      border-bottom: 1px solid var(--sanguine-color-line);
+    }
+
+    @media (max-width: 860px) {
+      grid-template-columns: 200px minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  /* 编号在上、领域名在下 —— 名字独占整行宽度，不被编号挤换行 */
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* 镂空大编号 */
+  &__num {
+    font-family: var(--sanguine-font-display);
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--sanguine-color-accent);
+  }
+
+  &__name {
+    font-family: var(--sanguine-font-display);
+    font-weight: 900;
+    font-size: clamp(17px, 1.8vw, 22px);
+    line-height: 1.25;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sanguine-color-fg);
+  }
+
+  &__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__chip {
+    padding: 7px 15px;
+    border: 1px solid var(--sanguine-color-line);
+    border-radius: 999px;
+    font-family: var(--sanguine-font-body);
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    color: var(--sanguine-color-muted);
+    background: rgba(245, 245, 245, 0.02);
+  }
+}

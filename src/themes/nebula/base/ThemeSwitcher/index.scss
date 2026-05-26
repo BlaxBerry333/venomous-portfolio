@@ -1,0 +1,25 @@
+// 主题切换 —— fixed 玻璃浮层；内部标签外观走 <Tabs bare>
+.portfolio--nebula-theme-switcher {
+  position: fixed;
+  bottom: clamp(16px, 2.5vw, 28px);
+  right: clamp(16px, 2.5vw, 28px);
+  z-index: var(--z-overlay);
+  display: inline-flex;
+  padding: 4px;
+  background: color-mix(in srgb, var(--nebula-color-bg) 70%, transparent);
+  border: 1px solid color-mix(in srgb, var(--nebula-color-text) 18%, transparent);
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--nebula-color-text) 6%, transparent),
+    var(--nebula-shadow-neon-soft);
+  pointer-events: auto;
+
+  @media (max-width: 600px) {
+    bottom: 16px;
+    right: 16px;
+    left: 16px;
+    justify-content: center;
+  }
+}

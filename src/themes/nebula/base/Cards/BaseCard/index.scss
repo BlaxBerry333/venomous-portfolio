@@ -1,0 +1,148 @@
+.portfolio--nebula-card {
+  // 卡片内边距抽成变量：调用方覆盖它时，内部出血元素的负 margin 可自动跟随
+  --card-padding: var(--space-5);
+
+  position: relative;
+  padding: var(--card-padding);
+  border-radius: var(--radius-lg);
+  background: color-mix(in srgb, var(--nebula-color-bg) 60%, transparent);
+  border: 1px solid var(--nebula-color-border-soft);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  // 出血元素需要裁剪圆角外的部分
+  overflow: hidden;
+  transition:
+    border-color 320ms var(--ease-out-expo),
+    box-shadow 320ms var(--ease-out-expo);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--nebula-color-neon-1) 35%, transparent) 0%,
+      color-mix(in srgb, var(--nebula-color-neon-2) 25%, transparent) 100%
+    );
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+    opacity: 0.5;
+    transition: opacity 320ms var(--ease-out-expo);
+    // 描边浮在出血元素之上
+    z-index: 1;
+  }
+
+  &:hover {
+    box-shadow: var(--nebula-shadow-neon-soft);
+
+    &::before {
+      opacity: 0.9;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &::before {
+      transition: none;
+    }
+  }
+
+  // ============================================================
+  // 链接模式（href，不带 tilt）：整盒子是 <a>
+  // ============================================================
+  &__link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  // ============================================================
+  // 倾斜模式（tilt）：外层 perspective + 指针事件，内层做 rotateX/Y
+  // ============================================================
+  &__tilt-root {
+    // 指针驱动的 CSS 变量，useTilt 每帧写入；默认归零（正面朝上）
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    --glow-x: 50%;
+    --glow-y: 50%;
+
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    // perspective 挂在外层，内层 __tilt 才有真 3D 透视
+    perspective: 1200px;
+  }
+
+  // 承载 3D 旋转的内层
+  &__tilt {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    // 指针移动时即时跟随（rAF 写变量），离开时平滑摆回
+    transition: transform 420ms var(--ease-out-expo);
+    will-change: transform;
+  }
+
+  &__tilt-root:hover &__tilt {
+    // hover 时取消回正过渡，让倾斜紧跟指针；离开瞬间 transition 重新生效
+    transition: transform 80ms linear;
+  }
+
+  // 倾斜模式下的卡片本体：撑起 3D 上下文，供子项做景深分层
+  &__tilt & {
+    transform-style: preserve-3d;
+  }
+
+  // 跟指针走的霓虹高光
+  &__glow {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateZ(40px);
+    background: radial-gradient(
+      240px circle at var(--glow-x) var(--glow-y),
+      color-mix(in srgb, var(--nebula-color-neon-1) 22%, transparent) 0%,
+      color-mix(in srgb, var(--nebula-color-neon-2) 14%, transparent) 35%,
+      transparent 70%
+    );
+    transition: opacity 320ms var(--ease-out-expo);
+  }
+
+  &__tilt-root:hover &__glow {
+    opacity: 1;
+  }
+
+  // 倾斜模式 reduced-motion：彻底关掉 3D 倾斜与高光，退回静态卡片
+  @media (prefers-reduced-motion: reduce) {
+    &__tilt-root {
+      perspective: none;
+    }
+
+    &__tilt {
+      transform: none;
+      transition: none;
+    }
+
+    &__tilt-root:hover &__tilt {
+      transition: none;
+    }
+
+    &__glow {
+      transform: none;
+      display: none;
+    }
+  }
+}

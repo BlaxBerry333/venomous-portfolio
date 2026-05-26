@@ -1,0 +1,45 @@
+// 通用响应式网格
+// align="stretch" → 1fr 撑满
+// align="center"  → 列宽锁成 (100% - gap·(cols-1)) / cols，未填满时 justify-content 居中
+//                   让"少于 columns 张"的元素宽度跟铺满时一致，而不是被 1fr 撑大
+.nebula--Grid {
+  --gap: var(--space-6);
+
+  display: grid;
+  gap: var(--gap);
+  width: 100%;
+
+  &--align-stretch {
+    grid-template-columns: repeat(var(--cols, 3), 1fr);
+  }
+
+  &--align-center {
+    grid-template-columns: repeat(
+      var(--cols, 3),
+      calc((100% - var(--gap) * (var(--cols, 3) - 1)) / var(--cols, 3))
+    );
+    justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+    // 中屏：最多 2 列
+    &--align-stretch {
+      grid-template-columns: repeat(min(var(--cols, 3), 2), 1fr);
+    }
+    &--align-center {
+      grid-template-columns: repeat(
+        min(var(--cols, 3), 2),
+        calc((100% - var(--gap)) / 2)
+      );
+    }
+  }
+
+  @media (max-width: 640px) {
+    --gap: var(--space-5);
+
+    &--align-stretch,
+    &--align-center {
+      grid-template-columns: 1fr;
+    }
+  }
+}

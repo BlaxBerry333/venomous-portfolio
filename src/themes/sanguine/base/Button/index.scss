@@ -1,0 +1,106 @@
+/* 胶囊按钮 */
+.portfolio--sanguine-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  font-family: var(--sanguine-font-body);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  user-select: none;
+  cursor: pointer;
+  will-change: transform;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+
+  &__inner {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* 箭头：hover 时朝指向轻移 */
+  &__arrow {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover &__arrow--right {
+    transform: translateX(4px);
+  }
+
+  &:hover &__arrow--left {
+    transform: translateX(-4px);
+  }
+
+  /* filled —— 深红到主红的竖向渐变，顶缘一道淡高光（血液体积感）*/
+  &--filled {
+    background:
+      linear-gradient(
+        180deg,
+        var(--sanguine-color-accent) 0%,
+        var(--sanguine-color-accent-deep) 100%
+      );
+    box-shadow: inset 0 1px 0 rgba(245, 245, 245, 0.12);
+    color: var(--sanguine-color-fg);
+    transition: filter 0.2s ease;
+
+    &:hover {
+      filter: brightness(1.12);
+    }
+  }
+
+  /* outline —— 红边描边 + 极淡血色填充垫底；hover 时实体化为 filled 同款渐变 */
+  &--outline {
+    background: color-mix(in srgb, var(--sanguine-color-accent) 12%, transparent);
+    color: var(--sanguine-color-accent);
+    border: 1px solid var(--sanguine-color-accent);
+
+    &:hover {
+      background: linear-gradient(
+        180deg,
+        var(--sanguine-color-accent) 0%,
+        var(--sanguine-color-accent-deep) 100%
+      );
+      /* 边线随渐变收尾色走，避免 transparent 边透出暗底成一道假边框 */
+      border-color: var(--sanguine-color-accent-deep);
+      color: var(--sanguine-color-fg);
+      box-shadow: inset 0 1px 0 rgba(245, 245, 245, 0.12);
+    }
+  }
+
+  &--md {
+    padding: 11px 24px;
+    font-size: 12px;
+  }
+
+  &--lg {
+    padding: 16px 34px;
+    font-size: 14px;
+  }
+
+  &--xl {
+    padding: 22px 50px;
+    font-size: 17px;
+    font-family: var(--sanguine-font-display);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--sanguine-color-accent);
+    outline-offset: 6px;
+  }
+
+  /* 禁用：降不透明度、不可交互 */
+  &--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}

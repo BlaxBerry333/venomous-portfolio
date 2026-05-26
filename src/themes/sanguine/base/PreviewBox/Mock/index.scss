@@ -1,0 +1,1010 @@
+// =====================================================================
+// Mock —— sanguine 风假截图 compound 原语
+// 碑铭/拓片审美：直角硬线、1px 发丝边、血红实色记号 —— 不发光、不圆角、不柔光
+// 全部走 sanguine token；不引入新颜色
+// =====================================================================
+
+.sanguine--Mock {
+  // 局部 token alias（不污染全局）
+  --mock-fg: var(--sanguine-color-fg);
+  --mock-bg: var(--sanguine-color-bg);
+  --mock-accent: var(--sanguine-color-accent);
+  --mock-accent-deep: var(--sanguine-color-accent-deep);
+
+  // 标准面板背景：极淡灰
+  --mock-panel: rgba(245, 245, 245, 0.02);
+  // 标准发丝边线
+  --mock-line: rgba(245, 245, 245, 0.12);
+  // 「文本占位」bar 填色
+  --mock-bar: rgba(245, 245, 245, 0.2);
+  --mock-bar-soft: rgba(245, 245, 245, 0.1);
+
+  // diff 增删色：绿沿用 GitHub / nebula 同款鲜绿，删行红用 sanguine 血红。
+  // 定义在 .sanguine--Mock 上 —— DiffScene 各元素只有 __diff 系列类、
+  // 没有裸 .sanguine--Mock-Diff 元素，故变量必须挂在公共祖先上才能被继承。
+  --diff-add: #4dff90;
+  --diff-del: var(--mock-accent);
+
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: var(--mock-bg);
+  border: 1px solid var(--mock-line);
+
+  &__canvas {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  span,
+  div {
+    box-sizing: border-box;
+  }
+}
+
+// ============================================================
+// <Mock.Window>
+// ============================================================
+.sanguine--Mock-Window {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+
+  &__chrome {
+    flex-shrink: 0;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 8px;
+    background: rgba(245, 245, 245, 0.03);
+    border-bottom: 1px solid var(--mock-line);
+  }
+
+  // 三个角点 —— sanguine 用直角方块，不是 macOS 圆点
+  &__dots {
+    display: flex;
+    gap: 4px;
+    span {
+      width: 5px;
+      height: 5px;
+      background: var(--mock-bar-soft);
+      &:first-child {
+        background: color-mix(in srgb, var(--mock-accent) 70%, transparent);
+      }
+    }
+  }
+
+  &__body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+  }
+}
+
+// ============================================================
+// <Mock.Body>
+// ============================================================
+.sanguine--Mock-Body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+// ============================================================
+// <Mock.Sidebar>
+// ============================================================
+.sanguine--Mock-Sidebar {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 8px;
+  background: var(--mock-panel);
+  border-right: 1px solid var(--mock-line);
+
+  &--right {
+    border-right: 0;
+    border-left: 1px solid var(--mock-line);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 6px;
+
+    &.is-active {
+      background: color-mix(in srgb, var(--mock-accent) 14%, transparent);
+      box-shadow: inset 2px 0 0 0 var(--mock-accent);
+      .sanguine--Mock-Sidebar__mark {
+        background: var(--mock-accent);
+      }
+      .sanguine--Mock-Sidebar__line {
+        background: color-mix(in srgb, var(--mock-accent) 70%, var(--mock-fg));
+      }
+    }
+  }
+
+  // 菜单项前的方记
+  &__mark {
+    width: 4px;
+    height: 4px;
+    background: rgba(245, 245, 245, 0.3);
+    flex-shrink: 0;
+  }
+
+  &__line {
+    height: 3px;
+    background: var(--mock-bar);
+  }
+}
+
+// ============================================================
+// <Mock.Tabs>
+// ============================================================
+.sanguine--Mock-Tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px 8px 0;
+  border-bottom: 1px solid var(--mock-line);
+  flex-shrink: 0;
+
+  &__tab {
+    height: 12px;
+    background: var(--mock-bar-soft);
+
+    &.is-active {
+      background: color-mix(in srgb, var(--mock-accent) 22%, transparent);
+      box-shadow: inset 0 -2px 0 0 var(--mock-accent);
+    }
+  }
+}
+
+// ============================================================
+// <Mock.Kpi> + <Mock.KpiRow>
+// ============================================================
+.sanguine--Mock-Kpi {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px;
+  background: var(--mock-panel);
+  border: 1px solid var(--mock-line);
+  min-width: 0;
+
+  &__label {
+    font-family: var(--sanguine-font-body);
+    font-size: 6px;
+    letter-spacing: 0.2em;
+    color: rgba(245, 245, 245, 0.4);
+    text-transform: uppercase;
+  }
+
+  &__value {
+    font-family: var(--sanguine-font-display);
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--mock-accent);
+  }
+
+  &__trend {
+    font-family: var(--sanguine-font-body);
+    font-size: 7px;
+    letter-spacing: 0.1em;
+    color: rgba(245, 245, 245, 0.55);
+
+    &.is-up {
+      color: var(--mock-accent);
+    }
+    &.is-down {
+      color: rgba(245, 245, 245, 0.45);
+    }
+  }
+}
+
+.sanguine--Mock-KpiRow {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+// ============================================================
+// 图表：LineChart / AreaChart
+// ============================================================
+.sanguine--Mock-LineChart,
+.sanguine--Mock-AreaChart {
+  flex: 1;
+  min-height: 0;
+  padding: 8px;
+  background: var(--mock-panel);
+  border: 1px solid var(--mock-line);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+}
+
+// ============================================================
+// <Mock.CodeBlock>
+// ============================================================
+.sanguine--Mock-CodeBlock {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  background: rgba(245, 245, 245, 0.015);
+  overflow: hidden;
+
+  &__gutter {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 4px;
+    background: rgba(245, 245, 245, 0.025);
+    border-right: 1px solid var(--mock-line);
+    min-width: 22px;
+
+    span {
+      flex: 1;
+      min-height: 7px;
+      font-family: var(--sanguine-font-body);
+      font-size: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: rgba(245, 245, 245, 0.25);
+    }
+  }
+
+  &__code {
+    flex: 1;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__line {
+    flex: 1;
+    min-height: 7px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__bar {
+    height: 2.5px;
+    background: var(--mock-bar);
+
+    &.is-hl {
+      background: var(--mock-accent);
+    }
+  }
+}
+
+// ============================================================
+// <Mock.Terminal>
+// ============================================================
+.sanguine--Mock-Terminal {
+  flex: 1;
+  min-height: 0;
+  padding: 8px;
+  background: rgba(245, 245, 245, 0.015);
+  border: 1px solid var(--mock-line);
+  font-family: var(--sanguine-font-body);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  &__line {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    line-height: 8px;
+  }
+
+  &__prompt {
+    font-size: 7px;
+    color: var(--mock-accent);
+  }
+
+  &__bar {
+    height: 3px;
+    background: var(--mock-bar);
+  }
+
+  &__line.is-cmd .sanguine--Mock-Terminal__bar {
+    background: color-mix(in srgb, var(--mock-accent) 60%, var(--mock-fg));
+  }
+
+  &__line.is-out .sanguine--Mock-Terminal__bar,
+  &__line.is-ok .sanguine--Mock-Terminal__bar,
+  &__line.is-err .sanguine--Mock-Terminal__bar {
+    background: var(--mock-bar-soft);
+  }
+
+  &__line.is-blank {
+    height: 4px;
+  }
+
+  &__glyph {
+    font-size: 7px;
+    line-height: 1;
+    width: 6px;
+    text-align: center;
+
+    &.is-ok {
+      color: var(--mock-accent);
+    }
+    &.is-err {
+      color: rgba(245, 245, 245, 0.5);
+    }
+  }
+
+  &__cursor {
+    width: 4px;
+    height: 7px;
+    background: var(--mock-accent);
+    align-self: flex-start;
+    animation: sanguine--Mock-Terminal-blink 1.1s steps(2, end) infinite;
+  }
+}
+
+@keyframes sanguine--Mock-Terminal-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sanguine--Mock-Terminal__cursor {
+    animation: none;
+  }
+}
+
+// ============================================================
+// <Mock.Avatar> —— sanguine 用直角实块
+// ============================================================
+.sanguine--Mock-Avatar {
+  flex-shrink: 0;
+  display: inline-block;
+  background: color-mix(in srgb, var(--mock-accent) 40%, transparent);
+}
+
+// ============================================================
+// <Mock.TextLines>
+// ============================================================
+.sanguine--Mock-TextLines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__line {
+    height: 3px;
+    background: var(--mock-bar);
+  }
+}
+
+// ============================================================
+// <Mock.Tag> / <Mock.Button>
+// ============================================================
+.sanguine--Mock-Tag {
+  display: inline-block;
+  height: 10px;
+  background: var(--mock-bar-soft);
+  border: 1px solid var(--mock-line);
+
+  &.is-accent {
+    background: color-mix(in srgb, var(--mock-accent) 20%, transparent);
+    border-color: color-mix(in srgb, var(--mock-accent) 50%, transparent);
+  }
+}
+
+.sanguine--Mock-Button {
+  display: inline-block;
+  height: 14px;
+
+  &.is-primary {
+    background: var(--mock-accent);
+  }
+
+  &.is-outline {
+    background: transparent;
+    border: 1px solid color-mix(in srgb, var(--mock-accent) 60%, transparent);
+  }
+}
+
+// ============================================================
+// <Mock.Flow>
+// ============================================================
+.sanguine--Mock-Flow {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  // 碑面网格点底纹
+  background:
+    linear-gradient(90deg, rgba(245, 245, 245, 0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(245, 245, 245, 0.04) 1px, transparent 1px),
+    var(--mock-panel);
+  background-size:
+    14px 14px,
+    14px 14px,
+    auto;
+  border: 1px solid var(--mock-line);
+  overflow: hidden;
+
+  &__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  // 边：统一弱色直角折线
+  &__edge {
+    stroke: rgba(245, 245, 245, 0.35);
+    stroke-width: 1;
+  }
+
+  &__node {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 3px 4px;
+    background: var(--mock-bg);
+    border: 1px solid var(--mock-line);
+
+    // 三种 role —— start / end 灌红记，branch 弱记
+    &.is-start .sanguine--Mock-Flow__node-head {
+      background: var(--mock-accent);
+    }
+    &.is-branch .sanguine--Mock-Flow__node-head {
+      background: color-mix(in srgb, var(--mock-accent) 50%, var(--mock-fg));
+    }
+    &.is-end .sanguine--Mock-Flow__node-head {
+      background: var(--mock-accent);
+    }
+  }
+
+  &__node-head {
+    height: 3px;
+    width: 70%;
+    background: var(--mock-bar);
+  }
+
+  &__node-bar {
+    height: 2px;
+    background: var(--mock-bar);
+  }
+}
+
+// =====================================================================
+// scene 级样式 —— 不是可复用原语，只服务对应 scene
+// =====================================================================
+
+// ----- editor scene：底部 variants 行 + 输出片段 -----
+.sanguine--Mock-Editor {
+  &__variants {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-top: 1px solid var(--mock-line);
+    flex-shrink: 0;
+  }
+
+  &__output {
+    flex-shrink: 0;
+    padding: 0 12px 10px;
+    min-height: 60px;
+    display: flex;
+  }
+}
+
+// ----- blocks scene：画布 + 散落硬边方块，1 个 active -----
+.sanguine--Mock-Blocks {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: var(--mock-panel);
+  border-bottom: 1px solid var(--mock-line);
+  overflow: hidden;
+
+  &__line {
+    position: absolute;
+    background: rgba(245, 245, 245, 0.08);
+    pointer-events: none;
+
+    &--h {
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+    &--v {
+      top: 0;
+      bottom: 0;
+      width: 1px;
+    }
+  }
+
+  // 未选中：暗块 + 弱发丝边
+  &__block {
+    position: absolute;
+    background: rgba(245, 245, 245, 0.05);
+    border: 1px solid rgba(245, 245, 245, 0.16);
+
+    // 选中：灌红实色 + 红边（无外发光）
+    &.is-active {
+      background: color-mix(in srgb, var(--mock-accent) 32%, transparent);
+      border-color: var(--mock-accent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mock-accent) 40%, transparent);
+    }
+  }
+
+  &__legend {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    background: rgba(245, 245, 245, 0.02);
+  }
+}
+
+// ----- widgets scene：组件库首页，1 行 3 张大卡 -----
+.sanguine--Mock-Widgets {
+  &__hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--mock-line);
+    flex-shrink: 0;
+  }
+
+  &__row {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 8px;
+    background: var(--mock-panel);
+    border: 1px solid var(--mock-line);
+    min-width: 0;
+  }
+
+  &__preview {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(245, 245, 245, 0.025);
+
+    &--stack {
+      flex-direction: column;
+      gap: 4px;
+      padding: 6px;
+    }
+  }
+
+  &__title {
+    height: 4px;
+    width: 60%;
+    background: rgba(245, 245, 245, 0.45);
+  }
+
+  &__desc {
+    height: 3px;
+    width: 90%;
+    background: rgba(245, 245, 245, 0.2);
+  }
+
+  &__input {
+    width: 80%;
+    height: 8px;
+    background: var(--mock-bg);
+    border: 1px solid color-mix(in srgb, var(--mock-accent) 45%, transparent);
+  }
+}
+
+// ----- 左右分栏家族共享 -----
+.sanguine--Mock-Split {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+
+  &__left {
+    width: 38%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 0;
+    background: var(--mock-panel);
+    border-right: 1px solid var(--mock-line);
+    overflow: hidden;
+
+    &--sidebar {
+      width: 22%;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+// ----- chat scene：IM 对话 -----
+.sanguine--Mock-Chat {
+  &__conv {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+
+    &.is-active {
+      background: color-mix(in srgb, var(--mock-accent) 14%, transparent);
+      box-shadow: inset 2px 0 0 0 var(--mock-accent);
+    }
+  }
+
+  &__convName {
+    height: 3px;
+    background: rgba(245, 245, 245, 0.35);
+    min-width: 0;
+  }
+
+  // 未读方记
+  &__dot {
+    margin-left: auto;
+    width: 4px;
+    height: 4px;
+    background: var(--mock-accent);
+    flex-shrink: 0;
+  }
+
+  &__thread {
+    padding: 8px 10px;
+    gap: 5px;
+  }
+
+  &__bubble {
+    // height + width 由 inline style 控制
+    &.is-l {
+      align-self: flex-start;
+      background: rgba(245, 245, 245, 0.12);
+    }
+    &.is-r {
+      align-self: flex-end;
+      background: color-mix(in srgb, var(--mock-accent) 55%, transparent);
+    }
+  }
+
+  &__inputBar {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 8px;
+    border-top: 1px solid var(--mock-line);
+    background: rgba(245, 245, 245, 0.02);
+  }
+
+  &__input {
+    flex: 1;
+    height: 10px;
+    background: rgba(245, 245, 245, 0.05);
+    border: 1px solid rgba(245, 245, 245, 0.16);
+  }
+}
+
+// ----- diff scene：代码 diff（左旧 / 右新）-----
+.sanguine--Mock-Diff {
+  &__bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--mock-line);
+    background: rgba(245, 245, 245, 0.02);
+    flex-shrink: 0;
+  }
+
+  &__stat {
+    width: 14px;
+    height: 5px;
+
+    &.is-add {
+      background: color-mix(in srgb, var(--diff-add) 85%, var(--mock-fg));
+    }
+    &.is-del {
+      background: color-mix(in srgb, var(--diff-del) 78%, var(--mock-fg));
+    }
+  }
+
+  &__split {
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__pane {
+    padding: 4px 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__line {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 6px;
+    min-height: 0;
+
+    // 增行：绿色实底
+    &.is-add {
+      background: color-mix(in srgb, var(--diff-add) 20%, transparent);
+    }
+    // 删行：红色实底
+    &.is-del {
+      background: color-mix(in srgb, var(--diff-del) 22%, transparent);
+    }
+    // gap：对侧有改动这里被吃掉
+    &.is-gap {
+      background: rgba(245, 245, 245, 0.025);
+    }
+  }
+
+  &__num {
+    font-family: var(--sanguine-font-body);
+    font-size: 6px;
+    color: rgba(245, 245, 245, 0.3);
+    width: 12px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  &__code {
+    height: 3px;
+    background: rgba(245, 245, 245, 0.28);
+  }
+
+  &__line.is-add &__code {
+    background: color-mix(in srgb, var(--diff-add) 85%, var(--mock-fg));
+  }
+  &__line.is-del &__code {
+    background: color-mix(in srgb, var(--diff-del) 78%, var(--mock-fg));
+  }
+  &__line.is-gap &__code {
+    background: rgba(245, 245, 245, 0.08);
+  }
+}
+
+// ----- gallery scene：图集网格 -----
+.sanguine--Mock-Gallery {
+  &__filter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  &__grid {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 4px;
+  }
+
+  &__tile {
+    background: rgba(245, 245, 245, 0.06);
+    border: 1px solid var(--mock-line);
+
+    &.is-accent {
+      background: color-mix(in srgb, var(--mock-accent) 24%, transparent);
+      border-color: color-mix(in srgb, var(--mock-accent) 45%, transparent);
+    }
+  }
+}
+
+// ----- campus scene：园区俯瞰图 -----
+.sanguine--Mock-Campus {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    padding: 8px;
+    border-bottom: 1px solid var(--mock-line);
+    flex-shrink: 0;
+  }
+
+  &__tab {
+    height: 22px;
+    background: rgba(245, 245, 245, 0.06);
+    border: 1px solid var(--mock-line);
+
+    &.is-active {
+      background: color-mix(in srgb, var(--mock-accent) 30%, transparent);
+      border-color: var(--mock-accent);
+    }
+  }
+
+  &__main {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+  }
+
+  &__tools {
+    width: 40%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-right: 1px solid var(--mock-line);
+  }
+
+  &__btnRow {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    flex: 1;
+    height: 18px;
+
+    &.is-primary {
+      background: var(--mock-accent);
+    }
+    &.is-muted {
+      background: rgba(245, 245, 245, 0.06);
+      border: 1px solid var(--mock-line);
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 2px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px;
+    background: rgba(245, 245, 245, 0.02);
+    border: 1px solid var(--mock-line);
+
+    &.is-active {
+      background: color-mix(in srgb, var(--mock-accent) 12%, transparent);
+      border-color: color-mix(in srgb, var(--mock-accent) 45%, transparent);
+    }
+  }
+
+  &__itemThumb {
+    width: 30px;
+    height: 24px;
+    flex-shrink: 0;
+    background: rgba(245, 245, 245, 0.08);
+    border: 1px solid var(--mock-line);
+  }
+
+  &__item.is-active &__itemThumb {
+    background: color-mix(in srgb, var(--mock-accent) 28%, transparent);
+    border-color: color-mix(in srgb, var(--mock-accent) 40%, transparent);
+  }
+
+  &__itemText {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &__itemLine {
+    height: 3px;
+    background: var(--mock-bar);
+
+    &:nth-child(n + 2) {
+      background: var(--mock-bar-soft);
+    }
+  }
+
+  &__pager {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    padding-top: 6px;
+    flex-shrink: 0;
+  }
+
+  &__pagerBtn {
+    width: 16px;
+    height: 12px;
+    background: rgba(245, 245, 245, 0.08);
+    border: 1px solid var(--mock-line);
+
+    &.is-active {
+      background: rgba(245, 245, 245, 0.25);
+      border-color: rgba(245, 245, 245, 0.4);
+    }
+  }
+
+  &__mapWrap {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+  }
+
+  // 俯瞰图：碑面网格底 + 红边
+  &__map {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    background:
+      linear-gradient(90deg, rgba(245, 245, 245, 0.05) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(245, 245, 245, 0.05) 1px, transparent 1px),
+      color-mix(in srgb, var(--mock-accent) 10%, transparent);
+    background-size:
+      16px 16px,
+      16px 16px,
+      auto;
+    border: 1px solid color-mix(in srgb, var(--mock-accent) 35%, transparent);
+    overflow: hidden;
+  }
+
+  // 右下角 mini-map
+  &__mini {
+    position: absolute;
+    right: 4px;
+    bottom: 4px;
+    width: 18%;
+    height: 22%;
+    background: var(--mock-accent);
+    border: 1px solid color-mix(in srgb, var(--mock-accent) 60%, #fff);
+  }
+}

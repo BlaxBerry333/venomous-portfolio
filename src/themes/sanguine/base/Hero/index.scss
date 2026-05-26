@@ -1,0 +1,26 @@
+/* sanguine 首页 hero —— 占屏居中 */
+.portfolio--sanguine-hero {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-inline: 8px;
+  padding-block: var(--space-12);
+  gap: 28px;
+
+  @media (min-width: 768px) {
+    padding-inline: var(--page-px);
+    padding-block: 80px;
+  }
+
+  &__headline {
+    margin: 0;
+  }
+}

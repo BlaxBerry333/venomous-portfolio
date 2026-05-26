@@ -1,0 +1,108 @@
+// 球体外层 stage —— 默认 grab，按下时 grabbing
+.nebula--GravityGraph__stage {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  cursor: grab;
+
+  &.is-grabbing {
+    cursor: grabbing;
+  }
+}
+
+// 拖动期间（body 有 data-nebula-grabbing="true"）：
+// drei <Html> portal 可能挂到 document.body 而非 stage 下，所以用 body data-attr 选中。
+body[data-nebula-grabbing="true"] {
+  .nebula--GravityGraph__node {
+    cursor: inherit !important;
+    pointer-events: none !important;
+  }
+  canvas {
+    cursor: grabbing !important;
+  }
+}
+
+// drei <Html> portal wrapper —— 强制不裁切（长 label 在容器边缘会被默认 wrapper 截断）
+.nebula--GravityGraph__node-html {
+  overflow: visible !important;
+  width: max-content;
+}
+
+// 中轴 N/S 极点标签 —— 单字符不要 letter-spacing（会被加到字符右侧推偏视觉中心）
+.nebula--GravityGraph__pole {
+  display: inline-block;
+  font-family: var(--nebula-font-family-mono);
+  font-size: 11px;
+  color: var(--nebula-color-muted);
+  text-shadow: var(--nebula-text-shadow-neon-soft);
+  user-select: none;
+  pointer-events: none;
+}
+
+// 节点 button —— hover CSS 不跟 motion 冲突，文字一律不可选中
+.nebula--GravityGraph__node {
+  background: none;
+  border: none;
+  padding: 4px 6px;
+  cursor: pointer;
+  font-family: var(--nebula-font-family-display);
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  pointer-events: auto;
+  color: var(--nebula-color-text);
+  text-shadow: var(--nebula-text-shadow-neon-strong);
+  transition:
+    color 180ms var(--ease-out-expo),
+    text-shadow 180ms var(--ease-out-expo),
+    transform 220ms var(--ease-out-expo);
+
+  &--primary {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &--secondary {
+    font-size: 12px;
+  }
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    transform: scale(1.35);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nebula--GravityGraph__node {
+    transition: none;
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
+  }
+}
+
+// 详情 Card overlay 容器 —— 绝对定位铺满 stage
+.nebula--GravityGraph__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+}
+
+// 详情 frame —— 内含 HiveCellCard size=lg（六边形）；外辉光用 drop-shadow 跟着六边形 alpha 走
+//   filter: drop-shadow 是 raster 后处理，会渲染出"跟内容形状一致"的阴影 → 比 box-shadow（矩形）更贴
+//   双层 drop-shadow 叠双色：neon-1 内圈紧致 + neon-2 外圈扩散
+.nebula--GravityGraph__detail-frame {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  // 不设宽高 / 背景 / 圆角 / box-shadow —— 形状交给 HiveCellCard 自身
+  filter:
+    drop-shadow(0 0 18px color-mix(in srgb, var(--nebula-color-neon-1) 70%, transparent))
+    drop-shadow(0 0 40px color-mix(in srgb, var(--nebula-color-neon-2) 45%, transparent));
+}
