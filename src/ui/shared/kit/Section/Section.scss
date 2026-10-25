@@ -1,0 +1,55 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 分区
+// ==================================================
+.ui-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--layout-gap-l);
+  padding-block: var(--layout-section);
+}
+
+.ui-section--full {
+  justify-content: center;
+  min-height: 100dvh;
+  padding-block: calc(var(--layout-frame) + var(--layout-safe-top) + 72px)
+    calc(var(--layout-frame) + 72px);
+}
+
+.ui-section--centered {
+  align-items: center;
+}
+
+.ui-section--centered > header,
+.ui-section--centered > .ui-text,
+.ui-section--centered > .ui-stack > .ui-text {
+  text-align: center;
+  text-wrap: balance;
+}
+
+.ui-section--centered > .ui-stack--row {
+  justify-content: center;
+}
+
+.ui-section.ui-section--centered > .ui-quote {
+  align-items: center;
+  padding-left: 0;
+  text-align: center;
+  border: 0;
+}
+
+.ui-section.ui-section--centered > .ui-quote .ui-text {
+  font-size: var(--text-size-heading);
+  line-height: 1.4;
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$tablet) {
+  .ui-section--full {
+    min-height: 100svh;
+    padding-block: calc(var(--layout-safe-top) + 128px) 80px;
+  }
+}

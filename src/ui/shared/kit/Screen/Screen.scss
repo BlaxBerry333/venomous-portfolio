@@ -1,0 +1,38 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 整屏分区
+// ==================================================
+.ui-screen {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: center;
+  column-gap: var(--layout-column-gap);
+  min-height: 100dvh;
+  padding-block: calc(var(--layout-frame) + var(--layout-safe-top) + 72px)
+    calc(var(--layout-frame) + 72px);
+}
+
+.ui-screen__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  grid-column: 1 / span 8;
+  gap: var(--layout-gap-m);
+  min-width: 0;
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$tablet) {
+  .ui-screen {
+    row-gap: var(--layout-gap-l);
+    min-height: 100svh;
+    padding-block: calc(var(--layout-safe-top) + 128px) 80px;
+  }
+
+  .ui-screen__content {
+    grid-column: 1 / -1;
+  }
+}

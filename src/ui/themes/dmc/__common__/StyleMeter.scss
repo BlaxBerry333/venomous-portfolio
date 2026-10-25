@@ -1,0 +1,334 @@
+@use "sass:list";
+@use "sass:math";
+@use "sass:string";
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 评价面板容器
+// ==================================================
+.dmc-style-meter {
+  --dmc-style-tilt: rotateY(-26deg) rotateX(10deg) rotateZ(-4deg);
+  --dmc-metal: linear-gradient(
+    172deg,
+    var(--dmc-style-top) 0%,
+    var(--dmc-style-color) 42%,
+    var(--dmc-style-deep) 100%
+  );
+
+  position: fixed;
+  top: 18vh;
+  right: max(5vw, var(--layout-safe-right));
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  max-width: 90vw;
+  perspective: 900px;
+  pointer-events: none;
+  text-align: right;
+  opacity: 0;
+  transform: translateX(12px);
+  transition:
+    opacity 420ms ease-out,
+    transform 420ms ease-out;
+  font-family: Georgia, "Times New Roman", "Songti SC", serif;
+}
+
+// ==================================================
+// 显示状态
+// ==================================================
+.dmc-style-meter--visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+// ==================================================
+// 各档配色
+// ==================================================
+.dmc-style-meter--rank-0 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: color-mix(in srgb, var(--theme-color-text) 90%, #000);
+  --dmc-style-deep: color-mix(in srgb, var(--theme-color-text) 66%, #000);
+  --dmc-style-glow: rgba(255, 255, 255, 0.08);
+}
+
+.dmc-style-meter--rank-1 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: color-mix(in srgb, var(--theme-color-text) 96%, #000);
+  --dmc-style-deep: color-mix(in srgb, var(--theme-color-text) 74%, #000);
+  --dmc-style-glow: rgba(255, 255, 255, 0.14);
+}
+
+.dmc-style-meter--rank-2 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: var(--theme-color-text);
+  --dmc-style-deep: color-mix(
+    in srgb,
+    var(--theme-color-primary) 30%,
+    color-mix(in srgb, var(--theme-color-text) 74%, #000)
+  );
+  --dmc-style-glow: rgba(255, 255, 255, 0.24);
+}
+
+.dmc-style-meter--rank-3 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: var(--theme-color-text);
+  --dmc-style-deep: var(--theme-color-primary);
+  --dmc-style-glow: color-mix(in srgb, var(--theme-color-primary-light) 30%, transparent);
+}
+
+.dmc-style-meter--rank-4 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: color-mix(in srgb, var(--theme-color-primary-light) 60%, #fff);
+  --dmc-style-deep: var(--theme-color-primary);
+  --dmc-style-glow: color-mix(in srgb, var(--theme-color-primary-light) 45%, transparent);
+}
+
+.dmc-style-meter--rank-5 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: var(--theme-color-primary-light);
+  --dmc-style-deep: color-mix(in srgb, var(--theme-color-primary) 70%, var(--theme-color-accent));
+  --dmc-style-glow: color-mix(in srgb, var(--theme-color-primary-light) 60%, transparent);
+}
+
+.dmc-style-meter--rank-6 {
+  --dmc-style-top: #fff;
+  --dmc-style-color: var(--theme-color-highlight);
+  --dmc-style-deep: var(--theme-color-accent);
+  --dmc-style-glow: color-mix(in srgb, var(--theme-color-primary-light) 80%, transparent);
+}
+
+// ==================================================
+// 灌字液面
+// ==================================================
+@property --dmc-style-wave {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+
+@keyframes dmc-style-wave {
+  from {
+    --dmc-style-wave: 0;
+  }
+
+  to {
+    --dmc-style-wave: 1;
+  }
+}
+
+@function dmc-style-wave-clip($steps) {
+  $points: ();
+
+  @for $i from 0 through $steps {
+    $t: math.div($i, $steps);
+    $y: string.unquote(
+      "calc(var(--dmc-style-fill-y) + var(--dmc-style-wave-amp) * (sin((var(--dmc-style-wave) + #{$t * 1.5}) * 360deg) + 0.45 * sin((#{$t * 2.5} - 2 * var(--dmc-style-wave)) * 360deg)))"
+    );
+    $points: list.append($points, (-10% + $t * 120%) $y, $separator: comma);
+  }
+
+  $points: list.append($points, 110% 140%, $separator: comma);
+  $points: list.append($points, -10% 140%, $separator: comma);
+
+  @return polygon($points);
+}
+
+// ==================================================
+// 字母
+// ==================================================
+.dmc-style-meter__letter {
+  --dmc-style-halo: 48px;
+  --dmc-style-box: calc(100% - 2 * var(--dmc-style-halo));
+  --dmc-style-wave-amp: 3%;
+  --dmc-style-reach: calc(1.5 * var(--dmc-style-wave-amp));
+  --dmc-style-span: calc(100% + 2 * var(--dmc-style-reach));
+  --dmc-style-empty: calc(1 - var(--dmc-style-level, 0));
+  --dmc-style-fill-y: calc(var(--dmc-style-empty) * var(--dmc-style-span) - var(--dmc-style-reach));
+
+  position: relative;
+  display: inline-block;
+  will-change: transform;
+  font-size: clamp(64px, 14vw, 150px);
+  font-weight: 900;
+  font-style: italic;
+  font-synthesis: none;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  padding: 0.06em 0.06em 0.02em;
+
+  &::before {
+    content: attr(data-letter);
+    position: absolute;
+    inset: calc(-1 * var(--dmc-style-halo));
+    padding: calc(0.06em + var(--dmc-style-halo)) calc(0.06em + var(--dmc-style-halo))
+      calc(0.02em + var(--dmc-style-halo));
+    color: transparent;
+    text-shadow:
+      3px 4px 0 rgba(0, 0, 0, 0.55),
+      0 0 10px var(--dmc-style-glow),
+      0 0 30px var(--dmc-style-glow);
+    mask-image: linear-gradient(
+      to top,
+      #000 calc(var(--dmc-style-halo) + var(--dmc-style-level, 0) * var(--dmc-style-box) - 0.08em),
+      transparent
+        calc(var(--dmc-style-halo) + var(--dmc-style-level, 0) * var(--dmc-style-box) + 0.08em)
+    );
+  }
+}
+
+.dmc-style-meter__hollow {
+  color: rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 1px color-mix(in srgb, var(--dmc-style-color) 45%, transparent);
+}
+
+.dmc-style-meter__fill {
+  position: absolute;
+  inset: 0;
+  padding: inherit;
+  color: transparent;
+  background: var(--dmc-metal);
+  background-clip: text;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.35);
+  clip-path: dmc-style-wave-clip(24);
+  animation: dmc-style-wave 2.6s linear infinite;
+}
+
+// ==================================================
+// 评语
+// ==================================================
+$georgia-italic-angle: 13deg;
+
+.dmc-style-meter__name {
+  width: fit-content;
+  margin: 6px 0 0 auto;
+}
+
+.dmc-style-meter__words {
+  display: flex;
+  column-gap: calc(var(--text-size-subheading) * 0.13);
+  transform: skewX(-$georgia-italic-angle);
+
+  @media (max-width: breakpoints.$phone) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.dmc-style-meter__word {
+  transform: skewX($georgia-italic-angle);
+}
+
+// ==================================================
+// 换档动画
+// ==================================================
+.dmc-style-meter__body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  transform-origin: 100% 50%;
+  transform-style: preserve-3d;
+  transform: var(--dmc-style-tilt);
+}
+
+.dmc-style-meter__slam,
+.dmc-style-meter__name {
+  transform-origin: 50% 50%;
+}
+
+.dmc-style-meter--up {
+  animation: dmc-style-slam-up 380ms cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.dmc-style-meter--down {
+  animation: dmc-style-slam-down 320ms ease-out;
+}
+
+@keyframes dmc-style-slam-up {
+  0% {
+    transform: scale(1.7) rotate(-6deg);
+    opacity: 0;
+    filter: brightness(2.2);
+  }
+
+  55% {
+    transform: scale(0.94) rotate(1deg);
+    opacity: 1;
+    filter: brightness(1.6);
+  }
+
+  100% {
+    transform: scale(1) rotate(0);
+    filter: brightness(1);
+  }
+}
+
+@keyframes dmc-style-slam-down {
+  0% {
+    transform: scale(1.1);
+    opacity: 0.2;
+    filter: grayscale(1);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    filter: grayscale(0);
+  }
+}
+
+// ==================================================
+// SSS 燃烧
+// ==================================================
+@media (prefers-reduced-motion: no-preference) {
+  .dmc-style-meter--rank-6 .dmc-style-meter__letter::before {
+    animation: dmc-style-blaze 900ms ease-in-out infinite alternate;
+  }
+}
+
+@keyframes dmc-style-blaze {
+  from {
+    text-shadow:
+      0 0 10px color-mix(in srgb, var(--theme-color-primary-light) 80%, transparent),
+      0 0 30px color-mix(in srgb, var(--theme-color-primary-light) 50%, transparent);
+  }
+
+  to {
+    text-shadow:
+      0 0 16px color-mix(in srgb, var(--theme-color-primary-light) 95%, transparent),
+      0 0 48px color-mix(in srgb, var(--theme-color-primary-light) 75%, transparent);
+  }
+}
+
+// ==================================================
+// 终结技定格
+// ==================================================
+.dmc-style-meter--frozen {
+  filter: grayscale(1) brightness(1.1);
+
+  &,
+  *,
+  *::before {
+    animation-play-state: paused;
+  }
+}
+
+// ==================================================
+// 减少动效
+// ==================================================
+@media (prefers-reduced-motion: reduce) {
+  .dmc-style-meter {
+    transition: none;
+  }
+
+  .dmc-style-meter__fill {
+    animation: none;
+  }
+}
+
+// ==================================================
+// 隐藏时停波
+// ==================================================
+.dmc-style-meter:not(.dmc-style-meter--visible) .dmc-style-meter__fill {
+  animation-play-state: paused;
+}

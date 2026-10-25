@@ -1,0 +1,30 @@
+---
+import * as I18n from "@/i18n";
+import * as Pages from "@/ui/pages";
+import Document from "@/ui/layout/Document/Document.astro";
+
+interface Props {
+  locale: I18n.Locale;
+  work: I18n.Data.Work;
+}
+
+export function getStaticPaths() {
+  return I18n.LOCALES.flatMap((locale) =>
+    I18n.Data.localizedWorks(locale).map((work) => ({
+      params: { locale, id: work.id },
+      props: { locale, work },
+    })),
+  );
+}
+
+const { locale, work } = Astro.props;
+---
+
+<Document
+  locale={locale}
+  title={`${work.title} — ${I18n.MESSAGES[locale].UI.site}`}
+  description={work.summary ?? work.subtitle}
+  path={["work", work.id]}
+>
+  <Pages.Work client:only="react" locale={locale} id={work.id} />
+</Document>

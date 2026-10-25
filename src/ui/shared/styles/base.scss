@@ -1,0 +1,57 @@
+// ==================================================
+// 盒模型
+// ==================================================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+// ==================================================
+// 页面
+// ==================================================
+html,
+body {
+  margin: 0;
+  -webkit-user-select: none;
+  user-select: none;
+  background: #000;
+}
+
+// ==================================================
+// 布局与文字字阶变量
+// ==================================================
+:root {
+  --layout-width: 1320px;
+  --layout-gutter: clamp(24px, 5vw, 80px);
+  --layout-frame: clamp(12px, 1.6vw, 24px);
+  --layout-safe-top: env(safe-area-inset-top, 0px);
+  --layout-safe-right: env(safe-area-inset-right, 0px);
+  --layout-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --layout-safe-left: env(safe-area-inset-left, 0px);
+  --layout-column-gap: clamp(16px, 2vw, 32px);
+  --layout-section: clamp(104px, 18vh, 200px);
+  --layout-aside: 440px;
+  --layout-gap-xs: 8px;
+  --layout-gap-s: 16px;
+  --layout-gap-m: 32px;
+  --layout-gap-l: 64px;
+  --text-size-hero: clamp(56px, min(10vw, 16vh), 144px);
+  --text-size-title: clamp(34px, 4.2vw, 64px);
+  --text-size-heading: clamp(25px, 2.8vw, 40px);
+  --text-size-subheading: clamp(19px, 1.7vw, 24px);
+  --text-size-lead: clamp(16px, 1.4vw, 18px);
+  --text-size-body: 15px;
+  --text-size-ui: 12px;
+  --text-size-caption: 12px;
+  --text-size-label: 11px;
+}
+
+// ==================================================
+// 主题切换过渡
+// ==================================================
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 600ms;
+  animation-timing-function: var(--theme-ease, ease);
+}

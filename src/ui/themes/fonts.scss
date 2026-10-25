@@ -1,0 +1,24 @@
+// ==================================================
+// 语言字体
+// ==================================================
+:root,
+[lang|="zh"] {
+  --language-font-sans: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC";
+  --language-font-serif: "Songti SC", "Noto Serif SC";
+}
+
+[lang|="ja"] {
+  --language-font-sans: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP";
+  --language-font-serif: "Hiragino Mincho ProN", "Noto Serif JP";
+}
+
+// ==================================================
+// 主题字体组合
+// ==================================================
+:root,
+[lang] {
+  --theme-font-title:
+    var(--theme-font-title-latin, system-ui), var(--language-font-sans), sans-serif;
+  --theme-font-body: var(--theme-font-body-latin, system-ui), var(--language-font-sans), sans-serif;
+  --theme-font-quote: var(--theme-font-quote-latin, serif), var(--language-font-serif), serif;
+}

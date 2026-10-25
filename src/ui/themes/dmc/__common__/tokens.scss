@@ -1,0 +1,134 @@
+@use "./blade";
+@use "./rank";
+
+// ==================================================
+// DMC 基础
+// ==================================================
+[data-theme="dmc"] {
+  font-synthesis-style: none;
+
+  --theme-color-background: #070204;
+  --theme-color-surface: #4a0a12;
+  --theme-color-text: #f3eeea;
+  --theme-color-primary: #b5121b;
+  --theme-color-primary-light: #cf2a30;
+  --theme-color-secondary: #b9b8b6;
+  --theme-color-highlight: #fff;
+  --theme-color-accent: #d41f2f;
+  --theme-font-title-latin: "Georgia", "Times New Roman";
+  --theme-font-body-latin: "Helvetica Neue";
+  --theme-font-quote-latin: "Didot", "Bodoni 72";
+  --theme-align: flex-start;
+  --theme-text-align: left;
+  --theme-radius: 0;
+  --theme-panel-bg: color-mix(in srgb, var(--theme-color-background) 74%, transparent);
+  --theme-panel-border: transparent;
+  --theme-panel-blur: none;
+  --theme-panel-shadow: none;
+  --theme-panel-skew: none;
+  --dmc-tint: color-mix(in srgb, var(--theme-color-text) 88%, var(--theme-color-primary));
+  --dmc-glow: color-mix(in srgb, var(--theme-color-primary) 45%, transparent);
+  --dmc-metal: linear-gradient(
+    172deg,
+    #fff 0%,
+    var(--dmc-tint) 42%,
+    var(--theme-color-primary) 100%
+  );
+  --dmc-metal-size: auto;
+  --dmc-metal-shadow: drop-shadow(1px 1.5px 0 rgba(0, 0, 0, 0.55))
+    drop-shadow(0 0 8px var(--dmc-glow));
+  --dmc-blade-edge: linear-gradient(
+    135deg,
+    #fff 0%,
+    var(--dmc-tint) 16%,
+    color-mix(in srgb, var(--theme-color-primary) 75%, #000) 52%,
+    #000 100%
+  );
+  --dmc-blade-edge-dim: linear-gradient(
+    135deg,
+    var(--theme-color-primary-light) 0%,
+    color-mix(in srgb, var(--theme-color-primary) 70%, transparent) 18%,
+    color-mix(in srgb, var(--theme-color-primary) 28%, transparent) 60%,
+    color-mix(in srgb, var(--theme-color-primary) 50%, transparent) 100%
+  );
+  --dmc-blade-edge-soft: linear-gradient(
+    135deg,
+    var(--theme-color-primary-light) 0%,
+    color-mix(in srgb, var(--theme-color-primary) 75%, transparent) 16%,
+    color-mix(in srgb, var(--theme-color-primary) 40%, transparent) 52%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  --dmc-blade-steel: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--theme-color-primary) 80%, #000),
+    color-mix(in srgb, var(--theme-color-primary) 45%, #000)
+  );
+  --dmc-blade-dark: linear-gradient(160deg, rgba(16, 14, 16, 0.94), rgba(8, 6, 8, 0.82));
+  --theme-ease: cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+// ==================================================
+// DMC 维吉尔变量
+// ==================================================
+[data-theme="dmc"][data-theme-variant="vergil"] {
+  --theme-color-background: #020409;
+  --theme-color-surface: #071a3d;
+  --theme-color-text: #eef4ff;
+  --theme-color-primary: #3d8cff;
+  --theme-color-primary-light: #8cc4ff;
+  --theme-color-secondary: #d7e6ff;
+  --theme-color-highlight: #e9f6ff;
+  --theme-color-accent: #4fc3ff;
+  --dmc-metal: linear-gradient(
+    180deg,
+    #fff 0%,
+    var(--dmc-tint) 26%,
+    var(--theme-color-primary-light) 58%,
+    var(--theme-color-primary) 100%
+  );
+  --dmc-metal-size: 100% 1lh;
+}
+
+// ==================================================
+// DMC 页框覆写
+// ==================================================
+[data-theme="dmc"] .layout-frame__scrim {
+  display: none;
+}
+
+// ==================================================
+// DMC 骨架覆写
+// ==================================================
+[data-theme="dmc"] .theme-skeleton {
+  .theme-skeleton__bar--title {
+    height: calc(var(--text-size-hero) * 0.72);
+    background: var(--dmc-metal);
+    filter: var(--dmc-metal-shadow);
+    transform: perspective(1200px) rotateY(-16deg) rotateZ(-2deg);
+    transform-origin: left center;
+  }
+
+  .theme-skeleton__journey {
+    flex-flow: row wrap;
+    gap: 24px;
+    width: min(100%, 1100px);
+  }
+
+  .theme-skeleton__stage {
+    @include blade.plate(14px);
+
+    flex: 1 1 220px;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 20px;
+    background: var(--dmc-blade-edge-dim);
+  }
+
+  .theme-skeleton__stage::before {
+    background: var(--dmc-blade-dark);
+  }
+
+  .theme-skeleton__year {
+    @include rank.numeral;
+  }
+}

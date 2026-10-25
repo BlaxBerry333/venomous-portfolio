@@ -1,0 +1,37 @@
+// ==================================================
+// 键值对
+// ==================================================
+.ui-pairs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 40px;
+  margin: 0;
+  font-size: var(--text-size-body);
+}
+
+.ui-pairs__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.ui-pairs__key {
+  font-family: var(--theme-font-title);
+  font-size: var(--text-size-label);
+  letter-spacing: 0.24em;
+  color: var(--theme-color-primary);
+}
+
+.ui-pairs__value {
+  margin: 0;
+  white-space: pre-line;
+}
+
+// ==================================================
+// 纵向
+// ==================================================
+.ui-pairs--vertical {
+  flex-direction: column;
+  gap: 20px;
+}

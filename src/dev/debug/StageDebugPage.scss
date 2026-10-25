@@ -1,0 +1,48 @@
+// ==================================================
+// 调试面板容器
+// ==================================================
+.stage-debug {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 20;
+  font:
+    11px/1.4 ui-monospace,
+    Menlo,
+    monospace;
+  color: #fff;
+}
+
+// ==================================================
+// 帧率读数
+// ==================================================
+.stage-debug__hud {
+  min-height: 1.4em;
+  padding: 6px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+// ==================================================
+// 档位按钮
+// ==================================================
+.stage-debug__button {
+  padding: 5px 9px;
+  font: inherit;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.stage-debug__button--active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.18);
+}

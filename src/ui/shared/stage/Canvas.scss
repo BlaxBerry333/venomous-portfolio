@@ -1,0 +1,30 @@
+// ==================================================
+// 场景容器
+// ==================================================
+.stage-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  canvas {
+    opacity: 0;
+    transition: opacity 900ms ease-out;
+  }
+}
+
+// ==================================================
+// 就绪状态
+// ==================================================
+.stage-canvas--ready canvas {
+  opacity: 1;
+}
+
+// ==================================================
+// 减少动效
+// ==================================================
+@media (prefers-reduced-motion: reduce) {
+  .stage-canvas canvas {
+    transition: none;
+  }
+}

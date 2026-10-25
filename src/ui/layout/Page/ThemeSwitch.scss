@@ -1,0 +1,20 @@
+// ==================================================
+// 主题色样
+// ==================================================
+.theme-switch__swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--theme-color-primary), var(--theme-color-accent));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--theme-color-text) 22%, transparent);
+  opacity: 0.7;
+  transition:
+    opacity 300ms var(--theme-ease),
+    box-shadow 300ms var(--theme-ease);
+}
+
+.ui-choice__item--active .theme-switch__swatch,
+.ui-choice__item:hover .theme-switch__swatch {
+  opacity: 1;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--theme-color-text) 75%, transparent);
+}

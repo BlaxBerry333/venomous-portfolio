@@ -1,0 +1,28 @@
+---
+import * as I18n from "@/i18n";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const locales = I18n.LOCALES;
+const works = I18n.Data.WORKS.map((work) => work.id);
+const fallback = I18n.route(I18n.DEFAULT_LOCALE);
+---
+
+<!doctype html>
+<html lang={I18n.MESSAGES[I18n.DEFAULT_LOCALE].UI.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <noscript><meta http-equiv="refresh" content={`0; url=${fallback}`} /></noscript>
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <title>Redirecting</title>
+    <script is:inline define:vars={{ base, locales, works, fallback }}>
+      const [locale, ...rest] = location.pathname.slice(base.length).split("/").filter(Boolean);
+      const id = rest[rest.length - 1];
+      const work = rest.includes("works") || rest.includes("work") ? works.includes(id) : false;
+      location.replace(
+        locales.includes(locale) ? `${base}/${locale}/${work ? `work/${id}/` : ""}` : fallback,
+      );
+    </script>
+  </head>
+  <body></body>
+</html>

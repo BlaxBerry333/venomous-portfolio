@@ -1,0 +1,14 @@
+// ==================================================
+// 主体
+// ==================================================
+.ui-main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: calc(var(--layout-width) + var(--layout-gutter) * 2);
+  margin-inline: auto;
+  padding-inline: max(var(--layout-gutter), var(--layout-safe-left))
+    max(var(--layout-gutter), var(--layout-safe-right));
+  padding-bottom: var(--layout-safe-bottom);
+  overflow-x: clip;
+}

@@ -1,0 +1,122 @@
+// ==================================================
+// 页面容器
+// ==================================================
+.design-showcase {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 160px;
+  color: var(--theme-color-text);
+  font-family: var(--theme-font-body);
+}
+
+// ==================================================
+// 代码
+// ==================================================
+.design-showcase__code {
+  font:
+    11px/1.5 ui-monospace,
+    "SF Mono",
+    Menlo,
+    monospace;
+  color: color-mix(in srgb, var(--theme-color-text) 38%, transparent);
+}
+
+// ==================================================
+// 图注
+// ==================================================
+.design-showcase__figure {
+  margin: 0;
+}
+
+// ==================================================
+// 色板
+// ==================================================
+
+.design-showcase__swatch-chip {
+  display: block;
+  height: 72px;
+  border: 1px solid color-mix(in srgb, var(--theme-color-text) 16%, transparent);
+  border-radius: var(--theme-radius);
+}
+
+// ==================================================
+// 组件演示
+// ==================================================
+.design-showcase__demo {
+  border: 1px solid color-mix(in srgb, var(--theme-color-text) 12%, transparent);
+  border-radius: var(--theme-radius);
+  background: color-mix(in srgb, var(--theme-panel-bg) 70%, transparent);
+}
+
+.design-showcase__demo-head {
+  padding: 14px 18px;
+  border-bottom: 1px solid color-mix(in srgb, var(--theme-color-text) 10%, transparent);
+}
+
+.design-showcase__demo-stage {
+  min-height: 140px;
+  padding: 24px 18px;
+}
+
+// ==================================================
+// 评价表预览
+// ==================================================
+.design-showcase__meter {
+  min-height: 220px;
+
+  .dmc-style-meter {
+    position: relative;
+    top: auto;
+    right: auto;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+// ==================================================
+// 作品图
+// ==================================================
+.design-showcase__art-frame {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: var(--theme-radius);
+}
+
+// ==================================================
+// 鬼泣演示页
+// ==================================================
+[data-theme="dmc"] .design-showcase {
+  .design-showcase__demo {
+    border: 0;
+    background: none;
+  }
+
+  .design-showcase__demo-head {
+    padding: 0 0 10px;
+    border-bottom: 0;
+  }
+
+  .design-showcase__demo-stage {
+    padding: 16px 0 0;
+  }
+}
+
+// ==================================================
+// 战锤演示页
+// ==================================================
+[data-theme="warhammer"] .design-showcase {
+  .design-showcase__demo {
+    border: 0;
+    background: none;
+  }
+
+  .design-showcase__demo-head {
+    padding: 0 0 12px;
+    border-bottom: 0;
+  }
+
+  .design-showcase__demo-stage {
+    padding: 18px 0 0;
+  }
+}

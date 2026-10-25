@@ -1,0 +1,15 @@
+// ==================================================
+// TZEENTCH 色彩
+// ==================================================
+[data-theme-variant="tzeentch"] {
+  --theme-color-background: #000208;
+  --theme-color-surface: #0b2466;
+  --theme-color-text: #e8fbff;
+  --theme-color-primary: #2bf0ff;
+  --theme-color-primary-light: #9fe8ff;
+  --theme-color-secondary: #8ab4ff;
+  --theme-color-highlight: #fff;
+  --theme-color-accent: #2563ff;
+  --warhammer-fringe-first: var(--theme-color-accent);
+  --warhammer-fringe-second: var(--theme-color-primary-light);
+}

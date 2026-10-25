@@ -1,0 +1,15 @@
+// ==================================================
+// SLAANESH 色彩
+// ==================================================
+[data-theme-variant="slaanesh"] {
+  --theme-color-background: #050108;
+  --theme-color-surface: #1a0428;
+  --theme-color-text: #ebe6ff;
+  --theme-color-primary: #9a3274;
+  --theme-color-primary-light: #ff8fe0;
+  --theme-color-secondary: #d9b8ff;
+  --theme-color-highlight: #ff9ae6;
+  --theme-color-accent: #ff4f8f;
+  --warhammer-fringe-first: var(--theme-color-primary-light);
+  --warhammer-fringe-second: var(--theme-color-secondary);
+}

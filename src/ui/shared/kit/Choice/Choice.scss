@@ -1,0 +1,73 @@
+// ==================================================
+// 文字选项组
+// ==================================================
+.ui-choice {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ui-choice__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 300ms var(--theme-ease);
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.ui-choice__item--active {
+  opacity: 1;
+}
+
+.ui-choice__icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.ui-choice .ui-text--label {
+  margin-right: -6px;
+}
+
+// ==================================================
+// 折叠后的列表
+// ==================================================
+.ui-choice__menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.ui-choice__menu .ui-panel {
+  backdrop-filter: blur(16px);
+}
+
+.ui-choice__groups {
+  display: flex;
+  gap: 32px;
+}
+
+.ui-choice__group {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.ui-choice__group .ui-text--label {
+  margin: 2px 0 6px;
+  white-space: nowrap;
+}
+
+.ui-choice__menu .ui-choice__item {
+  padding: 7px 0;
+}

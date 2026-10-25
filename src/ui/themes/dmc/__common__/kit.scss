@@ -1,0 +1,313 @@
+@use "./blade";
+@use "./rank";
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// DMC 刀光
+// ==================================================
+@keyframes dmc-blade-slash {
+  0% {
+    opacity: 1;
+    transform: translateX(-140%) skewX(-24deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(360%) skewX(-24deg);
+  }
+}
+
+// ==================================================
+// DMC 组件外观
+// ==================================================
+[data-theme="dmc"] {
+  .ui-text--title,
+  .ui-text--heading,
+  .ui-text--subheading {
+    @include rank.letter;
+  }
+
+  .ui-text--hero {
+    font-family: var(--theme-font-title);
+    font-style: italic;
+    font-weight: 900;
+    transform: perspective(1200px) rotateY(-16deg) rotateX(6deg) rotateZ(-3deg);
+    transform-origin: left bottom;
+  }
+
+  .ui-text--hero.ui-text--accent {
+    @include rank.metal;
+  }
+
+  .ui-text--hero,
+  .ui-text--title {
+    padding-block: 0.06em;
+    letter-spacing: -0.03em;
+  }
+
+  .ui-section--centered .ui-text--hero {
+    font-size: min(calc(var(--text-size-hero) * 1.5), 12vw);
+    line-height: 1;
+    transform-origin: center bottom;
+  }
+
+  @media (max-width: breakpoints.$phone) {
+    .ui-section--centered .ui-text--hero {
+      font-size: var(--text-size-hero);
+    }
+  }
+
+  .ui-text--heading {
+    padding-block: 0.04em;
+    letter-spacing: -0.01em;
+  }
+
+  .ui-text--lead {
+    color: var(--theme-color-text);
+  }
+
+  .ui-text--label {
+    @include rank.metal;
+  }
+
+  .ui-text--numeral {
+    @include rank.numeral;
+  }
+
+  .ui-link,
+  .ui-button,
+  .ui-tags__item,
+  .ui-text--label,
+  .ui-pairs__key,
+  .ui-quote__source {
+    font-family: var(--theme-font-body);
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .ui-link,
+  .ui-button,
+  .ui-pairs__key,
+  .ui-quote__source {
+    text-transform: uppercase;
+  }
+
+  .ui-text--label,
+  .ui-pairs__key,
+  .ui-quote__source {
+    font-size: var(--text-size-label);
+    letter-spacing: 0.24em;
+    color: var(--dmc-tint);
+  }
+
+  .ui-pairs {
+    gap: 16px 56px;
+  }
+
+  .ui-pairs__item {
+    gap: 8px;
+  }
+
+  .ui-pairs__value {
+    font-family: var(--theme-font-title);
+    font-size: var(--text-size-subheading);
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--theme-color-text);
+  }
+
+  .ui-quote {
+    padding-left: 18px;
+    border-left: 2px solid;
+    border-image: linear-gradient(180deg, #fff, var(--theme-color-primary) 40%, transparent) 1;
+  }
+
+  .ui-link {
+    font-size: var(--text-size-ui);
+    letter-spacing: 0.22em;
+    color: color-mix(in srgb, var(--theme-color-text) 64%, transparent);
+    text-decoration: none;
+    outline: none;
+    transition: color 200ms var(--theme-ease);
+  }
+
+  .ui-button {
+    @include blade.plate(10px);
+
+    padding: 12px 30px;
+    font-size: var(--text-size-ui);
+    letter-spacing: 0.24em;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
+    background: var(--dmc-blade-edge);
+    outline: none;
+  }
+
+  .ui-button--large {
+    padding: 18px 36px;
+    font-size: var(--text-size-body);
+  }
+
+  .ui-button--icon {
+    padding: 0;
+    font-size: var(--text-size-subheading);
+    letter-spacing: 0;
+  }
+
+  .ui-tags__item {
+    @include blade.plate(6px);
+
+    padding: 5px 14px;
+    font-size: var(--text-size-label);
+    letter-spacing: 0.16em;
+    color: var(--dmc-tint);
+    background: var(--dmc-blade-edge-dim);
+  }
+
+  .ui-panel {
+    @include blade.plate(18px);
+
+    gap: 14px;
+    padding: 28px 32px 30px;
+    background: var(--dmc-blade-edge-soft);
+  }
+
+  .ui-panel--compact {
+    gap: 0;
+    padding: 10px 20px 12px;
+  }
+
+  .ui-choice__menu .ui-text--label {
+    padding-right: 0;
+    color: color-mix(in srgb, var(--theme-color-text) 40%, transparent);
+    background: none;
+    filter: none;
+  }
+
+  .ui-card {
+    align-items: stretch;
+    gap: 0;
+    padding: 1px;
+    outline: none;
+    transition: transform 200ms var(--theme-ease);
+  }
+
+  .ui-card__media {
+    position: relative;
+    clip-path: polygon(17.6px 0, 100% 0, 100% 100%, 0 100%, 0 17.6px);
+  }
+
+  .ui-card__media::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--dmc-blade-dark);
+    opacity: 0.15;
+    transition: opacity 700ms var(--theme-ease);
+  }
+
+  .ui-card__media > * {
+    filter: saturate(0.85) brightness(1);
+    transition:
+      filter 700ms var(--theme-ease),
+      transform 900ms var(--theme-ease);
+  }
+
+  .ui-card__body {
+    gap: 10px;
+    padding: 22px 28px 26px;
+  }
+
+  @media (max-width: breakpoints.$phone) {
+    .ui-card__body {
+      gap: 6px;
+      padding: 16px 18px;
+    }
+  }
+
+  .ui-button::before {
+    background: var(--dmc-blade-steel);
+  }
+
+  .ui-button::after {
+    content: "";
+    position: absolute;
+    top: -30%;
+    bottom: -30%;
+    left: 0;
+    width: 28%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.85) 50%, transparent);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .ui-tags__item::before {
+    background: var(--dmc-blade-dark);
+  }
+
+  .ui-panel::before {
+    background:
+      radial-gradient(120% 90% at 0% 0%, rgba(255, 255, 255, 0.1), transparent 55%),
+      var(--dmc-blade-dark);
+  }
+
+  .ui-button--outline {
+    color: color-mix(in srgb, var(--theme-color-text) 88%, transparent);
+    background: var(--dmc-blade-edge-dim);
+  }
+
+  .ui-button--outline::before {
+    background: var(--dmc-blade-dark);
+  }
+
+  .ui-button:disabled {
+    color: color-mix(in srgb, var(--theme-color-text) 40%, transparent);
+    background: var(--dmc-blade-edge-dim);
+    opacity: 0.6;
+  }
+
+  .ui-button:disabled::before {
+    background: var(--dmc-blade-dark);
+  }
+
+  .ui-link:hover,
+  .ui-link:focus-visible,
+  .ui-link--active {
+    color: #fff;
+  }
+
+  .ui-button:focus-visible {
+    background: #fff;
+  }
+
+  .ui-button:hover:not(:disabled) {
+    background: var(--dmc-blade-edge);
+    filter: none;
+  }
+
+  .ui-button:focus-visible::after,
+  .ui-button:hover:not(:disabled)::after {
+    animation: dmc-blade-slash 340ms ease-out;
+  }
+
+  .ui-button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .ui-card:focus-visible .ui-card__media::before,
+  .ui-card:hover .ui-card__media::before {
+    opacity: 0;
+  }
+
+  .ui-card:focus-visible .ui-card__media > *,
+  .ui-card:hover .ui-card__media > * {
+    filter: none;
+    transform: scale(1.04);
+  }
+
+  .ui-card:active {
+    transform: scale(0.99);
+  }
+}

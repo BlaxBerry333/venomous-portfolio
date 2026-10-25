@@ -1,0 +1,223 @@
+@use "sass:list";
+@use "sass:math";
+
+// ==================================================
+// 圆角多边形
+// ==================================================
+@function crystal-axis($anchor, $offset) {
+  $rounded: math.div(math.round($offset * 100), 100);
+
+  @if $anchor == 0 {
+    @return $rounded;
+  }
+
+  @return calc(100% + #{$rounded});
+}
+
+@function crystal-delta($from-anchor, $from-offset, $to-anchor, $to-offset) {
+  @if $from-anchor != $to-anchor {
+    @return ($to-anchor - $from-anchor) * 10000;
+  }
+
+  @return math.div($to-offset - $from-offset, 1px);
+}
+
+@function crystal-direction($from, $to) {
+  $dx: crystal-delta(list.nth($from, 1), list.nth($from, 2), list.nth($to, 1), list.nth($to, 2));
+  $dy: crystal-delta(list.nth($from, 3), list.nth($from, 4), list.nth($to, 3), list.nth($to, 4));
+  $length: math.sqrt($dx * $dx + $dy * $dy);
+
+  @return (math.div($dx, $length), math.div($dy, $length));
+}
+
+@function crystal-length($value) {
+  @if math.is-unitless($value) {
+    @return $value * 1px;
+  }
+
+  @return $value;
+}
+
+@function crystal-rounded($vertices, $radii) {
+  $count: list.length($vertices);
+  $points: ();
+
+  @for $i from 1 through $count {
+    $vertex: list.nth($vertices, $i);
+    $in: crystal-direction(list.nth($vertices, ($i + $count - 2) % $count + 1), $vertex);
+    $out: crystal-direction($vertex, list.nth($vertices, $i % $count + 1));
+    $radius: list.nth($radii, $i);
+
+    @each $step in (0, 0.25, 0.5, 0.75, 1) {
+      $back: (1 - $step) * (1 - $step);
+      $ahead: $step * $step;
+      $x: list.nth($vertex, 2) + ($ahead * list.nth($out, 1) - $back * list.nth($in, 1)) * $radius;
+      $y: list.nth($vertex, 4) + ($ahead * list.nth($out, 2) - $back * list.nth($in, 2)) * $radius;
+      $points: list.append(
+        $points,
+        crystal-axis(list.nth($vertex, 1), $x) crystal-axis(list.nth($vertex, 3), $y),
+        comma
+      );
+    }
+  }
+
+  @return $points;
+}
+
+@function crystal-ring($outer, $inner) {
+  @return polygon(evenodd, #{$outer}, #{list.nth($outer, 1)}, #{$inner}, #{list.nth($inner, 1)});
+}
+
+// ==================================================
+// 碎晶切面
+// ==================================================
+@function shard-points($cut, $inset: 0) {
+  $inset: crystal-length($inset);
+  $round: $cut * 0.6;
+  $notch: $cut * 0.35;
+
+  @return crystal-rounded(
+    (
+      (0, $inset, 0, $inset),
+      (1, -$inset - $cut * 3, 0, $inset),
+      (1, -$inset, 0, $inset + $cut),
+      (1, -$inset, 1, -$inset),
+      (0, $inset + $cut * 0.6, 1, -$inset),
+      (0, $inset, 1, -$inset - $cut * 0.6)
+    ),
+    ($round, $round, $round, $round, $notch, $notch)
+  );
+}
+
+@mixin shard-shape($cut) {
+  clip-path: polygon(#{shard-points($cut)});
+}
+
+@mixin shard-ring($cut) {
+  clip-path: crystal-ring(shard-points($cut), shard-points($cut - 0.4px, 1px));
+}
+
+// ==================================================
+// 晶板切面
+// ==================================================
+@function slab-points($radius, $inset: 0) {
+  $inset: crystal-length($inset);
+  $corner: $radius - $inset;
+
+  @return crystal-rounded(
+    (
+      (0, $inset, 0, $inset),
+      (1, -$inset, 0, $inset),
+      (1, -$inset, 1, -$inset),
+      (0, $inset, 1, -$inset)
+    ),
+    ($corner, $corner, $corner, $corner)
+  );
+}
+
+@mixin slab-shape($radius) {
+  clip-path: polygon(#{slab-points($radius)});
+}
+
+@mixin slab-ring($radius) {
+  clip-path: crystal-ring(slab-points($radius), slab-points($radius, 1px));
+}
+
+// ==================================================
+// 晶体
+// ==================================================
+@mixin crystal($edge, $face) {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  border-radius: 0;
+  background: none;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  &::before {
+    inset: 1px;
+    background: $face;
+  }
+
+  &::after {
+    --warhammer-edge-at: clamp(0%, calc(30% + var(--warhammer-tilt-x, 0) * 40%), 100%)
+      clamp(0%, calc(30% - var(--warhammer-tilt-y, 0) * 40%), 100%);
+
+    inset: 0;
+    background-image: var(--warhammer-prism-lit), $edge;
+    background-repeat: no-repeat;
+    background-position:
+      0 0,
+      var(--warhammer-edge-at);
+    background-size:
+      0% 100%,
+      220% 220%;
+    transition: background-size 700ms var(--theme-ease);
+  }
+}
+
+// ==================================================
+// 点亮
+// ==================================================
+@mixin ignite {
+  &::after {
+    background-size:
+      100% 100%,
+      220% 220%;
+  }
+}
+
+// ==================================================
+// 晶板
+// ==================================================
+@mixin slab($edge, $face, $radius) {
+  @include crystal($edge, $face);
+  @include slab-shape($radius);
+
+  &::before {
+    @include slab-shape($radius - 1px);
+  }
+
+  &::after {
+    @include slab-ring($radius);
+  }
+}
+
+// ==================================================
+// 碎晶
+// ==================================================
+@mixin shard($edge, $face, $cut) {
+  @include crystal($edge, $face);
+  @include shard-shape($cut);
+
+  &::before {
+    @include shard-shape($cut - 0.4px);
+  }
+
+  &::after {
+    @include shard-ring($cut);
+  }
+}
+
+// ==================================================
+// 玻璃字
+// ==================================================
+@function fringe() {
+  @return drop-shadow(-0.5px 0 color-mix(in srgb, var(--warhammer-fringe-first) 40%, transparent))
+    drop-shadow(0.5px 0 color-mix(in srgb, var(--warhammer-fringe-second) 40%, transparent));
+}
+
+@mixin glass-letters {
+  width: fit-content;
+  color: transparent;
+  background: var(--warhammer-letters);
+  background-clip: text;
+  filter: fringe();
+}

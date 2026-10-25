@@ -1,0 +1,35 @@
+// ==================================================
+// 切角
+// ==================================================
+@mixin shape($cut) {
+  clip-path: polygon(
+    #{$cut} 0,
+    100% 0,
+    100% calc(100% - #{$cut}),
+    calc(100% - #{$cut}) 100%,
+    0 100%,
+    0 #{$cut}
+  );
+}
+
+// ==================================================
+// 钢片
+// ==================================================
+@mixin plate($cut) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0;
+
+  @include shape($cut);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    z-index: -1;
+
+    @include shape($cut - 0.4px);
+  }
+}

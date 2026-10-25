@@ -1,0 +1,136 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 骨架容器
+// ==================================================
+.theme-skeleton {
+  position: relative;
+  z-index: 1;
+  color: var(--theme-color-text);
+  font-family: var(--theme-font-body);
+}
+
+// ==================================================
+// 分区
+// ==================================================
+.theme-skeleton__section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: var(--theme-align);
+  gap: 32px;
+  min-height: 100dvh;
+  padding: 12vh 6vw;
+  text-align: var(--theme-text-align);
+}
+
+.theme-skeleton__title,
+.theme-skeleton__lead,
+.theme-skeleton__bio,
+.theme-skeleton__stage-body {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--theme-align);
+  gap: 14px;
+  width: 100%;
+}
+
+.theme-skeleton__title {
+  gap: 18px;
+}
+
+// ==================================================
+// 占位条
+// ==================================================
+.theme-skeleton__bar {
+  display: block;
+  max-width: 100%;
+  height: 10px;
+  border-radius: var(--theme-radius);
+  background: color-mix(in srgb, var(--theme-color-text) 20%, transparent);
+}
+
+.theme-skeleton__bar--title {
+  height: clamp(36px, 6vw, 72px);
+  background: color-mix(in srgb, var(--theme-color-text) 78%, transparent);
+}
+
+.theme-skeleton__bar--lead {
+  height: 18px;
+  background: color-mix(in srgb, var(--theme-color-text) 42%, transparent);
+}
+
+.theme-skeleton__bar--tag {
+  height: 8px;
+  background: color-mix(in srgb, var(--theme-color-primary) 55%, transparent);
+}
+
+// ==================================================
+// 阶段列表
+// ==================================================
+.theme-skeleton__journey {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: min(100%, 760px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.theme-skeleton__stage {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.theme-skeleton__year {
+  font-family: var(--theme-font-title);
+  font-size: var(--text-size-ui);
+  letter-spacing: 0.2em;
+  color: var(--theme-color-primary);
+}
+
+// ==================================================
+// 作品面板
+// ==================================================
+.theme-skeleton__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  width: min(100%, 1100px);
+}
+
+// ==================================================
+// 个人分区
+// ==================================================
+.theme-skeleton__columns {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 40px;
+  width: min(100%, 1100px);
+}
+
+// ==================================================
+// 页脚
+// ==================================================
+.theme-skeleton__footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 6vw 40px;
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$phone) {
+  .theme-skeleton__stage {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .theme-skeleton__columns {
+    grid-template-columns: 1fr;
+  }
+}

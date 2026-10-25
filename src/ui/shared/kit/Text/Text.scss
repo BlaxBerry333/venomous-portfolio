@@ -1,0 +1,106 @@
+// ==================================================
+// 文字
+// ==================================================
+.ui-text {
+  margin: 0;
+  white-space: pre-line;
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: none;
+  text-shadow: none;
+}
+
+// ==================================================
+// 标题级
+// ==================================================
+.ui-text--hero,
+.ui-text--numeral,
+.ui-text--title,
+.ui-text--heading,
+.ui-text--subheading {
+  font-family: var(--theme-font-title);
+  font-weight: 700;
+  text-wrap: balance;
+}
+
+.ui-text--hero {
+  font-size: var(--text-size-hero);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.ui-text--numeral {
+  display: block;
+  font-size: var(--text-size-hero);
+  font-weight: 200;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+}
+
+.ui-text--title {
+  font-size: var(--text-size-title);
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+}
+
+.ui-text--heading {
+  font-size: var(--text-size-heading);
+  line-height: 1.1;
+}
+
+.ui-text--subheading {
+  font-size: var(--text-size-subheading);
+  line-height: 1.3;
+}
+
+// ==================================================
+// 正文级
+// ==================================================
+.ui-text--lead,
+.ui-text--body,
+.ui-text--caption {
+  font-family: var(--theme-font-body);
+  font-weight: 400;
+}
+
+.ui-text--lead {
+  max-width: 40em;
+  font-size: var(--text-size-lead);
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--theme-color-text) 85%, transparent);
+}
+
+.ui-text--body {
+  font-size: var(--text-size-body);
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--theme-color-text) 78%, transparent);
+}
+
+.ui-text--caption {
+  font-size: var(--text-size-caption);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--theme-color-text) 55%, transparent);
+}
+
+// ==================================================
+// 标注
+// ==================================================
+.ui-text--label {
+  font-family: var(--theme-font-title);
+  font-size: var(--text-size-label);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--theme-color-primary);
+}
+
+// ==================================================
+// 日文断句
+// ==================================================
+.ui-text--hero:lang(ja),
+.ui-text--title:lang(ja),
+.ui-text--heading:lang(ja),
+.ui-text--subheading:lang(ja) {
+  word-break: auto-phrase;
+}

@@ -1,0 +1,10 @@
+// ==================================================
+// 全部主题变量与组件外观
+// ==================================================
+@use "./fonts";
+@use "./warhammer/__common__/tokens" as warhammer;
+@use "./warhammer/__common__/kit" as warhammer-kit;
+@use "./warhammer/tzeentch/tokens" as tzeentch;
+@use "./warhammer/slaanesh/tokens" as slaanesh;
+@use "./dmc/__common__/tokens" as dmc;
+@use "./dmc/__common__/kit" as dmc-kit;

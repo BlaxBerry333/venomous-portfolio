@@ -1,0 +1,144 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 页框
+// ==================================================
+.layout-frame {
+  position: fixed;
+  inset: calc(var(--layout-frame) + var(--layout-safe-top))
+    calc(var(--layout-frame) + var(--layout-safe-right))
+    calc(var(--layout-frame) + var(--layout-safe-bottom))
+    calc(var(--layout-frame) + var(--layout-safe-left));
+  z-index: 2;
+  pointer-events: none;
+}
+
+// ==================================================
+// 衬底
+// ==================================================
+.layout-frame__scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--theme-color-background) 82%, transparent) 0%,
+    color-mix(in srgb, var(--theme-color-background) 58%, transparent) 38%,
+    transparent 68%
+  );
+}
+
+// ==================================================
+// 页框行
+// ==================================================
+.layout-frame__row {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  left: 28px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.layout-frame__theme,
+.layout-frame__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  pointer-events: auto;
+}
+
+.layout-frame__theme {
+  justify-self: start;
+  white-space: nowrap;
+}
+
+.layout-frame__links {
+  justify-self: end;
+}
+
+// ==================================================
+// 侧边进度
+// ==================================================
+.layout-frame__pager {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transform: translateY(-50%);
+  transition: opacity 600ms var(--theme-ease);
+}
+
+.layout-frame__pager--hidden {
+  opacity: 0;
+}
+
+.layout-frame__bar {
+  width: 1px;
+  height: 26px;
+  background: color-mix(in srgb, var(--theme-color-text) 24%, transparent);
+  transition: background 400ms ease;
+}
+
+.layout-frame__bar--active {
+  background: var(--theme-color-primary);
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$tablet) {
+  .layout-frame::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: calc(var(--layout-safe-top) + 72px);
+    pointer-events: none;
+    background: linear-gradient(
+      180deg,
+      var(--theme-color-background) 0%,
+      var(--theme-color-background) 60%,
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 400ms var(--theme-ease);
+  }
+
+  .layout-frame--scrolled::before {
+    opacity: 1;
+  }
+
+  .layout-frame__row {
+    right: 16px;
+    left: 16px;
+  }
+
+  .layout-frame__pager {
+    display: none;
+  }
+
+  .layout-frame__scrim {
+    background: color-mix(in srgb, var(--theme-color-background) 62%, transparent);
+  }
+}
+
+@media (max-width: breakpoints.$phone) {
+  .layout-frame__row {
+    top: 8px;
+  }
+
+  .layout-frame__theme {
+    gap: 20px;
+  }
+
+  .layout-frame__theme > .ui-choice > .ui-text--label {
+    display: none;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en",
+  "globRoot": "..",
+  "useGitignore": true,
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": "./cspell-words.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": ["project-words"],
+  "ignoreWords": [
+    "conv",
+    "convs",
+    "fres",
+    "mseen",
+    "occl",
+    "segs",
+    "smin",
+    "verts",
+    "vnoise",
+    "xxyy",
+    "xzyw",
+    "zzww",
+    "Σaspect"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "dist",
+    ".astro",
+    ".cache",
+    "package-lock.json",
+    "**/*.{png,jpg,jpeg,webp,gif,svg,ico,woff,woff2,ttf,glb,gltf,hdr}"
+  ]
+}

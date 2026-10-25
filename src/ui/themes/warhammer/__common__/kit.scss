@@ -1,0 +1,409 @@
+@use "./crystal";
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// WARHAMMER 凝结
+// ==================================================
+@keyframes warhammer-condense {
+  from {
+    opacity: 0;
+    filter: blur(18px);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@keyframes warhammer-condense-glass {
+  from {
+    opacity: 0;
+    filter: blur(18px) crystal.fringe();
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0) crystal.fringe();
+  }
+}
+
+// ==================================================
+// WARHAMMER 组件外观
+// ==================================================
+[data-theme="warhammer"] {
+  .ui-text--hero,
+  .ui-text--title {
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--theme-color-text);
+    text-shadow:
+      -0.6px 0 color-mix(in srgb, var(--warhammer-fringe-first) 45%, transparent),
+      0.6px 0 color-mix(in srgb, var(--warhammer-fringe-second) 45%, transparent);
+  }
+
+  .ui-text--hero.ui-text--accent {
+    @include crystal.glass-letters;
+
+    text-shadow: none;
+  }
+
+  @media (max-width: breakpoints.$phone) {
+    .ui-text--hero {
+      font-size: 19vw;
+    }
+  }
+
+  .ui-text--heading {
+    @include crystal.glass-letters;
+
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .ui-text--subheading {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--theme-color-text);
+  }
+
+  .ui-text--lead {
+    line-height: 1.7;
+    color: color-mix(in srgb, var(--theme-color-text) 84%, transparent);
+  }
+
+  .ui-text--body {
+    line-height: 1.85;
+    letter-spacing: 0.01em;
+    color: color-mix(in srgb, var(--theme-color-text) 74%, transparent);
+  }
+
+  .ui-text--caption {
+    line-height: 1.7;
+    letter-spacing: 0.06em;
+    color: color-mix(in srgb, var(--theme-color-text) 50%, transparent);
+  }
+
+  .ui-link,
+  .ui-button,
+  .ui-pairs__key {
+    font-family: var(--theme-font-title);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .ui-text--label,
+  .ui-pairs__key {
+    font-size: var(--text-size-label);
+    letter-spacing: 0.32em;
+    color: var(--warhammer-dim);
+  }
+
+  .ui-button {
+    @include crystal.slab(var(--warhammer-prism-dim), var(--warhammer-glass), 12px);
+
+    padding: 13px 28px;
+    font-size: var(--text-size-ui);
+    letter-spacing: 0.28em;
+    color: color-mix(in srgb, var(--theme-color-text) 70%, transparent);
+    outline: none;
+  }
+
+  .ui-button--large {
+    padding: 18px 34px;
+    font-size: var(--text-size-body);
+  }
+
+  .ui-button--icon {
+    padding: 0;
+    font-size: var(--text-size-subheading);
+    letter-spacing: 0;
+  }
+
+  .ui-button__label {
+    background-image: var(--warhammer-letter-glint), linear-gradient(currentcolor, currentcolor);
+    background-repeat: no-repeat;
+    background-position:
+      100% 0,
+      0 0;
+    background-size:
+      320% 100%,
+      100% 100%;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .ui-button::after {
+    background-image:
+      var(--warhammer-letter-glint), var(--warhammer-prism-lit), var(--warhammer-prism-dim);
+    background-position:
+      100% 0,
+      0 0,
+      var(--warhammer-edge-at);
+    background-size:
+      320% 100%,
+      0% 100%,
+      220% 220%;
+  }
+
+  .ui-button:disabled {
+    color: color-mix(in srgb, var(--theme-color-text) 30%, transparent);
+    opacity: 1;
+  }
+
+  .ui-button:disabled::after {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .ui-button:focus-visible,
+  .ui-button:hover:not(:disabled) {
+    color: #fff;
+    filter: none;
+  }
+
+  .ui-button:focus-visible::after,
+  .ui-button:hover:not(:disabled)::after {
+    background-position:
+      0 0,
+      0 0,
+      var(--warhammer-edge-at);
+    transition: background-position 900ms var(--theme-ease);
+  }
+
+  .ui-button:focus-visible .ui-button__label,
+  .ui-button:hover:not(:disabled) .ui-button__label {
+    background-position:
+      0 0,
+      0 0;
+    transition: background-position 900ms var(--theme-ease);
+  }
+
+  .ui-button:active:not(:disabled) {
+    transform: scale(0.97);
+  }
+
+  .ui-panel {
+    @include crystal.shard(var(--warhammer-prism-dim), var(--warhammer-glass), 16px);
+
+    gap: 14px;
+    padding: 30px 36px 32px;
+  }
+
+  .ui-panel--compact {
+    gap: 0;
+    padding: 10px 20px 12px;
+  }
+
+  .ui-choice__menu .ui-text--label {
+    color: color-mix(in srgb, var(--theme-color-text) 36%, transparent);
+  }
+
+  .ui-link {
+    @include crystal.glass-letters;
+
+    font-size: var(--text-size-ui);
+    letter-spacing: 0.26em;
+    text-decoration: none;
+    outline: none;
+    background-image: var(--warhammer-letter-glint), var(--warhammer-letters);
+    background-repeat: no-repeat;
+    background-position:
+      100% 0,
+      0 0;
+    background-size:
+      320% 100%,
+      100% 100%;
+  }
+
+  .ui-link:focus-visible,
+  .ui-link:hover {
+    color: transparent;
+    background-position:
+      0 0,
+      0 0;
+    transition: background-position 900ms var(--theme-ease);
+  }
+
+  .ui-link.ui-link--active {
+    background-position:
+      50% 0,
+      0 0;
+  }
+
+  .ui-tags {
+    gap: 8px;
+  }
+
+  .ui-tags__item {
+    @include crystal.shard(var(--warhammer-prism-dim), var(--warhammer-glass), 6px);
+
+    padding: 6px 14px 6px 12px;
+    font-family: var(--theme-font-title);
+    font-size: var(--text-size-ui);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0.04em;
+    color: color-mix(in srgb, var(--theme-color-text) 82%, transparent);
+  }
+
+  .ui-quote {
+    flex-direction: column-reverse;
+    gap: 14px;
+    padding: 0;
+    border: 0;
+  }
+
+  .ui-quote .ui-text--body {
+    @include crystal.glass-letters;
+
+    font-weight: 400;
+    background-size: 100% 1lh;
+    letter-spacing: 0.01em;
+    filter: drop-shadow(
+      0 0 10px color-mix(in srgb, var(--theme-color-background) 70%, transparent)
+    );
+  }
+
+  .ui-quote__source {
+    font-family: var(--theme-font-title);
+    font-size: var(--text-size-label);
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--warhammer-dim);
+  }
+
+  .ui-text--numeral {
+    @include crystal.glass-letters;
+
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .ui-stage__body {
+    gap: 6px;
+  }
+
+  .ui-stage .ui-text--lead {
+    color: var(--theme-color-text);
+  }
+
+  .ui-stage .ui-text--caption {
+    line-height: 1.7;
+  }
+
+  .ui-pairs {
+    gap: 16px 48px;
+  }
+
+  .ui-pairs__item {
+    gap: 8px;
+  }
+
+  .ui-pairs__value {
+    @include crystal.glass-letters;
+
+    font-family: var(--theme-font-title);
+    font-size: var(--text-size-subheading);
+    font-weight: 200;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+  }
+
+  .ui-card {
+    gap: 0;
+    padding: 0;
+    outline: none;
+    transition: transform 200ms var(--theme-ease);
+  }
+
+  .ui-card::after {
+    z-index: 1;
+  }
+
+  .ui-card__media {
+    position: relative;
+  }
+
+  .ui-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--warhammer-glint), var(--warhammer-iris);
+    background-repeat: no-repeat;
+    background-position:
+      100% 0,
+      calc(50% + var(--warhammer-tilt-x, 0) * 50%) 0;
+    background-size:
+      320% 100%,
+      220% 100%;
+    opacity: 0.35;
+    transition: opacity 700ms var(--theme-ease);
+  }
+
+  .ui-card__media > * {
+    filter: saturate(0.8) brightness(0.95);
+    transition:
+      filter 700ms var(--theme-ease),
+      transform 900ms var(--theme-ease);
+  }
+
+  .ui-card__body {
+    gap: 10px;
+    padding: 22px 28px 28px;
+  }
+
+  @media (max-width: breakpoints.$phone) {
+    .ui-card__body {
+      gap: 6px;
+      padding: 16px 18px;
+    }
+  }
+
+  .ui-card .ui-text--body {
+    line-height: 1.75;
+  }
+
+  .ui-card .ui-tags {
+    margin-top: 6px;
+  }
+
+  .ui-card:focus-visible,
+  .ui-card:hover {
+    @include crystal.ignite;
+  }
+
+  .ui-card:active {
+    transform: scale(0.99);
+  }
+
+  .ui-card:focus-visible .ui-card__media > *,
+  .ui-card:hover .ui-card__media > * {
+    filter: none;
+    transform: scale(1.04);
+  }
+
+  .ui-card:focus-visible .ui-card__media::after,
+  .ui-card:hover .ui-card__media::after {
+    background-position:
+      0 0,
+      calc(50% + var(--warhammer-tilt-x, 0) * 50%) 0;
+    opacity: 0.25;
+    transition:
+      background-position 900ms var(--theme-ease),
+      opacity 700ms var(--theme-ease);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .ui-text--hero {
+      animation: warhammer-condense 1.6s var(--theme-ease) both;
+    }
+
+    .ui-text--hero.ui-text--accent {
+      animation-name: warhammer-condense-glass;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 阶段条
+// ==================================================
+.ui-stage {
+  display: grid;
+  grid-template-columns: calc(var(--text-size-title) * 4.6) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--layout-gap-m);
+}
+
+.ui-stage + .ui-stage {
+  margin-top: var(--layout-gap-xs);
+}
+
+.ui-stage .ui-text--numeral {
+  font-size: var(--text-size-title);
+}
+
+.ui-stage__body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.ui-stage__company {
+  display: none;
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$phone) {
+  .ui-stage {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--layout-gap-xs);
+  }
+
+  .ui-stage + .ui-stage {
+    margin-top: var(--layout-gap-s);
+  }
+
+  .ui-stage__company {
+    display: block;
+    margin-bottom: 4px;
+  }
+}

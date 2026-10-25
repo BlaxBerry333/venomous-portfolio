@@ -1,0 +1,29 @@
+// ==================================================
+// 链接
+// ==================================================
+.ui-link {
+  width: fit-content;
+  font-family: var(--theme-font-title);
+  font-size: var(--text-size-ui);
+  letter-spacing: 0.2em;
+  color: var(--theme-color-primary);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+
+  &:hover {
+    color: var(--theme-color-text);
+  }
+}
+
+.ui-link--active {
+  color: var(--theme-color-text);
+}
+
+.ui-link__arrow {
+  margin-left: 0.4em;
+}
+
+.ui-link__back {
+  margin-right: 0.4em;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}

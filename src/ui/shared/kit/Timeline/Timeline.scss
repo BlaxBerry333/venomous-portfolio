@@ -1,0 +1,10 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$phone) {
+  .ui-timeline__company {
+    display: none;
+  }
+}

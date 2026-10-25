@@ -1,0 +1,92 @@
+// ==================================================
+// 作品图
+// ==================================================
+.ui-art {
+  --ui-art-ground: color-mix(
+    in srgb,
+    var(--theme-color-surface) 30%,
+    var(--theme-color-background)
+  );
+  --ui-art-primary: var(--theme-color-primary);
+  --ui-art-secondary: var(--theme-color-secondary);
+  --ui-art-tertiary: var(--theme-color-primary-light);
+  --ui-art-ink: var(--theme-color-text);
+
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+// ==================================================
+// 填色
+// ==================================================
+.ui-art__ground {
+  fill: var(--ui-art-ground);
+}
+
+.ui-art__primary {
+  fill: var(--ui-art-primary);
+}
+
+.ui-art__secondary {
+  fill: var(--ui-art-secondary);
+}
+
+.ui-art__tertiary {
+  fill: var(--ui-art-tertiary);
+}
+
+.ui-art__ink {
+  fill: var(--ui-art-ink);
+}
+
+// ==================================================
+// 描线
+// ==================================================
+.ui-art__stroke-primary,
+.ui-art__stroke-secondary,
+.ui-art__stroke-tertiary,
+.ui-art__stroke-ink {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ui-art__stroke-primary {
+  stroke: var(--ui-art-primary);
+}
+
+.ui-art__stroke-secondary {
+  stroke: var(--ui-art-secondary);
+}
+
+.ui-art__stroke-tertiary {
+  stroke: var(--ui-art-tertiary);
+}
+
+.ui-art__stroke-ink {
+  stroke: var(--ui-art-ink);
+}
+
+// ==================================================
+// 渐变色标
+// ==================================================
+.ui-art__stop-primary {
+  stop-color: var(--ui-art-primary);
+}
+
+.ui-art__stop-secondary {
+  stop-color: var(--ui-art-secondary);
+}
+
+.ui-art__stop-tertiary {
+  stop-color: var(--ui-art-tertiary);
+}
+
+// ==================================================
+// 文字
+// ==================================================
+.ui-art__type {
+  font-family: var(--theme-font-title);
+  fill: var(--ui-art-ink);
+}

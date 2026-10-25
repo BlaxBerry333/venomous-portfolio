@@ -1,0 +1,9 @@
+// ==================================================
+// 页面内容层
+// ==================================================
+.layout-page {
+  position: relative;
+  z-index: 1;
+  color: var(--theme-color-text);
+  font-family: var(--theme-font-body);
+}

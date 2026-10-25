@@ -1,0 +1,51 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 主次两栏
+// ==================================================
+.ui-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, var(--layout-aside));
+  gap: var(--layout-gap-l);
+  width: 100%;
+}
+
+.ui-split--start {
+  align-items: start;
+}
+
+.ui-split--end {
+  align-items: end;
+}
+
+.ui-split__main,
+.ui-split__aside {
+  min-width: 0;
+}
+
+// ==================================================
+// 次栏在前（编辑式两栏）
+// ==================================================
+.ui-split--aside-first {
+  grid-template-columns: minmax(0, var(--layout-aside)) minmax(0, 1fr);
+}
+
+.ui-split--aside-first .ui-split__aside {
+  position: sticky;
+  top: calc(var(--layout-frame) + var(--layout-safe-top) + 96px);
+  order: -1;
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$tablet) {
+  .ui-split {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--layout-gap-l);
+  }
+
+  .ui-split--aside-first .ui-split__aside {
+    position: static;
+  }
+}

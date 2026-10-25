@@ -1,0 +1,94 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 作品图与真图叠放切换
+// ==================================================
+.page-work__media {
+  position: relative;
+  width: min(100%, 880px);
+  aspect-ratio: 16 / 10;
+}
+
+.page-work__media--stacked {
+  --slide-shift-x: 5.5%;
+  --slide-shift-y: 7%;
+
+  width: min(100% - var(--slide-layers) * var(--slide-shift-x), 800px);
+  margin-bottom: calc(var(--slide-layers) * var(--slide-shift-y));
+}
+
+.page-work__slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  background: var(--theme-color-background);
+  border: 1px solid var(--theme-panel-border);
+  border-radius: var(--theme-radius);
+  z-index: calc(var(--slide-layers) - var(--slide-depth));
+  cursor: pointer;
+  transform: translate(
+      calc(var(--slide-depth) * var(--slide-shift-x)),
+      calc(var(--slide-depth) * var(--slide-shift-y))
+    )
+    scale(calc(1 - var(--slide-depth) * 0.02));
+  transform-origin: right bottom;
+  filter: brightness(calc(1 - var(--slide-depth) * 0.22));
+  transition:
+    transform 600ms var(--theme-ease),
+    filter 600ms var(--theme-ease);
+}
+
+.page-work__slide:not(.page-work__slide--active):hover {
+  filter: brightness(0.9);
+}
+
+.page-work__slide--active {
+  z-index: calc(var(--slide-layers) + 1);
+  cursor: default;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+}
+
+// ==================================================
+// 两侧切换与计数
+// ==================================================
+.page-work__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: calc(var(--slide-layers) + 2);
+  transform: translateY(-50%);
+}
+
+.page-work__arrow--prev {
+  left: -24px;
+}
+
+.page-work__arrow--next {
+  right: calc(var(--slide-layers) * var(--slide-shift-x) * -1 - 24px);
+}
+
+.page-work__count {
+  position: absolute;
+  top: -28px;
+  right: calc(var(--slide-layers) * var(--slide-shift-x) * -1);
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$phone) {
+  .page-work__media--stacked {
+    --slide-shift-x: 4%;
+    --slide-shift-y: 4.5%;
+
+    width: calc(100% - var(--slide-layers) * var(--slide-shift-x));
+  }
+
+  .page-work__arrow--prev {
+    left: 8px;
+  }
+
+  .page-work__arrow--next {
+    right: calc(var(--slide-layers) * var(--slide-shift-x) * -1 + 8px);
+  }
+}

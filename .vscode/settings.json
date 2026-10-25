@@ -5,24 +5,16 @@
     },
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": "explicit",
+        "source.fixAll.stylelint": "explicit",
         "source.organizeImports": "explicit",
     },
     "prettier.requireConfig": true,
-    "cSpell.words": [
-        "BlaxBerry",
-        "Casbin",
-        "chamo",
-        "clsx",
-        "frameloop",
-        "Geniee",
-        "grayscale",
-        "jiaxu",
-        "Nuxt.js",
-        "nuxtjs",
-        "prettiercache",
-        "Skyflag",
-        "sunrisepark",
-        "Vite",
-        "zenless"
-    ]
+    "prettier.configPath": "configs/prettier.config.mjs",
+    "prettier.ignorePath": "configs/.prettierignore",
+    "eslint.options": {
+        "overrideConfigFile": "configs/eslint.config.mjs",
+    },
+    "stylelint.configFile": "configs/stylelint.config.mjs",
+    "stylelint.validate": ["css", "scss"],
+    "cSpell.import": ["${workspaceFolder}/configs/cspell.json"],
 }

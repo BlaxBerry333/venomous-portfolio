@@ -1,0 +1,97 @@
+// ==================================================
+// WARHAMMER 变量
+// ==================================================
+[data-theme="warhammer"] {
+  --theme-font-title-latin: "Avenir Next Condensed", "Bahnschrift Condensed", "Arial Narrow";
+  --theme-font-body-latin: "Avenir Next", "Segoe UI";
+  --theme-font-quote-latin: "Baskerville", "Hoefler Text", "Palatino";
+  --theme-align: flex-start;
+  --theme-text-align: left;
+  --theme-radius: 0;
+  --theme-panel-bg: color-mix(in srgb, var(--theme-color-background) 62%, transparent);
+  --theme-panel-border: color-mix(in srgb, var(--theme-color-text) 10%, transparent);
+  --theme-panel-blur: none;
+  --theme-panel-shadow: none;
+  --theme-panel-skew: none;
+  --warhammer-dim: color-mix(in srgb, var(--theme-color-text) 50%, transparent);
+  --warhammer-prism-dim: linear-gradient(
+    125deg,
+    color-mix(in srgb, var(--warhammer-fringe-first) 45%, transparent) 0%,
+    rgba(255, 255, 255, 0.5) 8%,
+    color-mix(in srgb, var(--warhammer-fringe-second) 38%, transparent) 16%,
+    rgba(255, 255, 255, 0.1) 30%,
+    rgba(255, 255, 255, 0.05) 62%,
+    color-mix(in srgb, var(--warhammer-fringe-second) 22%, transparent) 86%,
+    color-mix(in srgb, var(--warhammer-fringe-first) 26%, transparent) 100%
+  );
+  --warhammer-prism-lit: linear-gradient(
+    125deg,
+    var(--warhammer-fringe-first) 0%,
+    #fff 22%,
+    var(--warhammer-fringe-second) 48%,
+    #fff 72%,
+    var(--warhammer-fringe-first) 100%
+  );
+  --warhammer-glint: linear-gradient(
+    105deg,
+    transparent 40%,
+    color-mix(in srgb, var(--warhammer-fringe-first) 22%, transparent) 47%,
+    color-mix(in srgb, var(--theme-color-surface) 60%, transparent) 50%,
+    color-mix(in srgb, var(--warhammer-fringe-second) 22%, transparent) 53%,
+    transparent 60%
+  );
+  --warhammer-letters: linear-gradient(
+    180deg,
+    #fff 0%,
+    var(--theme-color-text) 50%,
+    color-mix(in srgb, var(--theme-color-secondary) 62%, transparent) 100%
+  );
+  --warhammer-letter-glint: linear-gradient(
+    105deg,
+    transparent 38%,
+    var(--warhammer-fringe-first) 46%,
+    #fff 50%,
+    var(--warhammer-fringe-second) 54%,
+    transparent 62%
+  );
+  --warhammer-glass: linear-gradient(
+    180deg,
+    color-mix(
+      in srgb,
+      var(--theme-color-surface) 30%,
+      color-mix(in srgb, var(--theme-color-background) 80%, transparent)
+    ),
+    color-mix(in srgb, var(--theme-color-background) 84%, transparent)
+  );
+  --warhammer-iris: linear-gradient(
+    115deg,
+    color-mix(in srgb, var(--warhammer-fringe-first) 34%, transparent),
+    color-mix(in srgb, var(--theme-color-surface) 60%, transparent) 50%,
+    color-mix(in srgb, var(--warhammer-fringe-second) 30%, transparent)
+  );
+  --theme-ease: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --text-size-ui: 13px;
+}
+
+// ==================================================
+// WARHAMMER 骨架覆写
+// ==================================================
+[data-theme="warhammer"] .theme-skeleton {
+  .theme-skeleton__journey {
+    position: relative;
+    padding-left: 28px;
+    border-left: 1px solid color-mix(in srgb, var(--theme-color-primary) 35%, transparent);
+  }
+
+  .theme-skeleton__stage::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    width: 9px;
+    height: 9px;
+    margin-top: 4px;
+    border-radius: 50%;
+    background: var(--theme-color-primary);
+    box-shadow: 0 0 12px var(--theme-color-primary);
+  }
+}

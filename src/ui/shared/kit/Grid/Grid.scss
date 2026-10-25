@@ -1,0 +1,95 @@
+@use "@/ui/shared/styles/breakpoints";
+
+// ==================================================
+// 等宽网格
+// ==================================================
+.ui-grid {
+  display: grid;
+  gap: var(--layout-gap-l) var(--layout-gap-m);
+  width: 100%;
+}
+
+.ui-grid > * {
+  min-width: 0;
+}
+
+.ui-grid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ui-grid--3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ui-grid--4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.ui-grid--5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+// ==================================================
+// 阶梯错位
+// ==================================================
+.ui-grid--stagger {
+  align-items: start;
+}
+
+.ui-grid--stagger.ui-grid--3 > :nth-child(3n + 2) {
+  margin-top: var(--layout-gap-l);
+}
+
+.ui-grid--stagger.ui-grid--3 > :nth-child(3n) {
+  margin-top: calc(var(--layout-gap-l) * 2);
+}
+
+.ui-grid--stagger.ui-grid--4 > :nth-child(4n + 2) {
+  margin-top: var(--layout-gap-m);
+}
+
+.ui-grid--stagger.ui-grid--4 > :nth-child(4n + 3) {
+  margin-top: calc(var(--layout-gap-m) * 2);
+}
+
+.ui-grid--stagger.ui-grid--4 > :nth-child(4n) {
+  margin-top: calc(var(--layout-gap-m) * 3);
+}
+
+// ==================================================
+// 窄屏
+// ==================================================
+@media (max-width: breakpoints.$wide) {
+  .ui-grid--stagger.ui-grid--3 > :nth-child(n),
+  .ui-grid--stagger.ui-grid--4 > :nth-child(n) {
+    margin-top: 0;
+  }
+
+  .ui-grid--3,
+  .ui-grid--4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ui-grid--5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: breakpoints.$tablet) {
+  .ui-grid--5 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: breakpoints.$phone) {
+  .ui-grid {
+    row-gap: var(--layout-gap-s);
+  }
+
+  .ui-grid--2,
+  .ui-grid--3,
+  .ui-grid--4,
+  .ui-grid--5 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

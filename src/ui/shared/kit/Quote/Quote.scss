@@ -1,0 +1,27 @@
+// ==================================================
+// 引用块
+// ==================================================
+.ui-quote {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 4px 0 4px 20px;
+  border-left: 2px solid var(--theme-color-primary);
+}
+
+.ui-quote .ui-text {
+  font-family: var(--theme-font-quote);
+  font-size: var(--text-size-subheading);
+  font-style: italic;
+  line-height: 1.55;
+  text-wrap: balance;
+}
+
+.ui-quote__source {
+  font-family: var(--theme-font-title);
+  font-size: var(--text-size-label);
+  font-style: normal;
+  letter-spacing: 0.16em;
+  color: var(--theme-color-text);
+}

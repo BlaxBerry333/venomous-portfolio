@@ -6,6 +6,10 @@ on:
     paths:
       - "src/**"
       - "public/**"
+      - "astro.config.mjs"
+      - "tsconfig.json"
+      - "package.json"
+      - "package-lock.json"
   workflow_dispatch:
 
 permissions:

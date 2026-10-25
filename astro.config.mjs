@@ -1,41 +1,36 @@
 // @ts-check
-import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import { defineConfig } from "astro/config";
-import { version } from "./package.json";
+import { devRoutesIntegration } from "./src/dev/routes.ts";
+import { DEFAULT_LOCALE, LOCALES } from "./src/i18n/config.ts";
 
 export default defineConfig({
   site: "https://BlaxBerry333.github.io",
   base: "/venomous-portfolio",
-
-  integrations: [react(), mdx()],
-
-  redirects: {
-    "/": "/venomous-portfolio/ja/nebula",
-    "/ja": "/venomous-portfolio/ja/nebula",
-    "/zh": "/venomous-portfolio/zh/nebula",
-    "/en": "/venomous-portfolio/en/nebula",
+  server: { port: 4322 },
+  integrations: [react(), devRoutesIntegration()],
+  prefetch: { defaultStrategy: "hover" },
+  i18n: {
+    locales: [...LOCALES],
+    defaultLocale: DEFAULT_LOCALE,
+    routing: { prefixDefaultLocale: true, redirectToDefaultLocale: false },
   },
-
-  prefetch: {
-    defaultStrategy: "hover",
-    prefetchAll: true,
-  },
-
   vite: {
-    define: {
-      __APP_VERSION__: JSON.stringify(version),
-    },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            three: ["three"],
-            r3f: ["@react-three/fiber"],
-            motion: ["framer-motion"],
-          },
-        },
-      },
+    envDir: "envs",
+    server: { strictPort: true },
+    preview: { strictPort: true },
+    optimizeDeps: {
+      include: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "react/jsx-dev-runtime",
+        "@astrojs/react/client.js",
+        "three",
+        "@react-three/fiber",
+        "@react-three/postprocessing",
+        "postprocessing",
+      ],
     },
   },
 });

@@ -1,0 +1,35 @@
+// ==================================================
+// 金属色
+// ==================================================
+@mixin metal {
+  width: fit-content;
+  padding-right: 0.12em;
+  color: transparent;
+  text-shadow: none;
+  background: var(--dmc-metal);
+  background-size: var(--dmc-metal-size);
+  background-origin: content-box;
+  background-clip: text;
+  filter: var(--dmc-metal-shadow);
+}
+
+// ==================================================
+// 等级字
+// ==================================================
+@mixin letter {
+  @include metal;
+
+  font-family: var(--theme-font-title);
+  font-style: italic;
+  font-weight: 700;
+}
+
+// ==================================================
+// 年份数字
+// ==================================================
+@mixin numeral {
+  @include letter;
+
+  line-height: 1;
+  letter-spacing: -0.02em;
+}

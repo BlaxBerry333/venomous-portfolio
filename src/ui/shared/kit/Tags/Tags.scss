@@ -1,0 +1,19 @@
+// ==================================================
+// 标签组
+// ==================================================
+.ui-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ui-tags__item {
+  padding: 4px 10px;
+  font-size: var(--text-size-ui);
+  color: color-mix(in srgb, var(--theme-color-text) 85%, transparent);
+  border: 1px solid var(--theme-panel-border);
+  border-radius: var(--theme-radius);
+}

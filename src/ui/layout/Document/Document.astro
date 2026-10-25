@@ -1,0 +1,76 @@
+---
+import { ClientRouter } from "astro:transitions";
+import * as I18n from "@/i18n";
+import * as Layout from "@/ui/layout";
+import "@/ui/shared/styles/base.scss";
+import * as Theme from "@/ui/themes";
+
+interface Props {
+  locale: I18n.Locale;
+  title: string;
+  description: string;
+  path?: readonly string[];
+}
+
+const { locale, title, description, path = [] } = Astro.props;
+const texts = I18n.MESSAGES[locale].UI;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const url = (target: I18n.Locale) => new URL(I18n.route(target, ...path), Astro.site).href;
+const themeKey = Theme.SELECTION_STORAGE_KEY;
+const themeGroup = Theme.SELECTION_DEFAULT_GROUP;
+const themeVariants = Theme.SELECTION_DEFAULT;
+const menuBlocked = import.meta.env.PROD;
+---
+
+<!doctype html>
+<html translate="no" lang={texts.lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url(locale)} />
+    {
+      I18n.LOCALES.map((target) => (
+        <link rel="alternate" hreflang={I18n.MESSAGES[target].UI.lang} href={url(target)} />
+      ))
+    }
+    <link rel="alternate" hreflang="x-default" href={url(I18n.DEFAULT_LOCALE)} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={texts.site} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url(locale)} />
+    <meta name="twitter:card" content="summary" />
+    <script is:inline define:vars={{ themeKey, themeGroup, themeVariants }}>
+      const themeRead = () => {
+        try {
+          return JSON.parse(localStorage.getItem(themeKey) ?? "null");
+        } catch {
+          return null;
+        }
+      };
+      const themeApply = () => {
+        const stored = themeRead();
+        const group = typeof stored?.group === "string" ? stored.group : themeGroup;
+        const variant = stored?.variants?.[group] ?? themeVariants[group];
+        document.documentElement.dataset.theme = group;
+        document.documentElement.dataset.themeVariant = variant;
+      };
+      themeApply();
+      document.addEventListener("astro:after-swap", themeApply);
+    </script>
+    <script is:inline define:vars={{ menuBlocked }}>
+      document.addEventListener("contextmenu", (event) => {
+        if (menuBlocked && !event.target.closest("a")) event.preventDefault();
+      });
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <Layout.Background client:only="react" transition:persist="background" />
+    <slot />
+  </body>
+</html>
