@@ -16,6 +16,7 @@ const { locale, title, description, path = [] } = Astro.props;
 const texts = I18n.MESSAGES[locale].UI;
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const url = (target: I18n.Locale) => new URL(I18n.route(target, ...path), Astro.site).href;
+const preview = new URL(`${base}/og.jpg`, Astro.site).href;
 const themeKey = Theme.SELECTION_STORAGE_KEY;
 const themeGroup = Theme.SELECTION_DEFAULT_GROUP;
 const themeVariants = Theme.SELECTION_DEFAULT;
@@ -43,7 +44,11 @@ const menuBlocked = import.meta.env.PROD;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={url(locale)} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={preview} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta name="twitter:card" content="summary_large_image" />
     <script is:inline define:vars={{ themeKey, themeGroup, themeVariants }}>
       const themeRead = () => {
         try {
