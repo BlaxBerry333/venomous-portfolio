@@ -27,6 +27,7 @@ smaa
 songti
 stylelintcache
 supabase
+unstub
 viewbox
 vite
 webp

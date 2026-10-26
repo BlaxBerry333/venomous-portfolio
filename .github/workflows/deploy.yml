@@ -6,19 +6,28 @@ on:
     paths:
       - "src/**"
       - "public/**"
+      - "envs/**"
       - "astro.config.mjs"
       - "tsconfig.json"
       - "package.json"
       - "package-lock.json"
+      - ".tool-versions"
+      - ".github/workflows/deploy.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
+  check:
+    uses: ./.github/workflows/check.yml
+
   build:
+    needs: check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -26,7 +35,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version-file: .tool-versions
           cache: npm
       - name: Install dependencies
         run: npm ci
@@ -40,6 +49,9 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

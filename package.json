@@ -11,12 +11,14 @@
     "preview": "astro preview",
     "astro": "astro",
     "check:astro": "astro check",
-    "check:eslint": "eslint --config configs/eslint.config.mjs \"src/**/*.{js,ts,tsx,astro}\" --cache --cache-location=./.cache/.eslintcache",
+    "check:eslint": "eslint --config configs/eslint.config.mjs \"src/**/*.{js,ts,tsx,astro}\" \"tests/**/*.ts\" --cache --cache-location=./.cache/.eslintcache",
     "check:spell": "cspell --config configs/cspell.json \"**\" --no-progress --cache --cache-location=./.cache/.cspellcache",
-    "check:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --check \"src/**/*.{js,ts,tsx,astro,mdx}\"",
+    "check:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --check \"src/**/*.{js,ts,tsx,astro,mdx}\" \"tests/**/*.ts\"",
     "check:stylelint": "stylelint --config configs/stylelint.config.mjs \"src/**/*.{css,scss}\" --cache --cache-location=./.cache/.stylelintcache",
-    "format:eslint": "eslint --config configs/eslint.config.mjs --fix \"src/**/*.{js,ts,tsx,astro}\"",
-    "format:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write \"src/**/*.{js,ts,tsx,astro,mdx}\" --cache --cache-location=./.cache/.prettiercache",
+    "test": "vitest run --config configs/vitest.config.ts",
+    "test:watch": "vitest --config configs/vitest.config.ts",
+    "format:eslint": "eslint --config configs/eslint.config.mjs --fix \"src/**/*.{js,ts,tsx,astro}\" \"tests/**/*.ts\"",
+    "format:prettier": "prettier --config configs/prettier.config.mjs --ignore-path configs/.prettierignore --write \"src/**/*.{js,ts,tsx,astro,mdx}\" \"tests/**/*.ts\" --cache --cache-location=./.cache/.prettiercache",
     "format:stylelint": "stylelint --config configs/stylelint.config.mjs --fix \"src/**/*.{css,scss}\"",
     "check": "concurrently -g --kill-others-on-fail --names \"astro,eslint,prettier\" \"npm run check:astro\" \"npm run check:eslint\" \"npm run check:prettier\"",
     "format": "concurrently --names \"eslint,prettier\" \"npm run format:eslint\" \"npm run format:prettier\"",
@@ -53,7 +55,8 @@
     "prettier-plugin-astro": "0.14.1",
     "prettier-plugin-organize-imports": "^4.1.0",
     "stylelint": "^16.26.1",
-    "stylelint-config-standard-scss": "^14.0.0"
+    "stylelint-config-standard-scss": "^14.0.0",
+    "vitest": "^5.0.5"
   },
   "packageManager": "npm@10.5.1"
 }

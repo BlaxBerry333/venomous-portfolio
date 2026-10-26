@@ -1,5 +1,6 @@
 # Chen's Portfolio
 
+[![Deploy](https://github.com/BlaxBerry333/venomous-portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/BlaxBerry333/venomous-portfolio/actions/workflows/deploy.yml)
 [![Astro](https://img.shields.io/badge/Astro-20232A?logo=astro&logoColor=BC52EE)](https://astro.build/)
 [![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-20232A?logo=typescript&logoColor=3178C6)](https://www.typescriptlang.org/)

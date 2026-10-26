@@ -16,7 +16,7 @@ export const SELECTION_DEFAULT: Selection["variants"] = {
   dmc: "vergil",
 };
 
-function selectionRead(): Selection {
+export function selectionRead(): Selection {
   const selection: Selection = {
     group: SELECTION_DEFAULT_GROUP,
     variants: { ...SELECTION_DEFAULT },
