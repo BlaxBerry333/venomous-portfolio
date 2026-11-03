@@ -21,7 +21,9 @@ export const JOURNEY = [
 
 export type JourneyEntry = (typeof JOURNEY)[number];
 
-export const CONTACTS = [{ id: "github", href: import.meta.env.PUBLIC_GITHUB_URL }] as const;
+export const CONTACTS = [
+  { id: "github", href: import.meta.env.PUBLIC_VENOMOUS_PORTFOLIO__GITHUB_URL },
+] as const;
 
 export type ContactId = (typeof CONTACTS)[number]["id"];
 

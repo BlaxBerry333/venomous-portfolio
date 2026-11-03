@@ -197,7 +197,10 @@ export function DesignShowcasePage() {
                 <DesignShowcaseDemo name="链接" api="<UI.Link href text active />">
                   <UI.Link href="#work" text="SELECTED WORK" />
                   <UI.Link href="#work" text="CURRENT" active />
-                  <UI.Link href={import.meta.env.PUBLIC_GITHUB_URL} text="GITHUB" />
+                  <UI.Link
+                    href={import.meta.env.PUBLIC_VENOMOUS_PORTFOLIO__GITHUB_URL}
+                    text="GITHUB"
+                  />
                 </DesignShowcaseDemo>
                 <DesignShowcaseDemo
                   name="按钮"
